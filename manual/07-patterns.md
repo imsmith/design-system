@@ -1,6 +1,6 @@
 # 07 · Patterns
 
-> **Status:** Drafted (core + showcase set; catalog continues).
+> **Status:** Drafted (full set).
 
 Patterns are recurring **compositions** — how the components of
 [06 · Components & States](06-components-states.md) arrange into the views people
@@ -95,11 +95,54 @@ spectrum doing real work across a field of data.
 **Rule:** every data view (table, dashboard panel, detail) defines **all three**.
 A raw blank, a spinner-forever, or an unhandled failure is a defect, not a state.
 
-## 7 · Catalog (patterns to follow)
+## 7 · Catalog patterns
 
-Named now, specified later, each following the composition rules above: **detail
-view**, **multi-step / wizard**, **settings**, **search results**, **onboarding**,
-**confirmation / destructive-action** flow.
+The recurring compositions beyond the core set. Each follows the rules above —
+components on the grid, the unhappy-path triad where data is shown.
+
+### Detail view
+
+**Inspect and act on one record.** Breadcrumb + a record header (title, status
+badge, primary action + overflow `m-more`) over sections: a property grid beside
+data-bearing panels (sparkline/gauge), then related tables or activity. Each
+section carries its own loading/error/empty; the record itself has a not-found
+state. **Terminal:** header line over sectioned panes.
+
+### Wizard / multi-step
+
+**A task too large for one screen, with order.** A stepper (done = `m-low` check,
+current = `accent`, upcoming = `muted`) + the current step's content + Back (ghost)
+/ Next (primary); the final step's action is the primary commit. Validate each step
+before advancing; preserve progress on Back. Cancelling a dirty wizard prompts the
+destructive-confirm flow. **Terminal:** numbered-step header + form + `[Back][Next]`.
+
+### Settings
+
+**Configure persistent options.** A left `menu`/nav of sections beside grouped
+forms; explicit Save (or clearly-marked inline-save). An **unsaved-changes guard**
+on navigate-away; a Reset per section. **Terminal:** a sectioned key-value editor.
+
+### Search results
+
+**Find among many.** A search input + filters toolbar above a results table/list,
+result count, and pagination. Defines **empty** ("No matches — widen the query or
+clear filters") and loading explicitly. **Terminal:** query line over result rows.
+
+### Onboarding / first-run
+
+**Nothing exists yet.** The empty state elevated: the system explained in one
+sentence and a single primary action to create the first thing (optionally a short
+wizard). Terse, no marketing copy ([09 · Voice](09-voice-content.md)). **Terminal:**
+a banner + a prompt.
+
+### Destructive-confirm flow
+
+**An irreversible action.** The destructive button (`critical`) opens a
+[modal](06-components-states.md#modal--dialog) that names the target, states the
+irreversibility, and offers a verb button (`critical`) + ghost Cancel; completion
+emits a toast. High-stakes deletions require **typing the target name** to enable
+the button. Wording per [09 · Voice](09-voice-content.md) §3. **Terminal:**
+`Delete sector 12? This can't be undone. [y/N]`.
 
 ## 8 · Usage rules
 

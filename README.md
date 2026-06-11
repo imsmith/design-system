@@ -30,7 +30,7 @@ of decisions those things are obligated to honor.
 | 04 · Marks & Iconography | **Drafted** |
 | 05 · Material & Texture | **Drafted** |
 | 06 · Components & States | **Drafted (full catalog)** |
-| 07 · Patterns | **Drafted (core set)** |
+| 07 · Patterns | **Drafted (full set)** |
 | 08 · Motion | **Drafted** |
 | 09 · Voice & Content | **Drafted** |
 | 10 · Accessibility | **Drafted** |
