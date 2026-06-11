@@ -103,13 +103,13 @@ and fall back to Unicode where a clean one exists, otherwise to a text label.
 
 ## 6 · Usage rules
 
-**Do**
+### Do
 
 - Pair every status color with its status glyph — never a bare color swatch.
 - Use `currentColor`; let the mark inherit its context's color.
 - Keep new icons on the 24×24 / 2px / round / outline style.
 
-**Don't**
+### Don't
 
 - Don't reuse the five status shapes for functional icons.
 - Don't fill the outlines (the small inner dots and `?` are the only fills).

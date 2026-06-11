@@ -41,7 +41,7 @@ terminal form.
   fields grouped into labeled sections. Actions sit bottom-right: primary +
   ghost ([button](06-components-states.md#button)).
 - **Validation:** inline at the field — the input **error** state (critical border
-  + `m-critical` + message). Summarize at the top only for cross-field errors.
+  with `m-critical` and message). Summarize at the top only for cross-field errors.
 - **Submit:** primary button enters **loading**; the form is `aria-busy`.
 - **Don't:** no dense multi-column forms — legibility over density here, unlike
   tables.
@@ -146,14 +146,14 @@ the button. Wording per [09 · Voice](09-voice-content.md) §3. **Terminal:**
 
 ## 8 · Usage rules
 
-**Do**
+### Do
 
 - Compose patterns from components and the grid; introduce no new tokens.
 - Define the empty/loading/error triad for every data surface.
 - Keep forms single-column to the measure; keep tables/dashboards dense.
 - Require a legend and per-cell values for any status-at-scale view.
 
-**Don't**
+### Don't
 
 - Don't signal severity by alert *placement* — placement is scope.
 - Don't leave a data view without its unhappy-path states.

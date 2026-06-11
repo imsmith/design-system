@@ -18,6 +18,8 @@ Fonts are **not** included in this repository and are licensed by their authors:
 
 - **Martian Mono / MartianMono Nerd Font** and **Martian Grotesk** — Evil Martians,
   SIL Open Font License 1.1 (`OFL-1.1`).
+- Mark geometry for `refresh`, `bell`, and `help` in `assets/marks/sprite.svg` is
+  derived from **Feather** icons (Cole Bemis), MIT License (`MIT`).
 
 ## Note
 

@@ -182,9 +182,9 @@ chart. Genuine overlay is capped at ~2–3 series using a mono-ramp (`accent` so
 legend. The spectrum is diverging, not categorical
 ([01 · Color](01-color.md) §7).
 
-**Anatomy:** plot area; optional dashed nominal/threshold line; latest-point marker
-+ end-label; minimal-to-no axes; no gridlines beyond the baseline; crosshair/hover
-for exact values.
+**Anatomy:** plot area; optional dashed nominal/threshold line; a latest-point
+marker with end-label; minimal-to-no axes; no gridlines beyond the baseline;
+crosshair/hover for exact values.
 
 **States:** default; no-data (`muted`, `m-unknown`, `UNK`); loading (skeleton);
 error. Hover/focus reveals point values.
@@ -274,14 +274,14 @@ are now specified.
 
 ## 5 · Usage rules
 
-**Do**
+### Do
 
 - Define a component's states from the matrix; reference tokens, never ad-hoc values.
 - Use chrome roles for the component, the alert ramp only for status.
 - Keep targets accessible regardless of density mode.
 - Give every component its terminal form, or state it has none.
 
-**Don't**
+### Don't
 
 - Don't convey a state by color (or glow) alone.
 - Don't put body-size text on an accent fill — use the ghost button.

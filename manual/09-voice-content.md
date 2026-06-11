@@ -85,13 +85,13 @@ what to do** — dropping any part that's unknown rather than padding it.
 
 ## 6 · Usage rules
 
-**Do**
+### Do
 
 - Lead with the problem; follow with the action.
 - Use the status lexicon; keep word, color, and glyph in agreement.
 - Make destructive-confirm buttons verbs that name the act.
 
-**Don't**
+### Don't
 
 - Don't pad with "please/just/successfully" or emoji.
 - Don't editorialize status ("Don't worry…").

@@ -74,13 +74,13 @@ no information**. That is the test a new animation must pass before it's added.
 
 ## 7 · Usage rules
 
-**Do**
+### Do
 
 - Use the duration/easing tokens; never ad-hoc timings.
 - Animate only to clarify a change.
 - Pair `enter`/`exit` with entrances/exits; keep everything ≤ `deliberate`.
 
-**Don't**
+### Don't
 
 - Don't animate glow, data values, or anything purely decorative.
 - Don't pulse anything below critical.

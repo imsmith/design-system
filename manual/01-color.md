@@ -238,7 +238,7 @@ the border — rather than a solid accent fill. See
 
 ## 7 · Usage rules
 
-**Do**
+### Do
 
 - Use the **muted spectrum** for data, the **vivid ramp** for alerts. They are
   different intensities for different jobs; do not substitute one for the other.
@@ -248,7 +248,7 @@ the border — rather than a solid accent fill. See
 - Pair every status color with a non-color cue (label, icon, position). See
   [10 · Accessibility](10-accessibility.md).
 
-**Don't**
+### Don't
 
 - Don't read the spectrum as "good → bad." It is signed deviation from nominal,
   not a quality judgment.

@@ -94,14 +94,14 @@ is a follow-up.)
 
 ## 6 · Usage rules
 
-**Do**
+### Do
 
 - Default to mono. Reach for Martian Grotesk *only* for running prose.
 - Use the named scale tokens; don't invent sizes.
 - Keep to the three weights.
 - Respect the measure — wrap prose at 60–75ch, never wrap data rows.
 
-**Don't**
+### Don't
 
 - Don't set data, labels, or UI in the proportional face.
 - Don't set long body copy in mono.

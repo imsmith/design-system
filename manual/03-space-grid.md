@@ -78,14 +78,14 @@ here, layout from the cell grid.
 
 ## 6 · Usage rules
 
-**Do**
+### Do
 
 - Use scale tokens for all margin / padding / gap.
 - Pick one density mode per surface.
 - Constrain prose to the measure; let data tables run full width.
 - In terminal, lay out in whole cells.
 
-**Don't**
+### Don't
 
 - Don't use off-scale pixel values.
 - Don't lean on the half-step as a default unit.
