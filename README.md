@@ -32,7 +32,7 @@ of decisions those things are obligated to honor.
 | 06 · Components & States | **Drafted (v1 set)** |
 | 07 · Patterns | **Drafted (core set)** |
 | 08 · Motion | **Drafted** |
-| 09 · Voice & Content | Stub |
+| 09 · Voice & Content | **Drafted** |
 | 10 · Accessibility | **Drafted** |
 | 11 · Usage & Governance | Stub |
 

@@ -1,0 +1,25 @@
+;; voice.edn — voice register and the status lexicon
+;;
+;; Register is terse/operational: direct, precise, no filler, no fake reassurance —
+;; reads like an ops tool. The status lexicon binds each alert-ramp step to its
+;; canonical OASIS value (the data) and a terse UI display synonym (the chrome).
+;;
+;; Authoritative for the lexicon. See manual/09-voice-content.md for MEANING/RULES.
+
+{:meta {:name "voice" :register :terse-operational}
+
+ :principles ["direct" "precise" "no filler" "name the problem"
+              "state the action" "no fake reassurance"]
+
+ ;; Status wording. :oasis is the canonical data value (CAP severity); :display is
+ ;; the terse UI synonym (conventional, domain-adjustable, but MUST map to :step).
+ ;; :glyph and the ramp color come from status.edn / marks.edn.
+ :status-lexicon
+ [{:step :critical :oasis "Extreme"  :display "DOWN"  :glyph "m-critical"}
+  {:step :high     :oasis "Severe"   :display "ALERT" :glyph "m-high"}
+  {:step :medium   :oasis "Moderate" :display "WARN"  :glyph "m-medium"}
+  {:step :low      :oasis "Minor"    :display "OK"    :glyph "m-low"}
+  {:step :unknown  :oasis "Unknown"  :display "UNK"   :glyph "m-unknown"}]
+
+ ;; Message skeleton — terse, in this order; drop a part if unknown, never pad it.
+ :message-shape ["what happened" "why (if known)" "what to do"]}
