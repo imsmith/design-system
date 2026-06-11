@@ -1,0 +1,28 @@
+;; motion.edn — duration, easing, and the one status motion
+;;
+;; Motion is minimal and functional: it clarifies a change, never decorates.
+;; All non-essential motion is suppressed under prefers-reduced-motion.
+;;
+;; Authoritative for VALUES. See manual/08-motion.md for MEANING/RULES.
+
+{:meta {:name "motion" :character :minimal-functional :reduced-motion "respected"}
+
+ ;; Duration scale.
+ :duration
+ [{:token :instant    :ms 0   :role "state with no travel (focus ring)"}
+  {:token :fast       :ms 120 :role "hover, small toggles"}
+  {:token :moderate   :ms 200 :role "most transitions (menu, expand)"}
+  {:token :deliberate :ms 320 :role "larger entrances (modal, panel)"}]
+
+ ;; Easing curves.
+ :easing
+ {:standard "cubic-bezier(0.2, 0, 0, 1)"   ; most transitions
+  :enter    "cubic-bezier(0, 0, 0, 1)"     ; decelerate in
+  :exit     "cubic-bezier(0.4, 0, 1, 1)"   ; accelerate out
+  :linear   "linear"}                      ; spinners only
+
+ ;; The single status motion. Reinforcement only — color + glyph already signal.
+ :pulse {:use            "critical / live elements only"
+         :property       "opacity (and glow)"
+         :period-ms      1500
+         :reduced-motion "static — no pulse"}}
