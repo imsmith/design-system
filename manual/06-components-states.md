@@ -1,30 +1,146 @@
 # 06 · Components & States
 
-> **Status:** Stub. Structure defined; content pending a dedicated drafting cycle.
+> **Status:** Drafted (v1 set; catalog continues).
 
-## Purpose
+The first chapter of the experience canon, and the integrator: components are where
+color, type, space, marks, material, and accessibility finally combine into things
+a person operates.
 
-The first chapter of the UX-manual lineage. Governs the catalog of components,
-their anatomy, and the state matrix every interactive element must satisfy.
+Specs here are **abstract and token-referencing** — anatomy plus a state table, in
+terms of the tokens, not any one medium. Web (Phoenix), terminal, and diagrams each
+*derive* from these; the implementations are deferred serialization
+([11 · Usage & Governance](11-usage-governance.md)). Components introduce **no new
+token values** — they compose existing ones. The single reusable artifact, the
+state matrix, is in `tokens/components.edn`.
 
-## What this chapter will define
+## 1 · The state matrix
 
-- **State matrix** — the states every interactive component must define: default,
-  hover, focus, active, disabled, loading, error. Each state maps to chrome roles
-  and (where relevant) the status ramp.
-- **Component anatomy** — parts, spacing, and which tokens each part references.
-- **Data-bearing components** — gauges, meters, status badges, charts: how they
-  consume the spectrum (muted) vs. the alert ramp (vivid).
-- **Terminal equivalents** — the TUI form of each component where one exists.
+Every interactive component defines its states from this matrix (the ones that
+apply to it). Treatments reference tokens, never ad-hoc values.
 
-## Open questions
+| State | Treatment |
+| --- | --- |
+| **default** | `surface` bg, `text`, `border`; no glow |
+| **hover** | outlined: `border`→`accent`; filled: brighten accent; ambient glow |
+| **focus** | `text`-role outline, `space-half` offset + **active glow**. The outline is the signal; glow reinforces ([10 · Accessibility](10-accessibility.md) §5) |
+| **active** | `accent` fill, `on-accent` label, pressed/inset shift |
+| **disabled** | `muted` text, 50% opacity, no glow, non-interactive |
+| **loading** | animated `m-refresh`, `aria-busy`, content hidden |
+| **error** | `status/critical` border + text, message with `m-critical` glyph — color **and** glyph **and** text |
+| **selected** | `accent` low-alpha tint + `accent` left/underline rule; no glow |
+| **read-only** | no border emphasis, `surface` bg, not editable but selectable |
 
-- Component scope for v1 — the minimal set worth specifying first?
-- Are components specified abstractly (token-referencing anatomy) or with reference
-  implementations? If implementations, in what (HEEx, since Phoenix is a consumer)?
+Two rules bind the whole matrix:
+
+- **Never one channel.** Error is border + glyph + text; selected is tint + rule;
+  focus is outline + glow. Remove color (or glow) and the state still reads.
+- **Glow only adds.** Per [05 · Material & Texture](05-material-texture.md), the
+  underlying element passes contrast without glow; glow never carries a state alone.
+
+## 2 · Anatomy conventions
+
+Every component spec follows the same shape:
+
+- **Parts** — named regions, each referencing tokens (e.g. label = `caption`/`mono`,
+  padding = density token).
+- **Spacing** — from the [03 · Space & Grid](03-space-grid.md) scale and the
+  surface's density mode; never off-scale.
+- **Type** — from the [02 · Typography](02-typography.md) scale; mono by default.
+- **Color** — chrome roles for the component; the alert ramp **only** for status.
+- **Target size** — interactive targets meet [10 · Accessibility](10-accessibility.md)
+  §8 (≥24px, 44px preferred) regardless of density.
+- **Terminal form** — the cell-grid equivalent, or "none" where there isn't one.
+
+## 3 · v1 component specs
+
+### Button
+
+- **Variants:** *primary* (`accent` fill, `on-accent` label), *ghost* (`accent`
+  border, `text` label), *text* (no border/fill).
+- **The accent-label rule:** a primary button's label is **large/heavy only**
+  (Color §6). For body-size actions use the **ghost** variant — body text never
+  sits on an accent fill.
+- **States:** default, hover, focus, active, disabled, loading. Loading swaps the
+  label for an animated `m-refresh` and sets `aria-busy`.
+- **Terminal:** `[ ENGAGE ]` with reverse-video for focus/active, dim for disabled.
+
+### Input (text field)
+
+- **Parts:** label (`caption`), field (`mono`, `border`), helper/error text.
+- **States:** default, focus (accent border + outline + active glow), error
+  (`critical` border + message with `m-critical`), disabled (`muted`), read-only.
+- **Terminal:** labeled field on one row; error on the next, prefixed with the
+  critical mark.
+
+### Select
+
+- Input-like trigger + trailing `m-chevron`; menu is a `surface` popover of options
+  with the **selected** state (accent tint + rule). Same state set as Input.
+- **Terminal:** trigger shows `‹value ›`; menu is a bordered list, selected row
+  reverse-video.
+
+### Checkbox · Radio · Toggle
+
+- Small controls; **selected/checked** uses `accent` with a check (`m-low` glyph for
+  checkbox, filled dot for radio, knob shift for toggle). Focus ring per the matrix.
+- **Terminal:** `[x]` / `( )` / `[on ]`.
+
+### Card / Panel
+
+- A `surface` container with `border`, padding from the density mode, optional
+  header/footer. Usually non-interactive; if it is, it takes hover/focus/selected.
+- **Terminal:** a box-drawing frame with an optional title in the top rule.
+
+### Table
+
+- Header row (`caption`, `muted`), body rows, **density** modes from
+  [03 · Space & Grid](03-space-grid.md) §2. Numeric columns right-align in mono.
+  Sortable headers carry a `m-chevron`; status cells use the **status badge**;
+  **selected** row = accent tint + left rule.
+- **Terminal:** box-drawing grid; the workhorse of the terminal UI.
+
+### Status badge
+
+- The non-color-alone showcase: alert-ramp color + **status glyph** + label, mapping
+  CAP severity ([01 · Color](01-color.md) §3, [04 · Marks](04-marks-iconography.md) §2).
+- **Terminal:** `glyph LABEL` using the Nerd Font / Unicode mark tier.
+
+### Alert / banner
+
+- Full-width message keyed to CAP **severity**: status glyph, left rule in the ramp
+  color, title, body, optional action, dismiss (`m-close`).
+- **Terminal:** a bordered block, severity mark in the leading cell.
+
+## 4 · Catalog (specs to follow)
+
+Named now so the set is bounded, detailed in later cycles — each will follow §2 and
+the matrix: **tabs**, **modal/dialog**, **tooltip**, **gauge/meter** (the diverging
+spectrum, data-bearing), **toast/notification** (`m-bell`), **menu/nav**,
+**breadcrumb**, **progress bar**, **pagination**, **chart/sparkline**.
+
+`gauge/meter` is the most system-specific of these — it's where the diverging
+temperature spectrum becomes an interactive control — and is the first to spec next.
+
+## 5 · Usage rules
+
+**Do**
+
+- Define a component's states from the matrix; reference tokens, never ad-hoc values.
+- Use chrome roles for the component, the alert ramp only for status.
+- Keep targets accessible regardless of density mode.
+- Give every component its terminal form, or state it has none.
+
+**Don't**
+
+- Don't convey a state by color (or glow) alone.
+- Don't put body-size text on an accent fill — use the ghost button.
+- Don't invent component-local colors or spacing; compose the tokens.
 
 ## Relation to other chapters
 
-- States consume chrome from [01 · Color](01-color.md) §6 and status from §3.
-- Compositions of components live in [07 · Patterns](07-patterns.md).
-- Focus/disabled rules answer to [10 · Accessibility](10-accessibility.md).
+- Composes [01 · Color](01-color.md), [02 · Typography](02-typography.md),
+  [03 · Space & Grid](03-space-grid.md), [04 · Marks](04-marks-iconography.md),
+  [05 · Material](05-material-texture.md).
+- Bound by [10 · Accessibility](10-accessibility.md) (focus, target size, never-one-channel).
+- Composed into layouts by [07 · Patterns](07-patterns.md); animated by
+  [08 · Motion](08-motion.md); worded by [09 · Voice & Content](09-voice-content.md).

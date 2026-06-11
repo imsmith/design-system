@@ -1,0 +1,27 @@
+;; components.edn — the state matrix
+;;
+;; Components compose existing tokens (color, type, space, marks, material); they
+;; introduce no new primitive values, so this file holds only the one reusable,
+;; serializable artifact: the STATE MATRIX — how each interactive state maps to
+;; token roles. Component anatomy and per-component specs live in the chapter.
+;;
+;; Keyword values reference roles/tokens in the other edn files; string values are
+;; prose treatment notes. Authoritative for the matrix; see
+;; manual/06-components-states.md for MEANING and per-component specs.
+
+{:meta {:name "component-state-matrix"
+        :states [:default :hover :focus :active :disabled :loading :error :selected :read-only]
+        :composes ["color/themes" "color/status" "typography" "space" "marks" "material"]}
+
+ :state-matrix
+ {:default   {:bg :surface :text :text :border :border :glow nil}
+  :hover     {:emphasis "outlined: border→accent; filled: brighten accent" :glow :ambient}
+  :focus     {:outline :text :outline-offset "space-half (4px)" :glow :active
+              :note "outline is the signal; glow is reinforcement (Accessibility §5)"}
+  :active    {:fill :accent :on-fill :on-accent :shift "pressed/inset"}
+  :disabled  {:text :muted :opacity 0.5 :glow nil :interactive false}
+  :loading   {:indicator "m-refresh (animated)" :aria-busy true :content :hidden}
+  :error     {:border :status/critical :text :status/critical
+              :message true :glyph "m-critical" :note "color + glyph + text, never color alone"}
+  :selected  {:tint "accent @ low alpha" :rule "accent left/underline" :glow nil}
+  :read-only {:border :none :bg :surface :editable false :selectable true}}}

@@ -29,7 +29,7 @@ of decisions those things are obligated to honor.
 | 03 · Space & Grid | **Drafted** |
 | 04 · Marks & Iconography | **Drafted** |
 | 05 · Material & Texture | **Drafted** |
-| 06 · Components & States | Stub |
+| 06 · Components & States | **Drafted (v1 set)** |
 | 07 · Patterns | Stub |
 | 08 · Motion | Stub |
 | 09 · Voice & Content | Stub |
