@@ -1,0 +1,50 @@
+;; space.edn — spacing scale, density, and grid
+;;
+;; Base unit is 8px (0.5rem) with a 4px half-step for tight cases. The scale is
+;; curated near-geometric on the 8px grid. Terminal layouts do NOT use the px
+;; scale — there, spacing is counted in mono cells (see :terminal).
+;;
+;; Authoritative for VALUES. See manual/03-space-grid.md for MEANING/RULES.
+
+{:meta {:name "space-grid" :base "8px = 0.5rem" :half "4px" :grid 8}
+
+ ;; Spacing scale (margin / padding / gap).
+ :scale
+ [{:token :space-half :px 4   :rem 0.25 :role "half-step, tight adjustments"}
+  {:token :space-1    :px 8   :rem 0.5  :role "base unit"}
+  {:token :space-2    :px 16  :rem 1.0  :role "default gap"}
+  {:token :space-3    :px 24  :rem 1.5  :role "gutter, section gap"}
+  {:token :space-4    :px 32  :rem 2.0}
+  {:token :space-5    :px 48  :rem 3.0}
+  {:token :space-6    :px 64  :rem 4.0}
+  {:token :space-7    :px 96  :rem 6.0}
+  {:token :space-8    :px 128 :rem 8.0  :role "major section / page rhythm"}]
+
+ ;; Density = vertical row / control padding. Applies to tables, lists, controls.
+ :density
+ {:comfortable {:token :space-2    :px 16 :role "default reading density"}
+  :compact     {:token :space-1    :px 8  :role "dashboards, denser UI"}
+  :dense       {:token :space-half :px 4  :role "telemetry / log tables"}}
+
+ ;; Web grid.
+ :grid
+ {:columns 12
+  :gutter  {:token :space-3 :px 24}
+  :margin  {:token :space-3 :px 24}
+  :breakpoints
+  [{:name :xs  :min 0}
+   {:name :sm  :min 640}
+   {:name :md  :min 768}
+   {:name :lg  :min 1024}
+   {:name :xl  :min 1280}
+   {:name :2xl :min 1536}]}
+
+ ;; Content measure (ties to typography :measure).
+ :measure {:prose "72ch" :range "60-75ch" :unit "ch"}
+
+ ;; Terminal cell grid. The px scale does not apply here.
+ :terminal
+ {:reference-cols 80
+  :wide-cols      120
+  :unit "cells — 1 column ≈ 1ch horizontal, 1 row vertical"
+  :note "spacing is integer cells; gaps in columns (ch), vertical rhythm in rows"}}
