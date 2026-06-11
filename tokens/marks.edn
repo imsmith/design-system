@@ -19,41 +19,47 @@
         :stroke 2
         :style  :monoline-outline
         :color  "currentColor"
-        :reserved "the 5 status shapes are reserved; UI marks must not reuse them"}
+        :reserved "the 5 status shapes are reserved; UI marks must not reuse them"
+        ;; Fallback order, richest to poorest. :nerd is a PUA codepoint (hex) in
+        ;; MartianMono Nerd Font (see typography.edn); :nerd-name is its Nerd Fonts
+        ;; glyph id. The terminal glyphs use the closest stable Font Awesome 4
+        ;; equivalents — exact sign-shape silhouettes are an SVG-tier feature.
+        :fallback-order [:svg :nerd :unicode :ascii]
+        :nerd-font "MartianMono Nerd Font Mono"}
 
  ;; Sign-shape semantics. step = the alert-ramp step (see status.edn).
  :status
- [{:id "m-critical" :step :critical :shape :octagon  :symbol :x     :unicode "✖" :ascii "[X]"}
-  {:id "m-high"     :step :high     :shape :triangle :symbol :bang  :unicode "▲" :ascii "[!]"}
-  {:id "m-medium"   :step :medium   :shape :diamond  :symbol :bang  :unicode "◆" :ascii "[*]"}
-  {:id "m-low"      :step :low      :shape :circle   :symbol :check :unicode "●" :ascii "[+]"}
-  {:id "m-unknown"  :step :unknown  :shape :square   :symbol :query :unicode "□" :ascii "[?]"}]
+ [{:id "m-critical" :step :critical :shape :octagon  :symbol :x     :unicode "✖" :ascii "[X]" :nerd "f05c" :nerd-name "nf-fa-times_circle"}
+  {:id "m-high"     :step :high     :shape :triangle :symbol :bang  :unicode "▲" :ascii "[!]" :nerd "f071" :nerd-name "nf-fa-warning"}
+  {:id "m-medium"   :step :medium   :shape :diamond  :symbol :bang  :unicode "◆" :ascii "[*]" :nerd "f06a" :nerd-name "nf-fa-exclamation_circle"}
+  {:id "m-low"      :step :low      :shape :circle   :symbol :check :unicode "●" :ascii "[+]" :nerd "f058" :nerd-name "nf-fa-check_circle"}
+  {:id "m-unknown"  :step :unknown  :shape :square   :symbol :query :unicode "□" :ascii "[?]" :nerd "f059" :nerd-name "nf-fa-question_circle"}]
 
  ;; Temperature direction for the diverging spectrum (see spectrum.edn).
  ;; The mark carries the SIGN; magnitude stays in the value/position.
  :diverging
- [{:id "m-warm"    :sign :positive :pole :warm   :unicode "⌃" :ascii "^"}
-  {:id "m-neutral" :sign :zero     :pole :center :unicode "–" :ascii "-"}
-  {:id "m-cool"    :sign :negative :pole :cool   :unicode "⌄" :ascii "v"}]
+ [{:id "m-warm"    :sign :positive :pole :warm   :unicode "⌃" :ascii "^" :nerd "f106" :nerd-name "nf-fa-angle_up"}
+  {:id "m-neutral" :sign :zero     :pole :center :unicode "–" :ascii "-" :nerd "f068" :nerd-name "nf-fa-minus"}
+  {:id "m-cool"    :sign :negative :pole :cool   :unicode "⌄" :ascii "v" :nerd "f107" :nerd-name "nf-fa-angle_down"}]
 
  ;; Functional starter set. chevron rotates for the four directions.
  :ui
- [{:id "m-close"    :group :nav     :unicode "✕" :ascii "x"}
-  {:id "m-menu"     :group :nav     :unicode "≡" :ascii "="}
-  {:id "m-chevron"  :group :nav     :unicode "›" :ascii ">" :note "rotate 90/180/270 for up/left/down"}
-  {:id "m-more"     :group :nav     :unicode "⋯" :ascii "..."}
-  {:id "m-search"   :group :action  :unicode "⌕" :ascii nil}
-  {:id "m-add"      :group :action  :unicode "+"      :ascii "+"}
-  {:id "m-remove"   :group :action  :unicode "−" :ascii "-"}
-  {:id "m-edit"     :group :action  :unicode "✎" :ascii nil}
-  {:id "m-delete"   :group :action  :unicode nil       :ascii "del"}
-  {:id "m-refresh"  :group :action  :unicode "↻" :ascii nil}
-  {:id "m-filter"   :group :action  :unicode "▽" :ascii nil}
-  {:id "m-download" :group :action  :unicode "↓" :ascii "v"}
-  {:id "m-upload"   :group :action  :unicode "↑" :ascii "^"}
-  {:id "m-settings" :group :object  :unicode "⚙" :ascii nil}
-  {:id "m-info"     :group :object  :unicode "ⓘ" :ascii "i"}
-  {:id "m-help"     :group :object  :unicode "?"      :ascii "?"}
-  {:id "m-user"     :group :object  :unicode nil       :ascii nil}
-  {:id "m-lock"     :group :object  :unicode nil       :ascii nil}
-  {:id "m-bell"     :group :object  :unicode nil       :ascii nil}]}
+ [{:id "m-close"    :group :nav     :unicode "✕" :ascii "x"   :nerd "f00d" :nerd-name "nf-fa-times"}
+  {:id "m-menu"     :group :nav     :unicode "≡" :ascii "="   :nerd "f0c9" :nerd-name "nf-fa-bars"}
+  {:id "m-chevron"  :group :nav     :unicode "›" :ascii ">"   :nerd "f054" :nerd-name "nf-fa-chevron_right" :note "rotate 90/180/270 for up/left/down"}
+  {:id "m-more"     :group :nav     :unicode "⋯" :ascii "..." :nerd "f141" :nerd-name "nf-fa-ellipsis_h"}
+  {:id "m-search"   :group :action  :unicode "⌕" :ascii nil   :nerd "f002" :nerd-name "nf-fa-search"}
+  {:id "m-add"      :group :action  :unicode "+"      :ascii "+"   :nerd "f067" :nerd-name "nf-fa-plus"}
+  {:id "m-remove"   :group :action  :unicode "−" :ascii "-"   :nerd "f068" :nerd-name "nf-fa-minus"}
+  {:id "m-edit"     :group :action  :unicode "✎" :ascii nil   :nerd "f040" :nerd-name "nf-fa-pencil"}
+  {:id "m-delete"   :group :action  :unicode nil       :ascii "del" :nerd "f1f8" :nerd-name "nf-fa-trash"}
+  {:id "m-refresh"  :group :action  :unicode "↻" :ascii nil   :nerd "f021" :nerd-name "nf-fa-refresh"}
+  {:id "m-filter"   :group :action  :unicode "▽" :ascii nil   :nerd "f0b0" :nerd-name "nf-fa-filter"}
+  {:id "m-download" :group :action  :unicode "↓" :ascii "v"   :nerd "f019" :nerd-name "nf-fa-download"}
+  {:id "m-upload"   :group :action  :unicode "↑" :ascii "^"   :nerd "f093" :nerd-name "nf-fa-upload"}
+  {:id "m-settings" :group :object  :unicode "⚙" :ascii nil   :nerd "f013" :nerd-name "nf-fa-cog"}
+  {:id "m-info"     :group :object  :unicode "ⓘ" :ascii "i"   :nerd "f05a" :nerd-name "nf-fa-info_circle"}
+  {:id "m-help"     :group :object  :unicode "?"      :ascii "?"   :nerd "f128" :nerd-name "nf-fa-question"}
+  {:id "m-user"     :group :object  :unicode nil       :ascii nil   :nerd "f007" :nerd-name "nf-fa-user"}
+  {:id "m-lock"     :group :object  :unicode nil       :ascii nil   :nerd "f023" :nerd-name "nf-fa-lock"}
+  {:id "m-bell"     :group :object  :unicode nil       :ascii nil   :nerd "f0f3" :nerd-name "nf-fa-bell"}]}

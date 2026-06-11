@@ -82,17 +82,24 @@ external-link, calendar, etc.) is noted here as future work, not coverage.
 
 ## 5 · Terminal & monochrome fallbacks
 
-Every mark degrades, in this order:
+Every mark degrades, richest to poorest (`tokens/marks.edn` `:fallback-order`):
 
 1. **SVG** — the sprite, full fidelity.
-2. **Unicode** — a single glyph for terminals that render it (`tokens/marks.edn`
-   `:unicode`). Status and diverging marks always have one.
-3. **ASCII** — a last-resort token (`:ascii`) for pure-ASCII terminals, e.g.
+2. **Nerd Font glyph** — for terminals using `MartianMono Nerd Font` (see
+   [02 · Typography](02-typography.md) §5). Each mark carries a `:nerd` PUA
+   codepoint and `:nerd-name`; the glyphs are the closest stable Font Awesome 4
+   equivalents. **Note the degradation:** the terminal glyphs are circle-family
+   (e.g. `times_circle`, `check_circle`) — the exact sign-shape silhouettes
+   (octagon, diamond) are an SVG-tier feature, so terminal status leans harder on
+   position and label.
+3. **Unicode** — a single BMP glyph for terminals without the Nerd Font
+   (`:unicode`). Status and diverging marks always have one.
+4. **ASCII** — a last-resort token (`:ascii`) for pure-ASCII terminals, e.g.
    `[X]` / `[!]` / `[?]` for status, `^` / `-` / `v` for direction.
 
-Status and diverging marks are guaranteed at all three levels — they are
-accessibility-critical. Functional marks fall back to a Unicode glyph where a
-clean one exists, otherwise to a text label in terminal contexts.
+Status and diverging marks are guaranteed at the Nerd Font, Unicode, and ASCII
+levels — they are accessibility-critical. Functional marks have a Nerd Font glyph
+and fall back to Unicode where a clean one exists, otherwise to a text label.
 
 ## 6 · Usage rules
 
