@@ -151,15 +151,59 @@ that are never interchanged:**
   (`node-13 [··│███▸ ] ⌃+2`); sequential → a left-fill bar with a threshold marker
   (`cpu [████████░░] 82% WARN`).
 
+### Chart / sparkline
+
+Series and trend data — the gauge extended to time. It inherits the gauge's split
+(diverging uses the spectrum; sequential uses accent + alert-ramp thresholds) and is
+**Tufte by default**: high data-ink, direct labels, no legends or chartjunk
+([00 · Principles](00-principles.md)).
+
+**Forms:**
+
+- *Sparkline* — compact, axis-less, inline (table cells, stat tiles, small
+  multiples); latest point marked and labeled.
+- *Line / area* — full chart with minimal axes; area fill at low alpha.
+- *Bar* — categorical or bucketed-over-time.
+
+**Semantic coloring** (mirrors the gauge):
+
+- *Diverging trend* — colored by deviation from a dashed nominal baseline (green/0):
+  warm above, cool below ([01 · Color](01-color.md) §2).
+- *Threshold trend* — `accent` line; crossing warn/crit makes the endpoint and label
+  adopt the alert-ramp color and word ([01 · Color](01-color.md) §3); the threshold
+  is a dashed ramp-colored line.
+- *Plain trend* — a single series with no semantic value: a neutral `text`/`accent`
+  line.
+
+**Many series → small multiples.** The preferred answer to "many entities" is a grid
+of single-series sparklines with status-colored endpoints, **not** one multi-line
+chart. Genuine overlay is capped at ~2–3 series using a mono-ramp (`accent` solid,
+`muted` dashed) + line style + **direct end-labels** — never a categorical color
+legend. The spectrum is diverging, not categorical
+([01 · Color](01-color.md) §7).
+
+**Anatomy:** plot area; optional dashed nominal/threshold line; latest-point marker
++ end-label; minimal-to-no axes; no gridlines beyond the baseline; crosshair/hover
+for exact values.
+
+**States:** default; no-data (`muted`, `m-unknown`, `UNK`); loading (skeleton);
+error. Hover/focus reveals point values.
+
+**Accessibility:** the endpoint value is always labeled; trend direction and
+threshold state are echoed in words; never color alone. Lines and markers meet the
+[10 · Accessibility](10-accessibility.md) floors.
+
+**Terminal:** a block/braille sparkline — `cpu ▂▃▅▆▇█ 94% CRIT`; diverging draws a
+baseline row; small multiples stack as a column.
+
 ## 4 · Catalog (specs to follow)
 
 Named now so the set is bounded, detailed in later cycles — each will follow §2 and
 the matrix: **tabs**, **modal/dialog**, **tooltip**, **toast/notification**
-(`m-bell`), **menu/nav**, **breadcrumb**, **progress bar**, **pagination**,
-**chart/sparkline**.
+(`m-bell`), **menu/nav**, **breadcrumb**, **progress bar**, **pagination**.
 
-`chart/sparkline` is the natural next spec — it extends the gauge's data-bearing
-role to series data.
+The data-bearing trio (status badge, gauge/meter, chart/sparkline) is now specified;
+the remaining catalog is conventional control/container work, detailed as needed.
 
 ## 5 · Usage rules
 
