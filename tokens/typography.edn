@@ -1,0 +1,53 @@
+;; typography.edn — the type system
+;;
+;; A duo: a monospace VOICE (headings, labels, data, code, UI) and a proportional
+;; companion for long-form PROSE only. The mono is the Nerd Font patch of Martian
+;; Mono, so terminal contexts gain icon glyphs (see manual/04-marks-iconography.md
+;; terminal fallbacks). The prose face is its DNA-matched proportional sibling.
+;;
+;; Authoritative for VALUES. See manual/02-typography.md for MEANING/RULES.
+
+{:meta {:name  "typography"
+        :model :duo
+        :base  "16px = 1rem"
+        :ratio 1.25}
+
+ :families
+ {:mono  {:role     "voice — headings, labels, data, code, UI"
+          :primary  "MartianMono Nerd Font"
+          :terminal "MartianMono Nerd Font Mono"   ; strict single-width cells
+          :license  "SIL OFL 1.1"
+          :source   "github.com/ryanoasis/nerd-fonts (patched Evil Martians Martian Mono)"
+          :web-fallback "Martian Mono (plain, Google Fonts) when the Nerd Font is not self-hosted"
+          :stack    ["MartianMono Nerd Font" "Martian Mono" "ui-monospace" "monospace"]}
+  :prose {:role    "long-form running text ONLY"
+          :primary "Martian Grotesk"
+          :license "SIL OFL 1.1"
+          :note    "proportional sibling of Martian Mono; no Nerd Font patch (mono-only feature)"
+          :stack   ["Martian Grotesk" "Space Grotesk" "ui-sans-serif" "system-ui" "sans-serif"]}}
+
+ ;; Modular scale. base 16px = 1rem; headings follow ratio ~1.25 (major third).
+ :scale
+ [{:token :display :px 40 :rem 2.5    :role "hero / display"}
+  {:token :h1      :px 32 :rem 2.0    :role "page title"}
+  {:token :h2      :px 24 :rem 1.5    :role "section heading"}
+  {:token :h3      :px 20 :rem 1.25   :role "subsection heading"}
+  {:token :lead    :px 18 :rem 1.125  :role "lead paragraph"}
+  {:token :body    :px 16 :rem 1.0    :role "base running text"}
+  {:token :small   :px 14 :rem 0.875  :role "secondary text"}
+  {:token :caption :px 12 :rem 0.75   :role "captions / labels"}
+  {:token :micro   :px 11 :rem 0.6875 :role "dense data / fine print"}]
+
+ :weights {:regular 400 :medium 500 :bold 700}
+
+ :line-height {:tight 1.15   ; headings
+               :snug  1.4    ; mono UI / data
+               :normal 1.6}  ; prose
+
+ :measure {:prose "60-75ch" :data "unwrapped"}
+
+ ;; Terminal: the scale collapses to one cell size; hierarchy comes from other
+ ;; channels. Nerd Font supplies icon glyphs as the rich terminal mark tier.
+ :terminal {:font      "MartianMono Nerd Font Mono"
+            :hierarchy ["UPPERCASE" "weight (bold / dim)" "reverse video"
+                        "letter-spacing" "rule lines" "Nerd Font icon glyphs"]}}

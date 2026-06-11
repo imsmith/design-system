@@ -25,7 +25,7 @@ of decisions those things are obligated to honor.
 | --- | --- |
 | 00 · Principles | Drafted |
 | 01 · Color | **Drafted (complete)** |
-| 02 · Typography | Stub |
+| 02 · Typography | **Drafted** |
 | 03 · Space & Grid | Stub |
 | 04 · Marks & Iconography | **Drafted** |
 | 05 · Material & Texture | **Drafted** |
