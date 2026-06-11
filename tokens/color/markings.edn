@@ -1,0 +1,21 @@
+;; markings.edn — STIX TLP fixed marking palette
+;;
+;; Traffic Light Protocol colors are PRESCRIBED by the standard. Not ours to
+;; recolor; theme-invariant like all data color. Per the TLP standard these are
+;; shown on a black background. Beware the valence collision: TLP green means
+;; "freely shareable" (good), which is the OPPOSITE of spectrum-green-as-neutral.
+;; Keep markings visually separate from data color.
+;;
+;; Authoritative for VALUES. See manual/01-color.md section 5 for MEANING.
+
+{:meta {:name       "stix-tlp"
+        :standard   "FIRST TLP 2.0 / OASIS STIX 2.1"
+        :locked     true
+        :background "#000000"}
+
+ :markings
+ [{:name "TLP:RED"          :hex24 "#FF2B2B"}
+  {:name "TLP:AMBER"        :hex24 "#FFC000"}
+  {:name "TLP:AMBER+STRICT" :hex24 "#FFC000"}
+  {:name "TLP:GREEN"        :hex24 "#33FF00"}
+  {:name "TLP:CLEAR"        :hex24 "#FFFFFF"}]}

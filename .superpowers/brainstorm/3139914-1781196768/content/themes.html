@@ -1,0 +1,49 @@
+<h2>How do themes relate to the data spectrum?</h2>
+<p class="subtitle">Three dark-CRT identities. The question: does the data spectrum stay constant across them, or get re-tinted?</p>
+
+<div class="split" style="margin-top:10px">
+  <div class="mockup" style="background:#05080a;border:1px solid #0a3540">
+    <div style="padding:12px;box-sizing:border-box">
+      <div style="color:#00E5FF;font-family:monospace;font-weight:700;text-shadow:0 0 8px #00E5FF66;font-size:13px">▮ TRON</div>
+      <div style="color:#cfeff5;font-size:11px;margin:8px 0;font-family:monospace">grid status: nominal</div>
+      <button style="background:#00E5FF;color:#05080a;border:none;padding:4px 10px;border-radius:4px;font-family:monospace;font-size:10px;font-weight:700">ENGAGE</button>
+      <div style="margin-top:10px;font-size:9px;color:#5a8a93;font-family:monospace">DATA SPECTRUM (invariant)</div>
+      <div style="display:flex;margin-top:3px;border-radius:3px;overflow:hidden">
+        <div style="flex:1;background:#aa3355;height:14px"></div><div style="flex:1;background:#ee9955;height:14px"></div><div style="flex:1;background:#eedd00;height:14px"></div><div style="flex:1;background:#99dd55;height:14px"></div><div style="flex:1;background:#22ccbb;height:14px"></div><div style="flex:1;background:#0099cc;height:14px"></div><div style="flex:1;background:#663399;height:14px"></div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup" style="background:#020a02;border:1px solid #0a3a18">
+    <div style="padding:12px;box-sizing:border-box">
+      <div style="color:#03A062;font-family:monospace;font-weight:700;text-shadow:0 0 8px #03A06266;font-size:13px">▮ MATRIX</div>
+      <div style="color:#7dffae;font-size:11px;margin:8px 0;font-family:monospace">grid status: nominal</div>
+      <button style="background:#03A062;color:#020a02;border:none;padding:4px 10px;border-radius:4px;font-family:monospace;font-size:10px;font-weight:700">ENGAGE</button>
+      <div style="margin-top:10px;font-size:9px;color:#3a7a52;font-family:monospace">DATA SPECTRUM (invariant)</div>
+      <div style="display:flex;margin-top:3px;border-radius:3px;overflow:hidden">
+        <div style="flex:1;background:#aa3355;height:14px"></div><div style="flex:1;background:#ee9955;height:14px"></div><div style="flex:1;background:#eedd00;height:14px"></div><div style="flex:1;background:#99dd55;height:14px"></div><div style="flex:1;background:#22ccbb;height:14px"></div><div style="flex:1;background:#0099cc;height:14px"></div><div style="flex:1;background:#663399;height:14px"></div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup" style="background:#160f04;border:1px solid #4a2f08">
+    <div style="padding:12px;box-sizing:border-box">
+      <div style="color:#FF8A00;font-family:monospace;font-weight:700;text-shadow:0 0 8px #FF8A0066;font-size:13px">▮ COMPAQ</div>
+      <div style="color:#ffd9a0;font-size:11px;margin:8px 0;font-family:monospace">grid status: nominal</div>
+      <button style="background:#FF8A00;color:#160f04;border:none;padding:4px 10px;border-radius:4px;font-family:monospace;font-size:10px;font-weight:700">ENGAGE</button>
+      <div style="margin-top:10px;font-size:9px;color:#9a6a28;font-family:monospace">DATA SPECTRUM (invariant)</div>
+      <div style="display:flex;margin-top:3px;border-radius:3px;overflow:hidden">
+        <div style="flex:1;background:#aa3355;height:14px"></div><div style="flex:1;background:#ee9955;height:14px"></div><div style="flex:1;background:#eedd00;height:14px"></div><div style="flex:1;background:#99dd55;height:14px"></div><div style="flex:1;background:#22ccbb;height:14px"></div><div style="flex:1;background:#0099cc;height:14px"></div><div style="flex:1;background:#663399;height:14px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="options" style="margin-top:24px">
+  <div class="option" data-choice="invariant" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content"><h3>Theme = chrome only; spectrum is invariant (recommended)</h3><p>Theme controls bg / text / borders / the one accent. Data spectrum + status colors stay identical across all themes — so "green = neutral" never lies, whatever skin you're in.</p></div>
+  </div>
+  <div class="option" data-choice="retint" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content"><h3>Theme re-tints everything</h3><p>Matrix makes the whole spectrum green-shaded, etc. Stronger aesthetic unity, but data semantics shift per theme and cross-theme comparison breaks.</p></div>
+  </div>
+</div>

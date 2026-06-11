@@ -1,0 +1,20 @@
+;; opinion.edn — STIX `opinion` mapped onto the diverging spectrum
+;;
+;; The exemplar for discrete diverging data. Five-point Likert; neutral on the
+;; green center. Convention: disagreement runs warm (alert), agreement runs cool
+;; (calm). Uses the MUTED spectrum, never the vivid alert ramp.
+;;
+;; Authoritative for VALUES. See manual/01-color.md section 4 for MEANING.
+
+{:meta {:name     "stix-opinion"
+        :standard "OASIS STIX 2.1 opinion-enum"
+        :model    :diverging
+        :center   :neutral
+        :convention "disagree=warm, agree=cool (flippable but must be explicit)"}
+
+ :map
+ [{:value "strongly-disagree" :stop :red       :hex24 "#aa3355" :index  4}
+  {:value "disagree"          :stop :orange    :hex24 "#ee9955" :index  2}
+  {:value "neutral"           :stop :green     :hex24 "#99dd55" :index  0}
+  {:value "agree"             :stop :turquoise :hex24 "#22ccbb" :index -2}
+  {:value "strongly-agree"    :stop :blue      :hex24 "#0099cc" :index -4}]}

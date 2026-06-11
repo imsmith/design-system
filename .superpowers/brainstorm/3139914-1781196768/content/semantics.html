@@ -1,0 +1,45 @@
+<h2>How should the spectrum carry meaning?</h2>
+<p class="subtitle">The 12 hues can be read two ways at once. Pick which readings the system must support — multi-select.</p>
+
+<div class="section">
+  <div class="label">Reading 1 — Categorical (all 12 as distinct series colors)</div>
+  <p style="font-size:13px;color:#aaa;margin:6px 0">For charts with many series, tags, categories. No order implied — just 12 maximally-distinct, harmonious hues.</p>
+  <div style="display:flex;gap:4px;margin-top:8px">
+    <div style="flex:1;background:#881177;height:44px;border-radius:5px"></div>
+    <div style="flex:1;background:#aa3355;height:44px;border-radius:5px"></div>
+    <div style="flex:1;background:#cc6666;height:44px;border-radius:5px"></div>
+    <div style="flex:1;background:#ee9955;height:44px;border-radius:5px"></div>
+    <div style="flex:1;background:#eedd00;height:44px;border-radius:5px"></div>
+    <div style="flex:1;background:#99dd55;height:44px;border-radius:5px"></div>
+    <div style="flex:1;background:#44dd88;height:44px;border-radius:5px"></div>
+    <div style="flex:1;background:#22ccbb;height:44px;border-radius:5px"></div>
+    <div style="flex:1;background:#00bbcc;height:44px;border-radius:5px"></div>
+    <div style="flex:1;background:#0099cc;height:44px;border-radius:5px"></div>
+    <div style="flex:1;background:#3366bb;height:44px;border-radius:5px"></div>
+    <div style="flex:1;background:#663399;height:44px;border-radius:5px"></div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:30px">
+  <div class="label">Reading 2 — Sequential status scale (good → bad), proposed direction</div>
+  <p style="font-size:13px;color:#aaa;margin:6px 0">A subset mapped to meaning. Cool = good, warm = bad — the convention where red = critical. Purple ends reserved for "unknown / no-data / special".</p>
+  <div style="display:flex;gap:8px;margin-top:8px">
+    <div style="flex:1;background:#44dd88;height:60px;border-radius:6px;display:flex;align-items:flex-end;padding:6px;box-sizing:border-box;font-size:11px;color:#012;font-family:monospace">GOOD<br>#4d8</div>
+    <div style="flex:1;background:#00bbcc;height:60px;border-radius:6px;display:flex;align-items:flex-end;padding:6px;box-sizing:border-box;font-size:11px;color:#012;font-family:monospace">NOMINAL<br>#0bc</div>
+    <div style="flex:1;background:#eedd00;height:60px;border-radius:6px;display:flex;align-items:flex-end;padding:6px;box-sizing:border-box;font-size:11px;color:#210;font-family:monospace">CAUTION<br>#ed0</div>
+    <div style="flex:1;background:#ee9955;height:60px;border-radius:6px;display:flex;align-items:flex-end;padding:6px;box-sizing:border-box;font-size:11px;color:#210;font-family:monospace">WARNING<br>#e95</div>
+    <div style="flex:1;background:#aa3355;height:60px;border-radius:6px;display:flex;align-items:flex-end;padding:6px;box-sizing:border-box;font-size:11px;color:#fee;font-family:monospace">CRITICAL<br>#a35</div>
+    <div style="flex:1;background:#663399;height:60px;border-radius:6px;display:flex;align-items:flex-end;padding:6px;box-sizing:border-box;font-size:11px;color:#eef;font-family:monospace">UNKNOWN<br>#639</div>
+  </div>
+</div>
+
+<div class="options" data-multiselect style="margin-top:30px">
+  <div class="option" data-choice="categorical" onclick="toggleSelect(this)">
+    <div class="letter">1</div>
+    <div class="content"><h3>Need categorical reading</h3><p>12 distinct series colors for charts/tags/categories</p></div>
+  </div>
+  <div class="option" data-choice="sequential" onclick="toggleSelect(this)">
+    <div class="letter">2</div>
+    <div class="content"><h3>Need sequential status scale</h3><p>good→bad semantic mapping as shown (or tell me to flip/retune it)</p></div>
+  </div>
+</div>

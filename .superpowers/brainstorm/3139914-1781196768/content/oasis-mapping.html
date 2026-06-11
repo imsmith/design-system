@@ -1,0 +1,44 @@
+<h2>Mapping colors to OASIS status enumerations</h2>
+<p class="subtitle">Three real, standardized status families — three palette roles. Confirm these are the anchors you want.</p>
+
+<div class="section">
+  <div class="label">1 · Vivid status set ↔ CAP severity (ordered, attention-grabbing)</div>
+  <p style="font-size:12px;color:#999;margin:4px 0">Same hues as the spectrum but boosted to vivid intensity. Ordered worst→least. "Unknown" is off-scale grey.</p>
+  <div style="display:flex;gap:8px;margin-top:8px">
+    <div style="flex:1;background:#ff2740;height:58px;border-radius:6px;padding:6px;box-sizing:border-box;font-size:10px;color:#fff;font-family:monospace">EXTREME</div>
+    <div style="flex:1;background:#ff7a00;height:58px;border-radius:6px;padding:6px;box-sizing:border-box;font-size:10px;color:#210;font-family:monospace">SEVERE</div>
+    <div style="flex:1;background:#ffd400;height:58px;border-radius:6px;padding:6px;box-sizing:border-box;font-size:10px;color:#210;font-family:monospace">MODERATE</div>
+    <div style="flex:1;background:#2fd44e;height:58px;border-radius:6px;padding:6px;box-sizing:border-box;font-size:10px;color:#012;font-family:monospace">MINOR</div>
+    <div style="flex:1;background:#8a8f99;height:58px;border-radius:6px;padding:6px;box-sizing:border-box;font-size:10px;color:#fff;font-family:monospace">UNKNOWN</div>
+  </div>
+  <p style="font-size:11px;color:#777;margin-top:6px">Same shape fits urgency (Immediate→Past) and certainty (Observed→Unlikely).</p>
+</div>
+
+<div class="section" style="margin-top:26px">
+  <div class="label">2 · Data spectrum ↔ STIX opinion (diverging, muted — your temperature scale)</div>
+  <p style="font-size:12px;color:#999;margin:4px 0">Neutral = green center. Two poles = warm / cool ends. The full 12 hues are the continuous version of this.</p>
+  <div style="display:flex;gap:8px;margin-top:8px">
+    <div style="flex:1;background:#aa3355;height:58px;border-radius:6px;padding:6px;box-sizing:border-box;font-size:10px;color:#fee;font-family:monospace">STRONGLY<br>DISAGREE</div>
+    <div style="flex:1;background:#ee9955;height:58px;border-radius:6px;padding:6px;box-sizing:border-box;font-size:10px;color:#210;font-family:monospace">DISAGREE</div>
+    <div style="flex:1;background:#99dd55;height:58px;border-radius:6px;padding:6px;box-sizing:border-box;font-size:10px;color:#012;font-family:monospace;box-shadow:inset 0 0 0 2px #fff">NEUTRAL</div>
+    <div style="flex:1;background:#22ccbb;height:58px;border-radius:6px;padding:6px;box-sizing:border-box;font-size:10px;color:#012;font-family:monospace">AGREE</div>
+    <div style="flex:1;background:#0099cc;height:58px;border-radius:6px;padding:6px;box-sizing:border-box;font-size:10px;color:#012;font-family:monospace">STRONGLY<br>AGREE</div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:26px">
+  <div class="label">3 · Markings palette ↔ STIX TLP (fixed colors, prescribed by standard)</div>
+  <p style="font-size:12px;color:#999;margin:4px 0">Not ours to recolor — the standard mandates these. Kept as a separate locked palette.</p>
+  <div style="display:flex;gap:8px;margin-top:8px">
+    <div style="flex:1;background:#ff2b2b;height:48px;border-radius:6px;padding:6px;box-sizing:border-box;font-size:10px;color:#fff;font-family:monospace">TLP:RED</div>
+    <div style="flex:1;background:#ffc000;height:48px;border-radius:6px;padding:6px;box-sizing:border-box;font-size:10px;color:#210;font-family:monospace">TLP:AMBER</div>
+    <div style="flex:1;background:#33ff00;height:48px;border-radius:6px;padding:6px;box-sizing:border-box;font-size:10px;color:#012;font-family:monospace">TLP:GREEN</div>
+    <div style="flex:1;background:#ffffff;height:48px;border-radius:6px;padding:6px;box-sizing:border-box;font-size:10px;color:#222;font-family:monospace;border:1px solid #444">TLP:WHITE/CLEAR</div>
+  </div>
+</div>
+
+<div class="options" data-multiselect style="margin-top:26px">
+  <div class="option" data-choice="cap" onclick="toggleSelect(this)"><div class="letter">1</div><div class="content"><h3>Adopt CAP severity/urgency/certainty</h3><p>as the vivid ordered status scales</p></div></div>
+  <div class="option" data-choice="opinion" onclick="toggleSelect(this)"><div class="letter">2</div><div class="content"><h3>Adopt STIX opinion</h3><p>as the diverging-scale exemplar over the temperature spectrum</p></div></div>
+  <div class="option" data-choice="tlp" onclick="toggleSelect(this)"><div class="letter">3</div><div class="content"><h3>Adopt TLP markings</h3><p>as a separate fixed/locked palette</p></div></div>
+</div>

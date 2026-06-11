@@ -1,0 +1,40 @@
+;; themes.edn — the three anchor themes (chrome only)
+;;
+;; A theme is a SKIN. It owns exactly the chrome roles below and nothing else.
+;; It may NOT touch the spectrum, the status ramp, or the markings — those are
+;; data color and are theme-invariant. Each anchor has a :dark and :light variant.
+;;
+;; Roles: :bg :surface :text :muted :border :accent :glow
+;; light :accent is darkened from the raw anchor where contrast on a light
+;; surface demands it; :glow keeps the raw anchor (glow sits on dark material).
+;;
+;; Authoritative for VALUES. See manual/01-color.md section 6 for MEANING.
+
+{:meta {:name  "anchor-themes"
+        :roles [:bg :surface :text :muted :border :accent :glow]
+        :rule  "chrome only; data color is invariant"}
+
+ :themes
+ {:tron
+  {:lineage "Tron — cyan vector grid"
+   :anchor  "#00E5FF"
+   :dark  {:bg "#05080a" :surface "#0a141a" :text "#cfeff5"
+           :muted "#5a8a93" :border "#123b45" :accent "#00E5FF" :glow "#00E5FF"}
+   :light {:bg "#eef7f9" :surface "#ffffff" :text "#07232a"
+           :muted "#4a7b85" :border "#b7d9e0" :accent "#008c9e" :glow "#00E5FF"}}
+
+  :matrix
+  {:lineage "The Matrix — phosphor green"
+   :anchor  "#03A062"
+   :dark  {:bg "#020a02" :surface "#061206" :text "#7dffae"
+           :muted "#3a7a52" :border "#0d3a18" :accent "#03A062" :glow "#03A062"}
+   :light {:bg "#f0f7f1" :surface "#ffffff" :text "#06250f"
+           :muted "#2f6e45" :border "#b9dcc4" :accent "#027a4a" :glow "#03A062"}}
+
+  :compaq
+  {:lineage "Compaq Portable III — amber gas-plasma"
+   :anchor  "#FF8A00"
+   :dark  {:bg "#160f04" :surface "#20160a" :text "#ffd9a0"
+           :muted "#9a6a28" :border "#4a2f08" :accent "#FF8A00" :glow "#FF8A00"}
+   :light {:bg "#fbf4ea" :surface "#ffffff" :text "#2a1a06"
+           :muted "#8a5a16" :border "#e6cfa8" :accent "#c96a00" :glow "#FF8A00"}}}}

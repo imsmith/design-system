@@ -1,0 +1,43 @@
+;; status.edn — the vivid status set (alert ramp) and OASIS CAP mappings
+;;
+;; A separate family from the spectrum. Its job is to grab attention, so it
+;; reuses the spectrum hues but BOOSTED toward high saturation/brightness.
+;; Ordered, four steps + an off-scale :unknown (a neutral grey, not a hue).
+;;
+;; Authoritative for VALUES. See manual/01-color.md section 3 for MEANING.
+
+{:meta {:name    "status-alert-ramp"
+        :model   :ordered
+        :derived-from "spectrum hues, boosted"}
+
+ ;; The ramp. :unknown is off-scale and tracks the theme's muted chrome.
+ :ramp
+ [{:step :critical :hue-source :red    :hex24 "#ff2740"}
+  {:step :high     :hue-source :orange :hex24 "#ff7a00"}
+  {:step :medium   :hue-source :yellow :hex24 "#ffd400"}
+  {:step :low      :hue-source :green  :hex24 "#2fd44e"}
+  {:step :unknown  :hue-source nil     :hex24 "#8a8f99"}]
+
+ ;; OASIS CAP bindings. severity and urgency are alarm-valenced and map
+ ;; directly. certainty is ORDINAL (not alarm-valenced): do not render as
+ ;; red->green by default; prefer intensity encoding or pairing with severity.
+ :oasis-cap
+ {:severity  {:standard "OASIS CAP 1.2"
+              :alarm-valenced true
+              :map {"Extreme"  :critical
+                    "Severe"   :high
+                    "Moderate" :medium
+                    "Minor"    :low
+                    "Unknown"  :unknown}}
+  :urgency   {:standard "OASIS CAP 1.2"
+              :alarm-valenced true
+              :map {"Immediate" :critical
+                    "Expected"  :high
+                    "Future"    :medium
+                    "Past"      :low
+                    "Unknown"   :unknown}}
+  :certainty {:standard "OASIS CAP 1.2"
+              :alarm-valenced false
+              :note "Ordinal only. Encode by intensity, not alarm hue, unless an
+                     ordered ramp is explicitly requested and labeled."
+              :order ["Observed" "Likely" "Possible" "Unlikely" "Unknown"]}}}

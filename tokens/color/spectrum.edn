@@ -1,0 +1,31 @@
+;; spectrum.edn — the data color spectrum
+;;
+;; A diverging temperature scale. Green is the center (zero / nominal / ideal).
+;; Distance from center = magnitude of deviation. Warm pole = positive deviation
+;; (hot / high / excess); cool pole = negative deviation (cold / low / deficit).
+;; This is the muted, continuous form. For discrete diverging data see
+;; opinion.edn; for attention-grabbing alerts see status.edn.
+;;
+;; Authoritative for VALUES. The chapter manual/01-color.md is authoritative for
+;; MEANING. They must agree.
+
+{:meta {:name        "data-color-spectrum"
+        :model       :diverging
+        :center      :green
+        :depth       "12-bit (4-char hex), 24-bit expansion provided"
+        :usable-range "approx +-5; :plumb is warm overflow"}
+
+ ;; Ordered warm pole -> center -> cool pole.
+ :stops
+ [{:name :plumb     :hex12 "#817" :hex24 "#881177" :pole :warm   :index  5}
+  {:name :red       :hex12 "#a35" :hex24 "#aa3355" :pole :warm   :index  4}
+  {:name :pink      :hex12 "#c66" :hex24 "#cc6666" :pole :warm   :index  3}
+  {:name :orange    :hex12 "#e95" :hex24 "#ee9955" :pole :warm   :index  2}
+  {:name :yellow    :hex12 "#ed0" :hex24 "#eedd00" :pole :warm   :index  1}
+  {:name :green     :hex12 "#9d5" :hex24 "#99dd55" :pole :center :index  0}
+  {:name :seafoam   :hex12 "#4d8" :hex24 "#44dd88" :pole :cool   :index -1}
+  {:name :turquoise :hex12 "#2cb" :hex24 "#22ccbb" :pole :cool   :index -2}
+  {:name :teal      :hex12 "#0bc" :hex24 "#00bbcc" :pole :cool   :index -3}
+  {:name :blue      :hex12 "#09c" :hex24 "#0099cc" :pole :cool   :index -4}
+  {:name :indigo    :hex12 "#36b" :hex24 "#3366bb" :pole :cool   :index -5}
+  {:name :purple    :hex12 "#639" :hex24 "#663399" :pole :cool   :index -6}]}
