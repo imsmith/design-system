@@ -196,14 +196,81 @@ threshold state are echoed in words; never color alone. Lines and markers meet t
 **Terminal:** a block/braille sparkline — `cpu ▂▃▅▆▇█ 94% CRIT`; diverging draws a
 baseline row; small multiples stack as a column.
 
+### Modal / dialog
+
+The most behavior-heavy control.
+
+- **Anatomy:** a dimming **scrim**, the dialog `surface` (border, `deliberate`
+  shadow), header (title + `m-close`), body, footer actions right-aligned (primary +
+  ghost).
+- **Behavior:** focus is **trapped** while open and **returns to the trigger** on
+  close; `Esc` and scrim-click dismiss (except a blocking/destructive confirm);
+  `aria-modal`, labelled by the title. Enters `deliberate`/`enter`, exits `exit`
+  ([08 · Motion](08-motion.md) §1).
+- **Sizes:** small (confirm), medium (form) — constrained to the measure, never
+  full-bleed on desktop.
+- **Destructive confirm:** the primary action is the **`critical` color, not
+  `accent`** — the one place a primary button leaves accent. Its label is a **verb
+  that names the act** (`DELETE`), the target is named, and irreversibility is stated
+  ([09 · Voice](09-voice-content.md) §3); Cancel is the ghost. This destructive rule
+  applies to any destructive primary action, not only in modals.
+- **Terminal:** a centered bordered box over a dimmed screen; key-navigated, `Esc`
+  cancels.
+
+### Tabs
+
+- **Anatomy:** a row of labels over a content area; selected = `accent` underline +
+  `text`, others `muted`.
+- **States:** default/hover/focus/**selected**/disabled; one selected at a time.
+- **Terminal:** a label row, active item bracketed or reverse-video.
+
+### Tooltip
+
+- **Anatomy:** a small `surface` bubble (`border`, `caption` text) on an anchor with
+  a dotted-underline cue.
+- **Behavior:** on hover **and** focus; dismiss on blur/`Esc`. **Never** the sole
+  carrier of essential information ([10 · Accessibility](10-accessibility.md)).
+- **Terminal:** a status-line hint, or omitted.
+
+### Toast / notification
+
+- **Anatomy:** a transient `surface` card — severity left-rule + glyph, message,
+  `m-close`; stacks in a corner.
+- **Behavior:** auto-dismiss on a timer (longer for higher severity; **critical
+  persists** until acknowledged); `m-bell` is the notification affordance;
+  `aria-live` polite, assertive for critical. Wording per [09 · Voice](09-voice-content.md).
+- **Terminal:** a transient bottom line, severity glyph + message.
+
+### Menu / nav
+
+- **Anatomy:** a `surface` popover or sidebar list; items take hover/focus/selected/
+  disabled; optional leading mark, trailing `m-chevron` for submenus.
+- **Behavior:** keyboard-navigable; selected = accent tint + rule; dismiss on
+  select/blur/`Esc`.
+- **Terminal:** a bordered list; arrow-key nav, selected reverse-video.
+
+### Breadcrumb
+
+- **Anatomy:** `muted` ancestor links separated by `m-chevron`; the current page is
+  `text`, not a link.
+- **Terminal:** `Grid › Sector 12 › node-13`.
+
+### Pagination
+
+- **Anatomy:** prev/next `m-chevron` controls + numbered pages; current page =
+  `accent` tint; `…` for elision.
+- **States:** prev/next disabled at the ends; current is selected.
+- **Terminal:** `‹ 1 ·2· 3 … 9 ›`.
+
 ## 4 · Catalog (specs to follow)
 
-Named now so the set is bounded, detailed in later cycles — each will follow §2 and
-the matrix: **tabs**, **modal/dialog**, **tooltip**, **toast/notification**
-(`m-bell`), **menu/nav**, **breadcrumb**, **progress bar**, **pagination**.
+The v1 set, the data-bearing trio (status badge, gauge/meter, chart/sparkline), and
+the conventional catalog (modal, tabs, tooltip, toast, menu, breadcrumb, pagination)
+are now specified.
 
-The data-bearing trio (status badge, gauge/meter, chart/sparkline) is now specified;
-the remaining catalog is conventional control/container work, detailed as needed.
+**Progress bar** is the one remaining: a *determinate* progress bar is the
+[sequential meter](#gauge--meter) (magnitude 0→100%); an *indeterminate* one is the
+[loading](#1--the-state-matrix) state. It needs no separate spec — compose those.
 
 ## 5 · Usage rules
 

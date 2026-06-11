@@ -51,4 +51,20 @@
                :overlay  "≤2-3 series: mono-ramp (accent solid, muted dashed) + direct end-labels"
                :never    "categorical color palette — spectrum is diverging, not categorical"}
   :no-data    {:color :muted :glyph "m-unknown" :word "UNK"}
-  :terminal   "block/braille sparkline + value + status word"}}
+  :terminal   "block/braille sparkline + value + status word"}
+
+ ;; Overlay behavior shared by modal / toast / tooltip / menu.
+ :overlay
+ {:modal   {:focus-trap true :return-focus true :dismiss [:esc :scrim]
+            :aria "aria-modal, labelled by title" :motion [:deliberate :enter :exit]}
+  :toast   {:auto-dismiss "timer by severity; critical persists"
+            :aria-live "polite; assertive for critical" :affordance "m-bell"}
+  :tooltip {:trigger [:hover :focus] :dismiss [:blur :esc]
+            :rule "never the sole carrier of essential info"}
+  :menu    {:keyboard true :selected "accent tint + rule" :dismiss [:select :blur :esc]}}
+
+ ;; Destructive primary actions break the accent norm — the only place they do.
+ :destructive {:color :status/critical
+               :label "verb naming the act (e.g. DELETE)"
+               :copy "name the target; state irreversibility (Voice §3)"
+               :cancel :ghost}}
