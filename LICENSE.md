@@ -13,7 +13,6 @@ Full texts are vendored under [`LICENSES/`](LICENSES/) (SPDX-named):
 
 - **AGPL-3.0-or-later** — [`LICENSES/AGPL-3.0-or-later.txt`](LICENSES/AGPL-3.0-or-later.txt)
 - **CC-BY-NC-SA-4.0** — [`LICENSES/CC-BY-NC-SA-4.0.txt`](LICENSES/CC-BY-NC-SA-4.0.txt)
-- **MIT** (Feather mark geometry) — [`LICENSES/MIT.txt`](LICENSES/MIT.txt)
 
 ## Third-party
 
