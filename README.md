@@ -34,14 +34,29 @@ of decisions those things are obligated to honor.
 | 08 · Motion | **Drafted** |
 | 09 · Voice & Content | **Drafted** |
 | 10 · Accessibility | **Drafted** |
-| 11 · Usage & Governance | Stub |
+| 11 · Usage & Governance | **Drafted** |
 
 ## Backbone
 
-Color decisions are authored as `edn` under `tokens/color/`:
+The canonical decisions are authored as `edn` under `tokens/`:
 
-- `spectrum.edn` — the diverging temperature spectrum (the data color scale).
-- `status.edn` — the vivid alert ramp and its OASIS CAP mappings.
-- `opinion.edn` — the STIX `opinion` diverging mapping.
-- `markings.edn` — the STIX TLP fixed marking palette.
-- `themes.edn` — the three anchor themes (chrome roles, light and dark).
+- `color/spectrum.edn` — the diverging temperature spectrum (the data color scale).
+- `color/status.edn` — the vivid alert ramp and its OASIS CAP mappings.
+- `color/opinion.edn` — the STIX `opinion` diverging mapping.
+- `color/markings.edn` — the STIX TLP fixed marking palette.
+- `color/themes.edn` — the three anchor themes (chrome roles, light and dark; APCA-verified).
+- `typography.edn` — the duo, scale, weights, terminal degradation.
+- `space.edn` — base unit, scale, density modes, grid, terminal cells.
+- `marks.edn` — the mark registry (SVG ids, Nerd Font / Unicode / ASCII fallbacks).
+- `material.edn` — glow levels.
+- `components.edn` — the state matrix.
+- `motion.edn` — durations, easing, the critical pulse.
+- `voice.edn` — register and the status lexicon.
+
+Geometry for marks lives in `assets/marks/sprite.svg`.
+
+## License
+
+Multi-licensed by content type — see [`LICENSE.md`](LICENSE.md). Code/tooling is
+`AGPL-3.0-or-later`; the manual, tokens, and assets are `CC-BY-NC-SA-4.0`; fonts are
+third-party (`OFL-1.1`).
