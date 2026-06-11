@@ -1,0 +1,59 @@
+;; marks.edn — the mark / icon registry
+;;
+;; Canonical list of every mark in assets/marks/sprite.svg: its id, category,
+;; meaning, and the terminal fallbacks (Unicode primary, ASCII last-resort) that
+;; let it survive where SVG cannot render. Status and diverging marks MUST carry
+;; both fallbacks (accessibility-critical, per manual/10-accessibility.md). UI
+;; marks fall back to a Unicode glyph where a clean one exists, else to a text
+;; label in terminal contexts.
+;;
+;; Style is fixed for all marks: 24x24 grid, 2px stroke, round caps/joins,
+;; monoline outline, color via currentColor. See manual/04-marks-iconography.md.
+;;
+;; Authoritative for the REGISTRY. Geometry lives in assets/marks/sprite.svg;
+;; meaning lives in the chapter. The three must agree.
+
+{:meta {:name   "marks"
+        :sprite "assets/marks/sprite.svg"
+        :grid   24
+        :stroke 2
+        :style  :monoline-outline
+        :color  "currentColor"
+        :reserved "the 5 status shapes are reserved; UI marks must not reuse them"}
+
+ ;; Sign-shape semantics. step = the alert-ramp step (see status.edn).
+ :status
+ [{:id "m-critical" :step :critical :shape :octagon  :symbol :x     :unicode "✖" :ascii "[X]"}
+  {:id "m-high"     :step :high     :shape :triangle :symbol :bang  :unicode "▲" :ascii "[!]"}
+  {:id "m-medium"   :step :medium   :shape :diamond  :symbol :bang  :unicode "◆" :ascii "[*]"}
+  {:id "m-low"      :step :low      :shape :circle   :symbol :check :unicode "●" :ascii "[+]"}
+  {:id "m-unknown"  :step :unknown  :shape :square   :symbol :query :unicode "□" :ascii "[?]"}]
+
+ ;; Temperature direction for the diverging spectrum (see spectrum.edn).
+ ;; The mark carries the SIGN; magnitude stays in the value/position.
+ :diverging
+ [{:id "m-warm"    :sign :positive :pole :warm   :unicode "⌃" :ascii "^"}
+  {:id "m-neutral" :sign :zero     :pole :center :unicode "–" :ascii "-"}
+  {:id "m-cool"    :sign :negative :pole :cool   :unicode "⌄" :ascii "v"}]
+
+ ;; Functional starter set. chevron rotates for the four directions.
+ :ui
+ [{:id "m-close"    :group :nav     :unicode "✕" :ascii "x"}
+  {:id "m-menu"     :group :nav     :unicode "≡" :ascii "="}
+  {:id "m-chevron"  :group :nav     :unicode "›" :ascii ">" :note "rotate 90/180/270 for up/left/down"}
+  {:id "m-more"     :group :nav     :unicode "⋯" :ascii "..."}
+  {:id "m-search"   :group :action  :unicode "⌕" :ascii nil}
+  {:id "m-add"      :group :action  :unicode "+"      :ascii "+"}
+  {:id "m-remove"   :group :action  :unicode "−" :ascii "-"}
+  {:id "m-edit"     :group :action  :unicode "✎" :ascii nil}
+  {:id "m-delete"   :group :action  :unicode nil       :ascii "del"}
+  {:id "m-refresh"  :group :action  :unicode "↻" :ascii nil}
+  {:id "m-filter"   :group :action  :unicode "▽" :ascii nil}
+  {:id "m-download" :group :action  :unicode "↓" :ascii "v"}
+  {:id "m-upload"   :group :action  :unicode "↑" :ascii "^"}
+  {:id "m-settings" :group :object  :unicode "⚙" :ascii nil}
+  {:id "m-info"     :group :object  :unicode "ⓘ" :ascii "i"}
+  {:id "m-help"     :group :object  :unicode "?"      :ascii "?"}
+  {:id "m-user"     :group :object  :unicode nil       :ascii nil}
+  {:id "m-lock"     :group :object  :unicode nil       :ascii nil}
+  {:id "m-bell"     :group :object  :unicode nil       :ascii nil}]}

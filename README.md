@@ -14,6 +14,8 @@ of decisions those things are obligated to honor.
 - `tokens/` — the machine-readable backbone: the canonical decisions as `edn`
   data. A human reads it; later, if a consumer needs CSS, ANSI, or SVG, something
   can serialize it. That bridge is crossed when reached, not before.
+- `assets/` — canonical visual assets. Currently `assets/marks/sprite.svg`, the
+  mark/icon library as an SVG symbol sheet (`currentColor`).
 - `tools/` — verification only, run inside a distrobox (never the host). Currently
   `tools/contrast/`, the APCA verifier for the theme tokens. Not a generator.
 
@@ -25,7 +27,7 @@ of decisions those things are obligated to honor.
 | 01 · Color | **Drafted (complete)** |
 | 02 · Typography | Stub |
 | 03 · Space & Grid | Stub |
-| 04 · Marks & Iconography | Stub |
+| 04 · Marks & Iconography | **Drafted** |
 | 05 · Material & Texture | Stub |
 | 06 · Components & States | Stub |
 | 07 · Patterns | Stub |
