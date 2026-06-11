@@ -176,7 +176,13 @@ identities, each with a **light** and a **dark** variant.
 | `muted` | secondary text; also the `unknown` grey |
 | `border` | dividers, outlines |
 | `accent` | the single anchor color — the one branded hue |
+| `on-accent` | the black/white foreground placed atop the accent fill |
 | `glow` | accent glow for CRT material (see chapter 05) |
+
+All chrome values are **APCA-verified** against the thresholds adopted in
+[10 · Accessibility](10-accessibility.md): body text Lc 75, muted Lc 60, border
+Lc 30, on-accent Lc 45 (large/heavy only). Anchors and body text are unchanged
+from their authored values; `muted` and `border` were raised to clear threshold.
 
 ### Tron — accent `#00E5FF`
 
@@ -185,9 +191,10 @@ identities, each with a **light** and a **dark** variant.
 | bg | `#05080a` | `#eef7f9` |
 | surface | `#0a141a` | `#ffffff` |
 | text | `#cfeff5` | `#07232a` |
-| muted | `#5a8a93` | `#4a7b85` |
-| border | `#123b45` | `#b7d9e0` |
+| muted | `#a2bdc3` | `#6d7d81` |
+| border | `#6d8288` | `#adb6b9` |
 | accent | `#00E5FF` | `#008c9e` |
+| on-accent | `#000000` | `#ffffff` |
 | glow | `#00E5FF` | `#00E5FF` |
 
 ### Matrix — accent `#03A062`
@@ -197,9 +204,10 @@ identities, each with a **light** and a **dark** variant.
 | bg | `#020a02` | `#f0f7f1` |
 | surface | `#061206` | `#ffffff` |
 | text | `#7dffae` | `#06250f` |
-| muted | `#3a7a52` | `#2f6e45` |
-| border | `#0d3a18` | `#b9dcc4` |
+| muted | `#63cb89` | `#6c7e71` |
+| border | `#438b5c` | `#afb9b2` |
 | accent | `#03A062` | `#027a4a` |
+| on-accent | `#ffffff` | `#ffffff` |
 | glow | `#03A062` | `#03A062` |
 
 ### Compaq — accent `#FF8A00`
@@ -209,14 +217,22 @@ identities, each with a **light** and a **dark** variant.
 | bg | `#160f04` | `#fbf4ea` |
 | surface | `#20160a` | `#ffffff` |
 | text | `#ffd9a0` | `#2a1a06` |
-| muted | `#9a6a28` | `#8a5a16` |
-| border | `#4a2f08` | `#e6cfa8` |
+| muted | `#d5b484` | `#837a6f` |
+| border | `#947b58` | `#bbb6af` |
 | accent | `#FF8A00` | `#c96a00` |
+| on-accent | `#000000` | `#ffffff` |
 | glow | `#FF8A00` | `#FF8A00` |
 
 The light-mode `accent` is darkened from the raw anchor where the raw value would
 fail contrast on a light surface; the `glow` keeps the raw anchor because glow
 sits on dark material regardless. Canonical values: `tokens/color/themes.edn`.
+
+**Accent-fill label rule.** `on-accent` is rated for **large or heavy text only**
+(APCA Lc 45 tier). Body-size text on an accent fill fails the Lc 75 bar on the
+mid-tone accents (Matrix dark, Compaq dark, Tron light). For body-size buttons or
+labels, use a **ghost/outline** treatment — text in the `text` role, `accent` as
+the border — rather than a solid accent fill. See
+[10 · Accessibility](10-accessibility.md).
 
 ## 7 · Usage rules
 

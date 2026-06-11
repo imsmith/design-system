@@ -1,0 +1,13 @@
+{
+  "name": "design-system-contrast",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "APCA contrast verifier for the design system theme tokens.",
+  "scripts": {
+    "verify": "node verify.mjs"
+  },
+  "dependencies": {
+    "apca-w3": "^0.1.9"
+  }
+}

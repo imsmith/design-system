@@ -14,6 +14,8 @@ of decisions those things are obligated to honor.
 - `tokens/` — the machine-readable backbone: the canonical decisions as `edn`
   data. A human reads it; later, if a consumer needs CSS, ANSI, or SVG, something
   can serialize it. That bridge is crossed when reached, not before.
+- `tools/` — verification only, run inside a distrobox (never the host). Currently
+  `tools/contrast/`, the APCA verifier for the theme tokens. Not a generator.
 
 ## Status
 
@@ -29,7 +31,7 @@ of decisions those things are obligated to honor.
 | 07 · Patterns | Stub |
 | 08 · Motion | Stub |
 | 09 · Voice & Content | Stub |
-| 10 · Accessibility | Stub |
+| 10 · Accessibility | **Drafted** |
 | 11 · Usage & Governance | Stub |
 
 ## Backbone
