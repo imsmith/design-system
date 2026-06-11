@@ -1,5 +1,7 @@
 # 00 · Principles
 
+> **Status:** Drafted.
+
 The thesis the rest of the manual serves. Three commitments, in priority order.
 
 ## 1 · Data-legible first

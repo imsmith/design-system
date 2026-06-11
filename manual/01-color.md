@@ -1,5 +1,7 @@
 # 01 · Color
 
+> **Status:** Drafted (complete).
+
 The fully-drafted chapter. Color is the first canon because every other layer
 references it.
 
