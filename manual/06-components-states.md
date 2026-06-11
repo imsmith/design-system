@@ -111,15 +111,55 @@ Every component spec follows the same shape:
   color, title, body, optional action, dismiss (`m-close`).
 - **Terminal:** a bordered block, severity mark in the leading cell.
 
+### Gauge / meter
+
+The data-bearing component, and the most system-specific. **Two semantic types
+that are never interchanged:**
+
+**Diverging meter** — signed deviation from a nominal center.
+
+- **Anatomy:** track, green center marker (0), fill growing from center toward the
+  value, signed value label, diverging mark (`m-warm`/`m-neutral`/`m-cool`).
+- **Color:** the **diverging spectrum** stop at the value's signed magnitude
+  ([01 · Color](01-color.md) §2); green at 0. Never the alert ramp.
+- **Non-color:** the sign mark and signed number are always shown; fill direction
+  and position carry the value without color.
+- **Use:** temperature, error-vs-baseline, the STIX `opinion` scale.
+
+**Sequential meter** — magnitude 0→max with optional threshold zones.
+
+- **Anatomy:** track (0→max), fill from 0, warn/crit threshold ticks, value label,
+  optional faint zone tints.
+- **Color:** `accent` fill; on crossing a threshold the fill and value adopt the
+  **alert-ramp** color (warn→`medium`, crit→`critical`, [01 · Color](01-color.md)
+  §3). **Not** the spectrum — green-at-zero is meaningless for "0% CPU".
+- **Thresholds** are per-instance configuration (e.g. warn 70%, crit 90%), a domain
+  choice, not a system token.
+- **Use:** CPU, disk, memory, throughput, quota.
+
+**Both types:**
+
+- **Forms:** *linear* (the many-at-once workhorse, aligns to table rows) and
+  *radial/arc* (one prominent metric — diverging arc puts green at top/0, warm
+  clockwise, cool counter-clockwise).
+- **States:** default; **no-data** (`muted`, `m-unknown`, `UNK`); loading
+  (skeleton); error. Hover/focus reveals the exact value.
+- **Accessibility:** the value is always labeled; the threshold/severity state is
+  echoed in words ([09 · Voice](09-voice-content.md) display synonym); never color
+  alone. Fills and labels meet the [10 · Accessibility](10-accessibility.md) floors.
+- **Terminal:** diverging → a center-anchored block bar with sign + value
+  (`node-13 [··│███▸ ] ⌃+2`); sequential → a left-fill bar with a threshold marker
+  (`cpu [████████░░] 82% WARN`).
+
 ## 4 · Catalog (specs to follow)
 
 Named now so the set is bounded, detailed in later cycles — each will follow §2 and
-the matrix: **tabs**, **modal/dialog**, **tooltip**, **gauge/meter** (the diverging
-spectrum, data-bearing), **toast/notification** (`m-bell`), **menu/nav**,
-**breadcrumb**, **progress bar**, **pagination**, **chart/sparkline**.
+the matrix: **tabs**, **modal/dialog**, **tooltip**, **toast/notification**
+(`m-bell`), **menu/nav**, **breadcrumb**, **progress bar**, **pagination**,
+**chart/sparkline**.
 
-`gauge/meter` is the most system-specific of these — it's where the diverging
-temperature spectrum becomes an interactive control — and is the first to spec next.
+`chart/sparkline` is the natural next spec — it extends the gauge's data-bearing
+role to series data.
 
 ## 5 · Usage rules
 

@@ -24,4 +24,19 @@
   :error     {:border :status/critical :text :status/critical
               :message true :glyph "m-critical" :note "color + glyph + text, never color alone"}
   :selected  {:tint "accent @ low alpha" :rule "accent left/underline" :glow nil}
-  :read-only {:border :none :bg :surface :editable false :selectable true}}}
+  :read-only {:border :none :bg :surface :editable false :selectable true}}
+
+ ;; Gauge / meter — two semantic types that are never interchanged.
+ :gauge
+ {:diverging  {:color    :color/spectrum        ; spectrum stop at signed magnitude
+               :center   :green
+               :mark     [:m-warm :m-neutral :m-cool]
+               :label    "signed value, always shown"
+               :use      "temperature, error-vs-baseline, STIX opinion"}
+  :sequential {:fill      :accent
+               :threshold "alert ramp: warn→medium, crit→critical"
+               :thresholds "per-instance config (e.g. warn 70%, crit 90%), not a token"
+               :label     "value + threshold word (Voice display synonym)"
+               :use       "CPU, disk, memory, throughput, quota"}
+  :forms      [:linear :radial]
+  :no-data    {:color :muted :glyph "m-unknown" :word "UNK"}}}
