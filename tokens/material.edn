@@ -1,0 +1,26 @@
+;; material.edn — CRT material tokens
+;;
+;; The system's only adopted material effect is GLOW, at two levels: :ambient
+;; (resting) and :active (state). Color comes from the theme :glow role (the raw
+;; anchor); these tokens define the shape (blur/alpha layers) only.
+;;
+;; Shadow layers are {:x :y :blur :alpha}; alpha applies to the glow-role color.
+;; :text -> text-shadow (headings, accent text); :box -> box-shadow (fills,
+;; controls). Scanlines, per-theme flavor, and plasma bloom were considered and
+;; deliberately NOT adopted (see manual/05-material-texture.md).
+;;
+;; Authoritative for VALUES. See manual/05-material-texture.md for MEANING/RULES.
+
+{:meta {:name     "material-glow"
+        :adopted  [:glow-ambient :glow-active]
+        :rejected [:scanlines :per-theme-flavor :plasma-bloom]
+        :color    "theme :glow role"
+        :surfaces "dark only; suppressed on light surfaces"
+        :never    ["body text" "data color (spectrum/status fills)" "muted" "borders"]}
+
+ :glow
+ {:ambient {:text [{:x 0 :y 0 :blur 6 :alpha 0.40}]
+            :box  [{:x 0 :y 0 :blur 8 :alpha 0.33}]}
+  :active  {:text [{:x 0 :y 0 :blur 10 :alpha 0.80}]
+            :box  [{:x 0 :y 0 :blur 16 :alpha 0.67}
+                   {:x 0 :y 0 :blur 4  :alpha 1.00}]}}}
