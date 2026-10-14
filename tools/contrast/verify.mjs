@@ -39,6 +39,8 @@ blocks.forEach((body, i) => {
 const pairs = [
   ['text', 'bg', 'body text/bg', 75],
   ['text', 'surface', 'body text/surface', 75],
+  ['text', 'surface-raised', 'body text/surface-raised', 75],
+  ['muted', 'surface-raised', 'muted/surface-raised', 60],
   ['muted', 'bg', 'muted/bg', 60],
   ['muted', 'surface', 'muted/surface', 60],
   ['border', 'surface', 'border/surface', 30],

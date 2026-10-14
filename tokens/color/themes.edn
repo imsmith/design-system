@@ -15,7 +15,9 @@
 ;; Authoritative for VALUES. See manual/01-color.md section 6 for MEANING.
 
 {:meta {:name  "anchor-themes"
-        :roles [:bg :surface :text :muted :border :accent :on-accent :glow]
+        :roles [:bg :surface :surface-raised :text :muted :border :accent :on-accent :glow :accent-tint]
+        :derived {:surface-raised "one step up from surface, for nested panels"
+                  :accent-tint    "alpha applied to :accent for selected/active tints"}
         :rule  "chrome only; data color is invariant"
         :contrast {:model "APCA (apca-w3 reference)"
                    :thresholds {:text 75 :muted 60 :border 30 :on-accent 45}}}
@@ -24,29 +26,35 @@
  {:tron
   {:lineage "Tron — cyan vector grid"
    :anchor  "#00E5FF"
-   :dark  {:bg "#05080a" :surface "#0a141a" :text "#cfeff5"
+   :dark  {:bg "#05080a" :surface "#0a141a" :surface-raised "#0e1c24" :text "#cfeff5"
            :muted "#a2bdc3" :border "#6d8288" :accent "#00E5FF"
-           :on-accent "#000000" :glow "#00E5FF"}
-   :light {:bg "#eef7f9" :surface "#ffffff" :text "#07232a"
+           :on-accent "#000000" :glow "#00E5FF"
+           :accent-tint 0.12}
+   :light {:bg "#eef7f9" :surface "#ffffff" :surface-raised "#f4fafb" :text "#07232a"
            :muted "#6d7d81" :border "#adb6b9" :accent "#008c9e"
-           :on-accent "#ffffff" :glow "#00E5FF"}}
+           :on-accent "#ffffff" :glow "#00E5FF"
+           :accent-tint 0.10}}
 
   :matrix
   {:lineage "The Matrix — phosphor green"
    :anchor  "#03A062"
-   :dark  {:bg "#020a02" :surface "#061206" :text "#7dffae"
+   :dark  {:bg "#020a02" :surface "#061206" :surface-raised "#0a1c0a" :text "#7dffae"
            :muted "#63cb89" :border "#438b5c" :accent "#03A062"
-           :on-accent "#ffffff" :glow "#03A062"}
-   :light {:bg "#f0f7f1" :surface "#ffffff" :text "#06250f"
+           :on-accent "#ffffff" :glow "#03A062"
+           :accent-tint 0.14}
+   :light {:bg "#f0f7f1" :surface "#ffffff" :surface-raised "#f4faf5" :text "#06250f"
            :muted "#6c7e71" :border "#afb9b2" :accent "#027a4a"
-           :on-accent "#ffffff" :glow "#03A062"}}
+           :on-accent "#ffffff" :glow "#03A062"
+           :accent-tint 0.10}}
 
   :compaq
   {:lineage "Compaq Portable III — amber gas-plasma"
    :anchor  "#FF8A00"
-   :dark  {:bg "#160f04" :surface "#20160a" :text "#ffd9a0"
+   :dark  {:bg "#160f04" :surface "#20160a" :surface-raised "#2a1e0d" :text "#ffd9a0"
            :muted "#d5b484" :border "#947b58" :accent "#FF8A00"
-           :on-accent "#000000" :glow "#FF8A00"}
-   :light {:bg "#fbf4ea" :surface "#ffffff" :text "#2a1a06"
+           :on-accent "#000000" :glow "#FF8A00"
+           :accent-tint 0.13}
+   :light {:bg "#fbf4ea" :surface "#ffffff" :surface-raised "#faf5ec" :text "#2a1a06"
            :muted "#837a6f" :border "#bbb6af" :accent "#c96a00"
-           :on-accent "#ffffff" :glow "#FF8A00"}}}}
+           :on-accent "#ffffff" :glow "#FF8A00"
+           :accent-tint 0.10}}}}

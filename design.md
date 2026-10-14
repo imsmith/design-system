@@ -9,11 +9,10 @@ value. Do not invent values that the system already names.
 ## Authority chain
 
 1. **`manual/*.md`** is the authority for MEANING and rules.
-2. **`tokens/**/*.edn`** is the authority for VALUES. A human reads it; a
-   serializer may later emit CSS/ANSI/SVG. The only generator so far is
-   `tools/specimen.tcl`, which renders `specimen.html`; its CSS custom
-   properties block is the reference serialization. For anything else you
-   read the `edn` directly.
+2. **`tokens/**/*.edn`** is the authority for VALUES. `tools/css.tcl` serializes
+   them to `tokens/*.css` (custom properties); `styles.css` is the one file a
+   web consumer links. The CSS is generated — never edit it, edit the `edn` and
+   run `make css`. For anything not yet serialized, read the `edn` directly.
 3. **Your code is a downstream serialization.** It is obligated to honor 1 and 2.
    If your output and the manual disagree, the manual wins and your output is the
    bug.
@@ -39,7 +38,7 @@ source file in a comment.
 - **Data color is theme-invariant.** The spectrum, the status ramp, and the TLP
   markings mean the same thing in every theme and mode. Green means nominal in
   every skin. A theme may touch *chrome only*: `:bg :surface :text :muted :border
-  :accent :on-accent :glow`. Nothing else.
+  :surface-raised :accent :on-accent :glow :accent-tint`. Nothing else.
 - **Never color alone.** Status is *always also* encoded by shape, label, or
   position — because some readers can't distinguish hues and some media can't
   render them. Color + glyph + text. See `manual/10-accessibility.md`.
@@ -59,19 +58,22 @@ source file in a comment.
 ### Chrome — per theme (`tokens/color/themes.edn`)
 
 Three anchors, each with `:dark` and `:light`. Pick one theme; do not mix. APCA
-thresholds: text 75, muted 60, border 30, on-accent 45 (`on-accent` is rated for
-large/heavy text only).
+thresholds: text 75 (on `surface` and `surface-raised` too), muted 60, border 30,
+on-accent 45 (`on-accent` is rated for large/heavy text only). `accent-tint` is
+not a color: it is the alpha applied to `accent` for selected/active tints.
 
 | Role | Tron dark | Matrix dark | Compaq dark |
 | --- | --- | --- | --- |
 | `bg` | `#05080a` | `#020a02` | `#160f04` |
 | `surface` | `#0a141a` | `#061206` | `#20160a` |
+| `surface-raised` | `#0e1c24` | `#0a1c0a` | `#2a1e0d` |
 | `text` | `#cfeff5` | `#7dffae` | `#ffd9a0` |
 | `muted` | `#a2bdc3` | `#63cb89` | `#d5b484` |
 | `border` | `#6d8288` | `#438b5c` | `#947b58` |
 | `accent` | `#00E5FF` | `#03A062` | `#FF8A00` |
 | `on-accent` | `#000000` | `#ffffff` | `#000000` |
 | `glow` | `#00E5FF` | `#03A062` | `#FF8A00` |
+| `accent-tint` (alpha on accent) | 0.12 | 0.14 | 0.13 |
 
 Light variants live in the `edn` — read them there; `accent` is darkened for
 contrast on light, `glow` keeps the raw anchor. Do not interpolate or guess.
@@ -102,7 +104,8 @@ is its proportional sibling Martian Grotesk, for long-form running text ONLY.
 Scale (base 16px = 1rem, ratio 1.25): `display 40` · `h1 32` · `h2 24` · `h3 20`
 · `lead 18` · `body 16` · `small 14` · `caption 12` · `micro 11`. Weights 400 /
 500 / 700. Line height: tight 1.15 (headings), snug 1.4 (mono/data), normal 1.6
-(prose). Measure: prose 60–75ch, data unwrapped.
+(prose). Tracking: `label 0.08em` (UPPERCASE labels/headings), `tight -0.01em`
+(display). Measure: prose 60–75ch, data unwrapped.
 
 In the terminal the scale collapses to one cell; hierarchy comes from UPPERCASE,
 weight, reverse video, letter-spacing, rule lines, and Nerd Font icon glyphs.
@@ -114,6 +117,9 @@ weight, reverse video, letter-spacing, rule lines, and Nerd Font icon glyphs.
 section gaps `space-3`. Density (row/control padding): comfortable 16, compact 8,
 dense 4. Web grid: 12 columns, 24px gutter/margin, breakpoints sm 640 / md 768 /
 lg 1024 / xl 1280 / 2xl 1536. Prose measure ~72ch.
+
+Edges: border width 1px; radius `none 0` · `sm 2` · `md 4` (default control) ·
+`lg 6` (cards/panels). Nothing rounder.
 
 Terminal layouts **do not use the px scale** — spacing is integer mono cells (1
 col ≈ 1ch, vertical rhythm in rows). Reference 80 cols, wide 120.

@@ -174,16 +174,19 @@ identities, each with a **light** and a **dark** variant.
 | --- | --- |
 | `bg` | page background |
 | `surface` | panels, cards, raised areas |
+| `surface-raised` | one step up from `surface`: nested panels, popovers |
 | `text` | primary foreground |
 | `muted` | secondary text; also the `unknown` grey |
 | `border` | dividers, outlines |
 | `accent` | the single anchor color — the one branded hue |
 | `on-accent` | the black/white foreground placed atop the accent fill |
 | `glow` | accent glow for CRT material (see chapter 05) |
+| `accent-tint` | not a color — the alpha applied to `accent` for selected/active tints |
 
 All chrome values are **APCA-verified** against the thresholds adopted in
-[10 · Accessibility](10-accessibility.md): body text Lc 75, muted Lc 60, border
-Lc 30, on-accent Lc 45 (large/heavy only). Anchors and body text are unchanged
+[10 · Accessibility](10-accessibility.md): body text Lc 75 (on `bg`, `surface`,
+and `surface-raised`), muted Lc 60, border Lc 30, on-accent Lc 45 (large/heavy
+only). Anchors and body text are unchanged
 from their authored values; `muted` and `border` were raised to clear threshold.
 
 ### Tron — accent `#00E5FF`
@@ -192,12 +195,14 @@ from their authored values; `muted` and `border` were raised to clear threshold.
 | --- | --- | --- |
 | bg | `#05080a` | `#eef7f9` |
 | surface | `#0a141a` | `#ffffff` |
+| surface-raised | `#0e1c24` | `#f4fafb` |
 | text | `#cfeff5` | `#07232a` |
 | muted | `#a2bdc3` | `#6d7d81` |
 | border | `#6d8288` | `#adb6b9` |
 | accent | `#00E5FF` | `#008c9e` |
 | on-accent | `#000000` | `#ffffff` |
 | glow | `#00E5FF` | `#00E5FF` |
+| accent-tint | 0.12 | 0.10 |
 
 ### Matrix — accent `#03A062`
 
@@ -205,12 +210,14 @@ from their authored values; `muted` and `border` were raised to clear threshold.
 | --- | --- | --- |
 | bg | `#020a02` | `#f0f7f1` |
 | surface | `#061206` | `#ffffff` |
+| surface-raised | `#0a1c0a` | `#f4faf5` |
 | text | `#7dffae` | `#06250f` |
 | muted | `#63cb89` | `#6c7e71` |
 | border | `#438b5c` | `#afb9b2` |
 | accent | `#03A062` | `#027a4a` |
 | on-accent | `#ffffff` | `#ffffff` |
 | glow | `#03A062` | `#03A062` |
+| accent-tint | 0.14 | 0.10 |
 
 ### Compaq — accent `#FF8A00`
 
@@ -218,12 +225,14 @@ from their authored values; `muted` and `border` were raised to clear threshold.
 | --- | --- | --- |
 | bg | `#160f04` | `#fbf4ea` |
 | surface | `#20160a` | `#ffffff` |
+| surface-raised | `#2a1e0d` | `#faf5ec` |
 | text | `#ffd9a0` | `#2a1a06` |
 | muted | `#d5b484` | `#837a6f` |
 | border | `#947b58` | `#bbb6af` |
 | accent | `#FF8A00` | `#c96a00` |
 | on-accent | `#000000` | `#ffffff` |
 | glow | `#FF8A00` | `#FF8A00` |
+| accent-tint | 0.13 | 0.10 |
 
 The light-mode `accent` is darkened from the raw anchor where the raw value would
 fail contrast on a light surface; the `glow` keeps the raw anchor because glow

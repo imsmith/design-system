@@ -19,7 +19,7 @@
           :license  "SIL OFL 1.1"
           :source   "github.com/ryanoasis/nerd-fonts (patched Evil Martians Martian Mono)"
           :web-fallback "Martian Mono (plain, Google Fonts) when the Nerd Font is not self-hosted"
-          :stack    ["MartianMono Nerd Font" "Martian Mono" "ui-monospace" "monospace"]}
+          :stack    ["MartianMono Nerd Font" "Martian Mono" "ui-monospace" "SF Mono" "Menlo" "Consolas" "monospace"]}
   :prose {:role    "long-form running text ONLY"
           :primary "Martian Grotesk"
           :license "SIL OFL 1.1"
@@ -43,6 +43,11 @@
  :line-height {:tight 1.15   ; headings
                :snug  1.4    ; mono UI / data
                :normal 1.6}  ; prose
+
+ ;; Tracking. UPPERCASE labels are a core hierarchy channel (terminal and web);
+ ;; they need air. Tight tracking is for display sizes only.
+ :tracking {:label "0.08em"    ; uppercase labels, headings, nav
+            :tight "-0.01em"}  ; display / h1
 
  :measure {:prose "60-75ch" :data "unwrapped"}
 

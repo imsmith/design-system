@@ -76,7 +76,22 @@ This is the spatial half of the terminal story whose typographic half is in
 [02 · Typography](02-typography.md) §5: there, hierarchy from case/weight/rules;
 here, layout from the cell grid.
 
-## 6 · Usage rules
+## 6 · Edges — border & radius
+
+Tron-vector lineage: crisp. Borders are `1px`. Rounding is a four-step scale so
+that "slightly rounded" means one thing everywhere; nothing is rounder than
+`radius-lg`.
+
+| Token | px | Use |
+| --- | --- | --- |
+| `radius-none` | 0 | tables, rules, terminal-like surfaces |
+| `radius-sm` | 2 | badges, tags, inputs |
+| `radius-md` | 4 | default control radius — buttons, selects |
+| `radius-lg` | 6 | cards, panels, overlays |
+
+Canonical values: `tokens/space.edn` (`:border`, `:radius`).
+
+## 7 · Usage rules
 
 ### Do
 

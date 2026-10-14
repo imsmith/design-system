@@ -55,12 +55,21 @@ Modular scale, base 16px = 1rem, headings on a ~1.25 (major third) ratio.
 `micro` and `caption` exist for the data-dense displays this system targets; use
 them for tables and telemetry, not body copy.
 
-## 3 · Weights
+## 3 · Weights & tracking
 
 Three only: **Regular 400** (body, data), **Medium 500** (labels, emphasis),
 **Bold 700** (headings). Martian Mono offers more, but a constrained set keeps
 hierarchy legible and the terminal mapping honest (a terminal has roughly
 regular / bold / dim to work with).
+
+**Tracking.** Two values, in `tokens/typography.edn`:
+
+| Token | Value | Use |
+| --- | --- | --- |
+| `label` | `0.08em` | UPPERCASE labels, headings, nav — the uppercase hierarchy channel needs air |
+| `tight` | `-0.01em` | display and h1 sizes only |
+
+Body and data text are never tracked.
 
 ## 4 · Measure & leading
 

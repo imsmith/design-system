@@ -39,6 +39,15 @@
    {:name :xl  :min 1280}
    {:name :2xl :min 1536}]}
 
+ ;; Edges. Tron-vector lineage: crisp, minimal rounding. Radius is a scale so
+ ;; that "slightly rounded" means one thing everywhere.
+ :border {:width "1px"}
+ :radius
+ [{:token :radius-none :px 0 :role "tables, rules, terminal-like surfaces"}
+  {:token :radius-sm   :px 2 :role "badges, tags, inputs"}
+  {:token :radius-md   :px 4 :role "default control radius (buttons, selects)"}
+  {:token :radius-lg   :px 6 :role "cards, panels, overlays"}]
+
  ;; Content measure (ties to typography :measure).
  :measure {:prose "72ch" :range "60-75ch" :unit "ch"}
 

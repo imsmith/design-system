@@ -212,11 +212,13 @@ density+radius), Brand (glow, motion, voice, marks).
 ## Verify
 
 ```bash
-make check      # edn parse + hex drift + links (host), APCA + markdownlint (distrobox)
-make specimen   # regenerate specimen.html from tokens/**/*.edn
+make css        # regenerate tokens/{colors,typography,spacing,effects}.css from the edn
+make specimen   # regenerate specimen.html
+make check      # edn parse + hex drift + links + css freshness (host), APCA + markdownlint (distrobox)
 ```
 
+`tokens/**/*.edn` is the authority. The four token CSS files are **generated**
+by `tools/css.tcl`; `check` fails if they are stale, so edit the `edn`, run
+`make css`, commit both. `fonts.css` and `base.css` are hand-authored.
 `check` exits non-zero on any failure. Host side needs only `tclsh`; the Node
 steps run inside the `design-system` distrobox (see the Makefile header).
-`specimen.html` is rendered from the `edn` by `tools/specimen.tcl` and is the
-reference serialization of the token backbone.
