@@ -8,13 +8,18 @@ import { Mark } from "../core/Mark.jsx";
  * what happened · why · what to do.
  */
 
+/* The glyph sits on a FILL chip (step background, on-status glyph) so the
+ * status color is never a bare foreground — the ramp fails as a foreground on
+ * light surfaces (manual/01 §3 treatment rule). The left rule is a non-text
+ * reinforcement and may stay in the raw step color.
+ */
 const STEP = {
-  critical: { color: "var(--status-critical)", glyph: "m-critical" },
-  high:     { color: "var(--status-high)",     glyph: "m-high" },
-  medium:   { color: "var(--status-medium)",   glyph: "m-medium" },
-  low:      { color: "var(--status-low)",       glyph: "m-low" },
-  unknown:  { color: "var(--status-unknown)",   glyph: "m-unknown" },
-  info:     { color: "var(--accent)",           glyph: "m-info" },
+  critical: { color: "var(--status-critical)", on: "var(--on-status-critical)", glyph: "m-critical" },
+  high:     { color: "var(--status-high)",     on: "var(--on-status-high)",     glyph: "m-high" },
+  medium:   { color: "var(--status-medium)",   on: "var(--on-status-medium)",   glyph: "m-medium" },
+  low:      { color: "var(--status-low)",      on: "var(--on-status-low)",      glyph: "m-low" },
+  unknown:  { color: "var(--status-unknown)",  on: "var(--on-status-unknown)",  glyph: "m-unknown" },
+  info:     { color: "var(--accent)",          on: "var(--on-accent)",          glyph: "m-info" },
 };
 
 let _injected = false;
@@ -30,7 +35,7 @@ function ensureStyles() {
   border:var(--border-width) solid var(--border); border-left:3px solid var(--_c);
   border-radius:var(--radius-md); padding:var(--space-2) var(--space-3);
 }
-.ds-alert__icon{ color:var(--_c); display:inline-flex; padding-top:1px; }
+.ds-alert__icon{ color:var(--_on); background:var(--_c); display:inline-flex; padding:3px; border-radius:var(--radius-sm); }
 .ds-alert__body{ flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
 .ds-alert__title{ font-size:var(--text-small); font-weight:var(--weight-medium); letter-spacing:var(--tracking-tight); }
 .ds-alert__msg{ font-size:var(--text-caption); color:var(--muted); line-height:var(--leading-snug); }
@@ -57,7 +62,8 @@ export function Alert({
   return (
     <div
       className={`ds-alert${pulse ? " ds-pulse" : ""} ${className}`.trim()}
-      style={{ "--_c": s.color }}
+      style={{ "--_c": s.color, "--_on": s.on }}
+      data-severity={severity}
       role={severity === "critical" || severity === "high" ? "alert" : "status"}
       {...rest}
     >

@@ -215,6 +215,7 @@ density+radius), Brand (glow, motion, voice, marks).
 make css        # regenerate tokens/{colors,typography,spacing,effects}.css from the edn
 make specimen   # regenerate specimen.html
 make check      # edn parse + hex drift + links + css freshness (host), APCA + markdownlint (distrobox)
+make bundle     # re-transpile changed components/*.jsx into _ds_bundle.js (distrobox, esbuild)
 ```
 
 `tokens/**/*.edn` is the authority. The four token CSS files are **generated**

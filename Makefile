@@ -5,7 +5,7 @@
 BOX   = distrobox enter design-system --
 NODE_DIR = tools/contrast
 
-.PHONY: check tcl-check css-fresh apca lint css specimen
+.PHONY: check tcl-check css-fresh apca lint css specimen bundle
 
 check: tcl-check css-fresh apca lint   ## everything; non-zero on any failure
 
@@ -25,6 +25,9 @@ css-fresh:                        ## fail if tokens/*.css is stale vs the edn
 	@rm -rf .css-fresh && mkdir .css-fresh && tclsh tools/css.tcl .css-fresh >/dev/null \
 	  && for f in colors typography spacing effects; do diff -u tokens/$$f.css .css-fresh/$$f.css || exit 1; done \
 	  && rm -rf .css-fresh && echo "css: fresh"
+
+bundle:                           ## re-transpile changed components/ into _ds_bundle.js (distrobox)
+	$(BOX) python3 tools/rebundle.py
 
 specimen:                         ## regenerate specimen.html from tokens/
 	tclsh tools/specimen.tcl

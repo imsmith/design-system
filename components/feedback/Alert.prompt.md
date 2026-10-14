@@ -13,3 +13,4 @@ Rules
 - Color + glyph + text together; placement is scope (banner = page/section), never severity.
 - Wording: what happened · why · what to do — terse, no filler. Buttons are verbs.
 - `critical`/`high` get `role="alert"`; the rest `role="status"`.
+- The glyph sits on a fill chip (step background, on-status glyph), so the banner obeys the status treatment rule on light surfaces without a variant switch. The left rule stays in the raw step color as non-text reinforcement.

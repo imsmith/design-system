@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":3,"namespace":"DesignSystem_019de4","components":[{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"Mark","sourcePath":"components/core/Mark.jsx"},{"name":"StatusBadge","sourcePath":"components/core/StatusBadge.jsx"},{"name":"Tag","sourcePath":"components/core/Tag.jsx"},{"name":"DivergingMeter","sourcePath":"components/data/DivergingMeter.jsx"},{"name":"Heatmap","sourcePath":"components/data/Heatmap.jsx"},{"name":"SequentialMeter","sourcePath":"components/data/SequentialMeter.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"}],"sourceHashes":{"assets/marks/sprite-inject.js":"5a5d74914289","components/core/Button.jsx":"e9d614028173","components/core/Card.jsx":"24ddc414fa46","components/core/Mark.jsx":"ae112ec59efc","components/core/StatusBadge.jsx":"a8b7e7c6652d","components/core/Tag.jsx":"05e288874223","components/data/DivergingMeter.jsx":"0174513c5c32","components/data/Heatmap.jsx":"58ce59839e5f","components/data/SequentialMeter.jsx":"552760eef2c8","components/data/Sparkline.jsx":"3ef457f2b07b","components/feedback/Alert.jsx":"b60a93065efe","components/forms/Checkbox.jsx":"feaa27c0d4a1","components/forms/Input.jsx":"84e3ad37c44a","components/forms/Select.jsx":"ebe07d316f34","components/forms/Toggle.jsx":"95f7ba32d20b","components/navigation/Tabs.jsx":"88adf91bf5b4","ui_kits/operations-console/AlertsView.jsx":"82da2d585bac","ui_kits/operations-console/App.jsx":"7d56c2e6f3ff","ui_kits/operations-console/GridDashboard.jsx":"a89c30b281fc","ui_kits/operations-console/LoginScreen.jsx":"c2729dc4a06f","ui_kits/operations-console/NodeDetail.jsx":"4f3574647a49","ui_kits/operations-console/Shell.jsx":"c6fdc9491548","ui_kits/operations-console/data.js":"fb919dbc6d92"},"inlinedExternals":[],"unexposedExports":[]} */
+/* @ds-bundle: {"format":3,"namespace":"DesignSystem_019de4","components":[{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"Mark","sourcePath":"components/core/Mark.jsx"},{"name":"StatusBadge","sourcePath":"components/core/StatusBadge.jsx"},{"name":"Tag","sourcePath":"components/core/Tag.jsx"},{"name":"DivergingMeter","sourcePath":"components/data/DivergingMeter.jsx"},{"name":"Heatmap","sourcePath":"components/data/Heatmap.jsx"},{"name":"SequentialMeter","sourcePath":"components/data/SequentialMeter.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"}],"sourceHashes":{"assets/marks/sprite-inject.js":"5a5d74914289","components/core/Button.jsx":"e9d614028173","components/core/Card.jsx":"24ddc414fa46","components/core/Mark.jsx":"ae112ec59efc","components/core/StatusBadge.jsx":"435dbe670b04","components/core/Tag.jsx":"05e288874223","components/data/DivergingMeter.jsx":"0174513c5c32","components/data/Heatmap.jsx":"58ce59839e5f","components/data/SequentialMeter.jsx":"552760eef2c8","components/data/Sparkline.jsx":"3ef457f2b07b","components/feedback/Alert.jsx":"70405afe80a4","components/forms/Checkbox.jsx":"feaa27c0d4a1","components/forms/Input.jsx":"84e3ad37c44a","components/forms/Select.jsx":"ebe07d316f34","components/forms/Toggle.jsx":"95f7ba32d20b","components/navigation/Tabs.jsx":"88adf91bf5b4","ui_kits/operations-console/AlertsView.jsx":"82da2d585bac","ui_kits/operations-console/App.jsx":"7d56c2e6f3ff","ui_kits/operations-console/GridDashboard.jsx":"a89c30b281fc","ui_kits/operations-console/LoginScreen.jsx":"c2729dc4a06f","ui_kits/operations-console/NodeDetail.jsx":"4f3574647a49","ui_kits/operations-console/Shell.jsx":"c6fdc9491548","ui_kits/operations-console/data.js":"fb919dbc6d92"},"inlinedExternals":[],"unexposedExports":[]} */
 
 (() => {
 
@@ -275,43 +275,13 @@ Object.assign(__ds_scope, { Button });
 
 // components/core/StatusBadge.jsx
 try { (() => {
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-/* StatusBadge — the "never color alone" showcase (manual/06 · status badge).
- * Alert-ramp color + status glyph + word, always together. The step drives all
- * three so they can never disagree (tokens/voice.edn status-lexicon).
- */
-
+const { Mark } = __ds_scope;
 const STEPS = {
-  critical: {
-    color: "var(--status-critical)",
-    glyph: "m-critical",
-    word: "DOWN",
-    oasis: "Extreme"
-  },
-  high: {
-    color: "var(--status-high)",
-    glyph: "m-high",
-    word: "ALERT",
-    oasis: "Severe"
-  },
-  medium: {
-    color: "var(--status-medium)",
-    glyph: "m-medium",
-    word: "WARN",
-    oasis: "Moderate"
-  },
-  low: {
-    color: "var(--status-low)",
-    glyph: "m-low",
-    word: "OK",
-    oasis: "Minor"
-  },
-  unknown: {
-    color: "var(--status-unknown)",
-    glyph: "m-unknown",
-    word: "UNK",
-    oasis: "Unknown"
-  }
+  critical: { color: "var(--status-critical)", on: "var(--on-status-critical)", glyph: "m-critical", word: "DOWN", oasis: "Extreme" },
+  high: { color: "var(--status-high)", on: "var(--on-status-high)", glyph: "m-high", word: "ALERT", oasis: "Severe" },
+  medium: { color: "var(--status-medium)", on: "var(--on-status-medium)", glyph: "m-medium", word: "WARN", oasis: "Moderate" },
+  low: { color: "var(--status-low)", on: "var(--on-status-low)", glyph: "m-low", word: "OK", oasis: "Minor" },
+  unknown: { color: "var(--status-unknown)", on: "var(--on-status-unknown)", glyph: "m-unknown", word: "UNK", oasis: "Unknown" }
 };
 let _injected = false;
 function ensureStyles() {
@@ -328,8 +298,14 @@ function ensureStyles() {
   border:var(--border-width) solid color-mix(in srgb, var(--_c) 45%, transparent);
   color:var(--_c); background:color-mix(in srgb, var(--_c) 12%, transparent);
 }
-.ds-badge--solid{ color:#000; background:var(--_c); border-color:var(--_c); }
 .ds-badge--plain{ background:transparent; border-color:transparent; padding-left:0; padding-right:0; }
+/* fill: requested (solid), forced on light surfaces, forced for critical. Last so it wins. */
+.ds-badge--solid,
+[data-mode="light"] .ds-badge,
+.ds-badge[data-step="critical"]{
+  color:var(--_on); background:var(--_c); border-color:var(--_c);
+  padding-left:var(--space-1); padding-right:var(--space-1);
+}
 `;
   document.head.appendChild(el);
 }
@@ -345,22 +321,17 @@ function StatusBadge({
   ensureStyles();
   const s = STEPS[step] || STEPS.unknown;
   const text = label != null ? label : s.word;
-  const cls = ["ds-badge", variant === "solid" ? "ds-badge--solid" : "", variant === "plain" ? "ds-badge--plain" : "", pulse ? "ds-pulse" : "", className].filter(Boolean).join(" ");
-  return /*#__PURE__*/React.createElement("span", _extends({
-    className: cls,
-    style: {
-      "--_c": s.color
-    },
-    role: "status"
-  }, rest), /*#__PURE__*/React.createElement(__ds_scope.Mark, {
-    name: s.glyph,
-    size: size,
-    label: `${step} status`
-  }), /*#__PURE__*/React.createElement("span", null, text));
+  const cls = [
+    "ds-badge",
+    variant === "solid" ? "ds-badge--solid" : "",
+    variant === "plain" ? "ds-badge--plain" : "",
+    pulse ? "ds-pulse" : "",
+    className
+  ].filter(Boolean).join(" ");
+  return /* @__PURE__ */ React.createElement("span", { className: cls, "data-step": step, style: { "--_c": s.color, "--_on": s.on }, role: "status", ...rest }, /* @__PURE__ */ React.createElement(Mark, { name: s.glyph, size, label: `${step} status` }), /* @__PURE__ */ React.createElement("span", null, text));
 }
 Object.assign(__ds_scope, { StatusBadge });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/StatusBadge.jsx", error: String((e && e.message) || e) }); }
-
 // components/core/Tag.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
@@ -834,39 +805,14 @@ Object.assign(__ds_scope, { Sparkline });
 
 // components/feedback/Alert.jsx
 try { (() => {
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-/* Alert / banner — full-width message keyed to CAP severity (manual/06 · alert,
- * manual/07 §4). Status glyph + left rule in the ramp color + title/body +
- * optional action + dismiss. Color + glyph + text — never color alone. Placement
- * (banner) signals scope, never severity. Wording follows the voice rules:
- * what happened · why · what to do.
- */
-
+const { Mark } = __ds_scope;
 const STEP = {
-  critical: {
-    color: "var(--status-critical)",
-    glyph: "m-critical"
-  },
-  high: {
-    color: "var(--status-high)",
-    glyph: "m-high"
-  },
-  medium: {
-    color: "var(--status-medium)",
-    glyph: "m-medium"
-  },
-  low: {
-    color: "var(--status-low)",
-    glyph: "m-low"
-  },
-  unknown: {
-    color: "var(--status-unknown)",
-    glyph: "m-unknown"
-  },
-  info: {
-    color: "var(--accent)",
-    glyph: "m-info"
-  }
+  critical: { color: "var(--status-critical)", on: "var(--on-status-critical)", glyph: "m-critical" },
+  high: { color: "var(--status-high)", on: "var(--on-status-high)", glyph: "m-high" },
+  medium: { color: "var(--status-medium)", on: "var(--on-status-medium)", glyph: "m-medium" },
+  low: { color: "var(--status-low)", on: "var(--on-status-low)", glyph: "m-low" },
+  unknown: { color: "var(--status-unknown)", on: "var(--on-status-unknown)", glyph: "m-unknown" },
+  info: { color: "var(--accent)", on: "var(--on-accent)", glyph: "m-info" }
 };
 let _injected = false;
 function ensureStyles() {
@@ -881,7 +827,7 @@ function ensureStyles() {
   border:var(--border-width) solid var(--border); border-left:3px solid var(--_c);
   border-radius:var(--radius-md); padding:var(--space-2) var(--space-3);
 }
-.ds-alert__icon{ color:var(--_c); display:inline-flex; padding-top:1px; }
+.ds-alert__icon{ color:var(--_on); background:var(--_c); display:inline-flex; padding:3px; border-radius:var(--radius-sm); }
 .ds-alert__body{ flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
 .ds-alert__title{ font-size:var(--text-small); font-weight:var(--weight-medium); letter-spacing:var(--tracking-tight); }
 .ds-alert__msg{ font-size:var(--text-caption); color:var(--muted); line-height:var(--leading-snug); }
@@ -904,39 +850,22 @@ function Alert({
 }) {
   ensureStyles();
   const s = STEP[severity] || STEP.info;
-  return /*#__PURE__*/React.createElement("div", _extends({
-    className: `ds-alert${pulse ? " ds-pulse" : ""} ${className}`.trim(),
-    style: {
-      "--_c": s.color
+  return /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      className: `ds-alert${pulse ? " ds-pulse" : ""} ${className}`.trim(),
+      style: { "--_c": s.color, "--_on": s.on },
+      "data-severity": severity,
+      role: severity === "critical" || severity === "high" ? "alert" : "status",
+      ...rest
     },
-    role: severity === "critical" || severity === "high" ? "alert" : "status"
-  }, rest), /*#__PURE__*/React.createElement("span", {
-    className: "ds-alert__icon"
-  }, /*#__PURE__*/React.createElement(__ds_scope.Mark, {
-    name: s.glyph,
-    size: 18,
-    label: `${severity}`
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "ds-alert__body"
-  }, title && /*#__PURE__*/React.createElement("div", {
-    className: "ds-alert__title"
-  }, title), children && /*#__PURE__*/React.createElement("div", {
-    className: "ds-alert__msg"
-  }, children), actions && /*#__PURE__*/React.createElement("div", {
-    className: "ds-alert__actions"
-  }, actions)), onDismiss && /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    className: "ds-alert__x",
-    "aria-label": "Dismiss",
-    onClick: onDismiss
-  }, /*#__PURE__*/React.createElement(__ds_scope.Mark, {
-    name: "m-close",
-    size: 16
-  })));
+    /* @__PURE__ */ React.createElement("span", { className: "ds-alert__icon" }, /* @__PURE__ */ React.createElement(Mark, { name: s.glyph, size: 18, label: `${severity}` })),
+    /* @__PURE__ */ React.createElement("div", { className: "ds-alert__body" }, title && /* @__PURE__ */ React.createElement("div", { className: "ds-alert__title" }, title), children && /* @__PURE__ */ React.createElement("div", { className: "ds-alert__msg" }, children), actions && /* @__PURE__ */ React.createElement("div", { className: "ds-alert__actions" }, actions)),
+    onDismiss && /* @__PURE__ */ React.createElement("button", { type: "button", className: "ds-alert__x", "aria-label": "Dismiss", onClick: onDismiss }, /* @__PURE__ */ React.createElement(Mark, { name: "m-close", size: 16 }))
+  );
 }
 Object.assign(__ds_scope, { Alert });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Alert.jsx", error: String((e && e.message) || e) }); }
-
 // components/forms/Checkbox.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
