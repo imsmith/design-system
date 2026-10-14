@@ -326,6 +326,48 @@ the kit had to hand-roll from primitives.
   reinforcement.
 - **Terminal:** the same word in the status line.
 
+### Stepper
+
+- **Anatomy:** an ordered row of steps — a numbered disc (or `m-low` check when
+  done, `m-critical` when blocked), a label, connectors between. One step is
+  current (`aria-current="step"`): `accent` disc, `text` label. Done steps are
+  `muted` with the check; upcoming are `muted`; blocked carries the critical glyph.
+- **Rules:** the wizard pattern's spine. Steps are never color-only: the glyph
+  and the number carry state.
+- **Terminal:** `[✓] Scope  [2] Targets  [ ] Review`.
+
+### Textarea · Fieldset
+
+- **Textarea:** the [input](#input-text-field) at multi-line: same label, field,
+  helper/error anatomy and states; vertical resize only.
+- **Fieldset:** a group of fields under a `caption`/`muted` legend with an
+  optional hint, `space-2` between fields. Groups are the form pattern's unit.
+- **Terminal:** a titled box around the fields.
+
+### Drawer
+
+- **Anatomy:** the [modal](#modal--dialog) anchored to an edge (right by
+  default): scrim, a full-height `surface` panel with header (title + `m-close`),
+  scrolling body, footer. Same behavior as the modal — focus trapped and
+  returned, `Esc` and scrim dismiss unless blocking. Enters from its edge.
+- **Use:** the detail view beside a dashboard, so the heatmap stays in view.
+- **Terminal:** a right-hand pane.
+
+### Timeline
+
+- **Anatomy:** an ordered list of events down a rule: each event has a dot in
+  its severity color (with the status glyph for ramp steps), a `muted` time, a
+  title, an optional body. Newest first unless stated.
+- **Use:** alert history, audit trails. Wording per the voice rules.
+- **Terminal:** `02:14:31Z ✖ DOWN  Uplink down — sector 12.` per line.
+
+### Skip link · Kbd
+
+- **Skip link:** the first focusable thing on a page, visually hidden until
+  focused, jumping to `#main`. Required by [10 · Accessibility](10-accessibility.md).
+- **Kbd:** a small `surface` chip for a key name; combinations are chips joined
+  with `+`. Used in menus and help, never as the only way to discover an action.
+
 ## 5 · Usage rules
 
 ### Do
