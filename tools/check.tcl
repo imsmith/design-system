@@ -3,6 +3,7 @@
 #   1. every tokens/**/*.edn parses as a single map
 #   2. every hex literal in markdown exists in some edn file (no value drift)
 #   3. every relative link / backticked repo path in markdown resolves
+#   4. no CSS file contains "**/" (closes a comment early; bit us twice)
 # Exits non-zero on any failure. APCA and markdownlint live in the Makefile.
 
 source [file join [file dirname [info script]] tcl edn.tcl]
@@ -34,6 +35,10 @@ foreach m $mds {
     foreach {_ p} [regexp -all -inline {\]\(([^)#:]+)\)} $text] {
         if {![file exists [file join [file dirname $m] $p]]} { fail "link $m: ($p) does not resolve" }
     }
+}
+# 4. a "**/" inside a CSS comment closes it early and silently eats the next rule
+foreach c [concat [glob styles.css] [glob tokens/*.css]] {
+    if {[string first "**/" [slurp $c]] >= 0} { fail "css $c: contains **/ (closes a comment early)" }
 }
 puts "markdown: [llength $mds] files checked"
 puts [expr {$fails ? "FAILURES: $fails" : "OK"}]
