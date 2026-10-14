@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x340" name="Core — buttons, badges, tags" subtitle="Button, StatusBadge, Tag, Card, Mark" -->
+<!-- @dsCard group="Components" viewport="700x520" name="Core — buttons, badges, tags" subtitle="Button, StatusBadge, Tag, Table, Tooltip, Card, Mark" -->
 <!DOCTYPE html>
 <html lang="en" data-theme="tron">
 <head>
@@ -22,9 +22,16 @@
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const { Button, StatusBadge, Tag, Card, Mark } = window.DesignSystem_019de4;
+const { Button, StatusBadge, Tag, Card, Mark, Table, Tooltip } = window.DesignSystem_019de4;
 
+const NODES = [
+  { id: "node-11", step: "low", cpu: 42, lat: 18 },
+  { id: "node-12", step: "medium", cpu: 78, lat: 41 },
+  { id: "node-13", step: "critical", cpu: 97, lat: 212 },
+];
 function Demo() {
+  const [sel, setSel] = React.useState("node-13");
+  const [sort, setSort] = React.useState({ key: "cpu", dir: "descending" });
   return (
     <div>
       <div className="row">
@@ -50,6 +57,17 @@ function Demo() {
         <span className="marks">
           <Mark name="m-search" /><Mark name="m-settings" /><Mark name="m-bell" /><Mark name="m-user" /><Mark name="m-refresh" /><Mark name="m-download" />
         </span>
+      </div>
+      <div className="row">
+        <Table density="compact" sort={sort} onSort={(k) => setSort({ key: k, dir: sort.dir === "ascending" ? "descending" : "ascending" })}
+               selected={sel} onSelect={(r) => setSel(r.id)}
+               columns={[
+                 { key: "id", label: "Node", sortable: true },
+                 { key: "step", label: "Status", render: (r) => <StatusBadge step={r.step} variant="plain" size={13} /> },
+                 { key: "cpu", label: "CPU %", num: true, sortable: true },
+                 { key: "lat", label: <Tooltip text="p95 round-trip to the collector">Latency ms</Tooltip>, num: true },
+               ]}
+               rows={NODES} />
       </div>
       <Card title="node-13 · sector 12" density="compact"
             actions={<Button variant="text" size="sm" iconEnd="m-more" aria-label="More" />}>

@@ -20,7 +20,7 @@
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const { Input, Select, Checkbox, Toggle } = window.DesignSystem_019de4;
+const { Input, Select, Checkbox, Toggle, Radio } = window.DesignSystem_019de4;
 function Demo() {
   return (
     <div className="grid">
@@ -35,6 +35,11 @@ function Demo() {
           <Checkbox label="Acknowledge alert" defaultChecked />
           <Checkbox label="Auto-reroute on failure" />
           <Checkbox label="Locked policy" disabled />
+        </div>
+        <div className="stack" style={{ gap: "var(--space-1)" }}>
+          <Radio name="mode" value="live" label="Live" defaultChecked />
+          <Radio name="mode" value="replay" label="Replay" />
+          <Radio name="mode" value="off" label="Off" disabled />
         </div>
         <div className="stack" style={{ gap: "var(--space-1)" }}>
           <Toggle label="Live tail" showState defaultChecked />

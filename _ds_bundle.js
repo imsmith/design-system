@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":3,"namespace":"DesignSystem_019de4","components":[{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"Mark","sourcePath":"components/core/Mark.jsx"},{"name":"StatusBadge","sourcePath":"components/core/StatusBadge.jsx"},{"name":"Tag","sourcePath":"components/core/Tag.jsx"},{"name":"DivergingMeter","sourcePath":"components/data/DivergingMeter.jsx"},{"name":"Heatmap","sourcePath":"components/data/Heatmap.jsx"},{"name":"SequentialMeter","sourcePath":"components/data/SequentialMeter.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"}],"sourceHashes":{"assets/marks/sprite-inject.js":"5a5d74914289","components/core/Button.jsx":"d2a980d93dc0","components/core/Card.jsx":"832042dd214f","components/core/Mark.jsx":"ae112ec59efc","components/core/StatusBadge.jsx":"742ecb90ec14","components/core/Tag.jsx":"12d61187c337","components/data/DivergingMeter.jsx":"44ee6f131060","components/data/Heatmap.jsx":"ac4ad10964ea","components/data/SequentialMeter.jsx":"a81dc6f85249","components/data/Sparkline.jsx":"69181e5ed918","components/feedback/Alert.jsx":"1b2946adb71c","components/forms/Checkbox.jsx":"03b863d69b1a","components/forms/Input.jsx":"1d17bd92be58","components/forms/Select.jsx":"dd37240a0cea","components/forms/Toggle.jsx":"8bd900ae4450","components/navigation/Tabs.jsx":"b03e369b6916","ui_kits/operations-console/AlertsView.jsx":"82da2d585bac","ui_kits/operations-console/App.jsx":"7d56c2e6f3ff","ui_kits/operations-console/GridDashboard.jsx":"a89c30b281fc","ui_kits/operations-console/LoginScreen.jsx":"c2729dc4a06f","ui_kits/operations-console/NodeDetail.jsx":"4f3574647a49","ui_kits/operations-console/Shell.jsx":"c6fdc9491548","ui_kits/operations-console/data.js":"fb919dbc6d92"},"inlinedExternals":[],"unexposedExports":[]} */
+/* @ds-bundle: {"format":3,"namespace":"DesignSystem_019de4","components":[{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"Mark","sourcePath":"components/core/Mark.jsx"},{"name":"StatusBadge","sourcePath":"components/core/StatusBadge.jsx"},{"name":"Tag","sourcePath":"components/core/Tag.jsx"},{"name":"DivergingMeter","sourcePath":"components/data/DivergingMeter.jsx"},{"name":"Heatmap","sourcePath":"components/data/Heatmap.jsx"},{"name":"SequentialMeter","sourcePath":"components/data/SequentialMeter.jsx"},{"name":"Sparkline","sourcePath":"components/data/Sparkline.jsx"},{"name":"Alert","sourcePath":"components/feedback/Alert.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"Table","sourcePath":"components/core/Table.jsx","exports":["Table"]},{"name":"Tooltip","sourcePath":"components/core/Tooltip.jsx","exports":["Tooltip"]},{"name":"Modal","sourcePath":"components/feedback/Modal.jsx","exports":["Modal"]},{"name":"StatePanel","sourcePath":"components/feedback/StatePanel.jsx","exports":["StatePanel","Skeleton"]},{"name":"Toast","sourcePath":"components/feedback/Toast.jsx","exports":["Toast","ToastStack"]},{"name":"Radio","sourcePath":"components/forms/Radio.jsx","exports":["Radio"]},{"name":"Breadcrumb","sourcePath":"components/navigation/Breadcrumb.jsx","exports":["Breadcrumb"]},{"name":"Menu","sourcePath":"components/navigation/Menu.jsx","exports":["Menu"]},{"name":"Pagination","sourcePath":"components/navigation/Pagination.jsx","exports":["Pagination"]}],"sourceHashes":{"assets/marks/sprite-inject.js":"5a5d74914289","components/core/Button.jsx":"d2a980d93dc0","components/core/Card.jsx":"832042dd214f","components/core/Mark.jsx":"ae112ec59efc","components/core/StatusBadge.jsx":"742ecb90ec14","components/core/Tag.jsx":"12d61187c337","components/data/DivergingMeter.jsx":"44ee6f131060","components/data/Heatmap.jsx":"ac4ad10964ea","components/data/SequentialMeter.jsx":"a81dc6f85249","components/data/Sparkline.jsx":"69181e5ed918","components/feedback/Alert.jsx":"1b2946adb71c","components/forms/Checkbox.jsx":"03b863d69b1a","components/forms/Input.jsx":"1d17bd92be58","components/forms/Select.jsx":"dd37240a0cea","components/forms/Toggle.jsx":"8bd900ae4450","components/navigation/Tabs.jsx":"b03e369b6916","ui_kits/operations-console/AlertsView.jsx":"82da2d585bac","ui_kits/operations-console/App.jsx":"7d56c2e6f3ff","ui_kits/operations-console/GridDashboard.jsx":"a89c30b281fc","ui_kits/operations-console/LoginScreen.jsx":"c2729dc4a06f","ui_kits/operations-console/NodeDetail.jsx":"4f3574647a49","ui_kits/operations-console/Shell.jsx":"c6fdc9491548","ui_kits/operations-console/data.js":"fb919dbc6d92","components/core/Table.jsx":"f6375b822393","components/core/Tooltip.jsx":"b8215ccfcb31","components/feedback/Modal.jsx":"54651315685b","components/feedback/StatePanel.jsx":"78bb09c65393","components/feedback/Toast.jsx":"3b676e3d62e6","components/forms/Radio.jsx":"a2def396419c","components/navigation/Breadcrumb.jsx":"4a481889a1df","components/navigation/Menu.jsx":"f9059627e548","components/navigation/Pagination.jsx":"bad8d39e4d6c"},"inlinedExternals":[],"unexposedExports":[]} */
 
 (() => {
 
@@ -577,6 +577,312 @@ function Tabs({ tabs = [], value, defaultValue, onChange, className = "", ...res
 }
 Object.assign(__ds_scope, { Tabs });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/Tabs.jsx", error: String((e && e.message) || e) }); }
+// components/core/Table.jsx
+try { (() => {
+const { Mark } = __ds_scope;
+function Table({
+  columns = [],
+  rows = [],
+  rowKey,
+  density = "comfortable",
+  sort,
+  // { key, dir: "ascending" | "descending" }
+  onSort,
+  // (key) => void
+  selected,
+  // row key
+  onSelect,
+  // (row) => void
+  caption,
+  className = "",
+  ...rest
+}) {
+  const keyOf = (r, i) => rowKey ? rowKey(r) : r.id != null ? r.id : i;
+  const cls = ["ds-table", density !== "comfortable" ? `ds-table--${density}` : "", className].filter(Boolean).join(" ");
+  return /* @__PURE__ */ React.createElement("table", { className: cls, ...rest }, caption && /* @__PURE__ */ React.createElement("caption", { className: "ds-table__caption" }, caption), /* @__PURE__ */ React.createElement("thead", null, /* @__PURE__ */ React.createElement("tr", null, columns.map((c) => /* @__PURE__ */ React.createElement(
+    "th",
+    {
+      key: c.key,
+      scope: "col",
+      className: `ds-table__th${c.num ? " ds-table__th--num" : ""}`,
+      "aria-sort": sort && sort.key === c.key ? sort.dir : c.sortable ? "none" : void 0
+    },
+    c.sortable ? /* @__PURE__ */ React.createElement("button", { type: "button", className: "ds-table__sort", onClick: () => onSort && onSort(c.key) }, /* @__PURE__ */ React.createElement("span", null, c.label), /* @__PURE__ */ React.createElement(Mark, { name: "m-chevron", size: 12 })) : c.label
+  )))), /* @__PURE__ */ React.createElement("tbody", null, rows.map((r, i) => {
+    const k = keyOf(r, i);
+    const isSel = selected != null && selected === k;
+    return /* @__PURE__ */ React.createElement(
+      "tr",
+      {
+        key: k,
+        className: `ds-table__row${onSelect ? " ds-table__row--interactive" : ""}`,
+        "aria-selected": onSelect ? isSel ? "true" : "false" : void 0,
+        tabIndex: onSelect ? 0 : void 0,
+        onClick: onSelect ? () => onSelect(r) : void 0,
+        onKeyDown: onSelect ? (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onSelect(r);
+          }
+        } : void 0
+      },
+      columns.map((c) => /* @__PURE__ */ React.createElement("td", { key: c.key, className: `ds-table__td${c.num ? " ds-table__td--num" : ""}` }, c.render ? c.render(r) : r[c.key]))
+    );
+  })));
+}
+Object.assign(__ds_scope, { Table });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Table.jsx", error: String((e && e.message) || e) }); }
+// components/core/Tooltip.jsx
+try { (() => {
+function Tooltip({ text, children, className = "", ...rest }) {
+  const id = React.useId();
+  return /* @__PURE__ */ React.createElement("span", { className: `ds-tip ${className}`.trim(), tabIndex: 0, "aria-describedby": id, ...rest }, children, /* @__PURE__ */ React.createElement("span", { className: "ds-tip__bubble", role: "tooltip", id }, text));
+}
+Object.assign(__ds_scope, { Tooltip });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Tooltip.jsx", error: String((e && e.message) || e) }); }
+// components/feedback/Modal.jsx
+try { (() => {
+const { Mark } = __ds_scope;
+function Modal({
+  open,
+  onClose,
+  title,
+  size = "sm",
+  destructive = false,
+  blocking = false,
+  children,
+  footer,
+  className = "",
+  ...rest
+}) {
+  const ref = React.useRef(null);
+  const id = React.useId();
+  React.useEffect(() => {
+    if (!open) return;
+    const prev = document.activeElement;
+    const el = ref.current;
+    const focusables = () => el.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])');
+    const first = focusables()[0];
+    (first || el).focus();
+    const onKey = (e) => {
+      if (e.key === "Escape" && !blocking) {
+        e.preventDefault();
+        onClose && onClose();
+      }
+      if (e.key === "Tab") {
+        const f = focusables();
+        if (!f.length) return;
+        const a = f[0], z = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === a) {
+          e.preventDefault();
+          z.focus();
+        } else if (!e.shiftKey && document.activeElement === z) {
+          e.preventDefault();
+          a.focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      prev && prev.focus && prev.focus();
+    };
+  }, [open, blocking, onClose]);
+  if (!open) return null;
+  return /* @__PURE__ */ React.createElement("div", { className: "ds-scrim", onMouseDown: (e) => {
+    if (!blocking && e.target === e.currentTarget) onClose && onClose();
+  } }, /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      ref,
+      className: ["ds-modal", `ds-modal--${size}`, destructive ? "ds-modal--destructive" : "", className].filter(Boolean).join(" "),
+      role: destructive || blocking ? "alertdialog" : "dialog",
+      "aria-modal": "true",
+      "aria-labelledby": `${id}-title`,
+      tabIndex: -1,
+      ...rest
+    },
+    /* @__PURE__ */ React.createElement("div", { className: "ds-modal__head" }, /* @__PURE__ */ React.createElement("h2", { className: "ds-modal__title", id: `${id}-title` }, title), !blocking && /* @__PURE__ */ React.createElement("button", { type: "button", className: "ds-modal__x", "aria-label": "Close", onClick: onClose }, /* @__PURE__ */ React.createElement(Mark, { name: "m-close", size: 16 }))),
+    /* @__PURE__ */ React.createElement("div", { className: "ds-modal__body" }, children),
+    footer && /* @__PURE__ */ React.createElement("div", { className: "ds-modal__foot" }, footer)
+  ));
+}
+Object.assign(__ds_scope, { Modal });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Modal.jsx", error: String((e && e.message) || e) }); }
+// components/feedback/StatePanel.jsx
+try { (() => {
+const { Mark } = __ds_scope;
+const MODE = {
+  empty: { mark: "m-unknown", role: "status" },
+  loading: { mark: "m-refresh", role: "status" },
+  error: { mark: "m-critical", role: "alert" }
+};
+function StatePanel({ mode = "empty", mark, title, children, action, className = "", ...rest }) {
+  const m = MODE[mode] || MODE.empty;
+  return /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      className: `ds-state ds-state--${mode} ${className}`.trim(),
+      role: m.role,
+      "aria-busy": mode === "loading" ? "true" : void 0,
+      ...rest
+    },
+    /* @__PURE__ */ React.createElement("span", { className: "ds-state__mark" }, /* @__PURE__ */ React.createElement(Mark, { name: mark || m.mark, size: 24, label: mode })),
+    title && /* @__PURE__ */ React.createElement("div", { className: "ds-state__title" }, title),
+    children && /* @__PURE__ */ React.createElement("div", { className: "ds-state__msg" }, children),
+    action && /* @__PURE__ */ React.createElement("div", { className: "ds-state__action" }, action)
+  );
+}
+function Skeleton({ lines = 3, width, height, className = "", ...rest }) {
+  if (lines <= 1) {
+    return /* @__PURE__ */ React.createElement("span", { className: `ds-skeleton ${className}`.trim(), style: { width, height }, "aria-hidden": "true", ...rest });
+  }
+  return /* @__PURE__ */ React.createElement("div", { className, "aria-hidden": "true", ...rest }, Array.from({ length: lines }).map((_, i) => /* @__PURE__ */ React.createElement("span", { key: i, className: "ds-skeleton ds-skeleton--text" })));
+}
+Object.assign(__ds_scope, { StatePanel, Skeleton });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/StatePanel.jsx", error: String((e && e.message) || e) }); }
+// components/feedback/Toast.jsx
+try { (() => {
+const { Mark } = __ds_scope;
+const STEP = {
+  critical: { c: "var(--status-critical)", on: "var(--on-status-critical)", glyph: "m-critical", ms: 0 },
+  high: { c: "var(--status-high)", on: "var(--on-status-high)", glyph: "m-high", ms: 12e3 },
+  medium: { c: "var(--status-medium)", on: "var(--on-status-medium)", glyph: "m-medium", ms: 8e3 },
+  low: { c: "var(--status-low)", on: "var(--on-status-low)", glyph: "m-low", ms: 5e3 },
+  unknown: { c: "var(--status-unknown)", on: "var(--on-status-unknown)", glyph: "m-unknown", ms: 5e3 },
+  info: { c: "var(--accent)", on: "var(--on-accent)", glyph: "m-info", ms: 5e3 }
+};
+function Toast({ severity = "info", title, children, onDismiss, duration, className = "", ...rest }) {
+  const s = STEP[severity] || STEP.info;
+  const ms = duration != null ? duration : s.ms;
+  React.useEffect(() => {
+    if (!ms || !onDismiss) return;
+    const t = setTimeout(onDismiss, ms);
+    return () => clearTimeout(t);
+  }, [ms, onDismiss]);
+  const critical = severity === "critical";
+  return /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      className: `ds-toast ${className}`.trim(),
+      style: { "--_c": s.c, "--_on": s.on },
+      "data-severity": severity,
+      role: critical || severity === "high" ? "alert" : "status",
+      "aria-live": critical ? "assertive" : "polite",
+      ...rest
+    },
+    /* @__PURE__ */ React.createElement("span", { className: "ds-toast__icon" }, /* @__PURE__ */ React.createElement(Mark, { name: s.glyph, size: 14, label: severity })),
+    /* @__PURE__ */ React.createElement("div", { className: "ds-toast__body" }, title && /* @__PURE__ */ React.createElement("div", { className: "ds-toast__title" }, title), children),
+    onDismiss && /* @__PURE__ */ React.createElement("button", { type: "button", className: "ds-toast__x", "aria-label": "Dismiss", onClick: onDismiss }, /* @__PURE__ */ React.createElement(Mark, { name: "m-close", size: 14 }))
+  );
+}
+function ToastStack({ position = "bottom-right", children, className = "", ...rest }) {
+  return /* @__PURE__ */ React.createElement("div", { className: `ds-toasts ds-toasts--${position} ${className}`.trim(), ...rest }, children);
+}
+Object.assign(__ds_scope, { Toast, ToastStack });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/feedback/Toast.jsx", error: String((e && e.message) || e) }); }
+// components/forms/Radio.jsx
+try { (() => {
+function Radio({ label, className = "", ...rest }) {
+  return /* @__PURE__ */ React.createElement("label", { className: `ds-radio ${className}`.trim() }, /* @__PURE__ */ React.createElement("input", { type: "radio", className: "ds-radio__input", ...rest }), /* @__PURE__ */ React.createElement("span", { className: "ds-radio__dot", "aria-hidden": "true" }), label && /* @__PURE__ */ React.createElement("span", null, label));
+}
+Object.assign(__ds_scope, { Radio });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Radio.jsx", error: String((e && e.message) || e) }); }
+// components/navigation/Breadcrumb.jsx
+try { (() => {
+const { Mark } = __ds_scope;
+function Breadcrumb({ items = [], className = "", ...rest }) {
+  return /* @__PURE__ */ React.createElement("nav", { "aria-label": "Breadcrumb", className, ...rest }, /* @__PURE__ */ React.createElement("ol", { className: "ds-crumbs" }, items.map((it, i) => {
+    const last = i === items.length - 1;
+    return /* @__PURE__ */ React.createElement("li", { key: i, className: "ds-crumb", "aria-current": last ? "page" : void 0 }, last || !it.href && !it.onClick ? /* @__PURE__ */ React.createElement("span", null, it.label) : /* @__PURE__ */ React.createElement("a", { href: it.href || "#", onClick: it.onClick }, it.label), !last && /* @__PURE__ */ React.createElement("span", { className: "ds-crumb__sep" }, /* @__PURE__ */ React.createElement(Mark, { name: "m-chevron", size: 12 })));
+  })));
+}
+Object.assign(__ds_scope, { Breadcrumb });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/Breadcrumb.jsx", error: String((e && e.message) || e) }); }
+// components/navigation/Menu.jsx
+try { (() => {
+const { Mark } = __ds_scope;
+function Menu({ items = [], selected, onSelect, onClose, variant = "popover", label, className = "", ...rest }) {
+  const ref = React.useRef(null);
+  const onKey = (e) => {
+    const els = [...ref.current.querySelectorAll(".ds-menu__item:not([disabled])")];
+    const i = els.indexOf(document.activeElement);
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      (els[i + 1] || els[0]).focus();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      (els[i - 1] || els[els.length - 1]).focus();
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      els[0] && els[0].focus();
+    } else if (e.key === "End") {
+      e.preventDefault();
+      els[els.length - 1] && els[els.length - 1].focus();
+    } else if (e.key === "Escape" && onClose) {
+      e.preventDefault();
+      onClose();
+    }
+  };
+  return /* @__PURE__ */ React.createElement("ul", { ref, className: `ds-menu ds-menu--${variant} ${className}`.trim(), role: variant === "sidebar" ? "navigation" : "menu", "aria-label": label, onKeyDown: onKey, ...rest }, items.map((it, i) => {
+    if (it.separator) return /* @__PURE__ */ React.createElement("li", { key: i, className: "ds-menu__sep", role: "separator" });
+    if (it.heading) return /* @__PURE__ */ React.createElement("li", { key: i, className: "ds-menu__heading", role: "presentation" }, it.heading);
+    const isSel = selected != null && selected === it.id;
+    const Tag = it.href ? "a" : "button";
+    return /* @__PURE__ */ React.createElement("li", { key: it.id || i, role: "none" }, /* @__PURE__ */ React.createElement(
+      Tag,
+      {
+        className: "ds-menu__item",
+        role: variant === "sidebar" ? void 0 : "menuitem",
+        href: it.href,
+        type: it.href ? void 0 : "button",
+        disabled: it.href ? void 0 : it.disabled,
+        "aria-disabled": it.href && it.disabled ? "true" : void 0,
+        "aria-current": isSel ? it.href ? "page" : "true" : void 0,
+        onClick: (e) => {
+          if (it.disabled) {
+            e.preventDefault();
+            return;
+          }
+          onSelect && onSelect(it);
+        }
+      },
+      it.icon && /* @__PURE__ */ React.createElement(Mark, { name: it.icon, size: 14 }),
+      /* @__PURE__ */ React.createElement("span", { className: "ds-menu__label" }, it.label),
+      it.hint != null && /* @__PURE__ */ React.createElement("span", { className: "ds-menu__hint" }, it.hint),
+      it.submenu && /* @__PURE__ */ React.createElement("span", { className: "ds-menu__sub" }, /* @__PURE__ */ React.createElement(Mark, { name: "m-chevron", size: 12 }))
+    ));
+  }));
+}
+Object.assign(__ds_scope, { Menu });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/Menu.jsx", error: String((e && e.message) || e) }); }
+// components/navigation/Pagination.jsx
+try { (() => {
+const { Mark } = __ds_scope;
+function pages(page, total, around = 1) {
+  const set = /* @__PURE__ */ new Set([1, total, page]);
+  for (let d = 1; d <= around; d++) {
+    set.add(page - d);
+    set.add(page + d);
+  }
+  const list = [...set].filter((p) => p >= 1 && p <= total).sort((a, b) => a - b);
+  const out = [];
+  list.forEach((p, i) => {
+    if (i && p - list[i - 1] > 1) out.push("\u2026");
+    out.push(p);
+  });
+  return out;
+}
+function Pagination({ page = 1, total = 1, onChange, className = "", ...rest }) {
+  const go = (p) => {
+    if (p >= 1 && p <= total && p !== page && onChange) onChange(p);
+  };
+  return /* @__PURE__ */ React.createElement("nav", { className: `ds-pager ${className}`.trim(), "aria-label": "Pagination", ...rest }, /* @__PURE__ */ React.createElement("button", { type: "button", className: "ds-pager__btn ds-pager__btn--prev", "aria-label": "Previous page", disabled: page <= 1, onClick: () => go(page - 1) }, /* @__PURE__ */ React.createElement(Mark, { name: "m-chevron", size: 14 })), pages(page, total).map(
+    (p, i) => p === "\u2026" ? /* @__PURE__ */ React.createElement("span", { key: `gap${i}`, className: "ds-pager__gap", "aria-hidden": "true" }, "\u2026") : /* @__PURE__ */ React.createElement("button", { key: p, type: "button", className: "ds-pager__page", "aria-current": p === page ? "page" : void 0, "aria-label": `Page ${p}`, onClick: () => go(p) }, p)
+  ), /* @__PURE__ */ React.createElement("button", { type: "button", className: "ds-pager__btn ds-pager__btn--next", "aria-label": "Next page", disabled: page >= total, onClick: () => go(page + 1) }, /* @__PURE__ */ React.createElement(Mark, { name: "m-chevron", size: 14 })));
+}
+Object.assign(__ds_scope, { Pagination });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/Pagination.jsx", error: String((e && e.message) || e) }); }
 __ds_ns.Button = __ds_scope.Button;
 
 __ds_ns.Card = __ds_scope.Card;
@@ -606,5 +912,27 @@ __ds_ns.Select = __ds_scope.Select;
 __ds_ns.Toggle = __ds_scope.Toggle;
 
 __ds_ns.Tabs = __ds_scope.Tabs;
+
+__ds_ns.Table = __ds_scope.Table;
+
+__ds_ns.Tooltip = __ds_scope.Tooltip;
+
+__ds_ns.Modal = __ds_scope.Modal;
+
+__ds_ns.StatePanel = __ds_scope.StatePanel;
+
+__ds_ns.Skeleton = __ds_scope.Skeleton;
+
+__ds_ns.Toast = __ds_scope.Toast;
+
+__ds_ns.ToastStack = __ds_scope.ToastStack;
+
+__ds_ns.Radio = __ds_scope.Radio;
+
+__ds_ns.Breadcrumb = __ds_scope.Breadcrumb;
+
+__ds_ns.Menu = __ds_scope.Menu;
+
+__ds_ns.Pagination = __ds_scope.Pagination;
 
 })();

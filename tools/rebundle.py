@@ -26,8 +26,25 @@ def transpile(path, name):
     pre = f"const {{ {', '.join(names)} }} = __ds_scope;\n" if names else ""
     js = subprocess.run(["npx", "--yes", "esbuild", "--loader=jsx", "--jsx=transform", "--log-level=error"],
                         input=pre + src, capture_output=True, text=True, check=True).stdout
-    return (f"// {path}\ntry {{ (() => {{\n{js}Object.assign(__ds_scope, {{ {name} }});\n"
+    names = re.findall(r"^export function ([A-Z]\w*)", (root / path).read_text(), re.M) or [name]
+    return (f"// {path}\ntry {{ (() => {{\n{js}Object.assign(__ds_scope, {{ {', '.join(names)} }});\n"
             f"}})(); }} catch (e) {{ __ds_ns.__errors.push({{ path: \"{path}\", error: String((e && e.message) || e) }}); }}\n")
+
+# Register any new components/**/*.jsx not yet in the header (name = first export).
+known = {c["sourcePath"] for c in manifest["components"]}
+for f in sorted(root.glob("components/*/*.jsx")):
+    path = f.relative_to(root).as_posix()
+    if path in known:
+        continue
+    names = re.findall(r"^export function ([A-Z]\w*)", f.read_text(), re.M)
+    if not names:
+        continue
+    manifest["components"].append({"name": names[0], "sourcePath": path, "exports": names})
+    manifest["sourceHashes"][path] = ""
+    bundle = bundle.replace("\n__ds_ns." + manifest["components"][0]["name"] + " = ", f"\n// {path}\n\n__ds_ns." + manifest["components"][0]["name"] + " = ", 1)
+    for n in names:
+        bundle = bundle.rstrip().removesuffix("})();") + f"__ds_ns.{n} = __ds_scope.{n};\n\n}})();\n"
+    print("registered:", path, names)
 
 changed = []
 for c in manifest["components"]:

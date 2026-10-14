@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x280" name="Feedback — alerts" subtitle="Alert banners keyed to CAP severity" -->
+<!-- @dsCard group="Components" viewport="900x640" name="Feedback — alerts" subtitle="Alert banners keyed to CAP severity" -->
 <!DOCTYPE html>
 <html lang="en" data-theme="tron">
 <head>
@@ -19,10 +19,29 @@
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const { Alert, Button } = window.DesignSystem_019de4;
+const { Alert, Button, StatePanel, Skeleton, Toast, ToastStack, Modal } = window.DesignSystem_019de4;
 function Demo() {
+  const [open, setOpen] = React.useState(false);
+  const [toasts, setToasts] = React.useState([
+    { id: 1, severity: "critical", title: "Uplink down — sector 12.", body: "Acknowledge to clear." },
+    { id: 2, severity: "low", title: "Rebooted node-12." },
+  ]);
+  const drop = (id) => setToasts((t) => t.filter((x) => x.id !== id));
   return (
     <div className="stack">
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "var(--space-2)" }}>
+        <StatePanel mode="empty" title="No alerts in sector 12" action={<Button variant="ghost" size="sm" icon="m-add">Create rule</Button>}>Nothing crossed a threshold in 24h.</StatePanel>
+        <StatePanel mode="loading" title="Loading telemetry"><Skeleton lines={3} /></StatePanel>
+        <StatePanel mode="error" title="Telemetry unavailable" action={<Button variant="ghost" size="sm" icon="m-refresh">Retry</Button>}>Collector db-03 timed out after 30s.</StatePanel>
+      </div>
+      <div><Button variant="danger" icon="m-delete" onClick={() => setOpen(true)}>Delete cluster prod-east</Button></div>
+      <Modal open={open} onClose={() => setOpen(false)} title="Delete cluster prod-east" destructive
+             footer={<><Button variant="ghost" onClick={() => setOpen(false)}>Cancel</Button><Button variant="danger" icon="m-delete" onClick={() => setOpen(false)}>Delete cluster</Button></>}>
+        Deletes 14 nodes and their volumes. This cannot be undone.
+      </Modal>
+      <ToastStack>
+        {toasts.map((t) => <Toast key={t.id} severity={t.severity} title={t.title} onDismiss={() => drop(t.id)} duration={0}>{t.body}</Toast>)}
+      </ToastStack>
       <Alert severity="critical" pulse title="Uplink down — sector 12."
              actions={<Button variant="ghost" size="sm" icon="m-refresh">Retry uplink</Button>}>
         4 nodes unreachable for 4m. Reroute traffic or restore the uplink.

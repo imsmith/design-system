@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x160" name="Navigation — tabs" subtitle="Tab row with accent underline" -->
+<!-- @dsCard group="Components" viewport="700x420" name="Navigation — tabs, breadcrumb, menu, pagination" subtitle="Tab row with accent underline" -->
 <!DOCTYPE html>
 <html lang="en" data-theme="tron">
 <head>
@@ -19,12 +19,16 @@
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const { Tabs } = window.DesignSystem_019de4;
+const { Tabs, Breadcrumb, Pagination, Menu } = window.DesignSystem_019de4;
 function Demo() {
   const [view, setView] = React.useState("grid");
   const labels = { grid: "Grid view — 64 nodes, heatmap.", alerts: "3 active alerts.", audit: "Audit log." };
+  const [page, setPage] = React.useState(4);
+  const [item, setItem] = React.useState("alerts");
   return (
     <div>
+      <Breadcrumb items={[{ label: "Grid", href: "#" }, { label: "Sector 12", href: "#" }, { label: "node-13" }]} />
+      <div style={{ height: "var(--space-2)" }} />
       <Tabs value={view} onChange={setView}
         tabs={[
           { id: "grid", label: "Grid", icon: "m-menu" },
@@ -33,6 +37,11 @@ function Demo() {
           { id: "policy", label: "Policy", disabled: true },
         ]} />
       <div className="panel">{labels[view] || "—"}</div>
+      <div style={{ display: "flex", gap: "var(--space-3)", alignItems: "flex-start", marginTop: "var(--space-2)" }}>
+        <Menu label="Sections" selected={item} onSelect={(it) => setItem(it.id)}
+              items={[{ heading: "Grid" }, { id: "grid", label: "Dashboard", icon: "m-menu" }, { id: "alerts", label: "Alerts", icon: "m-bell", hint: 3 }, { separator: true }, { id: "settings", label: "Settings", icon: "m-settings", submenu: true }, { id: "policy", label: "Policy", icon: "m-lock", disabled: true }]} />
+        <Pagination page={page} total={9} onChange={setPage} />
+      </div>
     </div>
   );
 }
