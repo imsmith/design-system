@@ -272,9 +272,59 @@ The v1 set, the data-bearing trio (status badge, gauge/meter, chart/sparkline), 
 the conventional catalog (modal, tabs, tooltip, toast, menu, breadcrumb, pagination)
 are now specified.
 
-**Progress bar** is the one remaining: a *determinate* progress bar is the
+**Progress bar** needs no spec: a *determinate* progress bar is the
 [sequential meter](#gauge--meter) (magnitude 0→100%); an *indeterminate* one is the
-[loading](#1--the-state-matrix) state. It needs no separate spec — compose those.
+[loading](#1--the-state-matrix) state. Compose those.
+
+The v2 set below came from building the Operations Console: each is something
+the kit had to hand-roll from primitives.
+
+### App shell
+
+- **Anatomy:** a fixed header (brand wordmark in `accent` with ambient glow ·
+  status summary · meta such as the clock and freshness · actions) over a
+  sidebar nav ([menu](#menu--nav), sidebar variant) and a scrolling main area.
+  The header and nav are `surface`; main is `bg`.
+- **Rules:** the status summary is a row of [status badges](#status-badge) with
+  counts; `critical` pulses. The shell carries no data of its own.
+- **Terminal:** a top status line and a left pane; `F`-keys or digits switch panes.
+
+### Stat tile
+
+- **Anatomy:** `caption` label, a large tabular-numeric value with a `muted`
+  unit, an optional signed delta carrying a diverging mark (`m-warm`/`m-cool`),
+  and a foot row for a [sparkline](#chart--sparkline) and/or a status badge.
+- **Color:** the value may take a [status step](01-color.md#3--the-vivid-status-set-alert-ramp)
+  as an outline on dark surfaces only; on light the value stays `text` and the
+  badge carries the status (the treatment rule).
+- **Terminal:** `LABEL  97%  ▲ +2` on one line.
+
+### Key-value list
+
+- **Anatomy:** a two-column definition list — `caption`/`muted` keys, `text`
+  values, numeric values right-aligned in tabular mono, row rules in `border`.
+  Density modes as for tables. Values may hold a badge, tag, or link.
+- **Terminal:** `key ........ value`, dot leaders.
+
+### Log view
+
+- **Anatomy:** a `bg` well of monospaced lines: `muted` timestamp, severity
+  word with its glyph, message. Critical lines get a faint critical tint across
+  the row. Follows the tail; scrolling up pauses following and shows a
+  `PAUSED · n new` affordance that resumes.
+- **Color:** severity words use the outline treatment on dark and the fill chip
+  on light. Never color alone: the word and glyph are always present.
+- **Voice:** every line follows what happened · why · what to do.
+- **Terminal:** this *is* the terminal; `tail -f` semantics.
+
+### Freshness indicator
+
+- **Anatomy:** a dot and a word — `LIVE`, `PAUSED`, `STALE`, `OFFLINE` — with the
+  last-update timestamp in `micro` tabular mono.
+- **Color:** live = `low` green and the pulse (a live element); stale = `medium`;
+  offline = `critical`; paused = `muted`. The word is the signal, the dot the
+  reinforcement.
+- **Terminal:** the same word in the status line.
 
 ## 5 · Usage rules
 
