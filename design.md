@@ -9,10 +9,11 @@ value. Do not invent values that the system already names.
 ## Authority chain
 
 1. **`manual/*.md`** is the authority for MEANING and rules.
-2. **`tokens/**/*.edn`** is the authority for VALUES. `tools/css.tcl` serializes
-   them to `tokens/*.css` (custom properties); `styles.css` is the one file a
-   web consumer links. The CSS is generated — never edit it, edit the `edn` and
-   run `make css`. For anything not yet serialized, read the `edn` directly.
+2. **`tokens/**/*.edn`** is the authority for VALUES. Generated serializations:
+   `tokens/*.css` (custom properties; `styles.css` is the one file a web
+   consumer links) and `tokens/design_system_tokens.ex` (the same data for the
+   BEAM). Never edit generated files — edit the `edn` and run `make gen`. For
+   anything not yet serialized, read the `edn` directly.
 3. **Your code is a downstream serialization.** It is obligated to honor 1 and 2.
    If your output and the manual disagree, the manual wins and your output is the
    bug.

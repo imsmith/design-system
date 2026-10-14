@@ -21,23 +21,6 @@ function stopColor(v) {
   return STOP[String(i)];
 }
 
-let _injected = false;
-function ensureStyles() {
-  if (_injected || typeof document === "undefined") return;
-  _injected = true;
-  const el = document.createElement("style");
-  el.id = "ds-div-meter";
-  el.textContent = `
-.ds-dmeter{ display:flex; flex-direction:column; gap:var(--space-half); font-family:var(--font-mono); min-width:0; }
-.ds-dmeter__top{ display:flex; align-items:baseline; justify-content:space-between; gap:var(--space-2); }
-.ds-dmeter__label{ font-size:var(--text-caption); text-transform:uppercase; letter-spacing:var(--tracking-label); color:var(--muted); }
-.ds-dmeter__val{ font-size:var(--text-small); font-variant-numeric:tabular-nums; color:var(--_c,var(--text)); display:inline-flex; align-items:center; gap:var(--space-half); }
-.ds-dmeter__track{ position:relative; height:10px; background:var(--bg); border:var(--border-width) solid var(--border); border-radius:var(--radius-sm); overflow:hidden; }
-.ds-dmeter__center{ position:absolute; top:-2px; bottom:-2px; left:50%; width:2px; background:var(--spectrum-green); transform:translateX(-1px); }
-.ds-dmeter__fill{ position:absolute; top:0; bottom:0; background:var(--_c); transition:width var(--dur-moderate) var(--ease-standard), left var(--dur-moderate) var(--ease-standard); }
-`;
-  document.head.appendChild(el);
-}
 
 export function DivergingMeter({
   value,
@@ -48,7 +31,6 @@ export function DivergingMeter({
   className = "",
   ...rest
 }) {
-  ensureStyles();
   const clamped = Math.max(-range, Math.min(range, value));
   const halfPct = (Math.abs(clamped) / range) * 50;
   const positive = clamped > 0;

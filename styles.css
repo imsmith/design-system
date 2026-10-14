@@ -1,8 +1,8 @@
 /* styles.css — global entry point.
  *
  * Consumers link THIS one file. It is a manifest of @import lines only; every
- * token, font-face, and base default ships through this closure. Order: fonts →
- * colors → typography → spacing → effects → base.
+ * token, font-face, base default, and component style ships through this
+ * closure. Order: fonts → colors → typography → spacing → effects → base → components.
  *
  * A CRT/terminal-rooted design system for data-dense operations tooling.
  * Authority: the imsmith/design-system manual + tokens (see README.md).
@@ -14,3 +14,4 @@
 @import url("tokens/spacing.css");
 @import url("tokens/effects.css");
 @import url("tokens/base.css");
+@import url("tokens/components.css");

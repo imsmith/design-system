@@ -212,14 +212,22 @@ density+radius), Brand (glow, motion, voice, marks).
 ## Verify
 
 ```bash
-make css        # regenerate tokens/{colors,typography,spacing,effects}.css from the edn
+make gen        # regenerate every serialization: tokens/*.css and tokens/design_system_tokens.ex
 make specimen   # regenerate specimen.html
-make check      # edn parse + hex drift + links + css freshness (host), APCA + markdownlint (distrobox)
+make check      # edn parse + hex drift + links + generated freshness (host), APCA + markdownlint (distrobox)
 make bundle     # re-transpile changed components/*.jsx into _ds_bundle.js (distrobox, esbuild)
 ```
 
-`tokens/**/*.edn` is the authority. The four token CSS files are **generated**
-by `tools/css.tcl`; `check` fails if they are stale, so edit the `edn`, run
-`make css`, commit both. `fonts.css` and `base.css` are hand-authored.
+`tokens/**/*.edn` is the authority. Everything else under `tokens/` is a
+**generated serialization**: `colors.css`, `typography.css`, `spacing.css`, and `effects.css` from
+`tools/css.tcl`, `design_system_tokens.ex` (the backbone as Elixir data) from
+`tools/elixir.tcl`. `check` fails if any is stale, so edit the `edn`, run
+`make gen`, commit both. `fonts.css`, `base.css`, and `components.css` (the
+component styles shared by the React bundle and non-React consumers) are
+hand-authored.
+
+BEAM consumers (Phoenix, LiveView, Livebook) live in the separate
+[gos-ui](https://github.com/imsmith/gos-ui) library, which vendors the
+generated files from a pinned commit of this repo.
 `check` exits non-zero on any failure. Host side needs only `tclsh`; the Node
 steps run inside the `design-system` distrobox (see the Makefile header).

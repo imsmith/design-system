@@ -7,26 +7,6 @@ import React from "react";
  * meaningless for "0% CPU". Use for CPU, disk, memory, throughput, quota.
  */
 
-let _injected = false;
-function ensureStyles() {
-  if (_injected || typeof document === "undefined") return;
-  _injected = true;
-  const el = document.createElement("style");
-  el.id = "ds-seq-meter";
-  el.textContent = `
-.ds-meter{ display:flex; flex-direction:column; gap:var(--space-half); font-family:var(--font-mono); min-width:0; }
-.ds-meter__top{ display:flex; align-items:baseline; justify-content:space-between; gap:var(--space-2); }
-.ds-meter__label{ font-size:var(--text-caption); text-transform:uppercase; letter-spacing:var(--tracking-label); color:var(--muted); }
-.ds-meter__val{ font-size:var(--text-small); font-variant-numeric:tabular-nums; color:var(--_c,var(--text)); display:inline-flex; align-items:baseline; gap:var(--space-1); }
-.ds-meter__word{ font-size:var(--text-micro); letter-spacing:var(--tracking-label); }
-.ds-meter__track{ position:relative; height:8px; background:var(--bg); border:var(--border-width) solid var(--border); border-radius:999px; overflow:hidden; }
-.ds-meter__fill{ position:absolute; top:0; left:0; bottom:0; background:var(--_c,var(--accent)); border-radius:999px; transition:width var(--dur-moderate) var(--ease-standard); }
-.ds-meter__tick{ position:absolute; top:-2px; bottom:-2px; width:2px; }
-.ds-meter__tick--warn{ background:var(--status-medium); }
-.ds-meter__tick--crit{ background:var(--status-critical); }
-`;
-  document.head.appendChild(el);
-}
 
 export function SequentialMeter({
   value,
@@ -39,7 +19,6 @@ export function SequentialMeter({
   className = "",
   ...rest
 }) {
-  ensureStyles();
   const pct = Math.max(0, Math.min(100, (value / max) * 100));
   let color = "var(--accent)";
   let word = null;

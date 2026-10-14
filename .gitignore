@@ -15,5 +15,5 @@ node_modules/
 
 
 
-# make css-fresh scratch
-.css-fresh/
+# make gen-fresh scratch
+.gen-fresh/

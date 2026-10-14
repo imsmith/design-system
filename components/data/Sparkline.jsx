@@ -8,20 +8,6 @@ import React from "react";
  *               the alert-ramp color and word (the threshold is a dashed line).
  */
 
-let _injected = false;
-function ensureStyles() {
-  if (_injected || typeof document === "undefined") return;
-  _injected = true;
-  const el = document.createElement("style");
-  el.id = "ds-sparkline";
-  el.textContent = `
-.ds-spark{ display:inline-flex; align-items:center; gap:var(--space-1); font-family:var(--font-mono); }
-.ds-spark__svg{ display:block; overflow:visible; }
-.ds-spark__end{ font-size:var(--text-caption); font-variant-numeric:tabular-nums; color:var(--_c,var(--text)); display:inline-flex; align-items:baseline; gap:var(--space-half); }
-.ds-spark__word{ font-size:var(--text-micro); letter-spacing:var(--tracking-label); }
-`;
-  document.head.appendChild(el);
-}
 
 export function Sparkline({
   data = [],
@@ -35,7 +21,6 @@ export function Sparkline({
   className = "",
   ...rest
 }) {
-  ensureStyles();
   const n = data.length;
   const min = Math.min(...data);
   const max = Math.max(...data);

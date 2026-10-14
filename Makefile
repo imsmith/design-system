@@ -5,9 +5,9 @@
 BOX   = distrobox enter design-system --
 NODE_DIR = tools/contrast
 
-.PHONY: check tcl-check css-fresh apca lint css specimen bundle
+.PHONY: check tcl-check gen-fresh apca lint css elixir gen specimen bundle
 
-check: tcl-check css-fresh apca lint   ## everything; non-zero on any failure
+check: tcl-check gen-fresh apca lint   ## everything; non-zero on any failure
 
 tcl-check:                        ## edn parse, hex drift, links (host)
 	tclsh tools/check.tcl
@@ -21,10 +21,15 @@ lint:                             ## markdownlint on authored docs (distrobox); 
 css:                              ## regenerate tokens/*.css from tokens/**/*.edn
 	tclsh tools/css.tcl
 
-css-fresh:                        ## fail if tokens/*.css is stale vs the edn
-	@rm -rf .css-fresh && mkdir .css-fresh && tclsh tools/css.tcl .css-fresh >/dev/null \
-	  && for f in colors typography spacing effects; do diff -u tokens/$$f.css .css-fresh/$$f.css || exit 1; done \
-	  && rm -rf .css-fresh && echo "css: fresh"
+elixir:                           ## regenerate tokens/design_system_tokens.ex from the edn
+	tclsh tools/elixir.tcl
+
+gen: css elixir                   ## all generated serializations
+
+gen-fresh:                        ## fail if any generated file is stale vs the edn
+	@rm -rf .gen-fresh && mkdir .gen-fresh && tclsh tools/css.tcl .gen-fresh >/dev/null && tclsh tools/elixir.tcl .gen-fresh >/dev/null \
+	  && for f in colors.css typography.css spacing.css effects.css design_system_tokens.ex; do diff -u tokens/$$f .gen-fresh/$$f || exit 1; done \
+	  && rm -rf .gen-fresh && echo "generated: fresh"
 
 bundle:                           ## re-transpile changed components/ into _ds_bundle.js (distrobox)
 	$(BOX) python3 tools/rebundle.py

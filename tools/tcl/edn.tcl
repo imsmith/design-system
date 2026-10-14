@@ -7,13 +7,20 @@
 
 namespace eval edn {}
 
-proc edn::read {path} {
+# With -mark, every string value is prefixed with \x01 and every vector gets a
+# leading \x02 element, so a consumer can tell "a b" from [a b] and [x] from x —
+# Tcl list parsing erases both distinctions otherwise. The default (unmarked)
+# is what css.tcl/specimen.tcl want.
+proc edn::read {path {flag ""}} {
     set f [open $path r]; fconfigure $f -encoding utf-8
     set text [::read $f]; close $f
     set out ""
+    set mark [expr {$flag eq "-mark" ? "\x01" : ""}]
+    set vec  [expr {$flag eq "-mark" ? "\x02 " : ""}]
     # Tokenize left to right: comment | string | code. Rewrite only code.
     foreach {_ str code} [regexp -all -inline {;[^\n]*|("[^"]*")|([^";]+)} $text] {
-        append out $str [string map [list "\[" "\{" "\]" "\}" "," " "] $code]
+        if {$str ne ""} { set str "\"$mark[string range $str 1 end]" }
+        append out $str [string map [list "\[" "\{$vec" "\]" "\}" "," " "] $code]
     }
     set d [lindex $out 0]
     if {[llength $out] != 1 || [llength $d] % 2} { error "$path: not a single edn map" }
