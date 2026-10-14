@@ -5,7 +5,7 @@
 BOX   = distrobox enter design-system --
 NODE_DIR = tools/contrast
 
-.PHONY: check tcl-check gen-fresh apca lint css elixir gen specimen bundle
+.PHONY: check tcl-check gen-fresh apca lint css elixir gen specimen
 
 check: tcl-check gen-fresh apca lint   ## everything; non-zero on any failure
 
@@ -15,7 +15,7 @@ tcl-check:                        ## edn parse, hex drift, links (host)
 apca: $(NODE_DIR)/node_modules    ## APCA contrast on chrome + data color (distrobox)
 	$(BOX) node $(NODE_DIR)/verify.mjs
 
-lint:                             ## markdownlint on authored docs (distrobox); the GRID·OPS bundle is excluded
+lint:                             ## markdownlint (distrobox)
 	$(BOX) npx --yes markdownlint-cli design.md 'manual/*.md' 'tools/*/*.md'
 
 css:                              ## regenerate tokens/*.css from tokens/**/*.edn
@@ -30,9 +30,6 @@ gen-fresh:                        ## fail if any generated file is stale vs the 
 	@rm -rf .gen-fresh && mkdir .gen-fresh && tclsh tools/css.tcl .gen-fresh >/dev/null && tclsh tools/elixir.tcl .gen-fresh >/dev/null \
 	  && for f in colors.css typography.css spacing.css effects.css design_system_tokens.ex; do diff -u tokens/$$f .gen-fresh/$$f || exit 1; done \
 	  && rm -rf .gen-fresh && echo "generated: fresh"
-
-bundle:                           ## re-transpile changed components/ into _ds_bundle.js (distrobox)
-	$(BOX) python3 tools/rebundle.py
 
 specimen:                         ## regenerate specimen.html from tokens/
 	tclsh tools/specimen.tcl

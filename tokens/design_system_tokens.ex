@@ -184,7 +184,7 @@ defmodule DesignSystem.Tokens do
     ramp: [%{
         step: :critical,
         hue_source: :red,
-        hex24: "#ff2740",
+        hex24: "#ff6472",
         on_status: "#ffffff"
       }, %{
         step: :high,
@@ -204,14 +204,13 @@ defmodule DesignSystem.Tokens do
       }, %{
         step: :unknown,
         hue_source: nil,
-        hex24: "#8a8f99",
+        hex24: "#9ca2ac",
         on_status: "#ffffff"
       }],
     treatment: %{
       variants: [:fill, :outline],
       light_surfaces: [:fill],
-      dark_surfaces: [:fill, :outline],
-      always_fill: [:critical]
+      dark_surfaces: [:fill, :outline]
     },
     oasis_cap: %{
       severity: %{

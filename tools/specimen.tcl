@@ -92,10 +92,10 @@ table { border-collapse: collapse; font-size: var(--text-small) } th, td { text-
 .mark { width: 1.5rem; height: 1.5rem; stroke: currentColor; fill: none; vertical-align: middle }
 .mk { display: inline-flex; flex-direction: column; align-items: center; gap: var(--space-half); width: 7rem; padding: var(--space-1); border: 1px solid var(--border); background: var(--surface-raised); border-radius: var(--radius-lg) }
 .badge { display: inline-flex; align-items: center; gap: var(--space-half); border: 1px solid var(--c); border-radius: var(--radius-sm); padding: var(--space-half) var(--space-1); font-weight: var(--weight-medium) }
-/* treatment rule (manual 01 §3): fill everywhere; outline dark only; critical always fill */
-.badge.fill, [data-mode="light"] .badge.outline, .badge.outline[data-step="critical"] { background: var(--c); color: var(--on) }
+/* treatment rule (manual 01 §3): fill everywhere; outline dark only */
+.badge.fill, [data-mode="light"] .badge.outline { background: var(--c); color: var(--on) }
 .badge.outline { color: var(--c); background: var(--surface) }
-[data-mode="light"] .badge.outline, .badge.outline[data-step="critical"] { color: var(--on) }
+[data-mode="light"] .badge.outline { color: var(--on) }
 .badge .hex { color: inherit; opacity: .7 }
 .tlp { background: var(--tlp-bg); padding: var(--space-half) var(--space-1); font-weight: var(--weight-bold) }
 .btn { font: inherit; background: var(--surface); color: var(--text); border: var(--border-width) solid var(--border); border-radius: var(--radius-md); padding: var(--space-1) var(--space-2); cursor: pointer; transition: all var(--dur-fast) var(--ease-standard) }
@@ -136,7 +136,7 @@ $sprite
 <h3>Spectrum — diverging, green center</h3>
 <div class="row">$spec</div>
 <h3>Status ramp — OASIS CAP severity</h3>
-<p><small>fill: legal everywhere · outline: dark surfaces only · critical is always fill. Switch to light mode: the outline row renders as fill.</small></p>
+<p><small>fill: legal everywhere · outline: dark surfaces only. Switch to light mode: the outline row renders as fill.</small></p>
 <div class="row">$statFill</div>
 <div class="row">$stat</div>
 <h3>STIX opinion — on the muted spectrum</h3>

@@ -14,22 +14,22 @@
  ;; :on-status is the label color placed on the step used as a FILL (APCA >= 45,
  ;; large/heavy text only — same tier as the chrome :on-accent).
  :ramp
- [{:step :critical :hue-source :red    :hex24 "#ff2740" :on-status "#ffffff"}
+ [{:step :critical :hue-source :red    :hex24 "#ff6472" :on-status "#ffffff"}
   {:step :high     :hue-source :orange :hex24 "#ff7a00" :on-status "#ffffff"}
   {:step :medium   :hue-source :yellow :hex24 "#ffd400" :on-status "#000000"}
   {:step :low      :hue-source :green  :hex24 "#2fd44e" :on-status "#000000"}
-  {:step :unknown  :hue-source nil     :hex24 "#8a8f99" :on-status "#ffffff"}]
+  {:step :unknown  :hue-source nil     :hex24 "#9ca2ac" :on-status "#ffffff"}]
 
- ;; Treatment rule. The ramp was tuned for dark surfaces; as a foreground on
- ;; light chrome it fails contrast, and :critical fails even on dark (Lc ~38).
+ ;; Treatment rule. Every step clears APCA 45 as an OUTLINE (text/border) on
+ ;; every dark theme bg and surface, and as a FILL with its :on-status label —
+ ;; the ramp was lifted (critical, unknown) so this holds with no exceptions.
+ ;; On light chrome the vivid ramp still fails as a foreground, so:
  ;;   fill    — step as background, :on-status as label. Legal everywhere.
  ;;   outline — step as text + border on the theme surface. Dark surfaces only.
- ;; :critical is always :fill: the one you must not miss.
  :treatment
  {:variants      [:fill :outline]
   :light-surfaces [:fill]
-  :dark-surfaces  [:fill :outline]
-  :always-fill    [:critical]}
+  :dark-surfaces  [:fill :outline]}
 
  ;; OASIS CAP bindings. severity and urgency are alarm-valenced and map
  ;; directly. certainty is ORDINAL (not alarm-valenced): do not render as

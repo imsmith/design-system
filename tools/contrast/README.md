@@ -47,9 +47,9 @@ built per consumer when needed, per `manual/11-usage-governance.md`.
 The status ramp has two treatments (`manual/01-color.md` §3):
 
 - **fill** — `on-status` label on the step. **Hard** check, Lc 45, every step.
-- **outline** — step as text/border on the theme surface. Dark surfaces only,
-  and `critical` is always fill, so the verifier reports the other four steps
-  on the three dark variants as **advisory** (`WARN`, never fails).
+- **outline** — step as text/border on every dark theme's `bg` and `surface`.
+  **Hard** check, Lc 45, every step. Light surfaces are fill-only and are not
+  measured.
 
 TLP markings on TLP black are also advisory: the values are locked by the
 standard.

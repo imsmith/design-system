@@ -16,7 +16,7 @@ Full texts are vendored under [`LICENSES/`](LICENSES/) (SPDX-named):
 
 ## Third-party
 
-Fonts are **not** included in this repository and are licensed by their authors:
+Fonts under `fonts/` are vendored and licensed by their authors:
 
 - **Martian Mono / MartianMono Nerd Font** and **Martian Grotesk** — Evil Martians,
   SIL Open Font License 1.1 (`OFL-1.1`).
@@ -26,5 +26,5 @@ Fonts are **not** included in this repository and are licensed by their authors:
 ## Note
 
 This file is the authoritative per-path declaration; the `LICENSES/` directory
-holds the verbatim texts. Fonts (OFL-1.1) are not vendored — their license travels
-with the font files when self-hosted.
+holds the verbatim texts. The font files under `fonts/` carry their own OFL-1.1
+license.

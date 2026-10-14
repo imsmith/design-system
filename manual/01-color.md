@@ -83,11 +83,11 @@ The ramp is **ordered** and four steps deep plus an off-scale **unknown**:
 
 | Step | Hue source | Vivid value | On-status label | Meaning |
 | --- | --- | --- | --- | --- |
-| critical | red | `#ff2740` | `#ffffff` | most severe / most urgent |
+| critical | red | `#ff6472` | `#ffffff` | most severe / most urgent |
 | high | orange | `#ff7a00` | `#ffffff` | |
 | medium | yellow | `#ffd400` | `#000000` | |
 | low | green | `#2fd44e` | `#000000` | least severe / nominal |
-| unknown | — (neutral) | `#8a8f99` | `#ffffff` | off-scale; not a spectrum hue |
+| unknown | — (neutral) | `#9ca2ac` | `#ffffff` | off-scale; not a spectrum hue |
 
 `unknown` is deliberately a neutral grey, not a hue: "unknown" is *off* the
 scale, not a point on it. It tracks the theme's muted chrome value.
@@ -103,17 +103,14 @@ on light chrome (medium reads Lc 15 on a light `bg`).
 | **fill** | step as background, `on-status` as the label color | everywhere |
 | **outline** | step as text + border on the theme `surface` | dark surfaces only |
 
-Two hard rules:
-
-- **Light surfaces: fill only.**
-- **`critical` is always fill**, on every surface. It is the one you must not
-  miss, and as an outline it sits at Lc ~38 even on dark.
-
-On dark surfaces the other four steps may use either treatment; a page should
-pick one and stay with it. `on-status` is rated for **large or heavy text only**
-(APCA Lc 45 tier, like `on-accent`): badge labels and alert titles, never body
-copy on a status fill. The fill pairs are verified by `tools/contrast/`; the
-outline pairs are reported as advisory.
+One hard rule: **light surfaces are fill only.** On dark surfaces every step
+may use either treatment; a page should pick one and stay with it. The ramp
+values were lifted (`critical`, `unknown`) so that **every step clears APCA
+Lc 45 as an outline on every dark theme's `bg` and `surface`** — the same five
+colors, the same treatment, no exceptions. `on-status` is rated for **large or
+heavy text only** (APCA Lc 45 tier, like `on-accent`): badge labels and alert
+titles, never body copy on a status fill. Both the fill pairs and the dark
+outline pairs are hard checks in `tools/contrast/`.
 
 ### OASIS mappings
 

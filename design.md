@@ -86,13 +86,14 @@ contrast on light, `glow` keeps the raw anchor. Do not interpolate or guess.
   cool pole = negative (`seafoam #44dd88` → `purple #663399`). Muted, continuous.
   Use for temperature, error-vs-baseline, gauges, charts.
 - **Status ramp** (`tokens/color/status.edn`) — vivid, attention-grabbing,
-  ordered: `critical #ff2740`, `high #ff7a00`, `medium #ffd400`, `low #2fd44e`,
-  `unknown #8a8f99`. Bound to OASIS CAP severity/urgency (alarm-valenced).
+  ordered: `critical #ff6472`, `high #ff7a00`, `medium #ffd400`, `low #2fd44e`,
+  `unknown #9ca2ac`. Bound to OASIS CAP severity/urgency (alarm-valenced).
   CAP *certainty* is ordinal — do not render red→green; encode by intensity.
   **Treatment rule:** `fill` (step as background + `on-status` label: white for
   critical/high/unknown, black for medium/low) is legal everywhere; `outline`
-  (step as text + border) is **dark surfaces only**; `critical` is **always
-  fill**. `on-status` is for labels, never body text.
+  (step as text + border) is **dark surfaces only**. Every step clears Lc 45
+  both ways on dark — no per-step exceptions. `on-status` is for labels, never
+  body text.
 - **STIX `opinion`** (`tokens/color/opinion.edn`) — discrete diverging Likert on
   the muted spectrum; disagree=warm, agree=cool (flippable but state it).
 - **STIX TLP** (`tokens/color/markings.edn`) — `RED #FF2B2B`, `AMBER #FFC000`,

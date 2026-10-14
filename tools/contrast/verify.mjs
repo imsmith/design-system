@@ -49,11 +49,9 @@ const pairs = [
   ['on-accent', 'accent', 'on-accent label/accent', 45],
 ];
 
-// Data color is theme-invariant, so every status step and TLP marking is also
-// measured on every theme's bg/surface (status) and on TLP black (markings).
-// ADVISORY ONLY: the manual sets no threshold for data color on chrome, and TLP
-// is locked by its standard. Reported against the on-accent bar (45) so the
-// numbers are visible; counted separately and never fail the run.
+// Data color is theme-invariant. Status is measured as a fill (on-status label)
+// and as an outline on every dark theme — both hard. TLP on black is advisory
+// only: the values are locked by the standard.
 const hexes = (p) => [...readFileSync(resolve(here, p), 'utf8').matchAll(/:(?:step|name)\s+:?"?([A-Za-z:+-]+)"?[^\n]*?:hex24\s+"(#[0-9A-Fa-f]+)"(?:\s+:on-status\s+"(#[0-9A-Fa-f]+)")?/g)].map(m => [m[1], m[2], m[3]]);
 const statusRamp = hexes('../../tokens/color/status.edn');
 const tlp = hexes('../../tokens/color/markings.edn');
@@ -86,18 +84,20 @@ for (const [step, hex, on] of statusRamp) {
   console.log(`  ${pad(step, 24)} Lc ${pad(v.toFixed(0), 4)} need 45  ${ok ? 'PASS' : '**FAIL**'}`);
 }
 
-// Status OUTLINE treatment (advisory): step as text/border on DARK surfaces only;
-// critical is always fill so it is not an outline pairing. Light is not legal.
-let warns = 0;
-const advise = (lbl, v) => { const ok = v >= 45; if (!ok) warns++; console.log(`  ${pad(lbl, 24)} Lc ${pad(v.toFixed(0), 4)} ref  45  ${ok ? 'ok' : 'WARN'}`); };
+// Status OUTLINE treatment (hard): every step as text/border on every DARK
+// variant's bg and surface. Light surfaces are fill-only, so not measured.
 for (const [name, roles] of Object.entries(variants)) {
   if (!name.endsWith('/dark')) continue;
-  console.log(`\n== advisory: status outline on ${name} ==`);
-  for (const [step, hex] of statusRamp) {
-    if (step === 'critical') continue;
-    for (const br of ['bg', 'surface']) advise(step + '/' + br, mag(hex, roles[br]));
+  console.log(`\n== status outline on ${name} ==`);
+  for (const [step, hex] of statusRamp) for (const br of ['bg', 'surface']) {
+    const v = mag(hex, roles[br]), ok = v >= 45;
+    if (!ok) fails++;
+    console.log(`  ${pad(step + '/' + br, 24)} Lc ${pad(v.toFixed(0), 4)} need 45  ${ok ? 'PASS' : '**FAIL**'}`);
   }
 }
+
+let warns = 0;
+const advise = (lbl, v) => { const ok = v >= 45; if (!ok) warns++; console.log(`  ${pad(lbl, 24)} Lc ${pad(v.toFixed(0), 4)} ref  45  ${ok ? 'ok' : 'WARN'}`); };
 console.log(`\n== advisory: TLP on ${tlpBg} (locked by standard) ==`);
 for (const [name, hex] of tlp) advise(name, mag(hex, tlpBg));
 
