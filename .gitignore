@@ -3,4 +3,14 @@
 
 # Node deps for tools/ — installed inside a distrobox, never committed
 node_modules/
+
+# software archives
 *.zip
+*.tar
+*.tgz
+*.gz
+
+# lazy ignore
+*-old.*
+
+

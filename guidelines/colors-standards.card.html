@@ -1,0 +1,41 @@
+<!-- @dsCard group="Colors" viewport="700x140" name="TLP markings + STIX opinion" subtitle="Locked standard palettes — kept separate from data color" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="tron">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: var(--space-3); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+  .hd { font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--muted); margin-bottom: var(--space-1); }
+  .tlp { display: flex; gap: 6px; background: #000; padding: var(--space-1); border-radius: var(--radius-md); }
+  .tlp .c { flex: 1; height: 40px; border-radius: var(--radius-sm); display: flex; align-items: flex-end; justify-content: center; font-family: var(--font-mono); font-size: 9px; padding-bottom: 3px; color: #000; font-weight: 700; }
+  .op { display: flex; align-items: center; gap: 0; }
+  .op .o { flex: 1; height: 40px; }
+  .op .o:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+  .op .o:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+  .lbl { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--muted); margin-top: 6px; }
+</style>
+</head>
+<body>
+<div>
+  <div class="hd">STIX / TLP markings (locked, on black)</div>
+  <div class="tlp">
+    <span class="c" style="background:var(--tlp-red)">RED</span>
+    <span class="c" style="background:var(--tlp-amber)">AMBER</span>
+    <span class="c" style="background:var(--tlp-green)">GREEN</span>
+    <span class="c" style="background:var(--tlp-clear);color:#000">CLEAR</span>
+  </div>
+</div>
+<div>
+  <div class="hd">STIX opinion (muted spectrum)</div>
+  <div class="op">
+    <span class="o" style="background:var(--opinion-strongly-disagree)"></span>
+    <span class="o" style="background:var(--opinion-disagree)"></span>
+    <span class="o" style="background:var(--opinion-neutral)"></span>
+    <span class="o" style="background:var(--opinion-agree)"></span>
+    <span class="o" style="background:var(--opinion-strongly-agree)"></span>
+  </div>
+  <div class="lbl"><span>disagree · warm</span><span>agree · cool</span></div>
+</div>
+</body>
+</html>

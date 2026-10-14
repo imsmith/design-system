@@ -1,0 +1,50 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Forms — inputs & controls" subtitle="Input, Select, Checkbox, Toggle" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="tron">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Form components</title>
+<link rel="stylesheet" href="../../styles.css" />
+<script src="../../assets/marks/sprite-inject.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; padding: var(--space-3); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  .stack { display: flex; flex-direction: column; gap: var(--space-2); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { Input, Select, Checkbox, Toggle } = window.DesignSystem_019de4;
+function Demo() {
+  return (
+    <div className="grid">
+      <div className="stack">
+        <Input label="Node id" placeholder="node-13" icon="m-search" defaultValue="node-13" />
+        <Input label="Sector" value="" error="Sector required." readOnly />
+        <Select label="Density" options={["comfortable", "compact", "dense"]} defaultValue="compact" />
+      </div>
+      <div className="stack">
+        <Input label="Threshold (ms)" defaultValue="40" helper="Warn above this latency." />
+        <div className="stack" style={{ gap: "var(--space-1)" }}>
+          <Checkbox label="Acknowledge alert" defaultChecked />
+          <Checkbox label="Auto-reroute on failure" />
+          <Checkbox label="Locked policy" disabled />
+        </div>
+        <div className="stack" style={{ gap: "var(--space-1)" }}>
+          <Toggle label="Live tail" showState defaultChecked />
+          <Toggle label="Reduced motion" showState />
+        </div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body>
+</html>

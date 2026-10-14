@@ -1,0 +1,36 @@
+<!-- @dsCard group="Colors" viewport="700x140" name="Diverging spectrum" subtitle="Theme-invariant data scale; green is center (nominal)" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="tron">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: var(--space-3); }
+  .scale { display: flex; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); }
+  .stop { flex: 1; height: 44px; position: relative; }
+  .axis { display: flex; justify-content: space-between; margin-top: 6px; font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--muted); }
+  .center { text-align: center; margin-top: 4px; font-family: var(--font-mono); font-size: var(--text-micro); color: var(--spectrum-green); }
+</style>
+</head>
+<body>
+<div class="scale">
+  <div class="stop" style="background:var(--spectrum-plumb)"></div>
+  <div class="stop" style="background:var(--spectrum-red)"></div>
+  <div class="stop" style="background:var(--spectrum-pink)"></div>
+  <div class="stop" style="background:var(--spectrum-orange)"></div>
+  <div class="stop" style="background:var(--spectrum-yellow)"></div>
+  <div class="stop" style="background:var(--spectrum-green);outline:2px solid var(--text);outline-offset:-2px"></div>
+  <div class="stop" style="background:var(--spectrum-seafoam)"></div>
+  <div class="stop" style="background:var(--spectrum-turquoise)"></div>
+  <div class="stop" style="background:var(--spectrum-teal)"></div>
+  <div class="stop" style="background:var(--spectrum-blue)"></div>
+  <div class="stop" style="background:var(--spectrum-indigo)"></div>
+  <div class="stop" style="background:var(--spectrum-purple)"></div>
+</div>
+<div class="axis">
+  <span>warm +5 · over</span>
+  <span>cool −6 · under</span>
+</div>
+<div class="center">▲ green 0 = nominal · distance = magnitude of deviation</div>
+</body>
+</html>

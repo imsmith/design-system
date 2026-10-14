@@ -1,0 +1,48 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Theme anchors — Tron · Matrix · Compaq" subtitle="Three CRT-rooted skins; chrome only, pick one" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="tron">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: var(--space-3); background: #05080a; }
+  .themes { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2); }
+  .theme { border-radius: var(--radius-lg); border: 1px solid; padding: var(--space-2); }
+  .lin { font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); margin-bottom: var(--space-1); }
+  .swatches { display: flex; gap: 4px; }
+  .s { width: 28px; height: 28px; border-radius: var(--radius-sm); }
+  .name { font-family: var(--font-mono); font-size: var(--text-small); font-weight: 700; margin-top: var(--space-1); }
+</style>
+</head>
+<body>
+<div class="themes">
+  <div class="theme" style="background:#05080a;border-color:#6d8288">
+    <div class="lin" style="color:#a2bdc3">Tron · cyan vector grid</div>
+    <div class="swatches">
+      <span class="s" style="background:#0a141a"></span>
+      <span class="s" style="background:#cfeff5"></span>
+      <span class="s" style="background:#00E5FF;box-shadow:0 0 8px #00e5ff80"></span>
+    </div>
+    <div class="name" style="color:#00E5FF;text-shadow:0 0 6px #00e5ff66">#00E5FF</div>
+  </div>
+  <div class="theme" style="background:#020a02;border-color:#438b5c">
+    <div class="lin" style="color:#63cb89">Matrix · phosphor green</div>
+    <div class="swatches">
+      <span class="s" style="background:#061206"></span>
+      <span class="s" style="background:#7dffae"></span>
+      <span class="s" style="background:#03A062;box-shadow:0 0 8px #03a06280"></span>
+    </div>
+    <div class="name" style="color:#03A062;text-shadow:0 0 6px #03a06266">#03A062</div>
+  </div>
+  <div class="theme" style="background:#160f04;border-color:#947b58">
+    <div class="lin" style="color:#d5b484">Compaq · amber gas-plasma</div>
+    <div class="swatches">
+      <span class="s" style="background:#20160a"></span>
+      <span class="s" style="background:#ffd9a0"></span>
+      <span class="s" style="background:#FF8A00;box-shadow:0 0 8px #ff8a0080"></span>
+    </div>
+    <div class="name" style="color:#FF8A00;text-shadow:0 0 6px #ff8a0066">#FF8A00</div>
+  </div>
+</div>
+</body>
+</html>

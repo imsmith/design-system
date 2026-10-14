@@ -1,0 +1,28 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Chrome roles — Tron (default)" subtitle="The 8 per-theme chrome roles; dark variant" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="tron">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: var(--space-3); }
+  .roles { display: grid; grid-template-columns: repeat(8, 1fr); gap: var(--space-1); }
+  .role { display: flex; flex-direction: column; gap: 6px; }
+  .sw { height: 48px; border-radius: var(--radius-md); border: 1px solid var(--border); }
+  .nm { font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--muted); }
+  .hex { font-size: var(--text-micro); font-variant-numeric: tabular-nums; color: var(--text); opacity: 0.7; }
+</style>
+</head>
+<body>
+<div class="roles">
+  <div class="role"><div class="sw" style="background:var(--bg)"></div><span class="nm">bg</span><span class="hex">#05080a</span></div>
+  <div class="role"><div class="sw" style="background:var(--surface)"></div><span class="nm">surface</span><span class="hex">#0a141a</span></div>
+  <div class="role"><div class="sw" style="background:var(--text)"></div><span class="nm">text</span><span class="hex">#cfeff5</span></div>
+  <div class="role"><div class="sw" style="background:var(--muted)"></div><span class="nm">muted</span><span class="hex">#a2bdc3</span></div>
+  <div class="role"><div class="sw" style="background:var(--border)"></div><span class="nm">border</span><span class="hex">#6d8288</span></div>
+  <div class="role"><div class="sw" style="background:var(--accent);box-shadow:var(--glow-box-ambient)"></div><span class="nm">accent</span><span class="hex">#00E5FF</span></div>
+  <div class="role"><div class="sw" style="background:var(--on-accent)"></div><span class="nm">on-accent</span><span class="hex">#000000</span></div>
+  <div class="role"><div class="sw" style="background:var(--accent-tint)"></div><span class="nm">tint</span><span class="hex">12%</span></div>
+</div>
+</body>
+</html>

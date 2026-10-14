@@ -1,0 +1,52 @@
+<!-- @dsCard group="Brand" viewport="700x200" name="Marks — the icon system" subtitle="24×24, 2px monoline outline, currentColor; status shapes reserved" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="tron">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<script src="../assets/marks/sprite-inject.js"></script>
+<style>
+  body { margin: 0; padding: var(--space-3); }
+  .hd { font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--muted); margin: 0 0 6px; }
+  .set { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-2); }
+  svg { width: 22px; height: 22px; }
+  .ui { color: var(--text); }
+  .status { display: inline-flex; }
+</style>
+</head>
+<body>
+<p class="hd">Status (reserved silhouettes)</p>
+<div class="set status">
+  <svg style="color:var(--status-critical)"><use href="#m-critical"/></svg>
+  <svg style="color:var(--status-high)"><use href="#m-high"/></svg>
+  <svg style="color:var(--status-medium)"><use href="#m-medium"/></svg>
+  <svg style="color:var(--status-low)"><use href="#m-low"/></svg>
+  <svg style="color:var(--status-unknown)"><use href="#m-unknown"/></svg>
+  <span style="width:var(--space-2)"></span>
+  <svg style="color:var(--spectrum-orange)"><use href="#m-warm"/></svg>
+  <svg style="color:var(--spectrum-green)"><use href="#m-neutral"/></svg>
+  <svg style="color:var(--spectrum-teal)"><use href="#m-cool"/></svg>
+</div>
+<p class="hd">Functional set</p>
+<div class="set ui">
+  <svg><use href="#m-close"/></svg>
+  <svg><use href="#m-menu"/></svg>
+  <svg><use href="#m-chevron"/></svg>
+  <svg><use href="#m-more"/></svg>
+  <svg><use href="#m-search"/></svg>
+  <svg><use href="#m-add"/></svg>
+  <svg><use href="#m-edit"/></svg>
+  <svg><use href="#m-delete"/></svg>
+  <svg><use href="#m-refresh"/></svg>
+  <svg><use href="#m-filter"/></svg>
+  <svg><use href="#m-download"/></svg>
+  <svg><use href="#m-upload"/></svg>
+  <svg><use href="#m-settings"/></svg>
+  <svg><use href="#m-info"/></svg>
+  <svg><use href="#m-help"/></svg>
+  <svg><use href="#m-user"/></svg>
+  <svg><use href="#m-lock"/></svg>
+  <svg><use href="#m-bell"/></svg>
+</div>
+</body>
+</html>

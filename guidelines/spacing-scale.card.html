@@ -1,0 +1,26 @@
+<!-- @dsCard group="Spacing" viewport="700x190" name="Spacing scale" subtitle="8px base, 4px half-step; near-geometric on the grid" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="tron">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: var(--space-3); }
+  .row { display: flex; align-items: center; gap: var(--space-2); padding: 3px 0; }
+  .tok { width: 11ch; flex: none; font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--muted); }
+  .bar { height: 14px; background: var(--accent); border-radius: var(--radius-sm); }
+  .px { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--muted); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+  <div class="row"><span class="tok">space-half</span><span class="bar" style="width:var(--space-half)"></span><span class="px">4</span></div>
+  <div class="row"><span class="tok">space-1</span><span class="bar" style="width:var(--space-1)"></span><span class="px">8 · base</span></div>
+  <div class="row"><span class="tok">space-2</span><span class="bar" style="width:var(--space-2)"></span><span class="px">16 · default gap</span></div>
+  <div class="row"><span class="tok">space-3</span><span class="bar" style="width:var(--space-3)"></span><span class="px">24 · gutter</span></div>
+  <div class="row"><span class="tok">space-4</span><span class="bar" style="width:var(--space-4)"></span><span class="px">32</span></div>
+  <div class="row"><span class="tok">space-5</span><span class="bar" style="width:var(--space-5)"></span><span class="px">48</span></div>
+  <div class="row"><span class="tok">space-6</span><span class="bar" style="width:var(--space-6)"></span><span class="px">64</span></div>
+  <div class="row"><span class="tok">space-7</span><span class="bar" style="width:var(--space-7)"></span><span class="px">96</span></div>
+  <div class="row"><span class="tok">space-8</span><span class="bar" style="width:var(--space-8)"></span><span class="px">128 · page rhythm</span></div>
+</body>
+</html>

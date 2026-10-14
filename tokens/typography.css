@@ -1,0 +1,41 @@
+/* typography.css — the type system (tokens/typography.edn)
+ *
+ * A duo. Mono is the VOICE: headings, labels, data, code, UI. Prose is its
+ * proportional sibling, for long-form running text ONLY. Base 16px = 1rem,
+ * modular scale ratio ~1.25 (major third).
+ */
+
+:root {
+  /* Families. The mono stack leads with the Nerd Font name so a self-hosted
+   * patch wins if present, then plain Martian Mono, then system mono. */
+  --font-mono:  "MartianMono Nerd Font", "Martian Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-prose: "Martian Grotesk", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+  /* Type scale (px → rem). */
+  --text-display: 2.5rem;    /* 40 — hero / display */
+  --text-h1:      2rem;      /* 32 — page title */
+  --text-h2:      1.5rem;    /* 24 — section heading */
+  --text-h3:      1.25rem;   /* 20 — subsection heading */
+  --text-lead:    1.125rem;  /* 18 — lead paragraph */
+  --text-body:    1rem;      /* 16 — base running text */
+  --text-small:   0.875rem;  /* 14 — secondary text */
+  --text-caption: 0.75rem;   /* 12 — captions / labels */
+  --text-micro:   0.6875rem; /* 11 — dense data / fine print */
+
+  /* Weights. */
+  --weight-regular: 400;  /* @kind other */
+  --weight-medium:  500;  /* @kind other */
+  --weight-bold:    700;  /* @kind other */
+
+  /* Line heights. */
+  --leading-tight:  1.15;  /* @kind other */
+  --leading-snug:   1.4;   /* @kind other */
+  --leading-normal: 1.6;   /* @kind other */
+
+  /* Tracking — UPPERCASE labels are a core terminal-hierarchy channel. */
+  --tracking-label: 0.08em;   /* @kind other */
+  --tracking-tight: -0.01em;  /* @kind other */
+
+  /* Measure. */
+  --measure-prose: 72ch;   /* 60–75ch range */
+}
