@@ -88,6 +88,10 @@ contrast on light, `glow` keeps the raw anchor. Do not interpolate or guess.
   ordered: `critical #ff2740`, `high #ff7a00`, `medium #ffd400`, `low #2fd44e`,
   `unknown #8a8f99`. Bound to OASIS CAP severity/urgency (alarm-valenced).
   CAP *certainty* is ordinal — do not render red→green; encode by intensity.
+  **Treatment rule:** `fill` (step as background + `on-status` label: white for
+  critical/high/unknown, black for medium/low) is legal everywhere; `outline`
+  (step as text + border) is **dark surfaces only**; `critical` is **always
+  fill**. `on-status` is for labels, never body text.
 - **STIX `opinion`** (`tokens/color/opinion.edn`) — discrete diverging Likert on
   the muted spectrum; disagree=warm, agree=cool (flippable but state it).
 - **STIX TLP** (`tokens/color/markings.edn`) — `RED #FF2B2B`, `AMBER #FFC000`,
@@ -167,7 +171,9 @@ the state matrix:
 - `disabled` muted text, 0.5 opacity, non-interactive, no glow.
 - `loading` animated `m-refresh`, `aria-busy`, content hidden.
 - `error` `status/critical` border + text + `m-critical` glyph + message —
-  color + glyph + text, never color alone.
+  color + glyph + text, never color alone. (The field keeps its surface; this is
+  the one place critical is used as an outline, and it is reinforced by the
+  glyph and message.)
 - `selected` accent tint at low alpha + accent rule (left/underline).
 - `read-only` no border, editable false, selectable true.
 

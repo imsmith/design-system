@@ -105,6 +105,13 @@
   --status-medium:             #ffd400;
   --status-low:                #2fd44e;
   --status-unknown:            #8a8f99;
+  /* Label color on a status FILL (large/heavy text only). Fill is legal everywhere;
+   * outline (step as text/border) is dark-surface only; critical is always fill. */
+  --on-status-critical:        #ffffff;
+  --on-status-high:            #ffffff;
+  --on-status-medium:          #000000;
+  --on-status-low:             #000000;
+  --on-status-unknown:         #ffffff;
 
   /* STIX opinion (tokens/color/opinion.edn) on the muted spectrum. disagree = warm. */
   --opinion-strongly-disagree: #aa3355;  /* spectrum red */

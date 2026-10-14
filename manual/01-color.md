@@ -81,16 +81,39 @@ saturation and brightness so they read as alerts, not data.
 
 The ramp is **ordered** and four steps deep plus an off-scale **unknown**:
 
-| Step | Hue source | Vivid value | Meaning |
-| --- | --- | --- | --- |
-| critical | red | `#ff2740` | most severe / most urgent |
-| high | orange | `#ff7a00` | |
-| medium | yellow | `#ffd400` | |
-| low | green | `#2fd44e` | least severe / nominal |
-| unknown | — (neutral) | `#8a8f99` | off-scale; not a spectrum hue |
+| Step | Hue source | Vivid value | On-status label | Meaning |
+| --- | --- | --- | --- | --- |
+| critical | red | `#ff2740` | `#ffffff` | most severe / most urgent |
+| high | orange | `#ff7a00` | `#ffffff` | |
+| medium | yellow | `#ffd400` | `#000000` | |
+| low | green | `#2fd44e` | `#000000` | least severe / nominal |
+| unknown | — (neutral) | `#8a8f99` | `#ffffff` | off-scale; not a spectrum hue |
 
 `unknown` is deliberately a neutral grey, not a hue: "unknown" is *off* the
 scale, not a point on it. It tracks the theme's muted chrome value.
+
+### Treatment — fill or outline
+
+The ramp is theme-invariant in **value**; how it is applied to a surface is a
+rule, because the values were tuned for dark phosphor and fail as a foreground
+on light chrome (medium reads Lc 15 on a light `bg`).
+
+| Treatment | What it is | Where it is legal |
+| --- | --- | --- |
+| **fill** | step as background, `on-status` as the label color | everywhere |
+| **outline** | step as text + border on the theme `surface` | dark surfaces only |
+
+Two hard rules:
+
+- **Light surfaces: fill only.**
+- **`critical` is always fill**, on every surface. It is the one you must not
+  miss, and as an outline it sits at Lc ~38 even on dark.
+
+On dark surfaces the other four steps may use either treatment; a page should
+pick one and stay with it. `on-status` is rated for **large or heavy text only**
+(APCA Lc 45 tier, like `on-accent`): badge labels and alert titles, never body
+copy on a status fill. The fill pairs are verified by `tools/contrast/`; the
+outline pairs are reported as advisory.
 
 ### OASIS mappings
 

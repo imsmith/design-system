@@ -50,6 +50,8 @@ append c "  /* Diverging spectrum (tokens/color/spectrum.edn). Green is the cent
 foreach s [dict get $spectrum :stops] { append c [prop --spectrum-[kw [dict get $s :name]] [dict get $s :hex24] [format %+d [dict get $s :index]]] }
 append c "\n  /* Status alert ramp (tokens/color/status.edn). OASIS CAP severity. Never color alone. */\n"
 foreach s [dict get $status :ramp] { append c [prop --status-[kw [dict get $s :step]] [dict get $s :hex24]] }
+append c "  /* Label color on a status FILL (large/heavy text only). Fill is legal everywhere;\n   * outline (step as text/border) is dark-surface only; critical is always fill. */\n"
+foreach s [dict get $status :ramp] { append c [prop --on-status-[kw [dict get $s :step]] [dict get $s :on-status]] }
 append c "\n  /* STIX opinion (tokens/color/opinion.edn) on the muted spectrum. disagree = warm. */\n"
 foreach o [dict get $opinion :map] { append c [prop --opinion-[dict get $o :value] [dict get $o :hex24] "spectrum [kw [dict get $o :stop]]"] }
 append c "\n  /* TLP markings (tokens/color/markings.edn). Prescribed by the standard; shown on black. */\n"

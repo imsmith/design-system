@@ -103,7 +103,12 @@ Every component spec follows the same shape:
 
 - The non-color-alone showcase: alert-ramp color + **status glyph** + label, mapping
   CAP severity ([01 · Color](01-color.md) §3, [04 · Marks](04-marks-iconography.md) §2).
-- **Terminal:** `glyph LABEL` using the Nerd Font / Unicode mark tier.
+- **Variants:** `fill` (step as background, `on-status` label) and `outline` (step
+  as text + border). Outline is **dark surfaces only**; on light the badge renders
+  as fill regardless of the requested variant. `critical` is **always fill**.
+  Pick one variant per page.
+- **Terminal:** `glyph LABEL` using the Nerd Font / Unicode mark tier; fill maps to
+  reverse video, outline to colored text.
 
 ### Alert / banner
 
