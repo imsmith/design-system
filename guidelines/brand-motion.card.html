@@ -1,0 +1,32 @@
+<!-- @dsCard group="Brand" viewport="700x150" name="Motion" subtitle="Minimal/functional; durations + easing; one status pulse" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="tron">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: var(--space-3); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); align-items: center; }
+  .hd { font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--muted); margin-bottom: var(--space-1); }
+  .drow { display: flex; align-items: center; gap: var(--space-2); font-family: var(--font-mono); font-size: var(--text-caption); color: var(--text); margin-bottom: 5px; }
+  .drow b { width: 9ch; color: var(--muted); font-weight: 400; text-transform: uppercase; letter-spacing: var(--tracking-label); }
+  .drow .ms { margin-left: auto; color: var(--muted); }
+  .track { flex: 1; height: 8px; background: var(--bg); border: 1px solid var(--border); border-radius: 999px; overflow: hidden; }
+  .pulse { display: inline-flex; align-items: center; gap: var(--space-1); color: var(--status-critical); font-family: var(--font-mono); font-size: var(--text-small); font-weight: 500; }
+  .dot { width: 12px; height: 12px; border-radius: 999px; background: var(--status-critical); }
+</style>
+</head>
+<body>
+<div>
+  <div class="hd">Durations</div>
+  <div class="drow"><b>instant</b><span class="ms">0ms</span></div>
+  <div class="drow"><b>fast</b><span class="ms">120ms · hover</span></div>
+  <div class="drow"><b>moderate</b><span class="ms">200ms · menu</span></div>
+  <div class="drow"><b>deliberate</b><span class="ms">320ms · modal</span></div>
+</div>
+<div>
+  <div class="hd">Easing · standard cubic-bezier(.2,0,0,1)</div>
+  <div class="pulse ds-pulse"><span class="dot"></span>CRITICAL PULSE · 1500ms</div>
+  <div style="font-family:var(--font-mono);font-size:var(--text-micro);color:var(--muted);margin-top:var(--space-2);line-height:1.5">Reinforcement only — color + glyph already signal. Static under reduced-motion.</div>
+</div>
+</body>
+</html>

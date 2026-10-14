@@ -1,0 +1,26 @@
+<!-- @dsCard group="Type" viewport="700x320" name="Mono scale — the voice" subtitle="Martian Mono · display 40 → micro 11, ratio 1.25" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="tron">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: var(--space-3); }
+  .row { display: flex; align-items: baseline; gap: var(--space-3); padding: 4px 0; border-bottom: 1px solid color-mix(in srgb, var(--border) 35%, transparent); }
+  .tok { width: 10ch; flex: none; font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--muted); }
+  .spec { font-family: var(--font-mono); color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .px { margin-left: auto; font-size: var(--text-micro); color: var(--muted); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+  <div class="row"><span class="tok">display</span><span class="spec" style="font-size:var(--text-display);font-weight:700;line-height:1.05">Grid online</span><span class="px">40 / 700</span></div>
+  <div class="row"><span class="tok">h1</span><span class="spec" style="font-size:var(--text-h1);font-weight:700">Sector 12</span><span class="px">32 / 700</span></div>
+  <div class="row"><span class="tok">h2</span><span class="spec" style="font-size:var(--text-h2);font-weight:500">Uplink telemetry</span><span class="px">24 / 500</span></div>
+  <div class="row"><span class="tok">h3</span><span class="spec" style="font-size:var(--text-h3);font-weight:500">Node detail</span><span class="px">20 / 500</span></div>
+  <div class="row"><span class="tok">lead</span><span class="spec" style="font-size:var(--text-lead)">4 nodes unreachable for 4m.</span><span class="px">18 / 400</span></div>
+  <div class="row"><span class="tok">body</span><span class="spec" style="font-size:var(--text-body)">Reroute traffic or restore the uplink.</span><span class="px">16 / 400</span></div>
+  <div class="row"><span class="tok">small</span><span class="spec" style="font-size:var(--text-small)">node-13 · 41ms · 1,204 req/s</span><span class="px">14 / 400</span></div>
+  <div class="row"><span class="tok">caption</span><span class="spec" style="font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-label);color:var(--muted)">P99 LATENCY</span><span class="px">12 / 400</span></div>
+  <div class="row"><span class="tok">micro</span><span class="spec" style="font-size:var(--text-micro);color:var(--muted)">2026-06-25T02:14:08Z</span><span class="px">11 / 400</span></div>
+</body>
+</html>

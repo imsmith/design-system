@@ -1,0 +1,40 @@
+<!-- @dsCard group="Brand" viewport="700x200" name="Voice — terse/operational" subtitle="Name the problem, state the action; status lexicon" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="tron">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: var(--space-3); }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3) var(--space-4); }
+  .hd { font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--muted); margin-bottom: 6px; }
+  .pair { font-family: var(--font-mono); font-size: var(--text-caption); margin-bottom: 6px; line-height: 1.5; }
+  .dont { color: var(--muted); text-decoration: line-through; }
+  .do { color: var(--text); }
+  .lex { display: flex; gap: var(--space-1); flex-wrap: wrap; }
+  .l { font-family: var(--font-mono); font-size: var(--text-micro); padding: 2px 6px; border-radius: var(--radius-sm); border: 1px solid var(--border); color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="cols">
+  <div>
+    <div class="hd">Don't → Do</div>
+    <div class="pair"><span class="dont">"Oops! Something went wrong"</span><br/><span class="do">Write failed — disk full on node-12.</span></div>
+    <div class="pair"><span class="dont">"Please wait while we load…"</span><br/><span class="do">Loading telemetry…</span></div>
+    <div class="pair"><span class="dont">"Successfully saved!"</span><br/><span class="do">Saved.</span></div>
+  </div>
+  <div>
+    <div class="hd">Message shape</div>
+    <div class="pair do">what happened · why (if known) · what to do</div>
+    <div class="hd" style="margin-top:var(--space-2)">Status lexicon</div>
+    <div class="lex">
+      <span class="l" style="color:var(--status-critical);border-color:var(--status-critical)">✖ DOWN</span>
+      <span class="l" style="color:var(--status-high);border-color:var(--status-high)">▲ ALERT</span>
+      <span class="l" style="color:var(--status-medium);border-color:var(--status-medium)">◆ WARN</span>
+      <span class="l" style="color:var(--status-low);border-color:var(--status-low)">● OK</span>
+      <span class="l" style="color:var(--status-unknown);border-color:var(--status-unknown)">□ UNK</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

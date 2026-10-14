@@ -1,0 +1,33 @@
+<!-- @dsCard group="Spacing" viewport="700x170" name="Density + radius + border" subtitle="Row padding modes; crisp Tron-vector rounding" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="tron">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: var(--space-3); display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-4); }
+  .hd { font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--muted); margin-bottom: var(--space-1); }
+  .drow { font-family: var(--font-mono); font-size: var(--text-small); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); margin-bottom: 6px; display:flex; justify-content:space-between; }
+  .drow span:last-child { color: var(--muted); font-size: var(--text-micro); }
+  .radii { display: flex; gap: var(--space-2); align-items: flex-end; }
+  .r { width: 48px; height: 48px; background: var(--accent-tint); border: 1px solid var(--accent); }
+  .rn { font-family: var(--font-mono); font-size: var(--text-micro); color: var(--muted); margin-top: 4px; text-align: center; }
+</style>
+</head>
+<body>
+<div>
+  <div class="hd">Density — row / control padding</div>
+  <div class="drow" style="padding:var(--density-comfortable)"><span>comfortable</span><span>16</span></div>
+  <div class="drow" style="padding:var(--density-compact)"><span>compact</span><span>8</span></div>
+  <div class="drow" style="padding:var(--density-dense)"><span>dense</span><span>4</span></div>
+</div>
+<div>
+  <div class="hd">Radius</div>
+  <div class="radii">
+    <div><div class="r" style="border-radius:var(--radius-sm)"></div><div class="rn">sm 2</div></div>
+    <div><div class="r" style="border-radius:var(--radius-md)"></div><div class="rn">md 4</div></div>
+    <div><div class="r" style="border-radius:var(--radius-lg)"></div><div class="rn">lg 6</div></div>
+  </div>
+</div>
+</body>
+</html>

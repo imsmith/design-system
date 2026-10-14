@@ -1,0 +1,27 @@
+<!-- @dsCard group="Type" viewport="700x180" name="The duo — mono voice + prose" subtitle="Mono for UI/data/headings; prose for long-form only" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="tron">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: var(--space-3); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+  .hd { font-family: var(--font-mono); font-size: var(--text-micro); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--muted); margin-bottom: var(--space-1); }
+  .mono { font-family: var(--font-mono); }
+  .specimen { font-size: var(--text-h2); font-weight: 700; color: var(--accent); text-shadow: var(--glow-text-ambient); }
+  .sub { font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted); margin-top: 4px; }
+  .prose { font-family: var(--font-prose); font-size: var(--text-body); line-height: var(--leading-normal); color: var(--text); }
+</style>
+</head>
+<body>
+<div>
+  <div class="hd">Mono — Martian Mono · the voice</div>
+  <div class="specimen mono">AaGg 0123 →↻⌕</div>
+  <div class="sub">headings · labels · data · code · UI</div>
+</div>
+<div>
+  <div class="hd">Prose — Martian Grotesk · long-form only</div>
+  <p class="prose">The system speaks like a competent operations tool: terse, precise, honest. Prose is reserved for running text, never for labels or data.</p>
+</div>
+</body>
+</html>

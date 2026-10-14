@@ -1,0 +1,55 @@
+<!-- @dsCard group="Components" viewport="700x360" name="Data — meters, sparklines, heatmap" subtitle="SequentialMeter, DivergingMeter, Sparkline, Heatmap" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="tron">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Data components</title>
+<link rel="stylesheet" href="../../styles.css" />
+<script src="../../assets/marks/sprite-inject.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; padding: var(--space-3); }
+  .grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--space-4); align-items: start; }
+  .stack { display: flex; flex-direction: column; gap: var(--space-3); }
+  .sparks { display: flex; flex-direction: column; gap: var(--space-2); }
+  .sparkrow { display: flex; align-items: center; gap: var(--space-2); font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted); }
+  .sparkrow > span:first-child { width: 7ch; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { SequentialMeter, DivergingMeter, Sparkline, Heatmap } = window.DesignSystem_019de4;
+const cells = Array.from({ length: 64 }, (_, i) => {
+  const v = Math.round((Math.sin(i * 0.7) * 3 + (i % 9) - 4));
+  return { id: "n" + i, value: Math.max(-6, Math.min(5, v)), label: "node-" + i };
+});
+function Demo() {
+  return (
+    <div className="grid">
+      <div className="stack">
+        <SequentialMeter label="cpu" value={82} warn={70} crit={90} />
+        <SequentialMeter label="disk" value={41} warn={80} crit={95} />
+        <SequentialMeter label="mem" value={93} warn={75} crit={90} />
+        <DivergingMeter label="node-13 temp Δ" value={2} unit="°" />
+        <DivergingMeter label="latency Δ" value={-3} range={6} />
+        <DivergingMeter label="baseline" value={0} />
+        <div className="sparks">
+          <div className="sparkrow"><span>p99</span><Sparkline data={[4,5,6,5,7,9,12,18]} mode="threshold" warn={10} crit={16} unit="ms" /></div>
+          <div className="sparkrow"><span>req/s</span><Sparkline data={[20,22,21,23,22,24,23,25]} mode="plain" /></div>
+        </div>
+      </div>
+      <div>
+        <Heatmap columns={8} cells={cells} unit="Δ" />
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body>
+</html>
