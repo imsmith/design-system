@@ -10,8 +10,10 @@ value. Do not invent values that the system already names.
 
 1. **`manual/*.md`** is the authority for MEANING and rules.
 2. **`tokens/**/*.edn`** is the authority for VALUES. A human reads it; a
-   serializer may later emit CSS/ANSI/SVG. There is no generator yet — you read
-   the `edn` directly.
+   serializer may later emit CSS/ANSI/SVG. The only generator so far is
+   `tools/specimen.tcl`, which renders `specimen.html`; its CSS custom
+   properties block is the reference serialization. For anything else you
+   read the `edn` directly.
 3. **Your code is a downstream serialization.** It is obligated to honor 1 and 2.
    If your output and the manual disagree, the manual wins and your output is the
    bug.
@@ -190,4 +192,5 @@ the data; the display word is the chrome.
 - Does data color stay invariant across the theme you chose?
 - Does the copy follow what-happened/why/what-to-do and the status lexicon?
 - Terminal target: did you drop the px scale for cells and supply mark fallbacks?
-- Verify chrome contrast with `tools/contrast/` (APCA), run inside a distrobox.
+- Run `make check` (edn parse, hex drift, links, APCA, markdownlint).
+- If you changed `tokens/`, run `make specimen` and look at `specimen.html`.

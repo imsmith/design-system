@@ -41,3 +41,12 @@ the rationale and the caveat about WCAG 2.x conformance.
 This is the first piece of `tools/` — the deliberately-deferred serialization
 layer. It is a verifier, not a generator. The generator (edn → CSS/ANSI/SVG) is
 built per consumer when needed, per `manual/11-usage-governance.md`.
+
+## Advisory section
+
+After the chrome pairs the verifier also measures every status-ramp step on
+every theme's `bg` and `surface`, and every TLP marking on TLP black, against
+the on-accent bar (45). These are **advisory**: the manual sets no threshold
+for data color on chrome, and TLP values are locked by the standard. They are
+printed as `WARN`, counted separately, and never fail the run. Promote them to
+a hard threshold by moving the pairs into `pairs` once the manual decides.

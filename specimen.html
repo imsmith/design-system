@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en" data-theme="tron" data-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Design system — specimen</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* generated from tokens/ by tools/specimen.tcl — do not edit by hand */
+[data-theme="tron"][data-mode="dark"] { --bg: #05080a; --surface: #0a141a; --text: #cfeff5; --muted: #a2bdc3; --border: #6d8288; --accent: #00E5FF; --on-accent: #000000; --glow: #00E5FF; color-scheme: dark; }
+[data-theme="tron"][data-mode="light"] { --bg: #eef7f9; --surface: #ffffff; --text: #07232a; --muted: #6d7d81; --border: #adb6b9; --accent: #008c9e; --on-accent: #ffffff; --glow: #00E5FF; color-scheme: light; }
+[data-theme="matrix"][data-mode="dark"] { --bg: #020a02; --surface: #061206; --text: #7dffae; --muted: #63cb89; --border: #438b5c; --accent: #03A062; --on-accent: #ffffff; --glow: #03A062; color-scheme: dark; }
+[data-theme="matrix"][data-mode="light"] { --bg: #f0f7f1; --surface: #ffffff; --text: #06250f; --muted: #6c7e71; --border: #afb9b2; --accent: #027a4a; --on-accent: #ffffff; --glow: #03A062; color-scheme: light; }
+[data-theme="compaq"][data-mode="dark"] { --bg: #160f04; --surface: #20160a; --text: #ffd9a0; --muted: #d5b484; --border: #947b58; --accent: #FF8A00; --on-accent: #000000; --glow: #FF8A00; color-scheme: dark; }
+[data-theme="compaq"][data-mode="light"] { --bg: #fbf4ea; --surface: #ffffff; --text: #2a1a06; --muted: #837a6f; --border: #bbb6af; --accent: #c96a00; --on-accent: #ffffff; --glow: #FF8A00; color-scheme: light; }
+:root {
+  --spectrum-plumb: #881177;
+  --spectrum-red: #aa3355;
+  --spectrum-pink: #cc6666;
+  --spectrum-orange: #ee9955;
+  --spectrum-yellow: #eedd00;
+  --spectrum-green: #99dd55;
+  --spectrum-seafoam: #44dd88;
+  --spectrum-turquoise: #22ccbb;
+  --spectrum-teal: #00bbcc;
+  --spectrum-blue: #0099cc;
+  --spectrum-indigo: #3366bb;
+  --spectrum-purple: #663399;
+  --status-critical: #ff2740;
+  --status-high: #ff7a00;
+  --status-medium: #ffd400;
+  --status-low: #2fd44e;
+  --status-unknown: #8a8f99;
+  --tlp-red: #FF2B2B;
+  --tlp-amber: #FFC000;
+  --tlp-amber-strict: #FFC000;
+  --tlp-green: #33FF00;
+  --tlp-clear: #FFFFFF;
+  --tlp-bg: #000000;
+  --font-mono: "MartianMono Nerd Font", "Martian Mono", ui-monospace, monospace;
+  --font-prose: "Martian Grotesk", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --fs-display: 2.5rem;
+  --fs-h1: 2.0rem;
+  --fs-h2: 1.5rem;
+  --fs-h3: 1.25rem;
+  --fs-lead: 1.125rem;
+  --fs-body: 1.0rem;
+  --fs-small: 0.875rem;
+  --fs-caption: 0.75rem;
+  --fs-micro: 0.6875rem;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --lh-tight: 1.15;
+  --lh-snug: 1.4;
+  --lh-normal: 1.6;
+  --space-half: 0.25rem;
+  --space-1: 0.5rem;
+  --space-2: 1.0rem;
+  --space-3: 1.5rem;
+  --space-4: 2.0rem;
+  --space-5: 3.0rem;
+  --space-6: 4.0rem;
+  --space-7: 6.0rem;
+  --space-8: 8.0rem;
+  --dur-instant: 0ms;
+  --dur-fast: 120ms;
+  --dur-moderate: 200ms;
+  --dur-deliberate: 320ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-enter: cubic-bezier(0, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-linear: linear;
+  --pulse-period: 1500ms;
+  --glow-ambient-text: 0px 0px 6px color-mix(in srgb, var(--glow) 40%, transparent);
+  --glow-ambient-box: 0px 0px 8px color-mix(in srgb, var(--glow) 33%, transparent);
+  --glow-active-text: 0px 0px 10px color-mix(in srgb, var(--glow) 80%, transparent);
+  --glow-active-box: 0px 0px 16px color-mix(in srgb, var(--glow) 67%, transparent), 0px 0px 4px color-mix(in srgb, var(--glow) 100%, transparent);
+}
+
+* { box-sizing: border-box }
+html { background: var(--bg); color: var(--text); font: var(--fw-regular) var(--fs-body)/var(--lh-snug) var(--font-mono) }
+body { margin: 0 auto; max-width: 72rem; padding: var(--space-3) }
+h1, h2, h3 { line-height: var(--lh-tight); margin: var(--space-4) 0 var(--space-2); text-transform: uppercase; letter-spacing: .04em }
+h1 { font-size: var(--fs-h1) } h2 { font-size: var(--fs-h2); border-bottom: 1px solid var(--border); padding-bottom: var(--space-half) } h3 { font-size: var(--fs-h3) }
+[data-mode="dark"] h1 { text-shadow: var(--glow-ambient-text); color: var(--accent) }
+p.prose { font-family: var(--font-prose); line-height: var(--lh-normal); max-width: 72ch }
+code { font-family: var(--font-mono); font-size: var(--fs-small) } code.hex { color: var(--muted); margin-left: var(--space-1) }
+small { color: var(--muted); font-size: var(--fs-caption) }
+header { display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap }
+select { font: inherit; background: var(--surface); color: var(--text); border: 1px solid var(--border); padding: var(--space-half) var(--space-1) }
+.row { display: flex; flex-wrap: wrap; gap: var(--space-2) }
+.sw { display: flex; flex-direction: column; gap: var(--space-half); min-width: 7rem }
+.chip { display: inline-block; width: 3rem; height: 3rem; border: 1px solid var(--border) }
+td .chip { width: 1rem; height: 1rem; vertical-align: middle; margin-right: var(--space-half) }
+table { border-collapse: collapse; font-size: var(--fs-small) } th, td { text-align: left; padding: var(--space-half) var(--space-1); border-bottom: 1px solid var(--border) }
+.trow { display: grid; grid-template-columns: 12rem 1fr; align-items: center; gap: var(--space-2); padding: var(--space-half) 0 }
+.bar { display: block; height: var(--space-1); background: var(--accent) }
+.mark { width: 1.5rem; height: 1.5rem; stroke: currentColor; fill: none; vertical-align: middle }
+.mk { display: inline-flex; flex-direction: column; align-items: center; gap: var(--space-half); width: 7rem; padding: var(--space-1); border: 1px solid var(--border); background: var(--surface) }
+.badge { display: inline-flex; align-items: center; gap: var(--space-half); color: var(--c); border: 1px solid var(--c); padding: var(--space-half) var(--space-1); font-weight: var(--fw-medium) }
+.badge.pulse { animation: pulse var(--pulse-period) var(--ease-standard) infinite }
+@keyframes pulse { 50% { opacity: .5 } }
+@media (prefers-reduced-motion: reduce) { .badge.pulse { animation: none } }
+.tlp { background: var(--tlp-bg); padding: var(--space-half) var(--space-1); font-weight: var(--fw-bold) }
+.btn { font: inherit; background: var(--surface); color: var(--text); border: 1px solid var(--border); padding: var(--space-1) var(--space-2); cursor: pointer; transition: all var(--dur-fast) var(--ease-standard) }
+.btn.hover, .btn:hover { border-color: var(--accent) } [data-mode="dark"] .btn.hover, [data-mode="dark"] .btn:hover { box-shadow: var(--glow-ambient-box) }
+.btn.focus, .btn:focus-visible { outline: 2px solid var(--text); outline-offset: var(--space-half) } [data-mode="dark"] .btn.focus, [data-mode="dark"] .btn:focus-visible { box-shadow: var(--glow-active-box) }
+.btn.active, .btn:active { background: var(--accent); color: var(--on-accent); border-color: var(--accent); transform: translateY(1px) }
+.btn.disabled, .btn:disabled { color: var(--muted); opacity: .5; cursor: not-allowed; box-shadow: none }
+.btn.loading { color: transparent; position: relative } .btn.loading::after { content: "↻"; color: var(--text); position: absolute; inset: 0; display: grid; place-items: center; animation: spin 1s linear infinite }
+@keyframes spin { to { transform: rotate(360deg) } } @media (prefers-reduced-motion: reduce) { .btn.loading::after { animation: none } }
+.btn.error { border-color: var(--status-critical); color: var(--status-critical) }
+.btn.selected { background: color-mix(in srgb, var(--accent) 15%, transparent); box-shadow: inset 3px 0 0 var(--accent) }
+.btn.read-only { border-color: transparent; cursor: text }
+.btn.destructive { background: var(--status-critical); color: #000; border-color: var(--status-critical) }
+.btn.ghost { background: transparent; border-color: transparent; color: var(--muted) }
+.gauge { height: var(--space-2); background: var(--surface); border: 1px solid var(--border); position: relative; margin: var(--space-half) 0 }
+.gauge .fill { position: absolute; top: 0; bottom: 0 }
+.gauge .tick { position: absolute; top: -4px; bottom: -4px; width: 2px }
+.toast { display: inline-flex; gap: var(--space-1); align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--c); padding: var(--space-2); max-width: 32rem }
+.field { display: flex; flex-direction: column; gap: var(--space-half); max-width: 24rem }
+.field input { font: inherit; background: var(--surface); color: var(--text); border: 1px solid var(--status-critical); padding: var(--space-1) }
+.field .msg { color: var(--status-critical); display: flex; gap: var(--space-half); align-items: center; font-size: var(--fs-small) }
+</style>
+</head>
+<body>
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <!-- Design-system marks. 24x24 grid, 2px monoline, round caps/joins, outline.
+       Color via currentColor (set `color` on the consuming element).
+       Reference with: <svg><use href="sprite.svg#m-NAME"/></svg>
+       Defaults applied per symbol; inner fills override to currentColor/none. -->
+
+  <!-- ============ STATUS (sign-shape semantics) ============ -->
+  <symbol id="m-critical" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="8,2 16,2 22,8 22,16 16,22 8,22 2,16 2,8"/>
+      <line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/>
+    </g>
+  </symbol>
+  <symbol id="m-high" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12,3 22,21 2,21"/>
+      <line x1="12" y1="10" x2="12" y2="15"/>
+      <circle cx="12" cy="18" r="1" fill="currentColor" stroke="none"/>
+    </g>
+  </symbol>
+  <symbol id="m-medium" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12,2 22,12 12,22 2,12"/>
+      <line x1="12" y1="9" x2="12" y2="14"/>
+      <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/>
+    </g>
+  </symbol>
+  <symbol id="m-low" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <polyline points="7,12 11,16 17,8"/>
+    </g>
+  </symbol>
+  <symbol id="m-unknown" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="3"/>
+      <text x="12" y="17" font-size="13" font-family="monospace" fill="currentColor" stroke="none" text-anchor="middle">?</text>
+    </g>
+  </symbol>
+
+  <!-- ============ DIVERGING (temperature direction) ============ -->
+  <symbol id="m-warm" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6,15 12,8 18,15"/>
+    </g>
+  </symbol>
+  <symbol id="m-neutral" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="6" y1="12" x2="18" y2="12"/>
+    </g>
+  </symbol>
+  <symbol id="m-cool" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6,9 12,16 18,9"/>
+    </g>
+  </symbol>
+
+  <!-- ============ UI (functional starter set) ============ -->
+  <symbol id="m-close" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></g></symbol>
+  <symbol id="m-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></g></symbol>
+  <symbol id="m-chevron" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,5 16,12 9,19"/></g></symbol>
+  <symbol id="m-more" viewBox="0 0 24 24"><g stroke="none" fill="currentColor"><circle cx="6" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="18" cy="12" r="1.4"/></g></symbol>
+  <symbol id="m-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><line x1="14.5" y1="14.5" x2="20" y2="20"/></g></symbol>
+  <symbol id="m-add" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></g></symbol>
+  <symbol id="m-remove" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></g></symbol>
+  <symbol id="m-edit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20v-4L16 4l4 4L8 20z"/><line x1="14" y1="6" x2="18" y2="10"/></g></symbol>
+  <symbol id="m-delete" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,7 20,7"/><path d="M9 7V5h6v2"/><path d="M6 7l1 14h10l1-14"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></g></symbol>
+  <symbol id="m-refresh" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 4 21 9 16 9"/><path d="M18.7 14a7.5 7.5 0 1 1-1.77-7.8L21 9"/></g></symbol>
+  <symbol id="m-filter" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,5 21,5 14,13 14,19 10,16 10,13 3,5"/></g></symbol>
+  <symbol id="m-download" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="15"/><polyline points="8,11 12,15 16,11"/><polyline points="5,18 5,20 19,20 19,18"/></g></symbol>
+  <symbol id="m-upload" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="9"/><polyline points="8,13 12,9 16,13"/><polyline points="5,6 5,4 19,4 19,6"/></g></symbol>
+  <symbol id="m-settings" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9.5 21.8 10.1 21.8 13.9 18 14.5 20.3 17.6 17.6 20.3 14.5 18 13.9 21.8 10.1 21.8 9.5 18 6.4 20.3 3.7 17.6 6 14.5 2.2 13.9 2.2 10.1 6 9.5 3.7 6.4 6.4 3.7 9.5 6 10.1 2.2 13.9 2.2 14.5 6 17.6 3.7 20.3 6.4Z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+  <symbol id="m-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="11" x2="12" y2="17"/><circle cx="12" cy="7.5" r="1" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="m-help" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="m-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 20a7 7 0 0 1 14 0"/></g></symbol>
+  <symbol id="m-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.2" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="m-bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></g></symbol>
+</svg>
+<header>
+  <h1>Specimen</h1>
+  <label>theme <select id="theme"><option>tron</option><option>matrix</option><option>compaq</option></select></label>
+  <label>mode <select id="mode"><option>dark</option><option>light</option></select></label>
+</header>
+<p class="prose">Every value on this page is read from <code>tokens/</code> by <code>tools/specimen.tcl</code>. Chrome follows the selected theme. Data color does not: the spectrum, status ramp, and TLP markings are identical in every theme and mode. This paragraph is prose set in the proportional family; everything else is the mono voice.</p>
+
+<h2>Chrome</h2>
+<div class="row"><div class="sw"><span class="chip" style="background:var(--bg)"></span><code>bg</code></div><div class="sw"><span class="chip" style="background:var(--surface)"></span><code>surface</code></div><div class="sw"><span class="chip" style="background:var(--text)"></span><code>text</code></div><div class="sw"><span class="chip" style="background:var(--muted)"></span><code>muted</code></div><div class="sw"><span class="chip" style="background:var(--border)"></span><code>border</code></div><div class="sw"><span class="chip" style="background:var(--accent)"></span><code>accent</code></div><div class="sw"><span class="chip" style="background:var(--on-accent)"></span><code>on-accent</code></div><div class="sw"><span class="chip" style="background:var(--glow)"></span><code>glow</code></div></div>
+<details><summary>all six variants</summary><table><tr><th>tron dark</th><td><span class=chip style="background:#05080a"></span><code>#05080a</code></td><td><span class=chip style="background:#0a141a"></span><code>#0a141a</code></td><td><span class=chip style="background:#cfeff5"></span><code>#cfeff5</code></td><td><span class=chip style="background:#a2bdc3"></span><code>#a2bdc3</code></td><td><span class=chip style="background:#6d8288"></span><code>#6d8288</code></td><td><span class=chip style="background:#00E5FF"></span><code>#00E5FF</code></td><td><span class=chip style="background:#000000"></span><code>#000000</code></td><td><span class=chip style="background:#00E5FF"></span><code>#00E5FF</code></td></tr>
+<tr><th>tron light</th><td><span class=chip style="background:#eef7f9"></span><code>#eef7f9</code></td><td><span class=chip style="background:#ffffff"></span><code>#ffffff</code></td><td><span class=chip style="background:#07232a"></span><code>#07232a</code></td><td><span class=chip style="background:#6d7d81"></span><code>#6d7d81</code></td><td><span class=chip style="background:#adb6b9"></span><code>#adb6b9</code></td><td><span class=chip style="background:#008c9e"></span><code>#008c9e</code></td><td><span class=chip style="background:#ffffff"></span><code>#ffffff</code></td><td><span class=chip style="background:#00E5FF"></span><code>#00E5FF</code></td></tr>
+<tr><th>matrix dark</th><td><span class=chip style="background:#020a02"></span><code>#020a02</code></td><td><span class=chip style="background:#061206"></span><code>#061206</code></td><td><span class=chip style="background:#7dffae"></span><code>#7dffae</code></td><td><span class=chip style="background:#63cb89"></span><code>#63cb89</code></td><td><span class=chip style="background:#438b5c"></span><code>#438b5c</code></td><td><span class=chip style="background:#03A062"></span><code>#03A062</code></td><td><span class=chip style="background:#ffffff"></span><code>#ffffff</code></td><td><span class=chip style="background:#03A062"></span><code>#03A062</code></td></tr>
+<tr><th>matrix light</th><td><span class=chip style="background:#f0f7f1"></span><code>#f0f7f1</code></td><td><span class=chip style="background:#ffffff"></span><code>#ffffff</code></td><td><span class=chip style="background:#06250f"></span><code>#06250f</code></td><td><span class=chip style="background:#6c7e71"></span><code>#6c7e71</code></td><td><span class=chip style="background:#afb9b2"></span><code>#afb9b2</code></td><td><span class=chip style="background:#027a4a"></span><code>#027a4a</code></td><td><span class=chip style="background:#ffffff"></span><code>#ffffff</code></td><td><span class=chip style="background:#03A062"></span><code>#03A062</code></td></tr>
+<tr><th>compaq dark</th><td><span class=chip style="background:#160f04"></span><code>#160f04</code></td><td><span class=chip style="background:#20160a"></span><code>#20160a</code></td><td><span class=chip style="background:#ffd9a0"></span><code>#ffd9a0</code></td><td><span class=chip style="background:#d5b484"></span><code>#d5b484</code></td><td><span class=chip style="background:#947b58"></span><code>#947b58</code></td><td><span class=chip style="background:#FF8A00"></span><code>#FF8A00</code></td><td><span class=chip style="background:#000000"></span><code>#000000</code></td><td><span class=chip style="background:#FF8A00"></span><code>#FF8A00</code></td></tr>
+<tr><th>compaq light</th><td><span class=chip style="background:#fbf4ea"></span><code>#fbf4ea</code></td><td><span class=chip style="background:#ffffff"></span><code>#ffffff</code></td><td><span class=chip style="background:#2a1a06"></span><code>#2a1a06</code></td><td><span class=chip style="background:#837a6f"></span><code>#837a6f</code></td><td><span class=chip style="background:#bbb6af"></span><code>#bbb6af</code></td><td><span class=chip style="background:#c96a00"></span><code>#c96a00</code></td><td><span class=chip style="background:#ffffff"></span><code>#ffffff</code></td><td><span class=chip style="background:#FF8A00"></span><code>#FF8A00</code></td></tr>
+</table></details>
+
+<h2>Data color</h2>
+<h3>Spectrum — diverging, green center</h3>
+<div class="row"><div class="sw"><span class="chip" style="background:var(--spectrum-plumb)"></span><code>plumb +5</code><code class=hex>#881177</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-red)"></span><code>red +4</code><code class=hex>#aa3355</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-pink)"></span><code>pink +3</code><code class=hex>#cc6666</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-orange)"></span><code>orange +2</code><code class=hex>#ee9955</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-yellow)"></span><code>yellow +1</code><code class=hex>#eedd00</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-green)"></span><code>green +0</code><code class=hex>#99dd55</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-seafoam)"></span><code>seafoam -1</code><code class=hex>#44dd88</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-turquoise)"></span><code>turquoise -2</code><code class=hex>#22ccbb</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-teal)"></span><code>teal -3</code><code class=hex>#00bbcc</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-blue)"></span><code>blue -4</code><code class=hex>#0099cc</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-indigo)"></span><code>indigo -5</code><code class=hex>#3366bb</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-purple)"></span><code>purple -6</code><code class=hex>#663399</code></div></div>
+<h3>Status ramp — OASIS CAP severity</h3>
+<div class="row"><span class="badge" style="--c:var(--status-critical)"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg> DOWN<code class=hex>#ff2740</code></span><span class="badge" style="--c:var(--status-high)"><svg class="mark" aria-hidden="true"><use href="#m-high"/></svg> ALERT<code class=hex>#ff7a00</code></span><span class="badge" style="--c:var(--status-medium)"><svg class="mark" aria-hidden="true"><use href="#m-medium"/></svg> WARN<code class=hex>#ffd400</code></span><span class="badge" style="--c:var(--status-low)"><svg class="mark" aria-hidden="true"><use href="#m-low"/></svg> OK<code class=hex>#2fd44e</code></span><span class="badge" style="--c:var(--status-unknown)"><svg class="mark" aria-hidden="true"><use href="#m-unknown"/></svg> UNK<code class=hex>#8a8f99</code></span></div>
+<h3>STIX opinion — on the muted spectrum</h3>
+<div class="row"><div class="sw"><span class="chip" style="background:var(--spectrum-red)"></span><code>strongly-disagree</code><code class=hex>#aa3355</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-orange)"></span><code>disagree</code><code class=hex>#ee9955</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-green)"></span><code>neutral</code><code class=hex>#99dd55</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-turquoise)"></span><code>agree</code><code class=hex>#22ccbb</code></div><div class="sw"><span class="chip" style="background:var(--spectrum-blue)"></span><code>strongly-agree</code><code class=hex>#0099cc</code></div></div>
+<h3>STIX TLP — prescribed, on black</h3>
+<div class="row"><span class=tlp style="color:#FF2B2B">TLP:RED</span><span class=tlp style="color:#FFC000">TLP:AMBER</span><span class=tlp style="color:#FFC000">TLP:AMBER+STRICT</span><span class=tlp style="color:#33FF00">TLP:GREEN</span><span class=tlp style="color:#FFFFFF">TLP:CLEAR</span></div>
+
+<h2>Typography</h2>
+<div class=trow><code>display · 40px</code><span style="font-size:var(--fs-display)">The quick brown fox — 0123456789</span></div>
+<div class=trow><code>h1 · 32px</code><span style="font-size:var(--fs-h1)">The quick brown fox — 0123456789</span></div>
+<div class=trow><code>h2 · 24px</code><span style="font-size:var(--fs-h2)">The quick brown fox — 0123456789</span></div>
+<div class=trow><code>h3 · 20px</code><span style="font-size:var(--fs-h3)">The quick brown fox — 0123456789</span></div>
+<div class=trow><code>lead · 18px</code><span style="font-size:var(--fs-lead)">The quick brown fox — 0123456789</span></div>
+<div class=trow><code>body · 16px</code><span style="font-size:var(--fs-body)">The quick brown fox — 0123456789</span></div>
+<div class=trow><code>small · 14px</code><span style="font-size:var(--fs-small)">The quick brown fox — 0123456789</span></div>
+<div class=trow><code>caption · 12px</code><span style="font-size:var(--fs-caption)">The quick brown fox — 0123456789</span></div>
+<div class=trow><code>micro · 11px</code><span style="font-size:var(--fs-micro)">The quick brown fox — 0123456789</span></div>
+
+
+<h2>Space</h2>
+<div class=trow><code>space-half · 4px</code><span class=bar style="width:var(--space-half)"></span></div>
+<div class=trow><code>space-1 · 8px</code><span class=bar style="width:var(--space-1)"></span></div>
+<div class=trow><code>space-2 · 16px</code><span class=bar style="width:var(--space-2)"></span></div>
+<div class=trow><code>space-3 · 24px</code><span class=bar style="width:var(--space-3)"></span></div>
+<div class=trow><code>space-4 · 32px</code><span class=bar style="width:var(--space-4)"></span></div>
+<div class=trow><code>space-5 · 48px</code><span class=bar style="width:var(--space-5)"></span></div>
+<div class=trow><code>space-6 · 64px</code><span class=bar style="width:var(--space-6)"></span></div>
+<div class=trow><code>space-7 · 96px</code><span class=bar style="width:var(--space-7)"></span></div>
+<div class=trow><code>space-8 · 128px</code><span class=bar style="width:var(--space-8)"></span></div>
+
+
+<h2>Marks</h2>
+<div class="row"><div class=mk><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg><code>m-critical</code><small>✖ [X]</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-high"/></svg><code>m-high</code><small>▲ [!]</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-medium"/></svg><code>m-medium</code><small>◆ [*]</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-low"/></svg><code>m-low</code><small>● [+]</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-unknown"/></svg><code>m-unknown</code><small>□ [?]</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-warm"/></svg><code>m-warm</code><small>⌃ ^</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-neutral"/></svg><code>m-neutral</code><small>– -</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-cool"/></svg><code>m-cool</code><small>⌄ v</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-close"/></svg><code>m-close</code><small>✕ x</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-menu"/></svg><code>m-menu</code><small>≡ =</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-chevron"/></svg><code>m-chevron</code><small>› &gt;</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-more"/></svg><code>m-more</code><small>⋯ ...</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-search"/></svg><code>m-search</code><small>⌕ </small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-add"/></svg><code>m-add</code><small>+ +</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-remove"/></svg><code>m-remove</code><small>− -</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-edit"/></svg><code>m-edit</code><small>✎ </small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-delete"/></svg><code>m-delete</code><small> del</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-refresh"/></svg><code>m-refresh</code><small>↻ </small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-filter"/></svg><code>m-filter</code><small>▽ </small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-download"/></svg><code>m-download</code><small>↓ v</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-upload"/></svg><code>m-upload</code><small>↑ ^</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-settings"/></svg><code>m-settings</code><small>⚙ </small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-info"/></svg><code>m-info</code><small>ⓘ i</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-help"/></svg><code>m-help</code><small>? ?</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-user"/></svg><code>m-user</code><small> </small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-lock"/></svg><code>m-lock</code><small> </small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-bell"/></svg><code>m-bell</code><small> </small></div>
+</div>
+
+<h2>Components</h2>
+<h3>State matrix</h3>
+<div class="row"><button class="btn default" >default</button>
+<button class="btn hover" >hover</button>
+<button class="btn focus" >focus</button>
+<button class="btn active" >active</button>
+<button class="btn disabled" disabled>disabled</button>
+<button class="btn loading" >loading</button>
+<button class="btn error" >error</button>
+<button class="btn selected" >selected</button>
+<button class="btn read-only" >read-only</button>
+</div>
+<h3>Status badge</h3>
+<div class="row"><span class="badge pulse" style="--c:var(--status-critical)"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg> DOWN <small>pulse: critical/live only</small></span></div>
+<h3>Gauge — diverging (signed value always shown)</h3>
+<div class="gauge"><span class="fill" style="left:50%;width:30%;background:var(--spectrum-orange)"></span><span class="tick" style="left:50%;background:var(--spectrum-green)"></span></div>
+<code><svg class="mark" aria-hidden="true"><use href="#m-warm"/></svg> +2.0 σ above baseline</code>
+<h3>Gauge — sequential (accent fill, alert thresholds)</h3>
+<div class="gauge"><span class="fill" style="left:0;width:82%;background:var(--accent)"></span><span class="tick" style="left:70%;background:var(--status-medium)"></span><span class="tick" style="left:90%;background:var(--status-critical)"></span></div>
+<code>82% · WARN (70) · DOWN (90)</code>
+<h3>Error state — color + glyph + text</h3>
+<div class="field"><label for="port">port</label><input id="port" value="99999" aria-invalid="true" aria-describedby="port-msg"><span class="msg" id="port-msg"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg> Port out of range. Use 1–65535.</span></div>
+<h3>Toast — what happened · why · what to do</h3>
+<div class="toast" role="status" style="--c:var(--status-high)"><svg class="mark" aria-hidden="true"><use href="#m-high"/></svg><div><strong>ALERT</strong> Replica lag 42 s. Primary under write burst. Check <code>db-03</code> before failover.</div></div>
+<h3>Destructive confirm</h3>
+<div class="row"><button class="btn destructive">Delete cluster prod-east</button><button class="btn ghost">Cancel</button></div>
+<p class="prose">Deletes 14 nodes and their volumes. This cannot be undone.</p>
+
+<h2>Motion</h2>
+<p>durations: <code>instant</code> <code>fast</code> <code>moderate</code> <code>deliberate</code> — hover a button to see <code>fast</code>. The critical badge pulses; under <code>prefers-reduced-motion</code> it is static.</p>
+
+<script>
+for (const k of ['theme', 'mode']) {
+  const el = document.getElementById(k);
+  el.onchange = () => document.documentElement.dataset[k] = el.value;
+}
+</script>
+</body>
+</html>

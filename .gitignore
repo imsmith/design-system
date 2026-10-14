@@ -3,3 +3,4 @@
 
 # Node deps for tools/ — installed inside a distrobox, never committed
 node_modules/
+*.zip

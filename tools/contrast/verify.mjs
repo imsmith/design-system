@@ -47,6 +47,20 @@ const pairs = [
   ['on-accent', 'accent', 'on-accent label/accent', 45],
 ];
 
+// Data color is theme-invariant, so every status step and TLP marking is also
+// measured on every theme's bg/surface (status) and on TLP black (markings).
+// ADVISORY ONLY: the manual sets no threshold for data color on chrome, and TLP
+// is locked by its standard. Reported against the on-accent bar (45) so the
+// numbers are visible; counted separately and never fail the run.
+const hexes = (p) => [...readFileSync(resolve(here, p), 'utf8').matchAll(/:(?:step|name)\s+:?"?([A-Za-z:+-]+)"?[^\n]*?:hex24\s+"(#[0-9A-Fa-f]+)"/g)].map(m => [m[1], m[2]]);
+const statusRamp = hexes('../../tokens/color/status.edn');
+const tlp = hexes('../../tokens/color/markings.edn');
+const tlpBg = readFileSync(resolve(here, '../../tokens/color/markings.edn'), 'utf8').match(/:background\s+"(#[0-9A-Fa-f]+)"/)[1];
+if (statusRamp.length !== 5 || tlp.length !== 5) {
+  console.error(`Expected 5 status steps and 5 TLP markings, found ${statusRamp.length}/${tlp.length}.`);
+  process.exit(2);
+}
+
 const mag = (c, bg) => Math.abs(calcAPCA(c, bg));
 const pad = (s, n) => String(s).padEnd(n);
 let fails = 0;
@@ -61,5 +75,14 @@ for (const [name, roles] of Object.entries(variants)) {
     console.log(`  ${pad(lbl, 24)} Lc ${pad(v.toFixed(0), 4)} need ${pad(min, 3)} ${ok ? 'PASS' : '**FAIL**'}`);
   }
 }
-console.log(`\nTotal failures: ${fails}`);
+let warns = 0;
+const advise = (lbl, v) => { const ok = v >= 45; if (!ok) warns++; console.log(`  ${pad(lbl, 24)} Lc ${pad(v.toFixed(0), 4)} ref  45  ${ok ? 'ok' : 'WARN'}`); };
+for (const [name, roles] of Object.entries(variants)) {
+  console.log(`\n== advisory: status ramp on ${name} ==`);
+  for (const [step, hex] of statusRamp) for (const br of ['bg', 'surface']) advise(step + '/' + br, mag(hex, roles[br]));
+}
+console.log(`\n== advisory: TLP on ${tlpBg} (locked by standard) ==`);
+for (const [name, hex] of tlp) advise(name, mag(hex, tlpBg));
+
+console.log(`\nTotal failures: ${fails}   (advisory warnings: ${warns})`);
 process.exit(fails ? 1 : 0);

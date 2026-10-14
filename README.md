@@ -16,8 +16,22 @@ of decisions those things are obligated to honor.
   can serialize it. That bridge is crossed when reached, not before.
 - `assets/` — canonical visual assets. Currently `assets/marks/sprite.svg`, the
   mark/icon library as an SVG symbol sheet (`currentColor`).
-- `tools/` — verification only, run inside a distrobox (never the host). Currently
-  `tools/contrast/`, the APCA verifier for the theme tokens. Not a generator.
+- `specimen.html` — the rendered proof: every token on one page, with a theme
+  and mode switch. Generated from `tokens/` by `tools/specimen.tcl`; never edited
+  by hand. Open it in a browser.
+- `tools/` — the checks and the one generator. `check.tcl` (edn parse, hex drift,
+  links) and `specimen.tcl` need only `tclsh` on the host. `contrast/` is the
+  APCA verifier and runs inside a distrobox, never the host.
+
+## Verify
+
+```bash
+make check      # edn parse + hex drift + links (host), APCA + markdownlint (distrobox)
+make specimen   # regenerate specimen.html after editing tokens/
+```
+
+`check` exits non-zero on any failure. The distrobox is `design-system`, built
+from `docker.io/library/node:22`; the Makefile header shows how to create it.
 
 ## Status
 
