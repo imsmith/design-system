@@ -27,7 +27,8 @@ foreach m $mds {
     foreach h [regexp -all -inline {#[0-9A-Fa-f]{6}\M|#[0-9A-Fa-f]{3}\M} $text] {
         if {![dict exists $hexes [string tolower $h]]} { fail "hex $m: $h not in any edn" }
     }
-    foreach {_ p} [regexp -all -inline {`([A-Za-z0-9_./-]+\.(?:md|edn|svg|mjs))`} $text] {
+    # Only paths with a directory part claim a location; bare names are just names.
+    foreach {_ p} [regexp -all -inline {`([A-Za-z0-9_.-]+/[A-Za-z0-9_./-]+\.(?:md|edn|svg|mjs|css|js))`} $text] {
         if {![file exists $p] && ![file exists tokens/$p] && ![file exists tokens/color/$p]} { fail "path $m: `$p` does not exist" }
     }
     foreach {_ p} [regexp -all -inline {\]\(([^)#:]+)\)} $text] {

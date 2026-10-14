@@ -15,8 +15,8 @@ tcl-check:                        ## edn parse, hex drift, links (host)
 apca: $(NODE_DIR)/node_modules    ## APCA contrast on chrome + data color (distrobox)
 	$(BOX) node $(NODE_DIR)/verify.mjs
 
-lint:                             ## markdownlint (distrobox)
-	$(BOX) npx --yes markdownlint-cli '**/*.md' --ignore '**/node_modules/**' --ignore LICENSES
+lint:                             ## markdownlint on authored docs (distrobox); the GRID·OPS bundle is excluded
+	$(BOX) npx --yes markdownlint-cli design.md 'manual/*.md' 'tools/*/*.md'
 
 specimen:                         ## regenerate specimen.html from tokens/
 	tclsh tools/specimen.tcl
