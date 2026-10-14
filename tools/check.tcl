@@ -4,6 +4,7 @@
 #   2. every hex literal in markdown exists in some edn file (no value drift)
 #   3. every relative link / backticked repo path in markdown resolves
 #   4. no CSS file contains "**/" (closes a comment early; bit us twice)
+#   5. every :id in tokens/marks.edn has a <symbol> in the sprite, and vice versa
 # Exits non-zero on any failure. APCA and markdownlint live in the Makefile.
 
 source [file join [file dirname [info script]] tcl edn.tcl]
@@ -41,5 +42,14 @@ foreach c [concat [glob styles.css] [glob tokens/*.css]] {
     if {[string first "**/" [slurp $c]] >= 0} { fail "css $c: contains **/ (closes a comment early)" }
 }
 puts "markdown: [llength $mds] files checked"
+# 5. the marks registry and the sprite must agree (ids both ways)
+set ids [lsort [lmap {_ id} [regexp -all -inline {:id\s+"(m-[a-z0-9-]+)"} [slurp tokens/marks.edn]] {set id}]]
+set syms [lsort [lmap {_ id} [regexp -all -inline {<symbol id="(m-[a-z0-9-]+)"} [slurp assets/marks/sprite.svg]] {set id}]]
+if {$ids ne $syms} {
+    set ednOnly {}; foreach i $ids  { if {$i ni $syms} { lappend ednOnly $i } }
+    set svgOnly {}; foreach s $syms { if {$s ni $ids}  { lappend svgOnly $s } }
+    fail "marks: registry/sprite mismatch; edn only: $ednOnly; svg only: $svgOnly"
+}
+puts "marks: [llength $ids] registered, [llength $syms] in sprite"
 puts [expr {$fails ? "FAILURES: $fails" : "OK"}]
 exit [expr {$fails > 0}]

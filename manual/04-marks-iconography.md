@@ -68,17 +68,19 @@ data-direction is never mistaken for a status. The mark carries the **sign**;
 
 ## 4 · Functional starter set
 
-Nineteen everyday marks, same style. The chevron rotates 90°/180°/270° for the
+Twenty-eight everyday marks, same style. The chevron rotates 90°/180°/270° for the
 four directions rather than shipping four symbols.
 
-- **Nav/control:** `m-close`, `m-menu`, `m-chevron`, `m-more`
+- **Nav/control:** `m-close`, `m-menu`, `m-chevron`, `m-more`, `m-chat`, `m-event`,
+  `m-system`, `m-hub`
 - **Actions:** `m-search`, `m-add`, `m-remove`, `m-edit`, `m-delete`,
-  `m-refresh`, `m-filter`, `m-download`, `m-upload`
-- **Objects:** `m-settings`, `m-info`, `m-help`, `m-user`, `m-lock`, `m-bell`
+  `m-refresh`, `m-filter`, `m-download`, `m-upload`, `m-run`, `m-send`, `m-external`
+- **Objects:** `m-settings`, `m-info`, `m-help`, `m-user`, `m-lock`, `m-bell`,
+  `m-tool`, `m-agent`
 
 This is a *starter* set, not the final library — extensions follow the style spec
 and register in `tokens/marks.edn`. What it deliberately omits (copy, save,
-external-link, calendar, etc.) is noted here as future work, not coverage.
+calendar, etc.) is noted here as future work, not coverage.
 
 ## 5 · Terminal & monochrome fallbacks
 
