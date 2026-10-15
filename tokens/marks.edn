@@ -62,4 +62,13 @@
   {:id "m-help"     :group :object  :unicode "?"      :ascii "?"   :nerd "f128" :nerd-name "nf-fa-question"}
   {:id "m-user"     :group :object  :unicode nil       :ascii nil   :nerd "f007" :nerd-name "nf-fa-user"}
   {:id "m-lock"     :group :object  :unicode nil       :ascii nil   :nerd "f023" :nerd-name "nf-fa-lock"}
-  {:id "m-bell"     :group :object  :unicode nil       :ascii nil   :nerd "f0f3" :nerd-name "nf-fa-bell"}]}
+  {:id "m-bell"     :group :object  :unicode nil       :ascii nil   :nerd "f0f3" :nerd-name "nf-fa-bell"}
+  {:id "m-chat"     :group :nav     :unicode nil       :ascii "chat" :nerd "f086" :nerd-name "nf-fa-comments"}
+  {:id "m-event"    :group :nav     :unicode nil       :ascii "ev"   :nerd "f0e7" :nerd-name "nf-fa-bolt"}
+  {:id "m-system"   :group :nav     :unicode nil       :ascii "sys"  :nerd "f233" :nerd-name "nf-fa-server"}
+  {:id "m-tool"     :group :object  :unicode nil       :ascii "tool" :nerd "f0ad" :nerd-name "nf-fa-wrench"}
+  {:id "m-hub"      :group :nav     :unicode "⇄" :ascii "<->"  :nerd "f0ec" :nerd-name "nf-fa-exchange"}
+  {:id "m-agent"    :group :object  :unicode nil       :ascii "agt"  :nerd "f2db" :nerd-name "nf-fa-microchip"}
+  {:id "m-run"      :group :action  :unicode "▶" :ascii ">"    :nerd "f04b" :nerd-name "nf-fa-play"}
+  {:id "m-send"     :group :action  :unicode "➤" :ascii "->"   :nerd "f1d8" :nerd-name "nf-fa-paper_plane"}
+  {:id "m-external" :group :action  :unicode "↗" :ascii "^"    :nerd "f08e" :nerd-name "nf-fa-external_link"}]}
