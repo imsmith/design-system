@@ -5,7 +5,7 @@
 BOX   = distrobox enter design-system --
 NODE_DIR = tools/contrast
 
-.PHONY: check tcl-check gen-fresh apca lint css elixir gen specimen
+.PHONY: check tcl-check gen-fresh apca lint css elixir gen specimen gallery
 
 check: tcl-check gen-fresh apca lint   ## everything; non-zero on any failure
 
@@ -36,3 +36,6 @@ specimen:                         ## regenerate specimen.html from tokens/
 
 $(NODE_DIR)/node_modules: $(NODE_DIR)/package-lock.json
 	$(BOX) sh -c 'cd $(NODE_DIR) && npm ci'
+
+gallery:                          ## regenerate gallery.html from tokens/components.css markup
+	tclsh tools/gallery.tcl

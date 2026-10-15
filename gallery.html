@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en" data-theme="tron" data-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>Design system — component gallery</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* page layout only — components come from styles.css */
+* { box-sizing: border-box }
+html { background: var(--bg); color: var(--text); font: var(--weight-regular) var(--text-body)/var(--leading-snug) var(--font-mono) }
+body { margin: 0; display: grid; grid-template-columns: 14rem 1fr; min-height: 100vh }
+aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: var(--space-3) var(--space-2); border-right: var(--border-width) solid var(--border); background: var(--surface) }
+aside h1 { font-size: var(--text-h3); text-transform: uppercase; letter-spacing: var(--tracking-label); margin: 0 0 var(--space-2); color: var(--accent) }
+[data-mode="dark"] aside h1 { text-shadow: var(--glow-text-ambient) }
+aside label { display: block; font-size: var(--text-caption); color: var(--muted); margin-bottom: var(--space-1) }
+select { font: inherit; font-size: var(--text-caption); background: var(--bg); color: var(--text); border: 1px solid var(--border); padding: 2px var(--space-half); width: 100% }
+aside ol { list-style: none; margin: var(--space-2) 0 0; padding: 0; font-size: var(--text-caption) }
+aside li a { display: block; color: var(--muted); text-decoration: none; padding: 2px 0 } aside li a:hover { color: var(--text) }
+main { padding: var(--space-3); display: grid; grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr)); gap: var(--space-3); align-content: start }
+.g { background: var(--surface); border: var(--border-width) solid var(--border); border-radius: var(--radius-lg); padding: var(--space-3); min-width: 0; scroll-margin-top: var(--space-3) }
+.g h2 { font-size: var(--text-h3); text-transform: uppercase; letter-spacing: var(--tracking-label); margin: 0 0 var(--space-1) }
+.prose { font-family: var(--font-prose); font-size: var(--text-small); line-height: var(--leading-normal); color: var(--muted); margin: 0 0 var(--space-2) }
+.prose a { color: var(--accent) }
+.ex { background: var(--bg); border: var(--border-width) dashed var(--border); border-radius: var(--radius-md); padding: var(--space-3); display: flex; flex-direction: column; gap: var(--space-2); position: relative; overflow: hidden }
+.row { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center }
+.col { display: flex; flex-direction: column; gap: var(--space-1) }
+.mark { width: 1em; height: 1em; stroke: currentColor; fill: none; vertical-align: -0.15em }
+.ds-btn__spin .mark, .ds-state__mark .mark { width: 1.25em; height: 1.25em }
+/* pin fixed-position overlays into their card */
+.ex .ds-scrim { position: relative; inset: auto; height: 16rem; animation: none; z-index: auto }
+.ex .ds-modal, .ex .ds-drawer { animation: none }
+.ex .ds-toasts { position: static; width: 100%; pointer-events: auto }
+.ex .ds-skip { position: static; transform: none; opacity: 1; align-self: flex-start }
+</style>
+</head>
+<body>
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <!-- Design-system marks. 24x24 grid, 2px monoline, round caps/joins, outline.
+       Color via currentColor (set `color` on the consuming element).
+       Reference with: <svg><use href="sprite.svg#m-NAME"/></svg>
+       Defaults applied per symbol; inner fills override to currentColor/none. -->
+
+  <!-- ============ STATUS (sign-shape semantics) ============ -->
+  <symbol id="m-critical" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="8,2 16,2 22,8 22,16 16,22 8,22 2,16 2,8"/>
+      <line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/>
+    </g>
+  </symbol>
+  <symbol id="m-high" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12,3 22,21 2,21"/>
+      <line x1="12" y1="10" x2="12" y2="15"/>
+      <circle cx="12" cy="18" r="1" fill="currentColor" stroke="none"/>
+    </g>
+  </symbol>
+  <symbol id="m-medium" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12,2 22,12 12,22 2,12"/>
+      <line x1="12" y1="9" x2="12" y2="14"/>
+      <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/>
+    </g>
+  </symbol>
+  <symbol id="m-low" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <polyline points="7,12 11,16 17,8"/>
+    </g>
+  </symbol>
+  <symbol id="m-unknown" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="3"/>
+      <text x="12" y="17" font-size="13" font-family="monospace" fill="currentColor" stroke="none" text-anchor="middle">?</text>
+    </g>
+  </symbol>
+
+  <!-- ============ DIVERGING (temperature direction) ============ -->
+  <symbol id="m-warm" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6,15 12,8 18,15"/>
+    </g>
+  </symbol>
+  <symbol id="m-neutral" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="6" y1="12" x2="18" y2="12"/>
+    </g>
+  </symbol>
+  <symbol id="m-cool" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6,9 12,16 18,9"/>
+    </g>
+  </symbol>
+
+  <!-- ============ UI (functional starter set) ============ -->
+  <symbol id="m-close" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></g></symbol>
+  <symbol id="m-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></g></symbol>
+  <symbol id="m-chevron" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,5 16,12 9,19"/></g></symbol>
+  <symbol id="m-more" viewBox="0 0 24 24"><g stroke="none" fill="currentColor"><circle cx="6" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="18" cy="12" r="1.4"/></g></symbol>
+  <symbol id="m-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><line x1="14.5" y1="14.5" x2="20" y2="20"/></g></symbol>
+  <symbol id="m-add" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></g></symbol>
+  <symbol id="m-remove" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></g></symbol>
+  <symbol id="m-edit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20v-4L16 4l4 4L8 20z"/><line x1="14" y1="6" x2="18" y2="10"/></g></symbol>
+  <symbol id="m-delete" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,7 20,7"/><path d="M9 7V5h6v2"/><path d="M6 7l1 14h10l1-14"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></g></symbol>
+  <symbol id="m-refresh" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 4 21 9 16 9"/><path d="M18.7 14a7.5 7.5 0 1 1-1.77-7.8L21 9"/></g></symbol>
+  <symbol id="m-filter" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,5 21,5 14,13 14,19 10,16 10,13 3,5"/></g></symbol>
+  <symbol id="m-download" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="15"/><polyline points="8,11 12,15 16,11"/><polyline points="5,18 5,20 19,20 19,18"/></g></symbol>
+  <symbol id="m-upload" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="9"/><polyline points="8,13 12,9 16,13"/><polyline points="5,6 5,4 19,4 19,6"/></g></symbol>
+  <symbol id="m-settings" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9.5 21.8 10.1 21.8 13.9 18 14.5 20.3 17.6 17.6 20.3 14.5 18 13.9 21.8 10.1 21.8 9.5 18 6.4 20.3 3.7 17.6 6 14.5 2.2 13.9 2.2 10.1 6 9.5 3.7 6.4 6.4 3.7 9.5 6 10.1 2.2 13.9 2.2 14.5 6 17.6 3.7 20.3 6.4Z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+  <symbol id="m-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="11" x2="12" y2="17"/><circle cx="12" cy="7.5" r="1" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="m-help" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="m-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 20a7 7 0 0 1 14 0"/></g></symbol>
+  <symbol id="m-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.2" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="m-bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></g></symbol>
+  <symbol id="m-chat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="12.5" x2="13" y2="12.5"/></g></symbol>
+  <symbol id="m-event" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13,2 5,14 11,14 10,22 19,9 13,9 13,2"/></g></symbol>
+  <symbol id="m-system" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><line x1="7" y1="7" x2="7.01" y2="7"/><line x1="7" y1="17" x2="7.01" y2="17"/></g></symbol>
+  <symbol id="m-tool" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a4 4 0 0 0 4.9 4.9L21 13l-6 6-1.6-1.6a4 4 0 0 0-4.9-4.9L4 8l4-4z"/><line x1="12" y1="12" x2="19" y2="19"/></g></symbol>
+  <symbol id="m-hub" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7,4 3,8 7,12"/><line x1="3" y1="8" x2="21" y2="8"/><polyline points="17,12 21,16 17,20"/><line x1="21" y1="16" x2="3" y2="16"/></g></symbol>
+  <symbol id="m-agent" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1"/><rect x="10" y="10" width="4" height="4"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></g></symbol>
+  <symbol id="m-run" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="5" x2="5" y2="19"/><polygon points="9,5 20,12 9,19"/></g></symbol>
+  <symbol id="m-send" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3,4 21,12 3,20 6,12"/><line x1="6" y1="12" x2="21" y2="12"/></g></symbol>
+  <symbol id="m-external" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></g></symbol>
+</svg>
+<aside>
+<h1>Gallery</h1>
+<label>theme <select id="theme"><option>tron</option><option>matrix</option><option>compaq</option></select></label>
+<label>mode <select id="mode"><option>dark</option><option>light</option></select></label>
+<ol><li><a href="#button">Button</a></li>
+<li><a href="#input">Input (text field)</a></li>
+<li><a href="#textarea">Textarea</a></li>
+<li><a href="#select">Select</a></li>
+<li><a href="#checkbox">Checkbox</a></li>
+<li><a href="#radio">Radio</a></li>
+<li><a href="#toggle">Toggle</a></li>
+<li><a href="#fieldset">Fieldset</a></li>
+<li><a href="#card">Card / Panel</a></li>
+<li><a href="#table">Table</a></li>
+<li><a href="#badge">Status badge</a></li>
+<li><a href="#tag">Tag</a></li>
+<li><a href="#alert">Alert / banner</a></li>
+<li><a href="#toast">Toast / notification</a></li>
+<li><a href="#modal">Modal / dialog</a></li>
+<li><a href="#drawer">Drawer</a></li>
+<li><a href="#tooltip">Tooltip</a></li>
+<li><a href="#tabs">Tabs</a></li>
+<li><a href="#menu">Menu / nav</a></li>
+<li><a href="#breadcrumb">Breadcrumb</a></li>
+<li><a href="#pagination">Pagination</a></li>
+<li><a href="#stepper">Stepper</a></li>
+<li><a href="#meter">Gauge / meter — sequential</a></li>
+<li><a href="#dmeter">Gauge / meter — diverging</a></li>
+<li><a href="#sparkline">Chart / sparkline</a></li>
+<li><a href="#heatmap">Heatmap</a></li>
+<li><a href="#stat">Stat tile</a></li>
+<li><a href="#kv">Key-value list</a></li>
+<li><a href="#log">Log view</a></li>
+<li><a href="#freshness">Freshness indicator</a></li>
+<li><a href="#timeline">Timeline</a></li>
+<li><a href="#state">State panel</a></li>
+<li><a href="#shell">App shell</a></li>
+<li><a href="#skip">Skip link</a></li>
+<li><a href="#kbd">Kbd</a></li>
+</ol>
+<p class="prose">35 components · <a href="specimen.html">specimen</a></p>
+</aside>
+<main>
+<section class="g" id="button"><h2>Button</h2><p class="prose">The one way to trigger an action. One primary per view; destructive breaks the accent norm. <a href="manual/06-components-states.md#button">manual §</a></p><div class="ex">
+<div class="row">
+<button class="ds-btn ds-btn--primary">Primary</button>
+<button class="ds-btn ds-btn--ghost">Ghost</button>
+<button class="ds-btn ds-btn--text">Text</button>
+<button class="ds-btn ds-btn--danger">Delete</button>
+<button class="ds-btn ds-btn--ghost" disabled>Disabled</button>
+<button class="ds-btn ds-btn--primary" data-loading="true" aria-busy="true"><span class="ds-btn__spin"><svg class="mark" aria-hidden="true"><use href="#m-refresh"/></svg></span><span class="ds-btn__label">Saving</span></button>
+</div>
+<div class="row">
+<button class="ds-btn ds-btn--ghost ds-btn--sm">Small</button>
+<button class="ds-btn ds-btn--ghost">Default</button>
+<button class="ds-btn ds-btn--ghost ds-btn--lg">Large</button>
+</div></div></section>
+<section class="g" id="input"><h2>Input (text field)</h2><p class="prose">Single-line text entry. Label above, message below; error is color + glyph + text. <a href="manual/06-components-states.md#input-text-field">manual §</a></p><div class="ex">
+<div class="ds-field"><label class="ds-field__label" for="g-host">host</label><div class="ds-field__wrap"><span class="ds-field__icon"><svg class="mark" aria-hidden="true"><use href="#m-search"/></svg></span><input class="ds-input ds-input--has-icon" id="g-host" placeholder="db-03.prod"></div></div>
+<div class="ds-field ds-field--error"><label class="ds-field__label" for="g-port">port</label><div class="ds-field__wrap"><input class="ds-input" id="g-port" value="99999" aria-invalid="true" aria-describedby="g-port-msg"></div><span class="ds-field__msg" id="g-port-msg"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg> Port out of range. Use 1–65535.</span></div>
+<div class="ds-field"><label class="ds-field__label" for="g-ro">region</label><div class="ds-field__wrap"><input class="ds-input" id="g-ro" value="us-east-1" readonly></div></div></div></section>
+<section class="g" id="textarea"><h2>Textarea</h2><p class="prose">Multi-line text entry. The input, taller, vertically resizable. <a href="manual/06-components-states.md#textarea-fieldset">manual §</a></p><div class="ex">
+<div class="ds-field"><label class="ds-field__label" for="g-ta">runbook note</label><div class="ds-field__wrap"><textarea class="ds-input ds-textarea" id="g-ta">Failover rehearsed 2026-10-12. Replica lag stayed under 2 s.</textarea></div></div></div></section>
+<section class="g" id="select"><h2>Select</h2><p class="prose">Pick one from a short, known list. Native element, styled; the chevron is a mark. <a href="manual/06-components-states.md#select">manual §</a></p><div class="ex">
+<div class="ds-field"><label class="ds-field__label" for="g-sel">environment</label><div class="ds-select__wrap"><select class="ds-select" id="g-sel"><option>prod-east</option><option>prod-west</option><option>staging</option></select><span class="ds-select__chevron"><svg class="mark" aria-hidden="true"><use href="#m-chevron"/></svg></span></div></div></div></section>
+<section class="g" id="checkbox"><h2>Checkbox</h2><p class="prose">Independent yes/no choices. Native input, custom box, accent when checked. <a href="manual/06-components-states.md#checkbox-radio-toggle">manual §</a></p><div class="ex">
+<div class="col">
+<label class="ds-check"><input class="ds-check__input" type="checkbox" checked><span class="ds-check__box"><span class="ds-check__mark"><svg class="mark" aria-hidden="true"><use href="#m-low"/></svg></span></span>Alert on warn</label>
+<label class="ds-check"><input class="ds-check__input" type="checkbox"><span class="ds-check__box"><span class="ds-check__mark"><svg class="mark" aria-hidden="true"><use href="#m-low"/></svg></span></span>Page on-call</label>
+<label class="ds-check"><input class="ds-check__input" type="checkbox" disabled><span class="ds-check__box"><span class="ds-check__mark"><svg class="mark" aria-hidden="true"><use href="#m-low"/></svg></span></span>Escalate (locked)</label>
+</div></div></section>
+<section class="g" id="radio"><h2>Radio</h2><p class="prose">One of a few mutually exclusive choices, all visible. <a href="manual/06-components-states.md#checkbox-radio-toggle">manual §</a></p><div class="ex">
+<div class="col">
+<label class="ds-radio"><input class="ds-radio__input" type="radio" name="g-r" checked><span class="ds-radio__dot"></span><span>Rolling</span></label>
+<label class="ds-radio"><input class="ds-radio__input" type="radio" name="g-r"><span class="ds-radio__dot"></span><span>Blue/green</span></label>
+<label class="ds-radio"><input class="ds-radio__input" type="radio" name="g-r" disabled><span class="ds-radio__dot"></span><span>Canary</span></label>
+</div></div></section>
+<section class="g" id="toggle"><h2>Toggle</h2><p class="prose">An on/off switch that takes effect immediately. Not a checkbox: no submit. <a href="manual/06-components-states.md#checkbox-radio-toggle">manual §</a></p><div class="ex">
+<div class="col">
+<label class="ds-toggle"><input class="ds-toggle__input" type="checkbox" checked><span class="ds-toggle__track"><span class="ds-toggle__knob"></span></span>Live tail<span class="ds-toggle__state">on</span></label>
+<label class="ds-toggle"><input class="ds-toggle__input" type="checkbox"><span class="ds-toggle__track"><span class="ds-toggle__knob"></span></span>Mute<span class="ds-toggle__state">off</span></label>
+</div></div></section>
+<section class="g" id="fieldset"><h2>Fieldset</h2><p class="prose">Groups related fields under one legend and an optional hint. <a href="manual/06-components-states.md#textarea-fieldset">manual §</a></p><div class="ex">
+<fieldset class="ds-fieldset"><legend class="ds-fieldset__legend">Notification</legend><p class="ds-fieldset__hint">Who hears about it and how loud.</p>
+<div class="ds-field"><label class="ds-field__label" for="g-fs-ch">channel</label><div class="ds-field__wrap"><input class="ds-input" id="g-fs-ch" value="#ops-prod"></div></div>
+<label class="ds-check"><input class="ds-check__input" type="checkbox" checked><span class="ds-check__box"><span class="ds-check__mark"><svg class="mark" aria-hidden="true"><use href="#m-low"/></svg></span></span>Also page</label>
+</fieldset></div></section>
+<section class="g" id="card"><h2>Card / Panel</h2><p class="prose">A bounded surface: head, body, foot. Interactive and selected variants. <a href="manual/06-components-states.md#card-panel">manual §</a></p><div class="ex">
+<div class="row">
+<div class="ds-card" style="flex:1;min-width:14rem"><div class="ds-card__head"><h4 class="ds-card__title">db-03</h4><div class="ds-card__actions"><button class="ds-btn ds-btn--text ds-btn--sm"><svg class="mark" aria-hidden="true"><use href="#m-more"/></svg></button></div></div><div class="ds-card__body">Primary, 14 replicas. Last failover 3 d ago.</div><div class="ds-card__foot"><span class="ds-fresh ds-fresh--live"><span class="ds-fresh__dot"></span>live</span></div></div>
+<div class="ds-card ds-card--interactive ds-card--selected ds-card--compact" tabindex="0" style="flex:1;min-width:14rem"><div class="ds-card__head"><h4 class="ds-card__title">db-04 · selected</h4></div><div class="ds-card__body">Replica. Compact density, interactive.</div></div>
+</div></div></section>
+<section class="g" id="table"><h2>Table</h2><p class="prose">Rows of like things. Sortable headers, numeric columns right-aligned, three densities. <a href="manual/06-components-states.md#table">manual §</a></p><div class="ex">
+<table class="ds-table ds-table--compact"><thead><tr><th class="ds-table__th" aria-sort="descending"><button class="ds-table__sort">host <svg class="mark" aria-hidden="true"><use href="#m-chevron"/></svg></button></th><th class="ds-table__th">status</th><th class="ds-table__th ds-table__th--num">lag</th></tr></thead>
+<tbody>
+<tr class="ds-table__row ds-table__row--interactive" aria-selected="true"><td class="ds-table__td">db-03</td><td class="ds-table__td"><span class="ds-badge" style="--_c:var(--status-low);--_on:var(--on-status-low)"><svg class="mark" aria-hidden="true"><use href="#m-low"/></svg> OK</span></td><td class="ds-table__td ds-table__td--num">0.8 s</td></tr>
+<tr class="ds-table__row ds-table__row--interactive"><td class="ds-table__td">db-04</td><td class="ds-table__td"><span class="ds-badge" style="--_c:var(--status-high);--_on:var(--on-status-high)"><svg class="mark" aria-hidden="true"><use href="#m-high"/></svg> ALERT</span></td><td class="ds-table__td ds-table__td--num">42.0 s</td></tr>
+<tr class="ds-table__row ds-table__row--interactive"><td class="ds-table__td">db-05</td><td class="ds-table__td"><span class="ds-badge" style="--_c:var(--status-unknown);--_on:var(--on-status-unknown)"><svg class="mark" aria-hidden="true"><use href="#m-unknown"/></svg> UNK</span></td><td class="ds-table__td ds-table__td--num">—</td></tr>
+</tbody></table></div></section>
+<section class="g" id="badge"><h2>Status badge</h2><p class="prose">Severity as glyph + word + color, on the OASIS CAP ramp. Never color alone. <a href="manual/06-components-states.md#status-badge">manual §</a></p><div class="ex">
+<div class="row">
+<span class="ds-badge" style="--_c:var(--status-critical);--_on:var(--on-status-critical)"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg> DOWN</span>
+<span class="ds-badge" style="--_c:var(--status-high);--_on:var(--on-status-high)"><svg class="mark" aria-hidden="true"><use href="#m-high"/></svg> ALERT</span>
+<span class="ds-badge" style="--_c:var(--status-medium);--_on:var(--on-status-medium)"><svg class="mark" aria-hidden="true"><use href="#m-medium"/></svg> WARN</span>
+<span class="ds-badge" style="--_c:var(--status-low);--_on:var(--on-status-low)"><svg class="mark" aria-hidden="true"><use href="#m-low"/></svg> OK</span>
+<span class="ds-badge" style="--_c:var(--status-unknown);--_on:var(--on-status-unknown)"><svg class="mark" aria-hidden="true"><use href="#m-unknown"/></svg> UNK</span>
+</div>
+<div class="row">
+<span class="ds-badge ds-badge--solid" style="--_c:var(--status-critical);--_on:var(--on-status-critical)"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg> solid</span>
+<span class="ds-badge ds-badge--plain" style="--_c:var(--status-low);--_on:var(--on-status-low)"><svg class="mark" aria-hidden="true"><use href="#m-low"/></svg> plain</span>
+</div></div></section>
+<section class="g" id="tag"><h2>Tag</h2><p class="prose">A label or filter chip. Neutral by default; accent when it is a live filter. <a href="manual/06-components-states.md#status-badge">manual §</a></p><div class="ex">
+<div class="row">
+<span class="ds-tag">region:us-east</span>
+<span class="ds-tag ds-tag--accent">env:prod <button class="ds-tag__x" aria-label="remove"><svg class="mark" aria-hidden="true"><use href="#m-close"/></svg></button></span>
+<span class="ds-tag">tier:db</span>
+</div></div></section>
+<section class="g" id="alert"><h2>Alert / banner</h2><p class="prose">Inline, persistent notice tied to the content below it. What happened, why, what to do. <a href="manual/06-components-states.md#alert-banner">manual §</a></p><div class="ex">
+<div class="ds-alert" style="--_c:var(--status-high);--_on:var(--on-status-high)"><span class="ds-alert__icon"><svg class="mark" aria-hidden="true"><use href="#m-high"/></svg></span><div class="ds-alert__body"><div class="ds-alert__title">Replica lag 42 s</div><div class="ds-alert__msg">Primary under write burst. Check db-03 before failover.</div><div class="ds-alert__actions"><button class="ds-btn ds-btn--ghost ds-btn--sm">Open db-03</button></div></div><button class="ds-alert__x" aria-label="dismiss"><svg class="mark" aria-hidden="true"><use href="#m-close"/></svg></button></div></div></section>
+<section class="g" id="toast"><h2>Toast / notification</h2><p class="prose">Transient, stacked, bottom-right. Auto-dismisses by severity; critical persists. <a href="manual/06-components-states.md#toast-notification">manual §</a></p><div class="ex">
+<div class="ds-toasts ds-toasts--bottom-right">
+<div class="ds-toast" role="status" style="--_c:var(--status-low);--_on:var(--on-status-low)"><span class="ds-toast__icon"><svg class="mark" aria-hidden="true"><use href="#m-low"/></svg></span><div class="ds-toast__body"><div class="ds-toast__title">Deploy complete</div>api v2.14.0 on 12 nodes.</div><button class="ds-toast__x" aria-label="dismiss"><svg class="mark" aria-hidden="true"><use href="#m-close"/></svg></button></div>
+<div class="ds-toast" role="alert" style="--_c:var(--status-critical);--_on:var(--on-status-critical)"><span class="ds-toast__icon"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg></span><div class="ds-toast__body"><div class="ds-toast__title">db-03 DOWN</div>No heartbeat 30 s. Failover armed.</div><button class="ds-toast__x" aria-label="dismiss"><svg class="mark" aria-hidden="true"><use href="#m-close"/></svg></button></div>
+</div></div></section>
+<section class="g" id="modal"><h2>Modal / dialog</h2><p class="prose">Blocks the page for one decision. Focus-trapped; Esc or scrim dismisses. Destructive variant shown. <a href="manual/06-components-states.md#modal-dialog">manual §</a></p><div class="ex">
+<div class="ds-scrim"><div class="ds-modal ds-modal--sm ds-modal--destructive" role="dialog" aria-modal="true" aria-labelledby="g-modal-t"><div class="ds-modal__head"><h4 class="ds-modal__title" id="g-modal-t">Delete cluster prod-east</h4><button class="ds-modal__x" aria-label="close"><svg class="mark" aria-hidden="true"><use href="#m-close"/></svg></button></div><div class="ds-modal__body">Deletes 14 nodes and their volumes. This cannot be undone.</div><div class="ds-modal__foot"><button class="ds-btn ds-btn--ghost">Cancel</button><button class="ds-btn ds-btn--danger">Delete</button></div></div></div></div></section>
+<section class="g" id="drawer"><h2>Drawer</h2><p class="prose">A side panel for detail or a secondary task, over the page, not instead of it. <a href="manual/06-components-states.md#drawer">manual §</a></p><div class="ex">
+<div class="ds-scrim ds-scrim--drawer"><div class="ds-drawer" role="dialog" aria-labelledby="g-drawer-t"><div class="ds-drawer__head"><h4 class="ds-drawer__title" id="g-drawer-t">db-03 · detail</h4><button class="ds-modal__x" aria-label="close"><svg class="mark" aria-hidden="true"><use href="#m-close"/></svg></button></div><div class="ds-drawer__body"><dl class="ds-kv"><dt class="ds-kv__k">role</dt><dd class="ds-kv__v">primary</dd><dt class="ds-kv__k">lag</dt><dd class="ds-kv__v ds-kv__v--num">0.8 s</dd></dl></div><div class="ds-drawer__foot"><button class="ds-btn ds-btn--ghost">Close</button></div></div></div></div></section>
+<section class="g" id="tooltip"><h2>Tooltip</h2><p class="prose">Supplementary text on hover or focus. Never the sole carrier of essential information. <a href="manual/06-components-states.md#tooltip">manual §</a></p><div class="ex">
+<p>Replica lag is <span class="ds-tip" tabindex="0">0.8 s<span class="ds-tip__bubble" role="tooltip">Seconds behind primary, sampled every 5 s.</span></span> — hover or focus the value.</p></div></section>
+<section class="g" id="tabs"><h2>Tabs</h2><p class="prose">Switch between peer views of one thing. Accent underline marks the selected tab. <a href="manual/06-components-states.md#tabs">manual §</a></p><div class="ex">
+<div class="ds-tabs"><div class="ds-tabs__list" role="tablist"><button class="ds-tab" role="tab" aria-selected="true">Overview</button><button class="ds-tab" role="tab" aria-selected="false">Logs <span class="ds-tab__count">1.2k</span></button><button class="ds-tab" role="tab" aria-selected="false">Metrics</button><button class="ds-tab" role="tab" aria-selected="false" disabled>Audit</button></div></div></div></section>
+<section class="g" id="menu"><h2>Menu / nav</h2><p class="prose">A list of actions or destinations. Popover for actions, sidebar for navigation. <a href="manual/06-components-states.md#menu-nav">manual §</a></p><div class="ex">
+<div class="row">
+<ul class="ds-menu ds-menu--popover"><li class="ds-menu__heading">cluster</li><li><button class="ds-menu__item"><svg class="mark" aria-hidden="true"><use href="#m-refresh"/></svg><span class="ds-menu__label">Restart</span><span class="ds-menu__hint">⌘R</span></button></li><li><button class="ds-menu__item"><svg class="mark" aria-hidden="true"><use href="#m-edit"/></svg><span class="ds-menu__label">Edit config</span></button></li><li class="ds-menu__sep"></li><li><button class="ds-menu__item" disabled><svg class="mark" aria-hidden="true"><use href="#m-delete"/></svg><span class="ds-menu__label">Delete</span></button></li></ul>
+<ul class="ds-menu ds-menu--sidebar" style="min-width:10rem"><li><a class="ds-menu__item" href="#" aria-current="page"><svg class="mark" aria-hidden="true"><use href="#m-hub"/></svg><span class="ds-menu__label">Fleet</span></a></li><li><a class="ds-menu__item" href="#"><svg class="mark" aria-hidden="true"><use href="#m-event"/></svg><span class="ds-menu__label">Events</span></a></li><li><a class="ds-menu__item" href="#"><svg class="mark" aria-hidden="true"><use href="#m-settings"/></svg><span class="ds-menu__label">Settings</span></a></li></ul>
+</div></div></section>
+<section class="g" id="breadcrumb"><h2>Breadcrumb</h2><p class="prose">Where you are in a hierarchy; every ancestor is a link. <a href="manual/06-components-states.md#breadcrumb">manual §</a></p><div class="ex">
+<ol class="ds-crumbs"><li class="ds-crumb"><a href="#">Fleet</a><span class="ds-crumb__sep"><svg class="mark" aria-hidden="true"><use href="#m-chevron"/></svg></span></li><li class="ds-crumb"><a href="#">prod-east</a><span class="ds-crumb__sep"><svg class="mark" aria-hidden="true"><use href="#m-chevron"/></svg></span></li><li class="ds-crumb" aria-current="page">db-03</li></ol></div></section>
+<section class="g" id="pagination"><h2>Pagination</h2><p class="prose">Move through a long list a page at a time. Current page is accent-tinted. <a href="manual/06-components-states.md#pagination">manual §</a></p><div class="ex">
+<nav class="ds-pager" aria-label="pages"><button class="ds-pager__btn ds-pager__btn--prev" disabled><svg class="mark" aria-hidden="true"><use href="#m-chevron"/></svg></button><button class="ds-pager__page" aria-current="page">1</button><button class="ds-pager__page">2</button><button class="ds-pager__page">3</button><span class="ds-pager__gap">…</span><button class="ds-pager__page">12</button><button class="ds-pager__btn ds-pager__btn--next"><svg class="mark" aria-hidden="true"><use href="#m-chevron"/></svg></button></nav></div></section>
+<section class="g" id="stepper"><h2>Stepper</h2><p class="prose">Progress through ordered steps. Done, current, blocked are distinct. <a href="manual/06-components-states.md#stepper">manual §</a></p><div class="ex">
+<ol class="ds-stepper"><li class="ds-step ds-step--done"><span class="ds-step__disc"><svg class="mark" aria-hidden="true"><use href="#m-low"/></svg></span>Plan</li><li class="ds-step__connector"></li><li class="ds-step ds-step--current"><span class="ds-step__disc">2</span>Apply</li><li class="ds-step__connector"></li><li class="ds-step ds-step--blocked"><span class="ds-step__disc"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg></span>Verify</li><li class="ds-step__connector"></li><li class="ds-step"><span class="ds-step__disc">4</span>Done</li></ol></div></section>
+<section class="g" id="meter"><h2>Gauge / meter — sequential</h2><p class="prose">One quantity against capacity. Accent fill; warn and crit thresholds are per-instance. <a href="manual/06-components-states.md#gauge-meter">manual §</a></p><div class="ex">
+<div class="ds-meter" style="--_c:var(--status-medium)"><div class="ds-meter__top"><span class="ds-meter__label">disk · /var</span><span class="ds-meter__val">82% <span class="ds-meter__word">WARN</span></span></div><div class="ds-meter__track"><span class="ds-meter__fill" style="width:82%"></span><span class="ds-meter__tick ds-meter__tick--warn" style="left:70%"></span><span class="ds-meter__tick ds-meter__tick--crit" style="left:90%"></span></div></div>
+<div class="ds-meter"><div class="ds-meter__top"><span class="ds-meter__label">cpu</span><span class="ds-meter__val">41% <span class="ds-meter__word">OK</span></span></div><div class="ds-meter__track"><span class="ds-meter__fill" style="width:41%"></span><span class="ds-meter__tick ds-meter__tick--warn" style="left:70%"></span><span class="ds-meter__tick ds-meter__tick--crit" style="left:90%"></span></div></div></div></section>
+<section class="g" id="dmeter"><h2>Gauge / meter — diverging</h2><p class="prose">Signed deviation from a green center on the spectrum. The signed value is always shown. <a href="manual/06-components-states.md#gauge-meter">manual §</a></p><div class="ex">
+<div class="ds-dmeter" style="--_c:var(--spectrum-orange)"><div class="ds-dmeter__top"><span class="ds-dmeter__label">error vs baseline</span><span class="ds-dmeter__val"><svg class="mark" aria-hidden="true"><use href="#m-warm"/></svg> +2.0 σ</span></div><div class="ds-dmeter__track"><span class="ds-dmeter__center"></span><span class="ds-dmeter__fill" style="left:50%;width:30%"></span></div></div>
+<div class="ds-dmeter" style="--_c:var(--spectrum-teal)"><div class="ds-dmeter__top"><span class="ds-dmeter__label">temp vs nominal</span><span class="ds-dmeter__val"><svg class="mark" aria-hidden="true"><use href="#m-cool"/></svg> −0.8 σ</span></div><div class="ds-dmeter__track"><span class="ds-dmeter__center"></span><span class="ds-dmeter__fill" style="left:38%;width:12%"></span></div></div></div></section>
+<section class="g" id="sparkline"><h2>Chart / sparkline</h2><p class="prose">A series at word size. Line in text color; the end value carries the status word. <a href="manual/06-components-states.md#chart-sparkline">manual §</a></p><div class="ex">
+<div class="row">
+<span class="ds-spark" style="--_c:var(--status-high)"><svg class="ds-spark__svg" width="96" height="24" viewBox="0 0 96 24"><polyline fill="none" stroke="currentColor" stroke-width="1.5" points="0,18 12,16 24,17 36,12 48,14 60,9 72,10 84,4 96,2"/></svg><span class="ds-spark__end">42 s <span class="ds-spark__word">ALERT</span></span></span>
+<span class="ds-spark"><svg class="ds-spark__svg" width="96" height="24" viewBox="0 0 96 24"><polyline fill="none" stroke="currentColor" stroke-width="1.5" points="0,12 12,10 24,13 36,11 48,12 60,10 72,12 84,11 96,12"/></svg><span class="ds-spark__end">0.8 s <span class="ds-spark__word">OK</span></span></span>
+</div></div></section>
+<section class="g" id="heatmap"><h2>Heatmap</h2><p class="prose">A grid of cells colored on the spectrum. Legend runs the full ramp; critical cells are called out. <a href="manual/06-components-states.md#chart-sparkline">manual §</a></p><div class="ex">
+<div class="ds-heat"><div class="ds-heat__grid" style="grid-template-columns:repeat(8,1.5rem)">
+<button class="ds-heat__cell" style="background:var(--spectrum-teal)"></button><button class="ds-heat__cell" style="background:var(--spectrum-green)"></button><button class="ds-heat__cell" style="background:var(--spectrum-green)"></button><button class="ds-heat__cell" style="background:var(--spectrum-yellow)"></button><button class="ds-heat__cell" style="background:var(--spectrum-green)"></button><button class="ds-heat__cell" style="background:var(--spectrum-orange)"></button><button class="ds-heat__cell" style="background:var(--spectrum-red)"></button><button class="ds-heat__cell" style="background:var(--spectrum-green)"></button>
+<button class="ds-heat__cell" style="background:var(--spectrum-purple)"></button><button class="ds-heat__cell" style="background:var(--spectrum-teal)"></button><button class="ds-heat__cell" style="background:var(--spectrum-green)"></button><button class="ds-heat__cell" style="background:var(--spectrum-green)"></button><button class="ds-heat__cell" style="background:var(--spectrum-yellow)"></button><button class="ds-heat__cell" style="background:var(--spectrum-green)"></button><button class="ds-heat__cell" style="background:var(--spectrum-green)"></button><button class="ds-heat__cell" style="background:var(--spectrum-plumb)"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg></button>
+</div><div class="ds-heat__legend"><span class="ds-heat__legend-end">cold</span><span class="ds-heat__bar"></span><span class="ds-heat__legend-end">hot</span><span class="ds-heat__crit"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg> 1 critical</span></div></div></div></section>
+<section class="g" id="stat"><h2>Stat tile</h2><p class="prose">One number that matters, with unit, delta, and a sparkline or freshness in the foot. <a href="manual/06-components-states.md#stat-tile">manual §</a></p><div class="ex">
+<div class="row">
+<div class="ds-stat" style="flex:1;--_c:var(--status-high)"><span class="ds-stat__label">replica lag</span><span class="ds-stat__value">42 <span class="ds-stat__unit">s</span></span><span class="ds-stat__delta"><svg class="mark" aria-hidden="true"><use href="#m-warm"/></svg> +38 s / 5 min</span><div class="ds-stat__foot"><span class="ds-fresh ds-fresh--live"><span class="ds-fresh__dot"></span>live</span></div></div>
+<div class="ds-stat" style="flex:1"><span class="ds-stat__label">nodes</span><span class="ds-stat__value">14</span><span class="ds-stat__delta"><svg class="mark" aria-hidden="true"><use href="#m-neutral"/></svg> no change</span><div class="ds-stat__foot"><span class="ds-fresh"><span class="ds-fresh__dot"></span>12:04:10</span></div></div>
+</div></div></section>
+<section class="g" id="kv"><h2>Key-value list</h2><p class="prose">Facts about one thing, label then value. Two-column and three densities. <a href="manual/06-components-states.md#key-value-list">manual §</a></p><div class="ex">
+<dl class="ds-kv ds-kv--2col"><dt class="ds-kv__k">host</dt><dd class="ds-kv__v">db-03.prod</dd><dt class="ds-kv__k">role</dt><dd class="ds-kv__v">primary</dd><dt class="ds-kv__k">uptime</dt><dd class="ds-kv__v ds-kv__v--num">31 d 4 h</dd><dt class="ds-kv__k">lag</dt><dd class="ds-kv__v ds-kv__v--num">0.8 s</dd></dl></div></section>
+<section class="g" id="log"><h2>Log view</h2><p class="prose">Streaming lines: timestamp, severity, message. Critical lines tint; scroll pauses the tail. <a href="manual/06-components-states.md#log-view">manual §</a></p><div class="ex">
+<div class="ds-log" style="--_h:9rem">
+<div class="ds-log__line"><span class="ds-log__ts">12:04:08.112</span><span class="ds-log__sev" style="--_c:var(--status-low);--_on:var(--on-status-low)"><svg class="mark" aria-hidden="true"><use href="#m-low"/></svg> info</span><span>replication: applied 1024 wal segments</span></div>
+<div class="ds-log__line"><span class="ds-log__ts">12:04:09.004</span><span class="ds-log__sev" style="--_c:var(--status-medium);--_on:var(--on-status-medium)"><svg class="mark" aria-hidden="true"><use href="#m-medium"/></svg> warn</span><span>replication: lag 12 s exceeds 10 s</span></div>
+<div class="ds-log__line ds-log__line--critical"><span class="ds-log__ts">12:04:10.771</span><span class="ds-log__sev" style="--_c:var(--status-critical);--_on:var(--on-status-critical)"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg> crit</span><span>heartbeat: no response from db-03 (30 s)</span></div>
+<div class="ds-log__line"><span class="ds-log__ts">12:04:11.002</span><span class="ds-log__sev" style="--_c:var(--status-high);--_on:var(--on-status-high)"><svg class="mark" aria-hidden="true"><use href="#m-high"/></svg> alert</span><span>failover: armed, awaiting quorum</span></div>
+<button class="ds-log__paused"><svg class="mark" aria-hidden="true"><use href="#m-run"/></svg> paused · 3 new</button>
+</div></div></section>
+<section class="g" id="freshness"><h2>Freshness indicator</h2><p class="prose">How current the data is: live, a timestamp, stale, or offline. <a href="manual/06-components-states.md#freshness-indicator">manual §</a></p><div class="ex">
+<div class="row">
+<span class="ds-fresh ds-fresh--live"><span class="ds-fresh__dot"></span>live</span>
+<span class="ds-fresh"><span class="ds-fresh__dot"></span>as of <span class="ds-fresh__at">12:04:10</span></span>
+<span class="ds-fresh ds-fresh--stale"><span class="ds-fresh__dot"></span>stale · 6 min</span>
+<span class="ds-fresh ds-fresh--offline"><span class="ds-fresh__dot"></span>offline</span>
+</div></div></section>
+<section class="g" id="timeline"><h2>Timeline</h2><p class="prose">Events in order, newest first or last, each with a time and a severity dot. <a href="manual/06-components-states.md#timeline">manual §</a></p><div class="ex">
+<ol class="ds-timeline">
+<li class="ds-event" style="--_c:var(--status-critical);--_on:var(--on-status-critical)"><span class="ds-event__dot"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg></span><div class="ds-event__time">12:04:10</div><div class="ds-event__title">db-03 lost heartbeat</div><div class="ds-event__body">Failover armed, awaiting quorum.</div></li>
+<li class="ds-event" style="--_c:var(--status-medium);--_on:var(--on-status-medium)"><span class="ds-event__dot"><svg class="mark" aria-hidden="true"><use href="#m-medium"/></svg></span><div class="ds-event__time">12:04:09</div><div class="ds-event__title">Lag over threshold</div></li>
+<li class="ds-event"><span class="ds-event__dot"></span><div class="ds-event__time">11:58:00</div><div class="ds-event__title">Deploy api v2.14.0</div></li>
+</ol></div></section>
+<section class="g" id="state"><h2>State panel</h2><p class="prose">Empty, loading, and error states for a region that has no content yet. <a href="manual/06-components-states.md#catalog-specs-to-follow">manual §</a></p><div class="ex">
+<div class="row">
+<div class="ds-state" style="flex:1;min-height:8rem"><span class="ds-state__mark"><svg class="mark" aria-hidden="true"><use href="#m-search"/></svg></span><span class="ds-state__title">No matches</span><span class="ds-state__msg">Nothing matches "db-9". Clear the filter.</span><button class="ds-btn ds-btn--ghost ds-btn--sm ds-state__action">Clear filter</button></div>
+<div class="ds-state ds-state--loading" style="flex:1;min-height:8rem"><span class="ds-state__mark"><svg class="mark" aria-hidden="true"><use href="#m-refresh"/></svg></span><span class="ds-state__title">Loading</span></div>
+<div class="ds-state ds-state--error" style="flex:1;min-height:8rem"><span class="ds-state__mark"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg></span><span class="ds-state__title">Could not load</span><span class="ds-state__msg">Metrics API timed out.</span><button class="ds-btn ds-btn--ghost ds-btn--sm ds-state__action">Retry</button></div>
+</div>
+<div><span class="ds-skeleton ds-skeleton--text"></span><span class="ds-skeleton ds-skeleton--text"></span><span class="ds-skeleton ds-skeleton--text"></span></div></div></section>
+<section class="g" id="shell"><h2>App shell</h2><p class="prose">The frame: brand and summary in the head, nav at left, main content. <a href="manual/06-components-states.md#app-shell">manual §</a></p><div class="ex">
+<div class="ds-shell" style="height:14rem;border:var(--border-width) solid var(--border)"><div class="ds-shell__head"><span class="ds-shell__brand"><svg class="mark" aria-hidden="true"><use href="#m-hub"/></svg> OPS</span><div class="ds-shell__summary"><span class="ds-badge" style="--_c:var(--status-critical);--_on:var(--on-status-critical)"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg> 1</span><span class="ds-badge" style="--_c:var(--status-medium);--_on:var(--on-status-medium)"><svg class="mark" aria-hidden="true"><use href="#m-medium"/></svg> 3</span></div><div class="ds-shell__meta"><span class="ds-fresh ds-fresh--live"><span class="ds-fresh__dot"></span>live</span><div class="ds-shell__actions"><button class="ds-btn ds-btn--text ds-btn--sm"><svg class="mark" aria-hidden="true"><use href="#m-bell"/></svg></button><button class="ds-btn ds-btn--text ds-btn--sm"><svg class="mark" aria-hidden="true"><use href="#m-user"/></svg></button></div></div></div><nav class="ds-shell__nav"><ul class="ds-menu ds-menu--sidebar"><li><a class="ds-menu__item" href="#" aria-current="page"><svg class="mark" aria-hidden="true"><use href="#m-hub"/></svg><span class="ds-menu__label">Fleet</span></a></li><li><a class="ds-menu__item" href="#"><svg class="mark" aria-hidden="true"><use href="#m-event"/></svg><span class="ds-menu__label">Events</span></a></li></ul></nav><main class="ds-shell__main">Main content.</main></div></div></section>
+<section class="g" id="skip"><h2>Skip link</h2><p class="prose">First focusable element on the page; visible only on focus. Shown pinned here. <a href="manual/06-components-states.md#skip-link-kbd">manual §</a></p><div class="ex">
+<a class="ds-skip" href="#main">Skip to content</a></div></section>
+<section class="g" id="kbd"><h2>Kbd</h2><p class="prose">A key or chord, as keycaps. <a href="manual/06-components-states.md#skip-link-kbd">manual §</a></p><div class="ex">
+<p>Open the palette with <span class="ds-kbd"><kbd>⌘</kbd><span class="ds-kbd__plus">+</span><kbd>K</kbd></span>, search with <span class="ds-kbd"><kbd>/</kbd></span>.</p></div></section>
+
+</main>
+<script>
+for (const k of ['theme', 'mode']) {
+  const el = document.getElementById(k);
+  el.onchange = () => document.documentElement.dataset[k] = el.value;
+}
+</script>
+</body>
+</html>
