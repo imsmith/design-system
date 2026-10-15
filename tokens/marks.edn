@@ -80,6 +80,9 @@
   {:id "m-star"     :group :action  :unicode "★" :ascii "*"    :nerd "f005" :nerd-name "nf-fa-star" :note "outline at rest; fill = selected"}
   {:id "m-bookmark" :group :action  :unicode nil       :ascii "bk"   :nerd "f02e" :nerd-name "nf-fa-bookmark" :note "outline at rest; fill = saved"}
   {:id "m-share"    :group :action  :unicode nil       :ascii "shr"  :nerd "f1e0" :nerd-name "nf-fa-share_alt"}
+  {:id "m-copy"     :group :action  :unicode nil       :ascii "cp"   :nerd "f0c5" :nerd-name "nf-fa-copy"}
+  {:id "m-check"    :group :action  :unicode "✓" :ascii "ok"   :nerd "f00c" :nerd-name "nf-fa-check" :note "bare check: done/copied. Not a status — m-low is the status circle"}
+  {:id "m-eye"      :group :action  :unicode nil       :ascii "eye"  :nerd "f06e" :nerd-name "nf-fa-eye" :note "reveal; pressed state = shown"}
   ;; theme emblems: one per anchor theme, drawn in the theme's accent. No terminal tier — a theme is named in text there.
   {:id "m-tron"     :group :theme   :unicode nil       :ascii "tron"   :nerd nil :nerd-name nil :note "the program, identity disc held overhead"}
   {:id "m-matrix"   :group :theme   :unicode nil       :ascii "matrix" :nerd nil :nerd-name nil :note "digital rain"}

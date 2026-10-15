@@ -916,6 +916,29 @@ defmodule DesignSystem.Tokens do
         nerd: "f1e0",
         nerd_name: "nf-fa-share_alt"
       }, %{
+        id: "m-copy",
+        group: :action,
+        unicode: nil,
+        ascii: "cp",
+        nerd: "f0c5",
+        nerd_name: "nf-fa-copy"
+      }, %{
+        id: "m-check",
+        group: :action,
+        unicode: "✓",
+        ascii: "ok",
+        nerd: "f00c",
+        nerd_name: "nf-fa-check",
+        note: "bare check: done/copied. Not a status — m-low is the status circle"
+      }, %{
+        id: "m-eye",
+        group: :action,
+        unicode: nil,
+        ascii: "eye",
+        nerd: "f06e",
+        nerd_name: "nf-fa-eye",
+        note: "reveal; pressed state = shown"
+      }, %{
         id: "m-tron",
         group: :theme,
         unicode: nil,

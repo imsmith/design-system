@@ -420,6 +420,178 @@ the kit had to hand-roll from primitives.
   the [tabs](#tabs) when exactly one view should show at a time.
 - **Terminal:** `▸ SECTION` rows.
 
+### Field extras: required · trailing control · character count
+
+- A **required** field marks its label with `*` in `status/critical` *and* says
+  so in the helper or legend — the mark alone is color. A **trailing control**
+  (password reveal `m-eye`, clear `m-close`, number stepper chevrons) sits inside
+  the field at the right edge; the field pads for it. A **character count**
+  rides the message row, right-aligned, and turns `status/critical` past the
+  limit while the field takes the error state.
+- **Number:** the native spinner is hidden; the stepper is two stacked
+  chevron buttons in the trail, keyboard arrows still step. **Password:** the
+  reveal is a pressed toggle; shown state is announced, never only drawn.
+- **Date · time:** the native inputs, styled with the field's chrome and
+  `color-scheme` matched to the mode so the native picker is not a white flash.
+  Prefer a **preset row** ([segmented control](#segmented-control--theme-picker--mode-picker):
+  15 min · 1 h · 24 h · 7 d · custom) to a calendar; the calendar is the
+  custom case.
+
+### Combobox (autocomplete)
+
+- The [input](#input-text-field) with a filtered [menu](#menu--nav) popover
+  beneath it: typing filters, the match is emphasized in `accent`, arrows move,
+  `Enter` picks, `Esc` closes. For short static lists the native `<datalist>`
+  variant needs no script. Use when the list is long, remote, or free text is
+  also legal; use the [select](#select) when it is short and closed.
+- **Terminal:** the input with a bordered list of matches below it.
+
+### File drop
+
+- A dashed `border` target around a native file input: `m-upload`, a title,
+  a hint line (what types, what size). Hover, focus, and drag-over promote the
+  edge to `accent` with ambient glow; drag-over also tints. Chosen files list
+  beneath with a remove `m-close`; progress is the [progress bar](#progress-bar).
+  The input stays a real `<input type=file>`, so keyboard and screen readers get
+  the native dialog.
+- **Terminal:** a path prompt.
+
+### Checkbox group · Select-all
+
+- A `fieldset` of [checks](#checkbox--radio--toggle) under a `caption` legend.
+  A **head check** above an `edge` rule selects all and shows **indeterminate**
+  (an `accent` box with a dash) when some are checked. Tables use the same head
+  check in the first column with a **bulk bar** (count in `accent` + actions) in
+  place of the caption while anything is selected.
+- **Terminal:** `[x] [-] [ ]` with the dash for partial.
+
+### Avatar · Identity
+
+- A circle of `surface-raised` with a quiet `edge` holding an image, initials
+  (`mono`, medium), or `m-user`. Three sizes (24 · 32 · 48). An **agent** takes
+  the rounded square. An optional **presence dot** at the lower right carries a
+  status step; it never carries meaning alone — the identity row beside it says
+  the word. A **stack** overlaps avatars by a third, bordered in `surface`.
+- **Identity:** avatar + name (`text`) + a `muted` sub-line (role, host, last
+  seen). The shell header's user control is an identity.
+- **Terminal:** `@name` and the status word.
+
+### Divider · Link
+
+- **Divider:** an `edge` hairline (quiet; `--strong` uses `border`), optionally
+  carrying a `micro` uppercase `muted` label at center. A vertical divider
+  separates inline groups in toolbars.
+- **Link:** `accent`, underline on hover; `m-external` after a link that leaves
+  the app. A `--text` link in running prose keeps `text` with a `muted`
+  underline so a paragraph is not a wall of accent. A `--muted` link is for
+  secondary chrome (breadcrumbs, footers). Disabled links are `aria-disabled`
+  at 50%, not removed.
+
+### Code block · Copy button
+
+- **Code block:** a `bg` well with a quiet `edge`, `caption` mono, optional
+  head row (language or filename, `micro` uppercase) with the copy button at
+  the right; without a head the copy button floats top-right. `--lines` adds
+  `muted` line numbers that do not select. Hover promotes the edge.
+- **Copy button:** `m-copy` + "copy"; on success it swaps to `m-check` +
+  "copied" in `accent` for about two seconds and announces it. The swap is
+  glyph + word, never color alone.
+- **Terminal:** a bordered block; copy is the terminal's own.
+
+### Popover · Hover card
+
+- **Popover:** an anchored `surface-raised` panel with a quiet `edge`, shadow,
+  and ambient glow, opened by click or keyboard and closed by `Esc`, outside
+  click, or its own action. Placement below by default; above, right, or
+  end-aligned as space demands. It carries content richer than a
+  [tooltip](#tooltip) and lighter than a [modal](#modal--dialog); it never traps
+  focus.
+- **Hover card:** the popover on hover or focus of an identity, host, or
+  reference — a detail preview. Opens after a deliberate delay, closes when the
+  pointer leaves. Hover is a preview only; the same content must be reachable
+  by click.
+
+### Button group · Split button
+
+- **Button group:** adjacent [ghost buttons](#button) joined edge to edge, outer
+  corners rounded, sharing borders. For a set of *actions* (back · forward ·
+  refresh). An `aria-pressed` member takes the selected treatment; for an
+  exclusive *choice* use the [segmented control](#segmented-control--theme-picker--mode-picker).
+- **Split button:** a primary action with a narrow chevron half that opens a
+  [menu](#menu--nav) of alternatives (Deploy ▾ → deploy with canary, dry run).
+  The main half never changes what it does.
+
+### Progress bar
+
+- The native `<progress>`, styled: `bg` track, `border` edge, `accent` value.
+  For **jobs and transfers** (uploads, rollouts, batch runs) with a row above
+  carrying the label and the value or ETA in `text`. **Indeterminate** sweeps a
+  soft accent band; static under reduced motion. Capacity against a limit is
+  not a progress bar — that is the [sequential meter](#gauge--meter) with its
+  thresholds.
+- **Terminal:** `[=====>    ] 54% · 1m 20s left`.
+
+### Table states · Selection · Sticky · Resize
+
+- **States:** empty, loading, and error render as one full-width row holding
+  the [state panel](#4--catalog-specs-to-follow) (loading may instead be three
+  skeleton rows). The header stays so columns keep their meaning.
+- **Selection:** a head check in the first column with indeterminate for
+  partial; selected rows take the selected treatment; a **bulk bar** replaces
+  the toolbar while anything is selected.
+- **Sticky:** inside a scrolling wrap the header pins to the top on `surface`.
+- **Resize:** headers are natively resizable (`resize: horizontal`); the
+  current widths are the consumer's to persist.
+
+### Command palette
+
+- The [modal](#modal--dialog), docked near the top, composed of a search
+  [input](#input-text-field) (`m-search`, no border, body size), a
+  [menu](#menu--nav) of matched commands with `micro` hints and [kbd](#skip-link--kbd)
+  chords, and a foot of key hints (↑↓ move · ↵ run · esc close). Opens on
+  `⌘K`; the first match is selected; typing filters. Groups by heading
+  (navigate · actions · recent). Everything here is an existing component;
+  the palette is only the layout.
+- **Terminal:** the same list at the prompt.
+
+### Diff view
+
+- Unified by default; split side by side when width allows. Each line has
+  old/new line numbers (`muted`, unselectable), a sign column, and the code.
+  Additions tint and sign in the **cool pole** (`spectrum-teal`), removals in
+  the **warm pole** (`spectrum-orange`) with a faint strike — spectrum, not
+  status, because a removal is not an alert. A head row counts `+n −m`;
+  hunk headers are `muted` on a faint band. Use for config changes and plan
+  previews before apply.
+- **Terminal:** `+`/`-` prefixed lines in the same two colors.
+
+### Data viewer (JSON · edn)
+
+- The [tree view](#tree-view) with typed leaves: keys `muted`, keywords and
+  numbers `accent`, strings `text`, booleans `spectrum-teal`, nil `muted`
+  italic. Collapsed branches show their count. A bar above offers expand-all,
+  collapse-all, and copy. Depth is unbounded here, unlike the nav tree.
+- **Terminal:** pretty-printed with two-space indents.
+
+### Terminal pane
+
+- The [log view](#log-view) with a head (session name, freshness) and an
+  input row: an `accent` prompt, a borderless input, a blinking block cursor
+  (static under reduced motion). Commands echo in `accent`, errors in
+  `status/critical`. Focus-within promotes the pane's edge. For attaching to a
+  live session or running a one-off; not a replacement for the real terminal.
+
+### Inline confirm
+
+- A destructive action that expands **in place** instead of raising a modal:
+  the trigger is a ghost button; open, it turns `status/critical` and a panel
+  with a critical edge drops beneath — what will be destroyed (named, in
+  `status/critical`), that it cannot be undone, an input that must match the
+  target's name, and the [danger button](#button) that stays disabled until it
+  does. Cancel collapses. Use when the action is one of many on a page (a row,
+  a card); use the [modal](#modal--dialog) when it is the page's one decision.
+- **Terminal:** `type the name to confirm: _`.
+
 ### Skip link · Kbd
 
 - **Skip link:** the first focusable thing on a page, visually hidden until
