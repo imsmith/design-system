@@ -20,8 +20,8 @@ apply to it). Treatments reference tokens, never ad-hoc values.
 
 | State | Treatment |
 | --- | --- |
-| **default** | `surface` bg, `text`, `border`; no glow |
-| **hover** | outlined: `border`→`accent`; filled: brighten accent; ambient glow |
+| **default** | `surface` bg, `text`; controls take `border`, containers the quiet `edge`; no glow |
+| **hover** | outlined: `border`→`accent`; filled: brighten accent; containers: `edge`→`accent`; ambient glow |
 | **focus** | `text`-role outline, `space-half` offset + **active glow**. The outline is the signal; glow reinforces ([10 · Accessibility](10-accessibility.md) §5) |
 | **active** | `accent` fill, `on-accent` label, pressed/inset shift |
 | **disabled** | `muted` text, 50% opacity, no glow, non-interactive |
@@ -87,8 +87,10 @@ Every component spec follows the same shape:
 
 ### Card / Panel
 
-- A `surface` container with `border`, padding from the density mode, optional
-  header/footer. Usually non-interactive; if it is, it takes hover/focus/selected.
+- A `surface` container with a quiet `edge`, padding from the density mode,
+  optional header/footer. Hover promotes the edge to `accent` with ambient glow
+  (every resting container does this); only an interactive card also takes
+  focus/selected.
 - **Terminal:** a box-drawing frame with an optional title in the top rule.
 
 ### Table

@@ -38,7 +38,7 @@ source file in a comment.
 
 - **Data color is theme-invariant.** The spectrum, the status ramp, and the TLP
   markings mean the same thing in every theme and mode. Green means nominal in
-  every skin. A theme may touch *chrome only*: `:bg :surface :text :muted :border
+  every skin. A theme may touch *chrome only*: `:bg :surface :text :muted :border :edge
   :surface-raised :accent :on-accent :glow :accent-tint`. Nothing else.
 - **Never color alone.** Status is *always also* encoded by shape, label, or
   position — because some readers can't distinguish hues and some media can't
@@ -60,7 +60,8 @@ source file in a comment.
 
 Three anchors, each with `:dark` and `:light`. Pick one theme; do not mix. APCA
 thresholds: text 75 (on `surface` and `surface-raised` too), muted 60, border 30,
-on-accent 45 (`on-accent` is rated for large/heavy text only). `accent-tint` is
+on-accent 45 (`on-accent` is rated for large/heavy text only). `edge` is the
+quiet container outline and is exempt; controls keep `border`. `accent-tint` is
 not a color: it is the alpha applied to `accent` for selected/active tints.
 
 | Role | Tron dark | Matrix dark | Compaq dark |
@@ -71,6 +72,7 @@ not a color: it is the alpha applied to `accent` for selected/active tints.
 | `text` | `#cfeff5` | `#7dffae` | `#ffd9a0` |
 | `muted` | `#a2bdc3` | `#63cb89` | `#d5b484` |
 | `border` | `#6d8288` | `#438b5c` | `#947b58` |
+| `edge` | `#15262e` | `#0f2610` | `#34261a` |
 | `accent` | `#00E5FF` | `#03A062` | `#FF8A00` |
 | `on-accent` | `#000000` | `#ffffff` | `#000000` |
 | `glow` | `#00E5FF` | `#03A062` | `#FF8A00` |
@@ -166,8 +168,9 @@ reinforcement, since color + glyph already signal. Static under reduced-motion.
 Components compose existing tokens; they introduce no new primitive values. Honor
 the state matrix:
 
-- `default` surface/text/border, no glow.
-- `hover` outlined → border to accent; filled → brighten accent; ambient glow.
+- `default` surface/text; `border` on controls, quiet `edge` on containers; no glow.
+- `hover` outlined → border to accent; filled → brighten accent; containers →
+  edge to accent; ambient glow.
 - `focus` outline in `text`, 4px offset, active glow. The outline is the signal.
 - `active` fill `accent`, foreground `on-accent`, pressed/inset.
 - `disabled` muted text, 0.5 opacity, non-interactive, no glow.

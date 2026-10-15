@@ -21,6 +21,7 @@ defmodule DesignSystem.Tokens do
           text: "#cfeff5",
           muted: "#a2bdc3",
           border: "#6d8288",
+          edge: "#15262e",
           accent: "#00E5FF",
           on_accent: "#000000",
           glow: "#00E5FF",
@@ -33,6 +34,7 @@ defmodule DesignSystem.Tokens do
           text: "#07232a",
           muted: "#6d7d81",
           border: "#adb6b9",
+          edge: "#dde6e8",
           accent: "#008c9e",
           on_accent: "#ffffff",
           glow: "#00E5FF",
@@ -49,6 +51,7 @@ defmodule DesignSystem.Tokens do
           text: "#7dffae",
           muted: "#63cb89",
           border: "#438b5c",
+          edge: "#0f2610",
           accent: "#03A062",
           on_accent: "#ffffff",
           glow: "#03A062",
@@ -61,6 +64,7 @@ defmodule DesignSystem.Tokens do
           text: "#06250f",
           muted: "#6c7e71",
           border: "#afb9b2",
+          edge: "#dfe8e1",
           accent: "#027a4a",
           on_accent: "#ffffff",
           glow: "#03A062",
@@ -77,6 +81,7 @@ defmodule DesignSystem.Tokens do
           text: "#ffd9a0",
           muted: "#d5b484",
           border: "#947b58",
+          edge: "#34261a",
           accent: "#FF8A00",
           on_accent: "#000000",
           glow: "#FF8A00",
@@ -89,6 +94,7 @@ defmodule DesignSystem.Tokens do
           text: "#2a1a06",
           muted: "#837a6f",
           border: "#bbb6af",
+          edge: "#e8e1d6",
           accent: "#c96a00",
           on_accent: "#ffffff",
           glow: "#FF8A00",
@@ -865,6 +871,27 @@ defmodule DesignSystem.Tokens do
         ascii: "^",
         nerd: "f08e",
         nerd_name: "nf-fa-external_link"
+      }, %{
+        id: "m-sun",
+        group: :object,
+        unicode: "☀",
+        ascii: "lt",
+        nerd: "f185",
+        nerd_name: "nf-fa-sun_o"
+      }, %{
+        id: "m-moon",
+        group: :object,
+        unicode: "☾",
+        ascii: "dk",
+        nerd: "f186",
+        nerd_name: "nf-fa-moon_o"
+      }, %{
+        id: "m-screen",
+        group: :object,
+        unicode: nil,
+        ascii: "sys",
+        nerd: "f108",
+        nerd_name: "nf-fa-desktop"
       }]
     }
   end

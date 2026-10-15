@@ -197,7 +197,8 @@ identities, each with a **light** and a **dark** variant.
 | `surface-raised` | one step up from `surface`: nested panels, popovers |
 | `text` | primary foreground |
 | `muted` | secondary text; also the `unknown` grey |
-| `border` | dividers, outlines |
+| `border` | control edges: inputs, selects, checks, meter tracks — the contrast floor |
+| `edge` | container edges at rest: cards, tables, panels, popovers — a step above `surface`, deliberately quiet; hover promotes it to `accent` |
 | `accent` | the single anchor color — the one branded hue |
 | `on-accent` | the black/white foreground placed atop the accent fill |
 | `glow` | accent glow for CRT material (see chapter 05) |
@@ -206,7 +207,9 @@ identities, each with a **light** and a **dark** variant.
 All chrome values are **APCA-verified** against the thresholds adopted in
 [10 · Accessibility](10-accessibility.md): body text Lc 75 (on `bg`, `surface`,
 and `surface-raised`), muted Lc 60, border Lc 30, on-accent Lc 45 (large/heavy
-only). Anchors and body text are unchanged
+only). `edge` is exempt by design: a container is identified by its content and
+layout, not its outline, so its resting edge may sit below Lc 30. Anything a
+reader must find by its outline — a control — uses `border`. Anchors and body text are unchanged
 from their authored values; `muted` and `border` were raised to clear threshold.
 
 ### Tron — accent `#00E5FF`
@@ -219,6 +222,7 @@ from their authored values; `muted` and `border` were raised to clear threshold.
 | text | `#cfeff5` | `#07232a` |
 | muted | `#a2bdc3` | `#6d7d81` |
 | border | `#6d8288` | `#adb6b9` |
+| edge | `#15262e` | `#dde6e8` |
 | accent | `#00E5FF` | `#008c9e` |
 | on-accent | `#000000` | `#ffffff` |
 | glow | `#00E5FF` | `#00E5FF` |
@@ -234,6 +238,7 @@ from their authored values; `muted` and `border` were raised to clear threshold.
 | text | `#7dffae` | `#06250f` |
 | muted | `#63cb89` | `#6c7e71` |
 | border | `#438b5c` | `#afb9b2` |
+| edge | `#0f2610` | `#dfe8e1` |
 | accent | `#03A062` | `#027a4a` |
 | on-accent | `#ffffff` | `#ffffff` |
 | glow | `#03A062` | `#03A062` |
@@ -249,6 +254,7 @@ from their authored values; `muted` and `border` were raised to clear threshold.
 | text | `#ffd9a0` | `#2a1a06` |
 | muted | `#d5b484` | `#837a6f` |
 | border | `#947b58` | `#bbb6af` |
+| edge | `#34261a` | `#e8e1d6` |
 | accent | `#FF8A00` | `#c96a00` |
 | on-accent | `#000000` | `#ffffff` |
 | glow | `#FF8A00` | `#FF8A00` |

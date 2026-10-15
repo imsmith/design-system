@@ -6,6 +6,9 @@
 # the grid and a few overrides that pin fixed-position overlays into their cards.
 # The sprite is inlined so <use href="#m-*"> works from file://.
 
+source [file join [file dirname [info script]] tcl edn.tcl]
+set themes [edn::read tokens/color/themes.edn]
+proc kw {k} { string range $k 1 end }
 proc mark {id} { return "<svg class=\"mark\" aria-hidden=\"true\"><use href=\"#$id\"/></svg>" }
 set sprite [string map {<?xml {<!--} ?> -->} [string trim [exec cat assets/marks/sprite.svg]]]
 regsub {<svg\s} $sprite {<svg style="display:none" } sprite
@@ -210,6 +213,15 @@ card kbd "Kbd" "A key or chord, as keycaps." skip-link-kbd {
 <p>Open the palette with <span class="ds-kbd"><kbd>⌘</kbd><span class="ds-kbd__plus">+</span><kbd>K</kbd></span>, search with <span class="ds-kbd"><kbd>/</kbd></span>.</p>}
 
 # ---------- page ----------
+set themeBtns ""
+foreach {name t} [dict get $themes :themes] {
+    set n [kw $name]
+    append themeBtns "<button role=\"radio\" aria-checked=\"[expr {$n eq "tron" ? "true" : "false"}]\" value=\"$n\" title=\"$n\" aria-label=\"$n\"><span class=\"dot\" style=\"--c:[dict get $t :anchor]\"></span></button>\n"
+}
+set modeBtns ""
+foreach {v m title} {system m-screen "follow the OS" light m-sun light dark m-moon dark} {
+    append modeBtns "<button role=\"radio\" aria-checked=\"[expr {$v eq "dark" ? "true" : "false"}]\" value=\"$v\" title=\"$title\" aria-label=\"$v\">[mark $m]</button>\n"
+}
 set index ""; set body ""
 foreach c $cards {
     lassign $c id title desc anchor html
@@ -230,19 +242,27 @@ set html [subst -nocommands -nobackslashes {<!doctype html>
 * { box-sizing: border-box }
 html { background: var(--bg); color: var(--text); font: var(--weight-regular) var(--text-body)/var(--leading-snug) var(--font-mono) }
 body { margin: 0; display: grid; grid-template-columns: 14rem 1fr; min-height: 100vh }
-aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: var(--space-3) var(--space-2); border-right: var(--border-width) solid var(--border); background: var(--surface) }
+aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: var(--space-3) var(--space-2); border-right: var(--border-width) solid var(--edge); background: var(--surface) }
 aside h1 { font-size: var(--text-h3); text-transform: uppercase; letter-spacing: var(--tracking-label); margin: 0 0 var(--space-2); color: var(--accent) }
 [data-mode="dark"] aside h1 { text-shadow: var(--glow-text-ambient) }
-aside label { display: block; font-size: var(--text-caption); color: var(--muted); margin-bottom: var(--space-1) }
-select { font: inherit; font-size: var(--text-caption); background: var(--bg); color: var(--text); border: 1px solid var(--border); padding: 2px var(--space-half); width: 100% }
+/* pickers: segmented, icon-only; the selected segment is accent-tinted with a rule */
+.seg { display: inline-flex; gap: 2px; padding: 2px; background: var(--bg); border: var(--border-width) solid var(--edge); border-radius: var(--radius-md); margin-bottom: var(--space-1) }
+.seg button { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 28px; background: none; border: var(--border-width) solid transparent; border-radius: var(--radius-sm); color: var(--muted); cursor: pointer; padding: 0 }
+.seg button:hover { color: var(--text); border-color: var(--accent); box-shadow: var(--glow-box-ambient) }
+.seg button:focus-visible { outline: 2px solid var(--text); outline-offset: 1px }
+.seg button[aria-checked="true"] { color: var(--text); background: var(--accent-tint); box-shadow: inset 0 -2px 0 var(--accent) }
+.seg .mark { width: 1.1rem; height: 1.1rem }
+.seg .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1px color-mix(in srgb, var(--c) 40%, transparent) }
+.seg button[aria-checked="true"] .dot { box-shadow: 0 0 6px var(--c), 0 0 0 1px var(--c) }
 aside ol { list-style: none; margin: var(--space-2) 0 0; padding: 0; font-size: var(--text-caption) }
 aside li a { display: block; color: var(--muted); text-decoration: none; padding: 2px 0 } aside li a:hover { color: var(--text) }
 main { padding: var(--space-3); display: grid; grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr)); gap: var(--space-3); align-content: start }
-.g { background: var(--surface); border: var(--border-width) solid var(--border); border-radius: var(--radius-lg); padding: var(--space-3); min-width: 0; scroll-margin-top: var(--space-3) }
+.g { background: var(--surface); border: var(--border-width) solid var(--edge); border-radius: var(--radius-lg); padding: var(--space-3); min-width: 0; scroll-margin-top: var(--space-3); transition: border-color var(--dur-fast) var(--ease-standard), box-shadow var(--dur-fast) var(--ease-standard) }
+.g:hover { border-color: var(--accent); box-shadow: var(--glow-box-ambient) }
 .g h2 { font-size: var(--text-h3); text-transform: uppercase; letter-spacing: var(--tracking-label); margin: 0 0 var(--space-1) }
 .prose { font-family: var(--font-prose); font-size: var(--text-small); line-height: var(--leading-normal); color: var(--muted); margin: 0 0 var(--space-2) }
 .prose a { color: var(--accent) }
-.ex { background: var(--bg); border: var(--border-width) dashed var(--border); border-radius: var(--radius-md); padding: var(--space-3); display: flex; flex-direction: column; gap: var(--space-2); position: relative; overflow: hidden }
+.ex { background: var(--bg); border: var(--border-width) dashed var(--edge); border-radius: var(--radius-md); padding: var(--space-3); display: flex; flex-direction: column; gap: var(--space-2); position: relative; overflow: hidden }
 .row { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center }
 .col { display: flex; flex-direction: column; gap: var(--space-1) }
 .mark { width: 1em; height: 1em; stroke: currentColor; fill: none; vertical-align: -0.15em }
@@ -258,8 +278,10 @@ main { padding: var(--space-3); display: grid; grid-template-columns: repeat(aut
 $sprite
 <aside>
 <h1>Gallery</h1>
-<label>theme <select id="theme"><option>tron</option><option>matrix</option><option>compaq</option></select></label>
-<label>mode <select id="mode"><option>dark</option><option>light</option></select></label>
+<div class="seg" role="radiogroup" aria-label="theme" data-k="theme">
+$themeBtns</div>
+<div class="seg" role="radiogroup" aria-label="mode" data-k="mode">
+$modeBtns</div>
 <ol>$index</ol>
 <p class="prose">$n components · <a href="specimen.html">specimen</a></p>
 </aside>
@@ -267,10 +289,13 @@ $sprite
 $body
 </main>
 <script>
-for (const k of ['theme', 'mode']) {
-  const el = document.getElementById(k);
-  el.onchange = () => document.documentElement.dataset[k] = el.value;
+const osDark = matchMedia('(prefers-color-scheme: dark)');
+function apply(k, v) {
+  document.documentElement.dataset[k] = (k === 'mode' && v === 'system') ? (osDark.matches ? 'dark' : 'light') : v;
+  for (const b of document.querySelectorAll('.seg[data-k="' + k + '"] button')) b.setAttribute('aria-checked', b.value === v);
 }
+for (const seg of document.querySelectorAll('.seg')) seg.onclick = e => { const b = e.target.closest('button'); if (b) apply(seg.dataset.k, b.value); };
+osDark.onchange = () => { const b = document.querySelector('.seg[data-k="mode"] [aria-checked="true"]'); if (b.value === 'system') apply('mode', 'system'); };
 </script>
 </body>
 </html>

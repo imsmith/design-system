@@ -71,4 +71,8 @@
   {:id "m-agent"    :group :object  :unicode nil       :ascii "agt"  :nerd "f2db" :nerd-name "nf-fa-microchip"}
   {:id "m-run"      :group :action  :unicode "▶" :ascii ">"    :nerd "f04b" :nerd-name "nf-fa-play"}
   {:id "m-send"     :group :action  :unicode "➤" :ascii "->"   :nerd "f1d8" :nerd-name "nf-fa-paper_plane"}
-  {:id "m-external" :group :action  :unicode "↗" :ascii "^"    :nerd "f08e" :nerd-name "nf-fa-external_link"}]}
+  {:id "m-external" :group :action  :unicode "↗" :ascii "^"    :nerd "f08e" :nerd-name "nf-fa-external_link"}
+  ;; appearance pickers: mode (sun/moon/screen) — screen = follow the OS
+  {:id "m-sun"      :group :object  :unicode "☀" :ascii "lt"   :nerd "f185" :nerd-name "nf-fa-sun_o"}
+  {:id "m-moon"     :group :object  :unicode "☾" :ascii "dk"   :nerd "f186" :nerd-name "nf-fa-moon_o"}
+  {:id "m-screen"   :group :object  :unicode nil       :ascii "sys"  :nerd "f108" :nerd-name "nf-fa-desktop"}]}

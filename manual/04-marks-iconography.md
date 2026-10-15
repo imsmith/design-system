@@ -68,7 +68,7 @@ data-direction is never mistaken for a status. The mark carries the **sign**;
 
 ## 4 · Functional starter set
 
-Twenty-eight everyday marks, same style. The chevron rotates 90°/180°/270° for the
+Thirty-one everyday marks, same style. The chevron rotates 90°/180°/270° for the
 four directions rather than shipping four symbols.
 
 - **Nav/control:** `m-close`, `m-menu`, `m-chevron`, `m-more`, `m-chat`, `m-event`,
@@ -76,7 +76,8 @@ four directions rather than shipping four symbols.
 - **Actions:** `m-search`, `m-add`, `m-remove`, `m-edit`, `m-delete`,
   `m-refresh`, `m-filter`, `m-download`, `m-upload`, `m-run`, `m-send`, `m-external`
 - **Objects:** `m-settings`, `m-info`, `m-help`, `m-user`, `m-lock`, `m-bell`,
-  `m-tool`, `m-agent`
+  `m-tool`, `m-agent`; appearance: `m-sun` (light), `m-moon` (dark), `m-screen`
+  (follow the OS)
 
 This is a *starter* set, not the final library — extensions follow the style spec
 and register in `tokens/marks.edn`. What it deliberately omits (copy, save,

@@ -10,19 +10,27 @@
 * { box-sizing: border-box }
 html { background: var(--bg); color: var(--text); font: var(--weight-regular) var(--text-body)/var(--leading-snug) var(--font-mono) }
 body { margin: 0; display: grid; grid-template-columns: 14rem 1fr; min-height: 100vh }
-aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: var(--space-3) var(--space-2); border-right: var(--border-width) solid var(--border); background: var(--surface) }
+aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: var(--space-3) var(--space-2); border-right: var(--border-width) solid var(--edge); background: var(--surface) }
 aside h1 { font-size: var(--text-h3); text-transform: uppercase; letter-spacing: var(--tracking-label); margin: 0 0 var(--space-2); color: var(--accent) }
 [data-mode="dark"] aside h1 { text-shadow: var(--glow-text-ambient) }
-aside label { display: block; font-size: var(--text-caption); color: var(--muted); margin-bottom: var(--space-1) }
-select { font: inherit; font-size: var(--text-caption); background: var(--bg); color: var(--text); border: 1px solid var(--border); padding: 2px var(--space-half); width: 100% }
+/* pickers: segmented, icon-only; the selected segment is accent-tinted with a rule */
+.seg { display: inline-flex; gap: 2px; padding: 2px; background: var(--bg); border: var(--border-width) solid var(--edge); border-radius: var(--radius-md); margin-bottom: var(--space-1) }
+.seg button { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 28px; background: none; border: var(--border-width) solid transparent; border-radius: var(--radius-sm); color: var(--muted); cursor: pointer; padding: 0 }
+.seg button:hover { color: var(--text); border-color: var(--accent); box-shadow: var(--glow-box-ambient) }
+.seg button:focus-visible { outline: 2px solid var(--text); outline-offset: 1px }
+.seg button[aria-checked="true"] { color: var(--text); background: var(--accent-tint); box-shadow: inset 0 -2px 0 var(--accent) }
+.seg .mark { width: 1.1rem; height: 1.1rem }
+.seg .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1px color-mix(in srgb, var(--c) 40%, transparent) }
+.seg button[aria-checked="true"] .dot { box-shadow: 0 0 6px var(--c), 0 0 0 1px var(--c) }
 aside ol { list-style: none; margin: var(--space-2) 0 0; padding: 0; font-size: var(--text-caption) }
 aside li a { display: block; color: var(--muted); text-decoration: none; padding: 2px 0 } aside li a:hover { color: var(--text) }
 main { padding: var(--space-3); display: grid; grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr)); gap: var(--space-3); align-content: start }
-.g { background: var(--surface); border: var(--border-width) solid var(--border); border-radius: var(--radius-lg); padding: var(--space-3); min-width: 0; scroll-margin-top: var(--space-3) }
+.g { background: var(--surface); border: var(--border-width) solid var(--edge); border-radius: var(--radius-lg); padding: var(--space-3); min-width: 0; scroll-margin-top: var(--space-3); transition: border-color var(--dur-fast) var(--ease-standard), box-shadow var(--dur-fast) var(--ease-standard) }
+.g:hover { border-color: var(--accent); box-shadow: var(--glow-box-ambient) }
 .g h2 { font-size: var(--text-h3); text-transform: uppercase; letter-spacing: var(--tracking-label); margin: 0 0 var(--space-1) }
 .prose { font-family: var(--font-prose); font-size: var(--text-small); line-height: var(--leading-normal); color: var(--muted); margin: 0 0 var(--space-2) }
 .prose a { color: var(--accent) }
-.ex { background: var(--bg); border: var(--border-width) dashed var(--border); border-radius: var(--radius-md); padding: var(--space-3); display: flex; flex-direction: column; gap: var(--space-2); position: relative; overflow: hidden }
+.ex { background: var(--bg); border: var(--border-width) dashed var(--edge); border-radius: var(--radius-md); padding: var(--space-3); display: flex; flex-direction: column; gap: var(--space-2); position: relative; overflow: hidden }
 .row { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center }
 .col { display: flex; flex-direction: column; gap: var(--space-1) }
 .mark { width: 1em; height: 1em; stroke: currentColor; fill: none; vertical-align: -0.15em }
@@ -121,11 +129,22 @@ main { padding: var(--space-3); display: grid; grid-template-columns: repeat(aut
   <symbol id="m-run" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="5" x2="5" y2="19"/><polygon points="9,5 20,12 9,19"/></g></symbol>
   <symbol id="m-send" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3,4 21,12 3,20 6,12"/><line x1="6" y1="12" x2="21" y2="12"/></g></symbol>
   <symbol id="m-external" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></g></symbol>
+  <symbol id="m-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.9" y1="4.9" x2="6.3" y2="6.3"/><line x1="17.7" y1="17.7" x2="19.1" y2="19.1"/><line x1="4.9" y1="19.1" x2="6.3" y2="17.7"/><line x1="17.7" y1="6.3" x2="19.1" y2="4.9"/></g></symbol>
+  <symbol id="m-moon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></g></symbol>
+  <symbol id="m-screen" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="1"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></g></symbol>
 </svg>
 <aside>
 <h1>Gallery</h1>
-<label>theme <select id="theme"><option>tron</option><option>matrix</option><option>compaq</option></select></label>
-<label>mode <select id="mode"><option>dark</option><option>light</option></select></label>
+<div class="seg" role="radiogroup" aria-label="theme" data-k="theme">
+<button role="radio" aria-checked="true" value="tron" title="tron" aria-label="tron"><span class="dot" style="--c:#00E5FF"></span></button>
+<button role="radio" aria-checked="false" value="matrix" title="matrix" aria-label="matrix"><span class="dot" style="--c:#03A062"></span></button>
+<button role="radio" aria-checked="false" value="compaq" title="compaq" aria-label="compaq"><span class="dot" style="--c:#FF8A00"></span></button>
+</div>
+<div class="seg" role="radiogroup" aria-label="mode" data-k="mode">
+<button role="radio" aria-checked="false" value="system" title="follow the OS" aria-label="system"><svg class="mark" aria-hidden="true"><use href="#m-screen"/></svg></button>
+<button role="radio" aria-checked="false" value="light" title="light" aria-label="light"><svg class="mark" aria-hidden="true"><use href="#m-sun"/></svg></button>
+<button role="radio" aria-checked="true" value="dark" title="dark" aria-label="dark"><svg class="mark" aria-hidden="true"><use href="#m-moon"/></svg></button>
+</div>
 <ol><li><a href="#button">Button</a></li>
 <li><a href="#input">Input (text field)</a></li>
 <li><a href="#textarea">Textarea</a></li>
@@ -325,10 +344,13 @@ main { padding: var(--space-3); display: grid; grid-template-columns: repeat(aut
 
 </main>
 <script>
-for (const k of ['theme', 'mode']) {
-  const el = document.getElementById(k);
-  el.onchange = () => document.documentElement.dataset[k] = el.value;
+const osDark = matchMedia('(prefers-color-scheme: dark)');
+function apply(k, v) {
+  document.documentElement.dataset[k] = (k === 'mode' && v === 'system') ? (osDark.matches ? 'dark' : 'light') : v;
+  for (const b of document.querySelectorAll('.seg[data-k="' + k + '"] button')) b.setAttribute('aria-checked', b.value === v);
 }
+for (const seg of document.querySelectorAll('.seg')) seg.onclick = e => { const b = e.target.closest('button'); if (b) apply(seg.dataset.k, b.value); };
+osDark.onchange = () => { const b = document.querySelector('.seg[data-k="mode"] [aria-checked="true"]'); if (b.value === 'system') apply('mode', 'system'); };
 </script>
 </body>
 </html>

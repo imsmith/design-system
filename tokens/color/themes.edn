@@ -4,7 +4,7 @@
 ;; It may NOT touch the spectrum, the status ramp, or the markings — those are
 ;; data color and are theme-invariant. Each anchor has a :dark and :light variant.
 ;;
-;; Roles: :bg :surface :text :muted :border :accent :on-accent :glow
+;; Roles: :bg :surface :text :muted :border :edge :accent :on-accent :glow
 ;; light :accent is darkened from the raw anchor where contrast on a light
 ;; surface demands it; :glow keeps the raw anchor (glow sits on dark material).
 ;; :on-accent is the black/white foreground placed atop the accent fill; per the
@@ -15,8 +15,9 @@
 ;; Authoritative for VALUES. See manual/01-color.md section 6 for MEANING.
 
 {:meta {:name  "anchor-themes"
-        :roles [:bg :surface :surface-raised :text :muted :border :accent :on-accent :glow :accent-tint]
+        :roles [:bg :surface :surface-raised :text :muted :border :edge :accent :on-accent :glow :accent-tint]
         :derived {:surface-raised "one step up from surface, for nested panels"
+                  :edge           "container edge at rest: a step above surface, deliberately quiet; hover promotes it to :accent. Exempt from the border threshold — controls keep :border"
                   :accent-tint    "alpha applied to :accent for selected/active tints"}
         :rule  "chrome only; data color is invariant"
         :contrast {:model "APCA (apca-w3 reference)"
@@ -27,11 +28,11 @@
   {:lineage "Tron — cyan vector grid"
    :anchor  "#00E5FF"
    :dark  {:bg "#05080a" :surface "#0a141a" :surface-raised "#0e1c24" :text "#cfeff5"
-           :muted "#a2bdc3" :border "#6d8288" :accent "#00E5FF"
+           :muted "#a2bdc3" :border "#6d8288" :edge "#15262e" :accent "#00E5FF"
            :on-accent "#000000" :glow "#00E5FF"
            :accent-tint 0.12}
    :light {:bg "#eef7f9" :surface "#ffffff" :surface-raised "#f4fafb" :text "#07232a"
-           :muted "#6d7d81" :border "#adb6b9" :accent "#008c9e"
+           :muted "#6d7d81" :border "#adb6b9" :edge "#dde6e8" :accent "#008c9e"
            :on-accent "#ffffff" :glow "#00E5FF"
            :accent-tint 0.10}}
 
@@ -39,11 +40,11 @@
   {:lineage "The Matrix — phosphor green"
    :anchor  "#03A062"
    :dark  {:bg "#020a02" :surface "#061206" :surface-raised "#0a1c0a" :text "#7dffae"
-           :muted "#63cb89" :border "#438b5c" :accent "#03A062"
+           :muted "#63cb89" :border "#438b5c" :edge "#0f2610" :accent "#03A062"
            :on-accent "#ffffff" :glow "#03A062"
            :accent-tint 0.14}
    :light {:bg "#f0f7f1" :surface "#ffffff" :surface-raised "#f4faf5" :text "#06250f"
-           :muted "#6c7e71" :border "#afb9b2" :accent "#027a4a"
+           :muted "#6c7e71" :border "#afb9b2" :edge "#dfe8e1" :accent "#027a4a"
            :on-accent "#ffffff" :glow "#03A062"
            :accent-tint 0.10}}
 
@@ -51,10 +52,10 @@
   {:lineage "Compaq Portable III — amber gas-plasma"
    :anchor  "#FF8A00"
    :dark  {:bg "#160f04" :surface "#20160a" :surface-raised "#2a1e0d" :text "#ffd9a0"
-           :muted "#d5b484" :border "#947b58" :accent "#FF8A00"
+           :muted "#d5b484" :border "#947b58" :edge "#34261a" :accent "#FF8A00"
            :on-accent "#000000" :glow "#FF8A00"
            :accent-tint 0.13}
    :light {:bg "#fbf4ea" :surface "#ffffff" :surface-raised "#faf5ec" :text "#2a1a06"
-           :muted "#837a6f" :border "#bbb6af" :accent "#c96a00"
+           :muted "#837a6f" :border "#bbb6af" :edge "#e8e1d6" :accent "#c96a00"
            :on-accent "#ffffff" :glow "#FF8A00"
            :accent-tint 0.10}}}}
