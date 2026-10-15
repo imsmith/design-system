@@ -75,4 +75,12 @@
   ;; appearance pickers: mode (sun/moon/screen) — screen = follow the OS
   {:id "m-sun"      :group :object  :unicode "☀" :ascii "lt"   :nerd "f185" :nerd-name "nf-fa-sun_o"}
   {:id "m-moon"     :group :object  :unicode "☾" :ascii "dk"   :nerd "f186" :nerd-name "nf-fa-moon_o"}
-  {:id "m-screen"   :group :object  :unicode nil       :ascii "sys"  :nerd "f108" :nerd-name "nf-fa-desktop"}]}
+  {:id "m-screen"   :group :object  :unicode nil       :ascii "sys"  :nerd "f108" :nerd-name "nf-fa-desktop"}
+  ;; social / collection
+  {:id "m-star"     :group :action  :unicode "★" :ascii "*"    :nerd "f005" :nerd-name "nf-fa-star" :note "outline at rest; fill = selected"}
+  {:id "m-bookmark" :group :action  :unicode nil       :ascii "bk"   :nerd "f02e" :nerd-name "nf-fa-bookmark" :note "outline at rest; fill = saved"}
+  {:id "m-share"    :group :action  :unicode nil       :ascii "shr"  :nerd "f1e0" :nerd-name "nf-fa-share_alt"}
+  ;; theme emblems: one per anchor theme, drawn in the theme's accent. No terminal tier — a theme is named in text there.
+  {:id "m-tron"     :group :theme   :unicode nil       :ascii "tron"   :nerd nil :nerd-name nil :note "the program, identity disc held overhead"}
+  {:id "m-matrix"   :group :theme   :unicode nil       :ascii "matrix" :nerd nil :nerd-name nil :note "digital rain"}
+  {:id "m-compaq"   :group :theme   :unicode nil       :ascii "compaq" :nerd nil :nerd-name nil :note "the amber CRT, prompt lit"}]}

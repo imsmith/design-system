@@ -892,6 +892,53 @@ defmodule DesignSystem.Tokens do
         ascii: "sys",
         nerd: "f108",
         nerd_name: "nf-fa-desktop"
+      }, %{
+        id: "m-star",
+        group: :action,
+        unicode: "★",
+        ascii: "*",
+        nerd: "f005",
+        nerd_name: "nf-fa-star",
+        note: "outline at rest; fill = selected"
+      }, %{
+        id: "m-bookmark",
+        group: :action,
+        unicode: nil,
+        ascii: "bk",
+        nerd: "f02e",
+        nerd_name: "nf-fa-bookmark",
+        note: "outline at rest; fill = saved"
+      }, %{
+        id: "m-share",
+        group: :action,
+        unicode: nil,
+        ascii: "shr",
+        nerd: "f1e0",
+        nerd_name: "nf-fa-share_alt"
+      }, %{
+        id: "m-tron",
+        group: :theme,
+        unicode: nil,
+        ascii: "tron",
+        nerd: nil,
+        nerd_name: nil,
+        note: "the program, identity disc held overhead"
+      }, %{
+        id: "m-matrix",
+        group: :theme,
+        unicode: nil,
+        ascii: "matrix",
+        nerd: nil,
+        nerd_name: nil,
+        note: "digital rain"
+      }, %{
+        id: "m-compaq",
+        group: :theme,
+        unicode: nil,
+        ascii: "compaq",
+        nerd: nil,
+        nerd_name: nil,
+        note: "the amber CRT, prompt lit"
       }]
     }
   end

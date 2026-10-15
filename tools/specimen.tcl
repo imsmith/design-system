@@ -8,6 +8,7 @@
 # the source. The HTML skeleton below is the only hand-authored part.
 
 source [file join [file dirname [info script]] tcl edn.tcl]
+source [file join [file dirname [info script]] tcl pickers.tcl]
 foreach {var file} {themes color/themes spectrum color/spectrum status color/status
                     opinion color/opinion tlp color/markings type typography
                     space space motion motion material material marks marks
@@ -61,6 +62,7 @@ set sprite [string map {<?xml {<!--} ?> -->} [string trim [exec cat assets/marks
 regsub {<svg\s} $sprite {<svg style="display:none" } sprite
 
 # ---------- page ----------
+set pickersHtml [pickers]
 set mcrit [mark m-critical]; set mwarm [mark m-warm]; set mhigh [mark m-high]
 set html [subst -nocommands -nobackslashes {<!doctype html>
 <html lang="en" data-theme="tron" data-mode="dark">
@@ -123,8 +125,7 @@ table { border-collapse: collapse; font-size: var(--text-small) } th, td { text-
 $sprite
 <header>
   <h1>Specimen</h1>
-  <label>theme <select id="theme"><option>tron</option><option>matrix</option><option>compaq</option></select></label>
-  <label>mode <select id="mode"><option>dark</option><option>light</option></select></label>
+  $pickersHtml
 </header>
 <p class="prose">Every value on this page is read from <code>tokens/</code> by <code>tools/specimen.tcl</code>. Chrome follows the selected theme. Data color does not: the spectrum, status ramp, and TLP markings are identical in every theme and mode. This paragraph is prose set in the proportional family; everything else is the mono voice.</p>
 
@@ -175,12 +176,7 @@ $spaceRows
 <h2>Motion</h2>
 <p>durations: <code>instant</code> <code>fast</code> <code>moderate</code> <code>deliberate</code> — hover a button to see <code>fast</code>. The critical badge pulses; under <code>prefers-reduced-motion</code> it is static.</p>
 
-<script>
-for (const k of ['theme', 'mode']) {
-  const el = document.getElementById(k);
-  el.onchange = () => document.documentElement.dataset[k] = el.value;
-}
-</script>
+$pickerScript
 </body>
 </html>
 }]

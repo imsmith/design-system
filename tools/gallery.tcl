@@ -7,6 +7,7 @@
 # The sprite is inlined so <use href="#m-*"> works from file://.
 
 source [file join [file dirname [info script]] tcl edn.tcl]
+source [file join [file dirname [info script]] tcl pickers.tcl]
 set themes [edn::read tokens/color/themes.edn]
 proc kw {k} { string range $k 1 end }
 proc mark {id} { return "<svg class=\"mark\" aria-hidden=\"true\"><use href=\"#$id\"/></svg>" }
@@ -206,6 +207,56 @@ card state "State panel" "Empty, loading, and error states for a region that has
 card shell "App shell" "The frame: brand and summary in the head, nav at left, main content." app-shell {
 <div class="ds-shell" style="height:14rem;border:var(--border-width) solid var(--border)"><div class="ds-shell__head"><span class="ds-shell__brand">[mark m-hub] OPS</span><div class="ds-shell__summary"><span class="ds-badge" style="--_c:var(--status-critical);--_on:var(--on-status-critical)">[mark m-critical] 1</span><span class="ds-badge" style="--_c:var(--status-medium);--_on:var(--on-status-medium)">[mark m-medium] 3</span></div><div class="ds-shell__meta"><span class="ds-fresh ds-fresh--live"><span class="ds-fresh__dot"></span>live</span><div class="ds-shell__actions"><button class="ds-btn ds-btn--text ds-btn--sm">[mark m-bell]</button><button class="ds-btn ds-btn--text ds-btn--sm">[mark m-user]</button></div></div></div><nav class="ds-shell__nav"><ul class="ds-menu ds-menu--sidebar"><li><a class="ds-menu__item" href="#" aria-current="page">[mark m-hub]<span class="ds-menu__label">Fleet</span></a></li><li><a class="ds-menu__item" href="#">[mark m-event]<span class="ds-menu__label">Events</span></a></li></ul></nav><main class="ds-shell__main">Main content.</main></div>}
 
+card seg "Segmented control · Theme · Mode" "A pill radio group. The theme picker draws each theme's emblem in its own accent; the mode picker follows the OS or forces light/dark." segmented-control-theme-picker-mode-picker {
+<div class="row">
+<div class="ds-seg ds-seg--theme" role="radiogroup" aria-label="theme (demo)"><button class="ds-seg__btn" role="radio" aria-checked="true" style="--_c:#00E5FF" aria-label="tron">[mark m-tron]</button><button class="ds-seg__btn" role="radio" aria-checked="false" style="--_c:#03A062" aria-label="matrix">[mark m-matrix]</button><button class="ds-seg__btn" role="radio" aria-checked="false" style="--_c:#FF8A00" aria-label="compaq">[mark m-compaq]</button></div>
+<div class="ds-seg" role="radiogroup" aria-label="mode (demo)"><button class="ds-seg__btn" role="radio" aria-checked="false" aria-label="system">[mark m-screen]</button><button class="ds-seg__btn" role="radio" aria-checked="false" aria-label="light">[mark m-sun]</button><button class="ds-seg__btn" role="radio" aria-checked="true" aria-label="dark">[mark m-moon]</button></div>
+<div class="ds-seg" role="radiogroup" aria-label="density"><button class="ds-seg__btn" role="radio" aria-checked="false">Compact</button><button class="ds-seg__btn" role="radio" aria-checked="true">Comfortable</button><button class="ds-seg__btn" role="radio" aria-checked="false" disabled>Dense</button></div>
+</div>
+<p class="prose" style="margin:0">The live pickers in the sidebar are this component.</p>}
+
+card range "Slider (range)" "The native range input, styled. Always pair it with a visible value." slider-range {
+<div class="ds-field"><label class="ds-field__label" for="g-rng">alert threshold · <output id="g-rng-out">70</output>%</label><input class="ds-range" id="g-rng" type="range" min="0" max="100" value="70" style="--_v:70%" oninput="this.style.setProperty('--_v', this.value + '%'); document.getElementById('g-rng-out').value = this.value"></div>
+<div class="ds-field"><label class="ds-field__label" for="g-rng2">locked</label><input class="ds-range" id="g-rng2" type="range" value="40" style="--_v:40%" disabled></div>}
+
+card rating "Rating · Bookmark" "Stars are a radio group that fills to the chosen one; bookmark is a pressed toggle. Fill is never the only readout." rating-bookmark {
+<div class="row">
+<span class="ds-rating" role="radiogroup" aria-label="rate">
+<label class="ds-rating__star"><input class="ds-rating__input" type="radio" name="g-rate" value="1">[mark m-star]</label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" name="g-rate" value="2">[mark m-star]</label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" name="g-rate" value="3" checked>[mark m-star]</label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" name="g-rate" value="4">[mark m-star]</label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" name="g-rate" value="5">[mark m-star]</label>
+<span class="ds-rating__count">3/5</span></span>
+<span class="ds-rating ds-rating--readonly" aria-label="4 of 5">
+<label class="ds-rating__star"><input class="ds-rating__input" type="radio" disabled>[mark m-star]</label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" disabled>[mark m-star]</label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" disabled>[mark m-star]</label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" disabled checked>[mark m-star]</label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" disabled>[mark m-star]</label>
+<span class="ds-rating__count">4.0 · 128</span></span>
+</div>
+<div class="row">
+<button class="ds-bookmark" aria-pressed="true" onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') !== 'true')">[mark m-bookmark] Saved</button>
+<button class="ds-bookmark" aria-pressed="false" onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') !== 'true')">[mark m-bookmark] Save</button>
+</div>}
+
+card share "Share" "A ghost button that opens a popover menu of destinations. An action, never a state." share {
+<div class="row" style="align-items:flex-start">
+<button class="ds-btn ds-btn--ghost ds-btn--sm">[mark m-share] Share</button>
+<ul class="ds-menu ds-menu--popover"><li class="ds-menu__heading">share dashboard</li><li><button class="ds-menu__item">[mark m-external]<span class="ds-menu__label">Copy link</span><span class="ds-menu__hint">⌘C</span></button></li><li><button class="ds-menu__item">[mark m-download]<span class="ds-menu__label">Export PNG</span></button></li><li><button class="ds-menu__item">[mark m-send]<span class="ds-menu__label">Send to #ops-prod</span></button></li></ul>
+</div>}
+
+card tree "Tree view" "Nested disclosure. Branches are summaries with a twist; the current node is selected." tree-view {
+<ul class="ds-tree">
+<li><details open><summary><span class="ds-tree__twist">[mark m-chevron]</span>[mark m-hub] prod-east<span class="ds-tree__hint">14</span></summary>
+<ul>
+<li><details open><summary><span class="ds-tree__twist">[mark m-chevron]</span>[mark m-system] db<span class="ds-tree__hint">3</span></summary>
+<ul><li><a class="ds-tree__leaf" href="#" aria-current="true">db-03 · primary</a></li><li><a class="ds-tree__leaf" href="#">db-04</a></li><li><a class="ds-tree__leaf" href="#">db-05</a></li></ul></details></li>
+<li><details><summary><span class="ds-tree__twist">[mark m-chevron]</span>[mark m-system] api<span class="ds-tree__hint">11</span></summary><ul><li><a class="ds-tree__leaf" href="#">api-01</a></li></ul></details></li>
+</ul></details></li>
+<li><details><summary><span class="ds-tree__twist">[mark m-chevron]</span>[mark m-hub] prod-west<span class="ds-tree__hint">9</span></summary><ul><li><a class="ds-tree__leaf" href="#">db-11</a></li></ul></details></li>
+</ul>}
+
+card accordion "Accordion" "A stack of disclosures on one surface. Any number open; use tabs when exactly one should show." accordion {
+<div class="ds-acc">
+<details open><summary><span class="ds-tree__twist">[mark m-chevron]</span>What happened</summary><div class="ds-acc__body">db-03 stopped answering heartbeats at 12:04:10. Replicas are serving reads.</div></details>
+<details><summary><span class="ds-tree__twist">[mark m-chevron]</span>Why</summary><div class="ds-acc__body">Write burst from the batch importer saturated the WAL volume.</div></details>
+<details><summary><span class="ds-tree__twist">[mark m-chevron]</span>What to do</summary><div class="ds-acc__body">Pause the importer, then promote db-04 if db-03 is not back within 5 min.</div></details>
+</div>}
+
 card skip "Skip link" "First focusable element on the page; visible only on focus. Shown pinned here." skip-link-kbd {
 <a class="ds-skip" href="#main">Skip to content</a>}
 
@@ -213,15 +264,7 @@ card kbd "Kbd" "A key or chord, as keycaps." skip-link-kbd {
 <p>Open the palette with <span class="ds-kbd"><kbd>⌘</kbd><span class="ds-kbd__plus">+</span><kbd>K</kbd></span>, search with <span class="ds-kbd"><kbd>/</kbd></span>.</p>}
 
 # ---------- page ----------
-set themeBtns ""
-foreach {name t} [dict get $themes :themes] {
-    set n [kw $name]
-    append themeBtns "<button role=\"radio\" aria-checked=\"[expr {$n eq "tron" ? "true" : "false"}]\" value=\"$n\" title=\"$n\" aria-label=\"$n\"><span class=\"dot\" style=\"--c:[dict get $t :anchor]\"></span></button>\n"
-}
-set modeBtns ""
-foreach {v m title} {system m-screen "follow the OS" light m-sun light dark m-moon dark} {
-    append modeBtns "<button role=\"radio\" aria-checked=\"[expr {$v eq "dark" ? "true" : "false"}]\" value=\"$v\" title=\"$title\" aria-label=\"$v\">[mark $m]</button>\n"
-}
+set pickersHtml [pickers]
 set index ""; set body ""
 foreach c $cards {
     lassign $c id title desc anchor html
@@ -245,15 +288,7 @@ body { margin: 0; display: grid; grid-template-columns: 14rem 1fr; min-height: 1
 aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: var(--space-3) var(--space-2); border-right: var(--border-width) solid var(--edge); background: var(--surface) }
 aside h1 { font-size: var(--text-h3); text-transform: uppercase; letter-spacing: var(--tracking-label); margin: 0 0 var(--space-2); color: var(--accent) }
 [data-mode="dark"] aside h1 { text-shadow: var(--glow-text-ambient) }
-/* pickers: segmented, icon-only; the selected segment is accent-tinted with a rule */
-.seg { display: inline-flex; gap: 2px; padding: 2px; background: var(--bg); border: var(--border-width) solid var(--edge); border-radius: var(--radius-md); margin-bottom: var(--space-1) }
-.seg button { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 28px; background: none; border: var(--border-width) solid transparent; border-radius: var(--radius-sm); color: var(--muted); cursor: pointer; padding: 0 }
-.seg button:hover { color: var(--text); border-color: var(--accent); box-shadow: var(--glow-box-ambient) }
-.seg button:focus-visible { outline: 2px solid var(--text); outline-offset: 1px }
-.seg button[aria-checked="true"] { color: var(--text); background: var(--accent-tint); box-shadow: inset 0 -2px 0 var(--accent) }
-.seg .mark { width: 1.1rem; height: 1.1rem }
-.seg .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1px color-mix(in srgb, var(--c) 40%, transparent) }
-.seg button[aria-checked="true"] .dot { box-shadow: 0 0 6px var(--c), 0 0 0 1px var(--c) }
+aside .ds-seg { margin-bottom: var(--space-1) }
 aside ol { list-style: none; margin: var(--space-2) 0 0; padding: 0; font-size: var(--text-caption) }
 aside li a { display: block; color: var(--muted); text-decoration: none; padding: 2px 0 } aside li a:hover { color: var(--text) }
 main { padding: var(--space-3); display: grid; grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr)); gap: var(--space-3); align-content: start }
@@ -278,25 +313,14 @@ main { padding: var(--space-3); display: grid; grid-template-columns: repeat(aut
 $sprite
 <aside>
 <h1>Gallery</h1>
-<div class="seg" role="radiogroup" aria-label="theme" data-k="theme">
-$themeBtns</div>
-<div class="seg" role="radiogroup" aria-label="mode" data-k="mode">
-$modeBtns</div>
+$pickersHtml
 <ol>$index</ol>
 <p class="prose">$n components · <a href="specimen.html">specimen</a></p>
 </aside>
 <main>
 $body
 </main>
-<script>
-const osDark = matchMedia('(prefers-color-scheme: dark)');
-function apply(k, v) {
-  document.documentElement.dataset[k] = (k === 'mode' && v === 'system') ? (osDark.matches ? 'dark' : 'light') : v;
-  for (const b of document.querySelectorAll('.seg[data-k="' + k + '"] button')) b.setAttribute('aria-checked', b.value === v);
-}
-for (const seg of document.querySelectorAll('.seg')) seg.onclick = e => { const b = e.target.closest('button'); if (b) apply(seg.dataset.k, b.value); };
-osDark.onchange = () => { const b = document.querySelector('.seg[data-k="mode"] [aria-checked="true"]'); if (b.value === 'system') apply('mode', 'system'); };
-</script>
+$pickerScript
 </body>
 </html>
 }]

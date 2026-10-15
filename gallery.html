@@ -13,15 +13,7 @@ body { margin: 0; display: grid; grid-template-columns: 14rem 1fr; min-height: 1
 aside { position: sticky; top: 0; height: 100vh; overflow: auto; padding: var(--space-3) var(--space-2); border-right: var(--border-width) solid var(--edge); background: var(--surface) }
 aside h1 { font-size: var(--text-h3); text-transform: uppercase; letter-spacing: var(--tracking-label); margin: 0 0 var(--space-2); color: var(--accent) }
 [data-mode="dark"] aside h1 { text-shadow: var(--glow-text-ambient) }
-/* pickers: segmented, icon-only; the selected segment is accent-tinted with a rule */
-.seg { display: inline-flex; gap: 2px; padding: 2px; background: var(--bg); border: var(--border-width) solid var(--edge); border-radius: var(--radius-md); margin-bottom: var(--space-1) }
-.seg button { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 28px; background: none; border: var(--border-width) solid transparent; border-radius: var(--radius-sm); color: var(--muted); cursor: pointer; padding: 0 }
-.seg button:hover { color: var(--text); border-color: var(--accent); box-shadow: var(--glow-box-ambient) }
-.seg button:focus-visible { outline: 2px solid var(--text); outline-offset: 1px }
-.seg button[aria-checked="true"] { color: var(--text); background: var(--accent-tint); box-shadow: inset 0 -2px 0 var(--accent) }
-.seg .mark { width: 1.1rem; height: 1.1rem }
-.seg .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1px color-mix(in srgb, var(--c) 40%, transparent) }
-.seg button[aria-checked="true"] .dot { box-shadow: 0 0 6px var(--c), 0 0 0 1px var(--c) }
+aside .ds-seg { margin-bottom: var(--space-1) }
 aside ol { list-style: none; margin: var(--space-2) 0 0; padding: 0; font-size: var(--text-caption) }
 aside li a { display: block; color: var(--muted); text-decoration: none; padding: 2px 0 } aside li a:hover { color: var(--text) }
 main { padding: var(--space-3); display: grid; grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr)); gap: var(--space-3); align-content: start }
@@ -132,18 +124,31 @@ main { padding: var(--space-3); display: grid; grid-template-columns: repeat(aut
   <symbol id="m-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.9" y1="4.9" x2="6.3" y2="6.3"/><line x1="17.7" y1="17.7" x2="19.1" y2="19.1"/><line x1="4.9" y1="19.1" x2="6.3" y2="17.7"/><line x1="17.7" y1="6.3" x2="19.1" y2="4.9"/></g></symbol>
   <symbol id="m-moon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></g></symbol>
   <symbol id="m-screen" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="1"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></g></symbol>
+
+  <!-- ============ SOCIAL / COLLECTION ============ -->
+  <symbol id="m-star" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12,2.5 14.9,8.6 21.5,9.4 16.6,14 17.9,20.6 12,17.4 6.1,20.6 7.4,14 2.5,9.4 9.1,8.6"/></g></symbol>
+  <symbol id="m-bookmark" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4.5L6 21z"/></g></symbol>
+  <symbol id="m-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><line x1="8.2" y1="10.9" x2="15.8" y2="6.1"/><line x1="8.2" y1="13.1" x2="15.8" y2="17.9"/></g></symbol>
+
+  <!-- ============ THEME EMBLEMS (drawn in the theme's accent) ============ -->
+  <!-- tron: the program raises the identity disc overhead -->
+  <symbol id="m-tron" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2.5"/><circle cx="12" cy="4" r="0.6" fill="currentColor" stroke="none"/><line x1="9.6" y1="4.8" x2="8.5" y2="12.5"/><line x1="14.4" y1="4.8" x2="15.5" y2="12.5"/><circle cx="12" cy="10.5" r="1.8"/><line x1="8.5" y1="12.5" x2="15.5" y2="12.5"/><line x1="12" y1="12.5" x2="12" y2="17"/><line x1="12" y1="17" x2="9" y2="22"/><line x1="12" y1="17" x2="15" y2="22"/></g></symbol>
+  <!-- matrix: digital rain, three columns falling at different phases -->
+  <symbol id="m-matrix" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="2" x2="5" y2="22" stroke-dasharray="3 3"/><line x1="12" y1="2" x2="12" y2="22" stroke-dasharray="2 2 5 2"/><line x1="19" y1="2" x2="19" y2="22" stroke-dasharray="4 3 1 3"/><circle cx="5" cy="14" r="1.1" fill="currentColor" stroke="none"/><circle cx="12" cy="20" r="1.1" fill="currentColor" stroke="none"/><circle cx="19" cy="9" r="1.1" fill="currentColor" stroke="none"/></g></symbol>
+  <!-- compaq: the amber CRT, prompt lit -->
+  <symbol id="m-compaq" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="19" height="14" rx="2.5"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="7" y1="21" x2="17" y2="21"/><polyline points="7,8 10,10.5 7,13"/><line x1="12" y1="13" x2="16" y2="13"/></g></symbol>
 </svg>
 <aside>
 <h1>Gallery</h1>
-<div class="seg" role="radiogroup" aria-label="theme" data-k="theme">
-<button role="radio" aria-checked="true" value="tron" title="tron" aria-label="tron"><span class="dot" style="--c:#00E5FF"></span></button>
-<button role="radio" aria-checked="false" value="matrix" title="matrix" aria-label="matrix"><span class="dot" style="--c:#03A062"></span></button>
-<button role="radio" aria-checked="false" value="compaq" title="compaq" aria-label="compaq"><span class="dot" style="--c:#FF8A00"></span></button>
+<div class="ds-seg ds-seg--theme" role="radiogroup" aria-label="theme" data-k="theme">
+<button class="ds-seg__btn" role="radio" aria-checked="true" value="tron" title="tron" aria-label="tron" style="--_c:#00E5FF"><svg class="mark" aria-hidden="true"><use href="#m-tron"/></svg></button>
+<button class="ds-seg__btn" role="radio" aria-checked="false" value="matrix" title="matrix" aria-label="matrix" style="--_c:#03A062"><svg class="mark" aria-hidden="true"><use href="#m-matrix"/></svg></button>
+<button class="ds-seg__btn" role="radio" aria-checked="false" value="compaq" title="compaq" aria-label="compaq" style="--_c:#FF8A00"><svg class="mark" aria-hidden="true"><use href="#m-compaq"/></svg></button>
 </div>
-<div class="seg" role="radiogroup" aria-label="mode" data-k="mode">
-<button role="radio" aria-checked="false" value="system" title="follow the OS" aria-label="system"><svg class="mark" aria-hidden="true"><use href="#m-screen"/></svg></button>
-<button role="radio" aria-checked="false" value="light" title="light" aria-label="light"><svg class="mark" aria-hidden="true"><use href="#m-sun"/></svg></button>
-<button role="radio" aria-checked="true" value="dark" title="dark" aria-label="dark"><svg class="mark" aria-hidden="true"><use href="#m-moon"/></svg></button>
+<div class="ds-seg" role="radiogroup" aria-label="mode" data-k="mode">
+<button class="ds-seg__btn" role="radio" aria-checked="false" value="system" title="follow the OS" aria-label="system"><svg class="mark" aria-hidden="true"><use href="#m-screen"/></svg></button>
+<button class="ds-seg__btn" role="radio" aria-checked="false" value="light" title="light" aria-label="light"><svg class="mark" aria-hidden="true"><use href="#m-sun"/></svg></button>
+<button class="ds-seg__btn" role="radio" aria-checked="true" value="dark" title="dark" aria-label="dark"><svg class="mark" aria-hidden="true"><use href="#m-moon"/></svg></button>
 </div>
 <ol><li><a href="#button">Button</a></li>
 <li><a href="#input">Input (text field)</a></li>
@@ -178,10 +183,16 @@ main { padding: var(--space-3); display: grid; grid-template-columns: repeat(aut
 <li><a href="#timeline">Timeline</a></li>
 <li><a href="#state">State panel</a></li>
 <li><a href="#shell">App shell</a></li>
+<li><a href="#seg">Segmented control · Theme · Mode</a></li>
+<li><a href="#range">Slider (range)</a></li>
+<li><a href="#rating">Rating · Bookmark</a></li>
+<li><a href="#share">Share</a></li>
+<li><a href="#tree">Tree view</a></li>
+<li><a href="#accordion">Accordion</a></li>
 <li><a href="#skip">Skip link</a></li>
 <li><a href="#kbd">Kbd</a></li>
 </ol>
-<p class="prose">35 components · <a href="specimen.html">specimen</a></p>
+<p class="prose">41 components · <a href="specimen.html">specimen</a></p>
 </aside>
 <main>
 <section class="g" id="button"><h2>Button</h2><p class="prose">The one way to trigger an action. One primary per view; destructive breaks the accent norm. <a href="manual/06-components-states.md#button">manual §</a></p><div class="ex">
@@ -337,6 +348,50 @@ main { padding: var(--space-3); display: grid; grid-template-columns: repeat(aut
 <div><span class="ds-skeleton ds-skeleton--text"></span><span class="ds-skeleton ds-skeleton--text"></span><span class="ds-skeleton ds-skeleton--text"></span></div></div></section>
 <section class="g" id="shell"><h2>App shell</h2><p class="prose">The frame: brand and summary in the head, nav at left, main content. <a href="manual/06-components-states.md#app-shell">manual §</a></p><div class="ex">
 <div class="ds-shell" style="height:14rem;border:var(--border-width) solid var(--border)"><div class="ds-shell__head"><span class="ds-shell__brand"><svg class="mark" aria-hidden="true"><use href="#m-hub"/></svg> OPS</span><div class="ds-shell__summary"><span class="ds-badge" style="--_c:var(--status-critical);--_on:var(--on-status-critical)"><svg class="mark" aria-hidden="true"><use href="#m-critical"/></svg> 1</span><span class="ds-badge" style="--_c:var(--status-medium);--_on:var(--on-status-medium)"><svg class="mark" aria-hidden="true"><use href="#m-medium"/></svg> 3</span></div><div class="ds-shell__meta"><span class="ds-fresh ds-fresh--live"><span class="ds-fresh__dot"></span>live</span><div class="ds-shell__actions"><button class="ds-btn ds-btn--text ds-btn--sm"><svg class="mark" aria-hidden="true"><use href="#m-bell"/></svg></button><button class="ds-btn ds-btn--text ds-btn--sm"><svg class="mark" aria-hidden="true"><use href="#m-user"/></svg></button></div></div></div><nav class="ds-shell__nav"><ul class="ds-menu ds-menu--sidebar"><li><a class="ds-menu__item" href="#" aria-current="page"><svg class="mark" aria-hidden="true"><use href="#m-hub"/></svg><span class="ds-menu__label">Fleet</span></a></li><li><a class="ds-menu__item" href="#"><svg class="mark" aria-hidden="true"><use href="#m-event"/></svg><span class="ds-menu__label">Events</span></a></li></ul></nav><main class="ds-shell__main">Main content.</main></div></div></section>
+<section class="g" id="seg"><h2>Segmented control · Theme · Mode</h2><p class="prose">A pill radio group. The theme picker draws each theme's emblem in its own accent; the mode picker follows the OS or forces light/dark. <a href="manual/06-components-states.md#segmented-control-theme-picker-mode-picker">manual §</a></p><div class="ex">
+<div class="row">
+<div class="ds-seg ds-seg--theme" role="radiogroup" aria-label="theme (demo)"><button class="ds-seg__btn" role="radio" aria-checked="true" style="--_c:#00E5FF" aria-label="tron"><svg class="mark" aria-hidden="true"><use href="#m-tron"/></svg></button><button class="ds-seg__btn" role="radio" aria-checked="false" style="--_c:#03A062" aria-label="matrix"><svg class="mark" aria-hidden="true"><use href="#m-matrix"/></svg></button><button class="ds-seg__btn" role="radio" aria-checked="false" style="--_c:#FF8A00" aria-label="compaq"><svg class="mark" aria-hidden="true"><use href="#m-compaq"/></svg></button></div>
+<div class="ds-seg" role="radiogroup" aria-label="mode (demo)"><button class="ds-seg__btn" role="radio" aria-checked="false" aria-label="system"><svg class="mark" aria-hidden="true"><use href="#m-screen"/></svg></button><button class="ds-seg__btn" role="radio" aria-checked="false" aria-label="light"><svg class="mark" aria-hidden="true"><use href="#m-sun"/></svg></button><button class="ds-seg__btn" role="radio" aria-checked="true" aria-label="dark"><svg class="mark" aria-hidden="true"><use href="#m-moon"/></svg></button></div>
+<div class="ds-seg" role="radiogroup" aria-label="density"><button class="ds-seg__btn" role="radio" aria-checked="false">Compact</button><button class="ds-seg__btn" role="radio" aria-checked="true">Comfortable</button><button class="ds-seg__btn" role="radio" aria-checked="false" disabled>Dense</button></div>
+</div>
+<p class="prose" style="margin:0">The live pickers in the sidebar are this component.</p></div></section>
+<section class="g" id="range"><h2>Slider (range)</h2><p class="prose">The native range input, styled. Always pair it with a visible value. <a href="manual/06-components-states.md#slider-range">manual §</a></p><div class="ex">
+<div class="ds-field"><label class="ds-field__label" for="g-rng">alert threshold · <output id="g-rng-out">70</output>%</label><input class="ds-range" id="g-rng" type="range" min="0" max="100" value="70" style="--_v:70%" oninput="this.style.setProperty('--_v', this.value + '%'); document.getElementById('g-rng-out').value = this.value"></div>
+<div class="ds-field"><label class="ds-field__label" for="g-rng2">locked</label><input class="ds-range" id="g-rng2" type="range" value="40" style="--_v:40%" disabled></div></div></section>
+<section class="g" id="rating"><h2>Rating · Bookmark</h2><p class="prose">Stars are a radio group that fills to the chosen one; bookmark is a pressed toggle. Fill is never the only readout. <a href="manual/06-components-states.md#rating-bookmark">manual §</a></p><div class="ex">
+<div class="row">
+<span class="ds-rating" role="radiogroup" aria-label="rate">
+<label class="ds-rating__star"><input class="ds-rating__input" type="radio" name="g-rate" value="1"><svg class="mark" aria-hidden="true"><use href="#m-star"/></svg></label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" name="g-rate" value="2"><svg class="mark" aria-hidden="true"><use href="#m-star"/></svg></label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" name="g-rate" value="3" checked><svg class="mark" aria-hidden="true"><use href="#m-star"/></svg></label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" name="g-rate" value="4"><svg class="mark" aria-hidden="true"><use href="#m-star"/></svg></label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" name="g-rate" value="5"><svg class="mark" aria-hidden="true"><use href="#m-star"/></svg></label>
+<span class="ds-rating__count">3/5</span></span>
+<span class="ds-rating ds-rating--readonly" aria-label="4 of 5">
+<label class="ds-rating__star"><input class="ds-rating__input" type="radio" disabled><svg class="mark" aria-hidden="true"><use href="#m-star"/></svg></label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" disabled><svg class="mark" aria-hidden="true"><use href="#m-star"/></svg></label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" disabled><svg class="mark" aria-hidden="true"><use href="#m-star"/></svg></label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" disabled checked><svg class="mark" aria-hidden="true"><use href="#m-star"/></svg></label><label class="ds-rating__star"><input class="ds-rating__input" type="radio" disabled><svg class="mark" aria-hidden="true"><use href="#m-star"/></svg></label>
+<span class="ds-rating__count">4.0 · 128</span></span>
+</div>
+<div class="row">
+<button class="ds-bookmark" aria-pressed="true" onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') !== 'true')"><svg class="mark" aria-hidden="true"><use href="#m-bookmark"/></svg> Saved</button>
+<button class="ds-bookmark" aria-pressed="false" onclick="this.setAttribute('aria-pressed', this.getAttribute('aria-pressed') !== 'true')"><svg class="mark" aria-hidden="true"><use href="#m-bookmark"/></svg> Save</button>
+</div></div></section>
+<section class="g" id="share"><h2>Share</h2><p class="prose">A ghost button that opens a popover menu of destinations. An action, never a state. <a href="manual/06-components-states.md#share">manual §</a></p><div class="ex">
+<div class="row" style="align-items:flex-start">
+<button class="ds-btn ds-btn--ghost ds-btn--sm"><svg class="mark" aria-hidden="true"><use href="#m-share"/></svg> Share</button>
+<ul class="ds-menu ds-menu--popover"><li class="ds-menu__heading">share dashboard</li><li><button class="ds-menu__item"><svg class="mark" aria-hidden="true"><use href="#m-external"/></svg><span class="ds-menu__label">Copy link</span><span class="ds-menu__hint">⌘C</span></button></li><li><button class="ds-menu__item"><svg class="mark" aria-hidden="true"><use href="#m-download"/></svg><span class="ds-menu__label">Export PNG</span></button></li><li><button class="ds-menu__item"><svg class="mark" aria-hidden="true"><use href="#m-send"/></svg><span class="ds-menu__label">Send to #ops-prod</span></button></li></ul>
+</div></div></section>
+<section class="g" id="tree"><h2>Tree view</h2><p class="prose">Nested disclosure. Branches are summaries with a twist; the current node is selected. <a href="manual/06-components-states.md#tree-view">manual §</a></p><div class="ex">
+<ul class="ds-tree">
+<li><details open><summary><span class="ds-tree__twist"><svg class="mark" aria-hidden="true"><use href="#m-chevron"/></svg></span><svg class="mark" aria-hidden="true"><use href="#m-hub"/></svg> prod-east<span class="ds-tree__hint">14</span></summary>
+<ul>
+<li><details open><summary><span class="ds-tree__twist"><svg class="mark" aria-hidden="true"><use href="#m-chevron"/></svg></span><svg class="mark" aria-hidden="true"><use href="#m-system"/></svg> db<span class="ds-tree__hint">3</span></summary>
+<ul><li><a class="ds-tree__leaf" href="#" aria-current="true">db-03 · primary</a></li><li><a class="ds-tree__leaf" href="#">db-04</a></li><li><a class="ds-tree__leaf" href="#">db-05</a></li></ul></details></li>
+<li><details><summary><span class="ds-tree__twist"><svg class="mark" aria-hidden="true"><use href="#m-chevron"/></svg></span><svg class="mark" aria-hidden="true"><use href="#m-system"/></svg> api<span class="ds-tree__hint">11</span></summary><ul><li><a class="ds-tree__leaf" href="#">api-01</a></li></ul></details></li>
+</ul></details></li>
+<li><details><summary><span class="ds-tree__twist"><svg class="mark" aria-hidden="true"><use href="#m-chevron"/></svg></span><svg class="mark" aria-hidden="true"><use href="#m-hub"/></svg> prod-west<span class="ds-tree__hint">9</span></summary><ul><li><a class="ds-tree__leaf" href="#">db-11</a></li></ul></details></li>
+</ul></div></section>
+<section class="g" id="accordion"><h2>Accordion</h2><p class="prose">A stack of disclosures on one surface. Any number open; use tabs when exactly one should show. <a href="manual/06-components-states.md#accordion">manual §</a></p><div class="ex">
+<div class="ds-acc">
+<details open><summary><span class="ds-tree__twist"><svg class="mark" aria-hidden="true"><use href="#m-chevron"/></svg></span>What happened</summary><div class="ds-acc__body">db-03 stopped answering heartbeats at 12:04:10. Replicas are serving reads.</div></details>
+<details><summary><span class="ds-tree__twist"><svg class="mark" aria-hidden="true"><use href="#m-chevron"/></svg></span>Why</summary><div class="ds-acc__body">Write burst from the batch importer saturated the WAL volume.</div></details>
+<details><summary><span class="ds-tree__twist"><svg class="mark" aria-hidden="true"><use href="#m-chevron"/></svg></span>What to do</summary><div class="ds-acc__body">Pause the importer, then promote db-04 if db-03 is not back within 5 min.</div></details>
+</div></div></section>
 <section class="g" id="skip"><h2>Skip link</h2><p class="prose">First focusable element on the page; visible only on focus. Shown pinned here. <a href="manual/06-components-states.md#skip-link-kbd">manual §</a></p><div class="ex">
 <a class="ds-skip" href="#main">Skip to content</a></div></section>
 <section class="g" id="kbd"><h2>Kbd</h2><p class="prose">A key or chord, as keycaps. <a href="manual/06-components-states.md#skip-link-kbd">manual §</a></p><div class="ex">
@@ -347,10 +402,18 @@ main { padding: var(--space-3); display: grid; grid-template-columns: repeat(aut
 const osDark = matchMedia('(prefers-color-scheme: dark)');
 function apply(k, v) {
   document.documentElement.dataset[k] = (k === 'mode' && v === 'system') ? (osDark.matches ? 'dark' : 'light') : v;
-  for (const b of document.querySelectorAll('.seg[data-k="' + k + '"] button')) b.setAttribute('aria-checked', b.value === v);
+  for (const b of document.querySelectorAll('.ds-seg[data-k="' + k + '"] .ds-seg__btn')) b.setAttribute('aria-checked', b.value === v);
 }
-for (const seg of document.querySelectorAll('.seg')) seg.onclick = e => { const b = e.target.closest('button'); if (b) apply(seg.dataset.k, b.value); };
-osDark.onchange = () => { const b = document.querySelector('.seg[data-k="mode"] [aria-checked="true"]'); if (b.value === 'system') apply('mode', 'system'); };
+for (const seg of document.querySelectorAll('.ds-seg[data-k]')) {
+  seg.onclick = e => { const b = e.target.closest('.ds-seg__btn'); if (b) apply(seg.dataset.k, b.value); };
+  seg.onkeydown = e => {
+    const bs = [...seg.querySelectorAll('.ds-seg__btn')], i = bs.indexOf(document.activeElement);
+    const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+    if (i < 0 || !d) return;
+    e.preventDefault(); const n = bs[(i + d + bs.length) % bs.length]; n.focus(); apply(seg.dataset.k, n.value);
+  };
+}
+osDark.onchange = () => { const b = document.querySelector('.ds-seg[data-k="mode"] [aria-checked="true"]'); if (b && b.value === 'system') apply('mode', 'system'); };
 </script>
 </body>
 </html>

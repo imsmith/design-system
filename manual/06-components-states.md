@@ -363,6 +363,63 @@ the kit had to hand-roll from primitives.
 - **Use:** alert history, audit trails. Wording per the voice rules.
 - **Terminal:** `02:14:31Z ✖ DOWN  Uplink down — sector 12.` per line.
 
+### Segmented control · Theme picker · Mode picker
+
+- **Segmented control:** a pill (`radius` full) radio group on `bg` with a quiet
+  `edge`: each segment is a pill button, icon and/or `caption` label, `muted` at
+  rest, `text` + accent tint + accent inset ring when checked. One is always
+  checked. `role="radiogroup"` with `role="radio"` segments; arrow keys move.
+- **Mode picker:** the segmented control with three marks — `m-screen` (follow
+  the OS via `prefers-color-scheme`), `m-sun` (light), `m-moon` (dark).
+- **Theme picker:** the segmented control whose segments are the three **theme
+  emblems** — `m-tron`, `m-matrix`, `m-compaq` — each drawn in its own anchor
+  color (`--_c`), dimmed at rest, full and glowing when checked. The emblem is
+  the only place a non-active theme's accent appears in the chrome.
+- **Terminal:** `(system) [light] (dark)` with the checked item bracketed.
+
+### Slider (range)
+
+- The native `<input type="range">`, styled: a `bg` track with a `border` edge,
+  `accent` fill up to the thumb, a `surface` thumb ringed in `accent` with
+  ambient glow. Focus is the `text` outline on the thumb. Pair it with a visible
+  numeric value — the thumb position is never the only readout.
+- **Terminal:** `[=====|-----] 42`.
+
+### Rating · Bookmark
+
+- **Rating:** five `m-star` marks as a radio group; stars up to the chosen one
+  fill in `accent`, the rest stay `muted` outlines. Hover previews. A read-only
+  rating drops the hover and the pointer. Always accompany with the numeric
+  value or count — fill is not a readout.
+- **Bookmark:** a pressed toggle (`aria-pressed`) carrying `m-bookmark`:
+  `muted` outline at rest, `accent` fill when saved, with ambient glow on dark.
+- **Terminal:** `★★★☆☆ 3/5` · `[bk]` / `[BK]`.
+
+### Share
+
+- A ghost [button](#button) carrying `m-share` whose action opens a popover
+  [menu](#menu--nav) of destinations (copy link, export, send). Share is an
+  action, not a state: it never fills or stays pressed.
+- **Terminal:** `[shr]` opening a bordered list.
+
+### Tree view
+
+- **Anatomy:** nested `<details>`: each branch row is the summary with a
+  rotating `m-chevron` twist, an optional object mark, and a label; leaves are
+  rows indented past the twist. Children hang off a vertical `edge` rule. The
+  current node takes the **selected** treatment.
+- **Rules:** the tree *is* the keyboard model — native disclosure, `Enter`/`Space`
+  toggles. Depth beyond four levels wants a different view.
+- **Terminal:** `▸ branch` / `▾ branch` with two-space indents.
+
+### Accordion
+
+- A stack of `<details>` on one `surface` with a quiet `edge`, hairline `edge`
+  rules between sections. Each summary is a `caption`-style label with the
+  `m-chevron` twist; the body is `muted` prose. Any number may be open; use
+  the [tabs](#tabs) when exactly one view should show at a time.
+- **Terminal:** `▸ SECTION` rows.
+
 ### Skip link · Kbd
 
 - **Skip link:** the first focusable thing on a page, visually hidden until

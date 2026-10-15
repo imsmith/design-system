@@ -68,16 +68,23 @@ data-direction is never mistaken for a status. The mark carries the **sign**;
 
 ## 4 · Functional starter set
 
-Thirty-one everyday marks, same style. The chevron rotates 90°/180°/270° for the
+Thirty-seven everyday marks, same style. The chevron rotates 90°/180°/270° for the
 four directions rather than shipping four symbols.
 
 - **Nav/control:** `m-close`, `m-menu`, `m-chevron`, `m-more`, `m-chat`, `m-event`,
   `m-system`, `m-hub`
 - **Actions:** `m-search`, `m-add`, `m-remove`, `m-edit`, `m-delete`,
-  `m-refresh`, `m-filter`, `m-download`, `m-upload`, `m-run`, `m-send`, `m-external`
+  `m-refresh`, `m-filter`, `m-download`, `m-upload`, `m-run`, `m-send`, `m-external`,
+  `m-star`, `m-bookmark`, `m-share` (star and bookmark are outlines at rest and
+  fill when selected)
 - **Objects:** `m-settings`, `m-info`, `m-help`, `m-user`, `m-lock`, `m-bell`,
   `m-tool`, `m-agent`; appearance: `m-sun` (light), `m-moon` (dark), `m-screen`
   (follow the OS)
+- **Theme emblems:** `m-tron` (the program raising the identity disc),
+  `m-matrix` (digital rain), `m-compaq` (the amber CRT, prompt lit). Each is
+  drawn in its own theme's accent — the one place another theme's accent may
+  appear in the chrome — and only inside the theme picker. No terminal tier: a
+  theme is named in text there.
 
 This is a *starter* set, not the final library — extensions follow the style spec
 and register in `tokens/marks.edn`. What it deliberately omits (copy, save,
