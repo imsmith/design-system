@@ -151,6 +151,10 @@ table { border-collapse: collapse; font-size: var(--text-small) } th, td { text-
   <symbol id="m-bookmark" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4.5L6 21z"/></g></symbol>
   <symbol id="m-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><line x1="8.2" y1="10.9" x2="15.8" y2="6.1"/><line x1="8.2" y1="13.1" x2="15.8" y2="17.9"/></g></symbol>
 
+  <symbol id="m-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="1.5"/><path d="M5 15H4a1.5 1.5 0 0 1-1.5-1.5v-9A1.5 1.5 0 0 1 4 3h9A1.5 1.5 0 0 1 14.5 4.5V5"/></g></symbol>
+  <symbol id="m-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,12.5 9.5,18 20,6.5"/></g></symbol>
+  <symbol id="m-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+
   <!-- ============ THEME EMBLEMS (drawn in the theme's accent) ============ -->
   <!-- tron: the program raises the identity disc overhead -->
   <symbol id="m-tron" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2.5"/><circle cx="12" cy="4" r="0.6" fill="currentColor" stroke="none"/><line x1="9.6" y1="4.8" x2="8.5" y2="12.5"/><line x1="14.4" y1="4.8" x2="15.5" y2="12.5"/><circle cx="12" cy="10.5" r="1.8"/><line x1="8.5" y1="12.5" x2="15.5" y2="12.5"/><line x1="12" y1="12.5" x2="12" y2="17"/><line x1="12" y1="17" x2="9" y2="22"/><line x1="12" y1="17" x2="15" y2="22"/></g></symbol>
@@ -240,13 +244,13 @@ table { border-collapse: collapse; font-size: var(--text-small) } th, td { text-
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-more"/></svg><code>m-more</code><small>⋯ ...</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-search"/></svg><code>m-search</code><small>⌕ </small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-add"/></svg><code>m-add</code><small>+ +</small></div>
-<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-remove"/></svg><code>m-remove</code><small>− -</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-remove"/></svg><code>m-remove</code><small>− rm</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-edit"/></svg><code>m-edit</code><small>✎ </small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-delete"/></svg><code>m-delete</code><small> del</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-refresh"/></svg><code>m-refresh</code><small>↻ </small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-filter"/></svg><code>m-filter</code><small>▽ </small></div>
-<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-download"/></svg><code>m-download</code><small>↓ v</small></div>
-<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-upload"/></svg><code>m-upload</code><small>↑ ^</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-download"/></svg><code>m-download</code><small>↓ dn</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-upload"/></svg><code>m-upload</code><small>↑ up</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-settings"/></svg><code>m-settings</code><small>⚙ </small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-info"/></svg><code>m-info</code><small>ⓘ i</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-help"/></svg><code>m-help</code><small>? ?</small></div>
@@ -259,15 +263,18 @@ table { border-collapse: collapse; font-size: var(--text-small) } th, td { text-
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-tool"/></svg><code>m-tool</code><small> tool</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-hub"/></svg><code>m-hub</code><small>⇄ &lt;-&gt;</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-agent"/></svg><code>m-agent</code><small> agt</small></div>
-<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-run"/></svg><code>m-run</code><small>▶ &gt;</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-run"/></svg><code>m-run</code><small>▶ run</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-send"/></svg><code>m-send</code><small>➤ -&gt;</small></div>
-<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-external"/></svg><code>m-external</code><small>↗ ^</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-external"/></svg><code>m-external</code><small>↗ ext</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-sun"/></svg><code>m-sun</code><small>☀ lt</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-moon"/></svg><code>m-moon</code><small>☾ dk</small></div>
-<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-screen"/></svg><code>m-screen</code><small> sys</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-screen"/></svg><code>m-screen</code><small> auto</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-star"/></svg><code>m-star</code><small>★ *</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-bookmark"/></svg><code>m-bookmark</code><small> bk</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-share"/></svg><code>m-share</code><small> shr</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-copy"/></svg><code>m-copy</code><small> cp</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-check"/></svg><code>m-check</code><small>✓ ok</small></div>
+<div class=mk><svg class="mark" aria-hidden="true"><use href="#m-eye"/></svg><code>m-eye</code><small> eye</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-tron"/></svg><code>m-tron</code><small> tron</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-matrix"/></svg><code>m-matrix</code><small> matrix</small></div>
 <div class=mk><svg class="mark" aria-hidden="true"><use href="#m-compaq"/></svg><code>m-compaq</code><small> compaq</small></div>

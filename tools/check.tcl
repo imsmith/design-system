@@ -5,6 +5,7 @@
 #   3. every relative link / backticked repo path in markdown resolves
 #   4. no CSS file contains "**/" (closes a comment early; bit us twice)
 #   5. every :id in tokens/marks.edn has a <symbol> in the sprite, and vice versa
+#   6. no two marks share an :ascii fallback (they'd be indistinguishable)
 # Exits non-zero on any failure. APCA and markdownlint live in the Makefile.
 
 source [file join [file dirname [info script]] tcl edn.tcl]
@@ -51,5 +52,10 @@ if {$ids ne $syms} {
     fail "marks: registry/sprite mismatch; edn only: $ednOnly; svg only: $svgOnly"
 }
 puts "marks: [llength $ids] registered, [llength $syms] in sprite"
+# 6. ascii fallbacks are unique across the registry (nil = no fallback, skipped)
+set seen [dict create]
+foreach {_ id a} [regexp -all -inline {:id\s+"(m-[a-z0-9-]+)"[^\n]*?:ascii\s+"([^"]*)"} [slurp tokens/marks.edn]] {
+    if {[dict exists $seen $a]} { fail "marks: ascii \"$a\" shared by [dict get $seen $a] and $id" } else { dict set seen $a $id }
+}
 puts [expr {$fails ? "FAILURES: $fails" : "OK"}]
 exit [expr {$fails > 0}]

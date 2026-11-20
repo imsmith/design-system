@@ -721,7 +721,7 @@ defmodule DesignSystem.Tokens do
         id: "m-remove",
         group: :action,
         unicode: "−",
-        ascii: "-",
+        ascii: "rm",
         nerd: "f068",
         nerd_name: "nf-fa-minus"
       }, %{
@@ -756,14 +756,14 @@ defmodule DesignSystem.Tokens do
         id: "m-download",
         group: :action,
         unicode: "↓",
-        ascii: "v",
+        ascii: "dn",
         nerd: "f019",
         nerd_name: "nf-fa-download"
       }, %{
         id: "m-upload",
         group: :action,
         unicode: "↑",
-        ascii: "^",
+        ascii: "up",
         nerd: "f093",
         nerd_name: "nf-fa-upload"
       }, %{
@@ -854,7 +854,7 @@ defmodule DesignSystem.Tokens do
         id: "m-run",
         group: :action,
         unicode: "▶",
-        ascii: ">",
+        ascii: "run",
         nerd: "f04b",
         nerd_name: "nf-fa-play"
       }, %{
@@ -868,7 +868,7 @@ defmodule DesignSystem.Tokens do
         id: "m-external",
         group: :action,
         unicode: "↗",
-        ascii: "^",
+        ascii: "ext",
         nerd: "f08e",
         nerd_name: "nf-fa-external_link"
       }, %{
@@ -889,7 +889,7 @@ defmodule DesignSystem.Tokens do
         id: "m-screen",
         group: :object,
         unicode: nil,
-        ascii: "sys",
+        ascii: "auto",
         nerd: "f108",
         nerd_name: "nf-fa-desktop"
       }, %{
