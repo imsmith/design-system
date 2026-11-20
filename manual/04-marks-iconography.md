@@ -106,7 +106,8 @@ Every mark degrades, richest to poorest (`tokens/marks.edn` `:fallback-order`):
 3. **Unicode** — a single BMP glyph for terminals without the Nerd Font
    (`:unicode`). Status and diverging marks always have one.
 4. **ASCII** — a last-resort token (`:ascii`) for pure-ASCII terminals, e.g.
-   `[X]` / `[!]` / `[?]` for status, `^` / `-` / `v` for direction.
+   `[X]` / `[!]` / `[?]` for status, `^` / `-` / `v` for direction. Every
+   `:ascii` is unique across the registry (`tools/check.tcl` enforces it).
 
 Status and diverging marks are guaranteed at the Nerd Font, Unicode, and ASCII
 levels — they are accessibility-critical. Functional marks have a Nerd Font glyph

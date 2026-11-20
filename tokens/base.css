@@ -11,6 +11,12 @@
   box-sizing: border-box;
 }
 
+/* Author display rules (.ds-toast { display:flex }) beat the UA [hidden];
+ * restore it. until-found keeps its find-in-page behaviour. */
+[hidden]:where(:not([hidden="until-found"])) {
+  display: none !important;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;

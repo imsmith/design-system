@@ -50,13 +50,13 @@
   {:id "m-more"     :group :nav     :unicode "⋯" :ascii "..." :nerd "f141" :nerd-name "nf-fa-ellipsis_h"}
   {:id "m-search"   :group :action  :unicode "⌕" :ascii nil   :nerd "f002" :nerd-name "nf-fa-search"}
   {:id "m-add"      :group :action  :unicode "+"      :ascii "+"   :nerd "f067" :nerd-name "nf-fa-plus"}
-  {:id "m-remove"   :group :action  :unicode "−" :ascii "-"   :nerd "f068" :nerd-name "nf-fa-minus"}
+  {:id "m-remove"   :group :action  :unicode "−" :ascii "rm"  :nerd "f068" :nerd-name "nf-fa-minus"}
   {:id "m-edit"     :group :action  :unicode "✎" :ascii nil   :nerd "f040" :nerd-name "nf-fa-pencil"}
   {:id "m-delete"   :group :action  :unicode nil       :ascii "del" :nerd "f1f8" :nerd-name "nf-fa-trash"}
   {:id "m-refresh"  :group :action  :unicode "↻" :ascii nil   :nerd "f021" :nerd-name "nf-fa-refresh"}
   {:id "m-filter"   :group :action  :unicode "▽" :ascii nil   :nerd "f0b0" :nerd-name "nf-fa-filter"}
-  {:id "m-download" :group :action  :unicode "↓" :ascii "v"   :nerd "f019" :nerd-name "nf-fa-download"}
-  {:id "m-upload"   :group :action  :unicode "↑" :ascii "^"   :nerd "f093" :nerd-name "nf-fa-upload"}
+  {:id "m-download" :group :action  :unicode "↓" :ascii "dn"  :nerd "f019" :nerd-name "nf-fa-download"}
+  {:id "m-upload"   :group :action  :unicode "↑" :ascii "up"  :nerd "f093" :nerd-name "nf-fa-upload"}
   {:id "m-settings" :group :object  :unicode "⚙" :ascii nil   :nerd "f013" :nerd-name "nf-fa-cog"}
   {:id "m-info"     :group :object  :unicode "ⓘ" :ascii "i"   :nerd "f05a" :nerd-name "nf-fa-info_circle"}
   {:id "m-help"     :group :object  :unicode "?"      :ascii "?"   :nerd "f128" :nerd-name "nf-fa-question"}
@@ -69,13 +69,13 @@
   {:id "m-tool"     :group :object  :unicode nil       :ascii "tool" :nerd "f0ad" :nerd-name "nf-fa-wrench"}
   {:id "m-hub"      :group :nav     :unicode "⇄" :ascii "<->"  :nerd "f0ec" :nerd-name "nf-fa-exchange"}
   {:id "m-agent"    :group :object  :unicode nil       :ascii "agt"  :nerd "f2db" :nerd-name "nf-fa-microchip"}
-  {:id "m-run"      :group :action  :unicode "▶" :ascii ">"    :nerd "f04b" :nerd-name "nf-fa-play"}
+  {:id "m-run"      :group :action  :unicode "▶" :ascii "run"  :nerd "f04b" :nerd-name "nf-fa-play"}
   {:id "m-send"     :group :action  :unicode "➤" :ascii "->"   :nerd "f1d8" :nerd-name "nf-fa-paper_plane"}
-  {:id "m-external" :group :action  :unicode "↗" :ascii "^"    :nerd "f08e" :nerd-name "nf-fa-external_link"}
+  {:id "m-external" :group :action  :unicode "↗" :ascii "ext"  :nerd "f08e" :nerd-name "nf-fa-external_link"}
   ;; appearance pickers: mode (sun/moon/screen) — screen = follow the OS
   {:id "m-sun"      :group :object  :unicode "☀" :ascii "lt"   :nerd "f185" :nerd-name "nf-fa-sun_o"}
   {:id "m-moon"     :group :object  :unicode "☾" :ascii "dk"   :nerd "f186" :nerd-name "nf-fa-moon_o"}
-  {:id "m-screen"   :group :object  :unicode nil       :ascii "sys"  :nerd "f108" :nerd-name "nf-fa-desktop"}
+  {:id "m-screen"   :group :object  :unicode nil       :ascii "auto" :nerd "f108" :nerd-name "nf-fa-desktop"}
   ;; social / collection
   {:id "m-star"     :group :action  :unicode "★" :ascii "*"    :nerd "f005" :nerd-name "nf-fa-star" :note "outline at rest; fill = selected"}
   {:id "m-bookmark" :group :action  :unicode nil       :ascii "bk"   :nerd "f02e" :nerd-name "nf-fa-bookmark" :note "outline at rest; fill = saved"}
